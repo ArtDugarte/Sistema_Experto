@@ -497,12 +497,12 @@ public class login extends javax.swing.JFrame {
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
         
-        //principal_paciente p = new principal_paciente();
-        
-        principal_experto pe = new principal_experto();
+        //principal_paciente p = new principal_paciente(); 
+        //principal_experto pe = new principal_experto();
+        principal_asistente pa= new principal_asistente();
         
         this.setVisible(false);
-        pe.setVisible(true);
+        pa.setVisible(true);
         
         this.dispose();
         
