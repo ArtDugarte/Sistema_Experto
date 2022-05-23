@@ -4,6 +4,7 @@ import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 
 public class login extends javax.swing.JFrame {
@@ -497,15 +498,27 @@ public class login extends javax.swing.JFrame {
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
         
-        //principal_paciente p = new principal_paciente(); 
-        //principal_experto pe = new principal_experto();
-        principal_asistente pa= new principal_asistente();
         
-        this.setVisible(false);
-        pa.setVisible(true);
         
-        this.dispose();
+        if(usuario.getText().equals("1")){
+            
+            principal_experto pe = new principal_experto();
+            pe.setVisible(true);
+            this.dispose();
+            
+        } else if(usuario.getText().equals("2")){
+            
+            principal_paciente p = new principal_paciente();
+            p.setVisible(true);
+            this.dispose();
+            
+        }else if(usuario.getText().equals("3")){
+            
+            principal_asistente pa= new principal_asistente();
+            pa.setVisible(true);
+            this.dispose();
         
+        }else {JOptionPane.showMessageDialog(null, "Negativo el procedimiento");}     
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void claveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusLost
