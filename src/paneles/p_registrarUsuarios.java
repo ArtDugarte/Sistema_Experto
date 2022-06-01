@@ -1,12 +1,15 @@
 package paneles;
 
+import globales.encriptacion;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import modelos.operar_usuarios;
 
-public class p_registrarPacientes extends javax.swing.JPanel {
+public class p_registrarUsuarios extends javax.swing.JPanel {
 
-    public p_registrarPacientes() {
-        initComponents();
+    public p_registrarUsuarios() {
+        initComponents();     
     }
 
 
@@ -14,6 +17,7 @@ public class p_registrarPacientes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        r_botones = new javax.swing.ButtonGroup();
         clave_vieja = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         apellidos = new javax.swing.JTextField();
@@ -37,6 +41,13 @@ public class p_registrarPacientes extends javax.swing.JPanel {
         b_borrar = new javax.swing.JButton();
         b_modificar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        rb_asistente = new javax.swing.JRadioButton();
+        rb_paciente = new javax.swing.JRadioButton();
+        rb_medico = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -49,6 +60,7 @@ public class p_registrarPacientes extends javax.swing.JPanel {
         clave_vieja.setText("Contraseña Vieja:");
         clave_vieja.setBorder(null);
         clave_vieja.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        clave_vieja.setFocusable(false);
         clave_vieja.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 clave_viejaFocusGained(evt);
@@ -57,11 +69,11 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 clave_viejaFocusLost(evt);
             }
         });
-        add(clave_vieja, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 250, 30));
+        add(clave_vieja, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 250, 30));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 250, 10));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 250, 10));
 
         apellidos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         apellidos.setForeground(new java.awt.Color(102, 102, 102));
@@ -76,15 +88,15 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 apellidosFocusLost(evt);
             }
         });
-        add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 540, 30));
+        add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 540, 30));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 540, 10));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 540, 10));
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 250, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 250, 10));
 
         nombres.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         nombres.setForeground(new java.awt.Color(102, 102, 102));
@@ -99,11 +111,11 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 nombresFocusLost(evt);
             }
         });
-        add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 540, 30));
+        add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 540, 30));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 540, 10));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 540, 10));
 
         respuesta.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         respuesta.setForeground(new java.awt.Color(102, 102, 102));
@@ -118,11 +130,11 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 respuestaFocusLost(evt);
             }
         });
-        add(respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 250, 30));
+        add(respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 540, 30));
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 250, 10));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 540, 10));
 
         cedula.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         cedula.setForeground(new java.awt.Color(102, 102, 102));
@@ -137,17 +149,18 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 cedulaFocusLost(evt);
             }
         });
-        add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 250, 30));
+        add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 250, 30));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 250, 10));
+        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 250, 10));
 
         clave_nueva.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         clave_nueva.setForeground(new java.awt.Color(102, 102, 102));
         clave_nueva.setText("Contraseña Nueva:");
         clave_nueva.setBorder(null);
         clave_nueva.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        clave_nueva.setFocusable(false);
         clave_nueva.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 clave_nuevaFocusGained(evt);
@@ -156,31 +169,31 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 clave_nuevaFocusLost(evt);
             }
         });
-        add(clave_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 250, 30));
+        add(clave_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 250, 30));
 
         pregunta.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         pregunta.setForeground(new java.awt.Color(102, 102, 102));
-        pregunta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pregunta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "¿CUÁL ES TU LIBRO FAVORITO?", "¿COMO SE LLAMA TU MEJOR AMIGO DE LA INFANCIA?", "¿CUÁL ERA EL NOMBRE DE TU PRIMERA MASCOTA?", "¿EN QUÉ CIUDAD SE CONOCIERON TUS PADRES?", "¿CUÁL ES TU EQUIPO FAVORITO?", "¿CUÁL FUÉ TU PRIMERA PELÍCULA EN EL CINE?", "¿CUÁL ES TU GRUPO O CANTANTE FAVORITO?", "¿CUÁL ES TU COLOR FAVORITO?", "¿COMO TE LLAMABAN EN TU INFANCIA?", "¿CÓMO SE LLAMABA TU PRIMER JESE?" }));
         pregunta.setBorder(null);
         pregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pregunta.setFocusable(false);
         pregunta.setName("Desplegable"); // NOI18N
-        add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 260, 40));
+        add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 540, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave_m.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tipo_usuario.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_m.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apellido_m.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cedula_m.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/seguridad_m.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/respuesta_segu.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         b_limpiar.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -203,7 +216,7 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 b_limpiarActionPerformed(evt);
             }
         });
-        add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 100, 30));
+        add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
 
         b_registrar.setBackground(new java.awt.Color(103, 174, 202));
         b_registrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -221,7 +234,12 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 b_registrarMouseReleased(evt);
             }
         });
-        add(b_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 100, 30));
+        b_registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_registrarActionPerformed(evt);
+            }
+        });
+        add(b_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
 
         b_borrar.setBackground(new java.awt.Color(103, 174, 202));
         b_borrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -239,7 +257,7 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 b_borrarMouseReleased(evt);
             }
         });
-        add(b_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 100, 30));
+        add(b_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 100, 30));
 
         b_modificar.setBackground(new java.awt.Color(103, 174, 202));
         b_modificar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -257,7 +275,7 @@ public class p_registrarPacientes extends javax.swing.JPanel {
                 b_modificarMouseReleased(evt);
             }
         });
-        add(b_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 100, 30));
+        add(b_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 100, 30));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande.png"))); // NOI18N
         jButton1.setBorderPainted(false);
@@ -265,7 +283,56 @@ public class p_registrarPacientes extends javax.swing.JPanel {
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande2.png"))); // NOI18N
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/seguridad_m.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        rb_asistente.setBackground(new java.awt.Color(255, 255, 255));
+        r_botones.add(rb_asistente);
+        rb_asistente.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        rb_asistente.setForeground(new java.awt.Color(102, 102, 102));
+        rb_asistente.setText("Asistente");
+        rb_asistente.setBorder(null);
+        rb_asistente.setContentAreaFilled(false);
+        rb_asistente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rb_asistente.setFocusPainted(false);
+        add(rb_asistente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, -1, -1));
+
+        rb_paciente.setBackground(new java.awt.Color(255, 255, 255));
+        r_botones.add(rb_paciente);
+        rb_paciente.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        rb_paciente.setForeground(new java.awt.Color(102, 102, 102));
+        rb_paciente.setSelected(true);
+        rb_paciente.setText("Paciente");
+        rb_paciente.setBorder(null);
+        rb_paciente.setContentAreaFilled(false);
+        rb_paciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rb_paciente.setFocusPainted(false);
+        add(rb_paciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, -1, -1));
+
+        rb_medico.setBackground(new java.awt.Color(255, 255, 255));
+        r_botones.add(rb_medico);
+        rb_medico.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        rb_medico.setForeground(new java.awt.Color(102, 102, 102));
+        rb_medico.setText("Médico");
+        rb_medico.setBorder(null);
+        rb_medico.setContentAreaFilled(false);
+        rb_medico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rb_medico.setFocusPainted(false);
+        add(rb_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 80, -1));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("Tipo de Usuario:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
+
+        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 540, 10));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave_m.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -372,9 +439,33 @@ public class p_registrarPacientes extends javax.swing.JPanel {
             apellidos.setText("Apellidos:");
         }
     }//GEN-LAST:event_apellidosFocusLost
+
+    private void b_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrarActionPerformed
+       
+        int tipo_usuario;
+        
+        if(rb_paciente.isSelected()){
+            
+            tipo_usuario = 3;
+            
+        }else if(rb_asistente.isSelected()){
+            
+            tipo_usuario = 2;
+            
+        }else tipo_usuario = 1;
+        
+        
+        operar_usuarios op = new operar_usuarios();
+        op.Crear(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), pregunta.getSelectedItem()+ "", encrip.encriptar(respuesta.getText()), encrip.encriptar(cedula.getText()), tipo_usuario);
+        
+    }//GEN-LAST:event_b_registrarActionPerformed
     
     
     //Metodos y Variables
+    
+    encriptacion encrip = new encriptacion();
+    
+    
     
     public void limpiar_campos(){
        
@@ -397,19 +488,27 @@ public class p_registrarPacientes extends javax.swing.JPanel {
     private javax.swing.JTextField clave_nueva;
     private javax.swing.JTextField clave_vieja;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField nombres;
     private javax.swing.JComboBox<String> pregunta;
+    private javax.swing.ButtonGroup r_botones;
+    private javax.swing.JRadioButton rb_asistente;
+    private javax.swing.JRadioButton rb_medico;
+    private javax.swing.JRadioButton rb_paciente;
     private javax.swing.JTextField respuesta;
     // End of variables declaration//GEN-END:variables
 }

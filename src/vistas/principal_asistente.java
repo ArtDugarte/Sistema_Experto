@@ -8,8 +8,7 @@ import paneles.p_ajustes;
 import paneles.p_diagnosticos;
 import paneles.p_examenes;
 import paneles.p_historial;
-import paneles.p_registrarAsistentes;
-import paneles.p_registrarPacientes;
+import paneles.p_registrarUsuarios;
 import paneles.p_resultados;
 import paneles.p_revision;
 

@@ -8,8 +8,7 @@ import paneles.p_ajustes;
 import paneles.p_diagnosticos;
 import paneles.p_examenes;
 import paneles.p_historial;
-import paneles.p_registrarAsistentes;
-import paneles.p_registrarPacientes;
+import paneles.p_registrarUsuarios;
 import paneles.p_resultados;
 
 public class principal_experto extends javax.swing.JFrame {
@@ -22,16 +21,13 @@ public class principal_experto extends javax.swing.JFrame {
         AWTUtilities.setWindowShape(this, forma);
         
         p_d = new p_diagnosticos();
-        p_r = new p_registrarPacientes();
-        p_ra = new p_registrarAsistentes();
+        p_r = new p_registrarUsuarios();
         p_a = new p_ajustes();
         p_principal.add(p_d);
         p_principal.add(p_r);
-        p_principal.add(p_ra);
         p_principal.add(p_a);
         p_d.setVisible(true);
         p_r.setVisible(false);
-        p_ra.setVisible(false);
         p_a.setVisible(false);
         
     }
@@ -50,8 +46,7 @@ public class principal_experto extends javax.swing.JFrame {
         p_menu = new javax.swing.JPanel();
         p_botones = new javax.swing.JPanel();
         b_diagnosticos = new javax.swing.JButton();
-        b_registrarP = new javax.swing.JButton();
-        b_registrarA = new javax.swing.JButton();
+        b_registrarU = new javax.swing.JButton();
         b_ajustes = new javax.swing.JButton();
         p_principal = new javax.swing.JPanel();
 
@@ -127,39 +122,22 @@ public class principal_experto extends javax.swing.JFrame {
         });
         p_botones.add(b_diagnosticos);
 
-        b_registrarP.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        b_registrarP.setForeground(new java.awt.Color(255, 255, 255));
-        b_registrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrarP.png"))); // NOI18N
-        b_registrarP.setText("Admin. Pacientes");
-        b_registrarP.setBorderPainted(false);
-        b_registrarP.setContentAreaFilled(false);
-        b_registrarP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_registrarP.setFocusPainted(false);
-        b_registrarP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        b_registrarP.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/resultados2.png"))); // NOI18N
-        b_registrarP.addMouseListener(new java.awt.event.MouseAdapter() {
+        b_registrarU.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        b_registrarU.setForeground(new java.awt.Color(255, 255, 255));
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
+        b_registrarU.setText("Admin. Usuarios");
+        b_registrarU.setBorderPainted(false);
+        b_registrarU.setContentAreaFilled(false);
+        b_registrarU.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_registrarU.setFocusPainted(false);
+        b_registrarU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        b_registrarU.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/resultados2.png"))); // NOI18N
+        b_registrarU.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                b_registrarPMouseClicked(evt);
+                b_registrarUMouseClicked(evt);
             }
         });
-        p_botones.add(b_registrarP);
-
-        b_registrarA.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        b_registrarA.setForeground(new java.awt.Color(255, 255, 255));
-        b_registrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asistentes.png"))); // NOI18N
-        b_registrarA.setText("Admin. Asistentes");
-        b_registrarA.setBorderPainted(false);
-        b_registrarA.setContentAreaFilled(false);
-        b_registrarA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_registrarA.setFocusPainted(false);
-        b_registrarA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        b_registrarA.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/resultados2.png"))); // NOI18N
-        b_registrarA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                b_registrarAMouseClicked(evt);
-            }
-        });
-        p_botones.add(b_registrarA);
+        p_botones.add(b_registrarU);
 
         b_ajustes.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         b_ajustes.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,29 +178,24 @@ public class principal_experto extends javax.swing.JFrame {
         b_diagnosticos.setForeground(new Color(204, 204, 204));
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico2.png")));
         
-        b_registrarP.setForeground(Color.WHITE);
-        b_registrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrarP.png")));
+        b_registrarU.setForeground(Color.WHITE);
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
            
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
-        b_registrarA.setForeground(Color.WHITE);
-        b_registrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asistentes.png")));
         
         l_ico.setText(" Diagnósticos");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
         
         p_d.setVisible(true);
         p_r.setVisible(false);
-        p_ra.setVisible(false);
         p_a.setVisible(false);
-        
     }//GEN-LAST:event_b_diagnosticosMouseClicked
 
-    private void b_registrarPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarPMouseClicked
+    private void b_registrarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarUMouseClicked
         
-        b_registrarP.setForeground(new Color(204, 204, 204));
-        b_registrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrarP2.png")));
+        b_registrarU.setForeground(new Color(204, 204, 204));
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios2.png")));
         
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
@@ -230,18 +203,14 @@ public class principal_experto extends javax.swing.JFrame {
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
-        b_registrarA.setForeground(Color.WHITE);
-        b_registrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asistentes.png")));
-        
-        l_ico.setText(" Registrar Pacientes");
-        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrarP.png")));
+        l_ico.setText(" Administrar Usuarios");
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
         
         p_d.setVisible(false);
         p_r.setVisible(true);
-        p_ra.setVisible(false);
         p_a.setVisible(false);
         
-    }//GEN-LAST:event_b_registrarPMouseClicked
+    }//GEN-LAST:event_b_registrarUMouseClicked
 
     private void b_ajustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ajustesMouseClicked
         
@@ -251,45 +220,17 @@ public class principal_experto extends javax.swing.JFrame {
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
         
-        b_registrarP.setForeground(Color.WHITE);
-        b_registrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrarP.png")));   
-        
-        b_registrarA.setForeground(Color.WHITE);
-        b_registrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asistentes.png")));
-        
+        b_registrarU.setForeground(Color.WHITE);
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
+          
         l_ico.setText(" Ajustes");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
         p_d.setVisible(false);
         p_r.setVisible(false);
-        p_ra.setVisible(false);
         p_a.limpiar_campos();
         p_a.setVisible(true);
     }//GEN-LAST:event_b_ajustesMouseClicked
-
-    private void b_registrarAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarAMouseClicked
-        
-        b_registrarA.setForeground(new Color(204, 204, 204));
-        b_registrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asistentes2.png")));
-        
-        b_ajustes.setForeground(Color.WHITE);
-        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
-        b_diagnosticos.setForeground(Color.WHITE);
-        b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
-        
-        b_registrarP.setForeground(Color.WHITE);
-        b_registrarP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registrarP.png")));   
-        
-        l_ico.setText(" Administrar Asistentes");
-        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/asistentes.png")));
-        
-        p_d.setVisible(false);
-        p_r.setVisible(false);
-        p_a.setVisible(false);
-        p_ra.setVisible(true);
-        
-    }//GEN-LAST:event_b_registrarAMouseClicked
     
     //Metodos y Variables
     public void salir(){
@@ -298,15 +239,13 @@ public class principal_experto extends javax.swing.JFrame {
     }
     
     p_diagnosticos p_d;
-    p_registrarPacientes p_r;
-    p_registrarAsistentes p_ra;
+    p_registrarUsuarios p_r;
     p_ajustes p_a;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_ajustes;
     private javax.swing.JButton b_diagnosticos;
-    private javax.swing.JButton b_registrarA;
-    private javax.swing.JButton b_registrarP;
+    private javax.swing.JButton b_registrarU;
     private javax.swing.JPanel base;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

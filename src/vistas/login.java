@@ -1,5 +1,6 @@
 package vistas;
 
+import BD.BDConex;
 import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Shape;
