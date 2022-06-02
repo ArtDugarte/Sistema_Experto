@@ -2,26 +2,27 @@ package vistas;
 
 import BD.BDConex;
 import com.sun.awt.AWTUtilities;
+import globales.encriptacion;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import modelos.modelo;
+import modelos.operar_usuarios;
 
 public class login extends javax.swing.JFrame {
 
+    public login() {
 
-    public login(){
-        
         initComponents();
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
         ingreso.setVisible(true);
         olvido_contra.setVisible(false);
-        
-    }
 
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,7 +54,7 @@ public class login extends javax.swing.JFrame {
         salir_OC = new javax.swing.JButton();
         volver_login = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lupa = new javax.swing.JButton();
         ico_usu2 = new javax.swing.JLabel();
         pregunta_olvido = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
@@ -284,6 +285,11 @@ public class login extends javax.swing.JFrame {
                 modificarMouseReleased(evt);
             }
         });
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
         olvido_contra.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 100, 30));
 
         salir_OC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
@@ -329,13 +335,18 @@ public class login extends javax.swing.JFrame {
         jLabel2.setText("¿Olvidó su Contraseña?");
         olvido_contra.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 380, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa1.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
-        olvido_contra.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 30, 30));
+        lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa1.png"))); // NOI18N
+        lupa.setBorderPainted(false);
+        lupa.setContentAreaFilled(false);
+        lupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lupa.setFocusPainted(false);
+        lupa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa2.png"))); // NOI18N
+        lupa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lupaActionPerformed(evt);
+            }
+        });
+        olvido_contra.add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 30, 30));
 
         ico_usu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pregunta.png"))); // NOI18N
         ico_usu2.setFocusable(false);
@@ -388,177 +399,207 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMousePressed
-        
+
         ingresar.setForeground(new Color(204, 204, 204));
         ingresar.setBorder(new LineBorder(new Color(204, 204, 204), 2));
     }//GEN-LAST:event_ingresarMousePressed
 
     private void ingresarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarMouseReleased
-        
+
         ingresar.setForeground(Color.WHITE);
         ingresar.setBorder(new LineBorder(Color.white, 2));
     }//GEN-LAST:event_ingresarMouseReleased
 
     private void olvido_claveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_olvido_claveMousePressed
-        
+
         olvido_clave.setForeground(new Color(204, 204, 204));
     }//GEN-LAST:event_olvido_claveMousePressed
 
     private void olvido_claveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_olvido_claveMouseReleased
-        
+
         olvido_clave.setForeground(Color.WHITE);
     }//GEN-LAST:event_olvido_claveMouseReleased
 
     private void usuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usuarioFocusGained
-        
+
         usuario.setText("");
     }//GEN-LAST:event_usuarioFocusGained
 
     private void claveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusGained
-        
+
         clave.setText("");
-        
-        
+
+
     }//GEN-LAST:event_claveFocusGained
 
     private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
-        
+
         salir();
     }//GEN-LAST:event_salirMouseClicked
 
     private void usuario_olvidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usuario_olvidoFocusGained
-        
+
         usuario_olvido.setText("");
-        
+
     }//GEN-LAST:event_usuario_olvidoFocusGained
 
     private void nueva_claveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nueva_claveFocusGained
-        
+
         nueva_clave.setText("");
-        
+
     }//GEN-LAST:event_nueva_claveFocusGained
 
     private void modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMousePressed
-        
+
         modificar.setForeground(new Color(204, 204, 204));
         modificar.setBorder(new LineBorder(new Color(204, 204, 204), 2));
-        
+
     }//GEN-LAST:event_modificarMousePressed
 
     private void modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseReleased
-        
+
         modificar.setForeground(Color.WHITE);
         modificar.setBorder(new LineBorder(Color.white, 2));
-        
+
     }//GEN-LAST:event_modificarMouseReleased
 
     private void salir_OCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_OCMouseClicked
-        
+
         salir();
     }//GEN-LAST:event_salir_OCMouseClicked
 
     private void volver_loginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volver_loginMousePressed
-        
+
         volver_login.setForeground(new Color(204, 204, 204));
         volver_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver2.png")));
-        
+
     }//GEN-LAST:event_volver_loginMousePressed
 
     private void volver_loginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volver_loginMouseReleased
-       
+
         volver_login.setForeground(Color.WHITE);
         volver_login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/volver1.png")));
-        
+
     }//GEN-LAST:event_volver_loginMouseReleased
 
     private void olvido_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_olvido_claveActionPerformed
-        
+
         ingreso.setVisible(false);
         olvido_contra.setVisible(true);
         usuario_olvido.setText("Usuario");
         pregunta_olvido.setText("Pregunta de Seguridad");
         respuesta_olvido.setText("Respuesta");
         nueva_clave.setText("Contraseña");
-        
+
     }//GEN-LAST:event_olvido_claveActionPerformed
 
     private void volver_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volver_loginActionPerformed
-        
+
         ingreso.setVisible(true);
         olvido_contra.setVisible(false);
         usuario.setText("Usuario");
         clave.setText("Contraseña");
-        
+
     }//GEN-LAST:event_volver_loginActionPerformed
 
     private void respuesta_olvidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_respuesta_olvidoFocusGained
-        
+
         respuesta_olvido.setText("");
-        
+
     }//GEN-LAST:event_respuesta_olvidoFocusGained
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
-        
-        
-        
-        if(usuario.getText().equals("1")){
+
+        if (usuario.getText().equals("") || clave.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Algún campo está vacío");
+        } else {
+
+            operar_usuarios op = new operar_usuarios();
+            int tipo = op.Ingresar(usuario.getText(), encrip.encriptar(clave.getText()));
             
-            principal_experto pe = new principal_experto();
-            pe.setVisible(true);
-            this.dispose();
-            
-        } else if(usuario.getText().equals("2")){
-            
-            principal_paciente p = new principal_paciente();
-            p.setVisible(true);
-            this.dispose();
-            
-        }else if(usuario.getText().equals("3")){
-            
-            principal_asistente pa= new principal_asistente();
-            pa.setVisible(true);
-            this.dispose();
-        
-        }else {JOptionPane.showMessageDialog(null, "Negativo el procedimiento");}     
+            switch (tipo) {
+                case 1:
+                    principal_experto pe = new principal_experto();
+                    pe.setVisible(true);
+                    this.dispose();
+                    break;
+                case 3:
+                    principal_paciente p = new principal_paciente();
+                    p.setVisible(true);
+                    this.dispose();
+                    break;
+                case 2:
+                    principal_asistente pa = new principal_asistente();
+                    pa.setVisible(true);
+                    this.dispose();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Negativo el procedimiento");
+                    break;
+            }
+        }
+
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void claveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusLost
-        if(clave.getText().equals("")){
+        if (clave.getText().equals("")) {
             clave.setText("Contraseña");
         }
     }//GEN-LAST:event_claveFocusLost
 
     private void usuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usuarioFocusLost
-        if(usuario.getText().equals("")){
+        if (usuario.getText().equals("")) {
             usuario.setText("Usuario");
         }
     }//GEN-LAST:event_usuarioFocusLost
 
     private void usuario_olvidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usuario_olvidoFocusLost
-        if(usuario_olvido.getText().equals("")){
+        if (usuario_olvido.getText().equals("")) {
             usuario_olvido.setText("Usuario");
         }
     }//GEN-LAST:event_usuario_olvidoFocusLost
 
     private void respuesta_olvidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_respuesta_olvidoFocusLost
-         if(respuesta_olvido.getText().equals("")){
+        if (respuesta_olvido.getText().equals("")) {
             respuesta_olvido.setText("Respuesta");
         }
     }//GEN-LAST:event_respuesta_olvidoFocusLost
 
     private void nueva_claveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nueva_claveFocusLost
-        if(nueva_clave.getText().equals("")){
+        if (nueva_clave.getText().equals("")) {
             nueva_clave.setText("Contraseña");
         }
     }//GEN-LAST:event_nueva_claveFocusLost
 
+    private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
+        if(usuario_olvido.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Usuario vacío");
+        }else{
+            modelo m = new operar_usuarios().Buscar(usuario_olvido.getText());
+            if(m!=null) pregunta_olvido.setText(m.getPregunta());
+        }
+    }//GEN-LAST:event_lupaActionPerformed
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+       if(respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Algún campo está vacío");
+        }else if (nueva_clave.getText().length()<7 || nueva_clave.getText().length()>10){
+            JOptionPane.showMessageDialog(null, "La clave debe tener entre 7 y 10 carácteres");
+        }else{
+            boolean correcto = new operar_usuarios().Modificar(usuario_olvido.getText(), encrip.encriptar(respuesta_olvido.getText()), encrip.encriptar(nueva_clave.getText()));
+            if(correcto){
+                
+            }
+        }
+    }//GEN-LAST:event_modificarActionPerformed
+
     //METODOS Y VARIABLES
-    
-    public void salir(){
-        
+    public void salir() {
+
         System.exit(0);
     }
-    
+
+    encriptacion encrip = new encriptacion();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel base;
     private javax.swing.JPasswordField clave;
@@ -572,7 +613,6 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton ingresar;
     private javax.swing.JPanel ingreso;
     private javax.swing.JPanel izq;
-    private javax.swing.JButton jButton1;
     private LIB.JEImagePanel jEImagePanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -582,6 +622,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JButton lupa;
     private javax.swing.JButton modificar;
     private javax.swing.JPasswordField nueva_clave;
     private javax.swing.JButton olvido_clave;
