@@ -235,7 +235,9 @@ public class principal_experto extends javax.swing.JFrame {
     //Metodos y Variables
     public void salir(){
         
-        System.exit(0);
+        login l = new login();
+        l.setVisible(true);
+        this.dispose();
     }
     
     p_diagnosticos p_d;
