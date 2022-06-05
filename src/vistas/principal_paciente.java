@@ -8,6 +8,7 @@ import paneles.p_ajustes;
 import paneles.p_examenes;
 import paneles.p_historial;
 import paneles.p_resultados;
+import paneles.p_subirExamen;
 
 public class principal_paciente extends javax.swing.JFrame {
 
@@ -18,15 +19,18 @@ public class principal_paciente extends javax.swing.JFrame {
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
         
-        p_e = new p_examenes();
+        p_se = new p_subirExamen();
+        p_e = new p_examenes(p_se);
         p_r = new p_resultados();
         p_h = new p_historial();
         p_a = new p_ajustes();
+        p_principal.add(p_se);
         p_principal.add(p_e);
         p_principal.add(p_r);
         p_principal.add(p_h);
         p_principal.add(p_a);
         p_e.setVisible(true);
+        p_se.setVisible(false);
         p_r.setVisible(false);
         p_h.setVisible(false);
         p_a.setVisible(false);
@@ -217,6 +221,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_r.setVisible(false);
         p_h.setVisible(false);
         p_a.setVisible(false);
+        p_se.setVisible(false);
         
     }//GEN-LAST:event_b_examenesMouseClicked
 
@@ -241,6 +246,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_r.setVisible(true);
         p_h.setVisible(false);
         p_a.setVisible(false);
+        p_se.setVisible(false);
         
     }//GEN-LAST:event_b_resultadosMouseClicked
 
@@ -265,6 +271,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_r.setVisible(false);
         p_h.setVisible(true);
         p_a.setVisible(false);
+        p_se.setVisible(false);
         
     }//GEN-LAST:event_b_historialMouseClicked
 
@@ -290,6 +297,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_h.setVisible(false);
         p_a.limpiar_campos();
         p_a.setVisible(true);
+        p_se.setVisible(false);
     }//GEN-LAST:event_b_ajustesMouseClicked
 
     private void b_examenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_examenesActionPerformed
@@ -310,6 +318,7 @@ public class principal_paciente extends javax.swing.JFrame {
     p_resultados p_r;
     p_historial p_h;
     p_ajustes p_a;
+    p_subirExamen p_se;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_ajustes;

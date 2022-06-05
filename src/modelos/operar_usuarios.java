@@ -75,23 +75,21 @@ public class operar_usuarios {
 
     }
 
-    public boolean Modificar(String usuario, String respuesta, String clave) {
+    public void Modificar(String usuario, String respuesta, String clave) {
         int op = 0;
         BDConex bd = new BDConex();
-        boolean correcto = false;
 
-        op = bd.ejecutar("UPDATE usuario SET clave='" + clave+ "' WHERE nombre_usu = '" + usuario + "' AND respuesta_segu ='"+respuesta+"' AND borrado = 0");
+        op = bd.ejecutar("UPDATE usuario SET clave='" + clave + "' WHERE nombre_usu = '" + usuario + "' AND respuesta_segu ='" + respuesta + "' AND borrado = 0");
 
         if (op > 0) {
 
-            correcto = true;
             JOptionPane.showMessageDialog(null, "¡Contraseña modificada con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡La respuesta de seguridad no es correcta! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "¡La respuesta de seguridad no es correcta! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         }
 
         bd.desconectar();
-        return correcto;
     }
 }

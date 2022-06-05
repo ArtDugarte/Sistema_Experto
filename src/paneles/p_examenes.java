@@ -5,8 +5,9 @@ import javax.swing.border.LineBorder;
 
 public class p_examenes extends javax.swing.JPanel {
 
-    public p_examenes() {
+    public p_examenes(p_subirExamen pse) {
         initComponents();
+        this.pse = pse;
     }
 
     @SuppressWarnings("unchecked")
@@ -86,6 +87,11 @@ public class p_examenes extends javax.swing.JPanel {
                 b_sangreMouseReleased(evt);
             }
         });
+        b_sangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_sangreActionPerformed(evt);
+            }
+        });
         add(b_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 100, 30));
 
         b_orina.setBackground(new java.awt.Color(103, 174, 202));
@@ -103,6 +109,11 @@ public class p_examenes extends javax.swing.JPanel {
                 b_orinaMouseReleased(evt);
             }
         });
+        b_orina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_orinaActionPerformed(evt);
+            }
+        });
         add(b_orina, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 100, 30));
 
         b_ambos.setBackground(new java.awt.Color(103, 174, 202));
@@ -118,6 +129,11 @@ public class p_examenes extends javax.swing.JPanel {
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 b_ambosMouseReleased(evt);
+            }
+        });
+        b_ambos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_ambosActionPerformed(evt);
             }
         });
         add(b_ambos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, 100, 30));
@@ -188,7 +204,31 @@ public class p_examenes extends javax.swing.JPanel {
         b_ambos.setBackground(new Color(103,174,202));
     }//GEN-LAST:event_b_ambosMouseReleased
 
+    private void b_sangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_sangreActionPerformed
+        pse.setTipo(1);
+        pse.limpiar_campos();
+        pse.mostrarSangre();
+        this.setVisible(false);
+        pse.setVisible(true);
+    }//GEN-LAST:event_b_sangreActionPerformed
 
+    private void b_orinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_orinaActionPerformed
+        pse.setTipo(2);
+        pse.limpiar_campos();
+        pse.mostrarOrina();
+        this.setVisible(false);
+        pse.setVisible(true);
+    }//GEN-LAST:event_b_orinaActionPerformed
+
+    private void b_ambosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ambosActionPerformed
+        pse.setTipo(3);
+        pse.limpiar_campos();
+        pse.mostrarSangre();
+        this.setVisible(false);
+        pse.setVisible(true);
+    }//GEN-LAST:event_b_ambosActionPerformed
+
+    p_subirExamen pse;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_ambos;
     private javax.swing.JButton b_orina;
