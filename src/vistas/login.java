@@ -511,7 +511,8 @@ public class login extends javax.swing.JFrame {
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
 
         if (usuario.getText().equals("") || clave.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Algún campo está vacío");
+            JOptionPane.showMessageDialog(null, "¡Algún Campo Está Vacío! \n        "
+                        + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         } else {
 
             operar_usuarios op = new operar_usuarios();
@@ -534,7 +535,8 @@ public class login extends javax.swing.JFrame {
                     this.dispose();
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "Negativo el procedimiento");
+                    JOptionPane.showMessageDialog(null, "   ¡Credenciales no válidas! \n        "
+                        + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
                     break;
             }
         }
@@ -586,10 +588,12 @@ public class login extends javax.swing.JFrame {
         }else if (nueva_clave.getText().length()<7 || nueva_clave.getText().length()>10){
             JOptionPane.showMessageDialog(null, "La clave debe tener entre 7 y 10 carácteres");
         }else{
-            boolean correcto = new operar_usuarios().Modificar(usuario_olvido.getText(), encrip.encriptar(respuesta_olvido.getText()), encrip.encriptar(nueva_clave.getText()));
-            if(correcto){
-                
-            }
+            new operar_usuarios().Modificar(usuario_olvido.getText(), encrip.encriptar(respuesta_olvido.getText()), encrip.encriptar(nueva_clave.getText()));
+            usuario_olvido.setText("Usuario");
+            nueva_clave.setText("Contraseña");
+            pregunta_olvido.setText("Pregunta de Seguridad");
+            respuesta_olvido.setText("Respuesta");
+           
         }
     }//GEN-LAST:event_modificarActionPerformed
 

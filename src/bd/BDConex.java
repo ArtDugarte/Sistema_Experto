@@ -14,7 +14,7 @@ public class BDConex {
     private static ResultSet rs;
     private static PreparedStatement pstm;
     private static PreparedStatement ps;
-    final String driver = "com.mysql.jdbc.Driver";
+    final String driver = "com.mysql.cj.jdbc.Driver";
     final String url = "jdbc:mysql://localhost:3306/sedipg";
     final String usuario = "root";
     final String clave = "";
