@@ -226,7 +226,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="b_examenesMouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="b_examenesActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="b_resultados">

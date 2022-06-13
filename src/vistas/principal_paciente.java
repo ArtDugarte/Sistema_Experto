@@ -19,7 +19,7 @@ public class principal_paciente extends javax.swing.JFrame {
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
         
-        p_se = new p_subirExamen();
+        p_se = new p_subirExamen(this);
         p_e = new p_examenes(p_se);
         p_r = new p_resultados();
         p_h = new p_historial();
@@ -126,11 +126,6 @@ public class principal_paciente extends javax.swing.JFrame {
                 b_examenesMouseClicked(evt);
             }
         });
-        b_examenes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_examenesActionPerformed(evt);
-            }
-        });
         p_botones.add(b_examenes);
 
         b_resultados.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -202,26 +197,7 @@ public class principal_paciente extends javax.swing.JFrame {
 
     private void b_examenesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_examenesMouseClicked
         
-        b_examenes.setForeground(new Color(204, 204, 204));
-        b_examenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/examenes2.png")));
-        
-        b_resultados.setForeground(Color.WHITE);
-        b_resultados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/resultados.png")));
-        
-        b_historial.setForeground(Color.WHITE);
-        b_historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/historial.png")));   
-        
-        b_ajustes.setForeground(Color.WHITE);
-        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
-        l_ico.setText(" Exámenes");
-        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/examenes.png")));
-        
-        p_e.setVisible(true);
-        p_r.setVisible(false);
-        p_h.setVisible(false);
-        p_a.setVisible(false);
-        p_se.setVisible(false);
+        abrir_panel_examenes();
         
     }//GEN-LAST:event_b_examenesMouseClicked
 
@@ -299,12 +275,6 @@ public class principal_paciente extends javax.swing.JFrame {
         p_a.setVisible(true);
         p_se.setVisible(false);
     }//GEN-LAST:event_b_ajustesMouseClicked
-
-    private void b_examenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_examenesActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_b_examenesActionPerformed
     
     //Metodos y Variables
     public void salir(){
@@ -312,6 +282,30 @@ public class principal_paciente extends javax.swing.JFrame {
         login l = new login();
         l.setVisible(true);
         this.dispose();
+    }
+    
+    public void abrir_panel_examenes(){
+    
+        b_examenes.setForeground(new Color(204, 204, 204));
+        b_examenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/examenes2.png")));
+        
+        b_resultados.setForeground(Color.WHITE);
+        b_resultados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/resultados.png")));
+        
+        b_historial.setForeground(Color.WHITE);
+        b_historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/historial.png")));   
+        
+        b_ajustes.setForeground(Color.WHITE);
+        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        
+        l_ico.setText(" Exámenes");
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/examenes.png")));
+        
+        p_e.setVisible(true);
+        p_r.setVisible(false);
+        p_h.setVisible(false);
+        p_a.setVisible(false);
+        p_se.setVisible(false);
     }
     
     p_examenes p_e;

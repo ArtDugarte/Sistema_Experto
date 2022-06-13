@@ -49,8 +49,8 @@ public class p_examenes extends javax.swing.JPanel {
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 200, 10));
 
-        l_titulo.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        l_titulo.setText("Ingrese los resultados de sus exámenes...");
+        l_titulo.setFont(new java.awt.Font("Arial", 3, 22)); // NOI18N
+        l_titulo.setText("Ingrese los resultados de sus exámenes de...");
         add(l_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 630, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sangre.png"))); // NOI18N

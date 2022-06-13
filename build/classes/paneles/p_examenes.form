@@ -72,9 +72,9 @@
     <Component class="javax.swing.JLabel" name="l_titulo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="24" style="3"/>
+          <Font name="Arial" size="22" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ingrese los resultados de sus ex&#xe1;menes..."/>
+        <Property name="text" type="java.lang.String" value="Ingrese los resultados de sus ex&#xe1;menes de..."/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
