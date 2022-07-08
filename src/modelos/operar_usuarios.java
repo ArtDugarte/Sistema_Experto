@@ -61,6 +61,9 @@ public class operar_usuarios {
 
         try {
             if (rs.next()) {
+                
+                m.setNombre(rs.getString("nombres"));
+                m.setApellido(rs.getString("apellidos"));
                 m.setPregunta(rs.getString("pregunta_segu"));
 
             } else {
@@ -88,6 +91,25 @@ public class operar_usuarios {
 
             JOptionPane.showMessageDialog(null, "¡La respuesta de seguridad no es correcta! "
                     + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        bd.desconectar();
+    }
+    
+        public void Modificar(String usuario, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
+        int op = 0;
+        BDConex bd = new BDConex();
+
+        op = bd.ejecutar("UPDATE usuario SET clave='" + clave_nueva + "', pregunta_segu = '"+ pregunta +"', respuesta_segu = '"+ respuesta +"' "
+                + "WHERE nombre_usu = '" + usuario + "' AND clave ='" + clave_vieja + "' AND borrado = 0");
+
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Usuario modificado con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Contraseña actual incorrecta! "
+                    + "\n          Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         }
 
         bd.desconectar();

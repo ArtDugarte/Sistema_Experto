@@ -1,13 +1,18 @@
 
 package paneles;
 
+import globales.encriptacion;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import modelos.modelo;
+import modelos.operar_usuarios;
 
 public class p_ajustes extends javax.swing.JPanel {
 
-    public p_ajustes() {
+    public p_ajustes(String user) {
         initComponents();
+        this.user = user;
     }
 
 
@@ -38,6 +43,7 @@ public class p_ajustes extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -47,7 +53,7 @@ public class p_ajustes extends javax.swing.JPanel {
 
         clave_vieja.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         clave_vieja.setForeground(new java.awt.Color(102, 102, 102));
-        clave_vieja.setText("Contraseña Vieja:");
+        clave_vieja.setText("Contraseña Actual:");
         clave_vieja.setBorder(null);
         clave_vieja.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         clave_vieja.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -58,15 +64,15 @@ public class p_ajustes extends javax.swing.JPanel {
                 clave_viejaFocusLost(evt);
             }
         });
-        add(clave_vieja, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 250, 30));
+        add(clave_vieja, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 250, 30));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 250, 10));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 250, 10));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, 250, 10));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 250, 10));
 
         apellidos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         apellidos.setForeground(new java.awt.Color(102, 102, 102));
@@ -74,15 +80,15 @@ public class p_ajustes extends javax.swing.JPanel {
         apellidos.setBorder(null);
         apellidos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         apellidos.setFocusable(false);
-        add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 540, 30));
+        add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 540, 30));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 540, 10));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 540, 10));
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 250, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 250, 10));
 
         nombres.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         nombres.setForeground(new java.awt.Color(102, 102, 102));
@@ -90,11 +96,11 @@ public class p_ajustes extends javax.swing.JPanel {
         nombres.setBorder(null);
         nombres.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         nombres.setFocusable(false);
-        add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 540, 30));
+        add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 540, 30));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 540, 10));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 540, 10));
 
         respuesta.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         respuesta.setForeground(new java.awt.Color(102, 102, 102));
@@ -109,11 +115,11 @@ public class p_ajustes extends javax.swing.JPanel {
                 respuestaFocusLost(evt);
             }
         });
-        add(respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 250, 30));
+        add(respuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 540, 30));
 
         jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 250, 10));
+        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 540, 10));
 
         cedula.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         cedula.setForeground(new java.awt.Color(102, 102, 102));
@@ -121,11 +127,11 @@ public class p_ajustes extends javax.swing.JPanel {
         cedula.setBorder(null);
         cedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         cedula.setFocusable(false);
-        add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 250, 30));
+        add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 250, 30));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 250, 10));
+        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 250, 10));
 
         clave_nueva.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         clave_nueva.setForeground(new java.awt.Color(102, 102, 102));
@@ -140,7 +146,7 @@ public class p_ajustes extends javax.swing.JPanel {
                 clave_nuevaFocusLost(evt);
             }
         });
-        add(clave_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 250, 30));
+        add(clave_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 250, 30));
 
         usuario.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         usuario.setForeground(new java.awt.Color(102, 102, 102));
@@ -148,16 +154,16 @@ public class p_ajustes extends javax.swing.JPanel {
         usuario.setBorder(null);
         usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usuario.setFocusable(false);
-        add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 250, 30));
+        add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 250, 30));
 
         pregunta.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         pregunta.setForeground(new java.awt.Color(102, 102, 102));
-        pregunta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pregunta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "¿CUÁL ES TU LIBRO FAVORITO?", "¿COMO SE LLAMA TU MEJOR AMIGO DE LA INFANCIA?", "¿CUÁL ERA EL NOMBRE DE TU PRIMERA MASCOTA?", "¿EN QUÉ CIUDAD SE CONOCIERON TUS PADRES?", "¿CUÁL ES TU EQUIPO FAVORITO?", "¿CUÁL FUÉ TU PRIMERA PELÍCULA EN EL CINE?", "¿CUÁL ES TU GRUPO O CANTANTE FAVORITO?", "¿CUÁL ES TU COLOR FAVORITO?", "¿COMO TE LLAMABAN EN TU INFANCIA?", "¿CÓMO SE LLAMABA TU PRIMER JEFE?" }));
         pregunta.setBorder(null);
         pregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pregunta.setFocusable(false);
         pregunta.setName("Desplegable"); // NOI18N
-        add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 260, 40));
+        add(pregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 540, 40));
 
         b_limpiar.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -180,7 +186,7 @@ public class p_ajustes extends javax.swing.JPanel {
                 b_limpiarActionPerformed(evt);
             }
         });
-        add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 100, 30));
+        add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 100, 30));
 
         b_modificar.setBackground(new java.awt.Color(103, 174, 202));
         b_modificar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -198,25 +204,33 @@ public class p_ajustes extends javax.swing.JPanel {
                 b_modificarMouseReleased(evt);
             }
         });
-        add(b_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 100, 30));
+        b_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_modificarActionPerformed(evt);
+            }
+        });
+        add(b_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 100, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario_m.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave_m.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_m.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apellido_m.png"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cedula_m.png"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/seguridad_m.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/respuesta_segu.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -264,7 +278,7 @@ public class p_ajustes extends javax.swing.JPanel {
 
     private void clave_viejaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_viejaFocusLost
         if(clave_vieja.getText().equals("")){
-            clave_vieja.setText("Contraseña Vieja:");
+            clave_vieja.setText("Contraseña Actual:");
         }
     }//GEN-LAST:event_clave_viejaFocusLost
 
@@ -275,20 +289,60 @@ public class p_ajustes extends javax.swing.JPanel {
     }//GEN-LAST:event_clave_nuevaFocusLost
 
     private void b_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarActionPerformed
-        limpiar_campos();
+        limpiar_campos(p);
     }//GEN-LAST:event_b_limpiarActionPerformed
+
+    private void b_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_modificarActionPerformed
+        
+        
+        String clave = "";
+        
+        if(clave_nueva.getText().equals("Contraseña Nueva:")){
+            
+            clave = clave_vieja.getText();
+            
+        }
+        else{clave = clave_nueva.getText();}
+        
+        if(clave_vieja.getText().equals("Contraseña Actual:")){
+            
+            JOptionPane.showMessageDialog(null, "¡Debe ingresar su contraseña actual en el campo indicado! "
+                    + "\n                             Intente nuevamente...", "¡ALERTA!", JOptionPane.WARNING_MESSAGE);
+            
+        }
+        else{
+            
+            new operar_usuarios().Modificar(user, encrip.encriptar(respuesta.getText()), encrip.encriptar(clave_vieja.getText()), encrip.encriptar(clave), pregunta.getSelectedItem()+ "");
+            info_usuario();
+        }
+    }//GEN-LAST:event_b_modificarActionPerformed
 
     
     //METODOS Y VARIABLES
     
-    public void limpiar_campos(){
+    public void info_usuario(){
+        
+        modelo m = new operar_usuarios().Buscar(user);
+        
+        usuario.setText("Usuario: " + user);
+        cedula.setText("Cédula: " + user);
+        nombres.setText("Nombres: " + m.getNombre());
+        apellidos.setText("Apellidos: " + m.getApellido());
+        p = m.getPregunta();
+        limpiar_campos(p);
+    }
+    
+    public void limpiar_campos(String p){
        
-        pregunta.setSelectedIndex(0); //Aqui se debe poner el codigo SQL para que se marque la pregunta de la persona
+        pregunta.setSelectedItem(p);
         respuesta.setText("Respuesta de seguridad"); //Aqui se debe poner la respuesta de la persona
-        clave_vieja.setText("Contraseña Vieja:");
+        clave_vieja.setText("Contraseña Actual:");
         clave_nueva.setText("Contraseña Nueva:");
     }
-
+    
+    String user, p;
+    encriptacion encrip = new encriptacion();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
     private javax.swing.JButton b_limpiar;
@@ -302,6 +356,7 @@ public class p_ajustes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

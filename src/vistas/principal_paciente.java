@@ -12,7 +12,7 @@ import paneles.p_subirExamen;
 
 public class principal_paciente extends javax.swing.JFrame {
 
-    public principal_paciente() {
+    public principal_paciente(String usuario) {
         
         initComponents();
         setLocationRelativeTo(null);
@@ -23,7 +23,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_e = new p_examenes(p_se);
         p_r = new p_resultados();
         p_h = new p_historial();
-        p_a = new p_ajustes();
+        p_a = new p_ajustes(usuario);
         p_principal.add(p_se);
         p_principal.add(p_e);
         p_principal.add(p_r);
@@ -271,7 +271,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_e.setVisible(false);
         p_r.setVisible(false);
         p_h.setVisible(false);
-        p_a.limpiar_campos();
+        p_a.info_usuario();
         p_a.setVisible(true);
         p_se.setVisible(false);
     }//GEN-LAST:event_b_ajustesMouseClicked

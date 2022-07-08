@@ -14,22 +14,21 @@ import paneles.p_revision;
 
 public class principal_asistente extends javax.swing.JFrame {
 
-    public principal_asistente() {
+    public principal_asistente(String usuario) {
         
         initComponents();
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
         
-        p_a = new p_ajustes();
+        p_a = new p_ajustes(usuario);
         p_r = new p_revision();
         
         p_principal.add(p_r);
         p_principal.add(p_a);
         
         p_r.setVisible(true);
-        p_a.setVisible(false);
-        
+        p_a.setVisible(false);    
     }
 
     @SuppressWarnings("unchecked")
@@ -183,7 +182,7 @@ public class principal_asistente extends javax.swing.JFrame {
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
         p_r.setVisible(false);
-        p_a.limpiar_campos();
+        p_a.info_usuario();
         p_a.setVisible(true);
     }//GEN-LAST:event_b_ajustesMouseClicked
     

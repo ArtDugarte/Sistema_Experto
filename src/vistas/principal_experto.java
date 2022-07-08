@@ -13,7 +13,7 @@ import paneles.p_resultados;
 
 public class principal_experto extends javax.swing.JFrame {
 
-    public principal_experto() {
+    public principal_experto(String usuario) {
         
         initComponents();
         setLocationRelativeTo(null);
@@ -22,7 +22,7 @@ public class principal_experto extends javax.swing.JFrame {
         
         p_d = new p_diagnosticos();
         p_r = new p_registrarUsuarios();
-        p_a = new p_ajustes();
+        p_a = new p_ajustes(usuario);
         p_principal.add(p_d);
         p_principal.add(p_r);
         p_principal.add(p_a);
@@ -228,7 +228,7 @@ public class principal_experto extends javax.swing.JFrame {
         
         p_d.setVisible(false);
         p_r.setVisible(false);
-        p_a.limpiar_campos();
+        p_a.info_usuario();
         p_a.setVisible(true);
     }//GEN-LAST:event_b_ajustesMouseClicked
     

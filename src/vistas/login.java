@@ -520,17 +520,17 @@ public class login extends javax.swing.JFrame {
             
             switch (tipo) {
                 case 1:
-                    principal_experto pe = new principal_experto();
+                    principal_experto pe = new principal_experto(usuario.getText());
                     pe.setVisible(true);
                     this.dispose();
                     break;
                 case 3:
-                    principal_paciente p = new principal_paciente();
+                    principal_paciente p = new principal_paciente(usuario.getText());
                     p.setVisible(true);
                     this.dispose();
                     break;
                 case 2:
-                    principal_asistente pa = new principal_asistente();
+                    principal_asistente pa = new principal_asistente(usuario.getText());
                     pa.setVisible(true);
                     this.dispose();
                     break;
@@ -583,7 +583,8 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_lupaActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-       if(respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")){
+       
+        if(respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Algún campo está vacío");
         }else if (nueva_clave.getText().length()<7 || nueva_clave.getText().length()>10){
             JOptionPane.showMessageDialog(null, "La clave debe tener entre 7 y 10 carácteres");
