@@ -903,9 +903,9 @@ public class p_subirExamen extends javax.swing.JPanel {
     private void b_registrar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrar_documentoActionPerformed
         if (!filename.getText().equals("")) {
             try {
-                byte[] pdf = new byte[(int) file.length()];
+                byte[] blob = new byte[(int) file.length()];
                 InputStream input = new FileInputStream(file);
-                input.read(pdf);
+                input.read(blob);
             } catch (IOException ex) {
                 //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
             }
