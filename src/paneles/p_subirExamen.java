@@ -1,7 +1,14 @@
 package paneles;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import vistas.principal_paciente;
 
 public class p_subirExamen extends javax.swing.JPanel {
@@ -74,6 +81,8 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_limpiar_documento = new javax.swing.JButton();
         b_volver_documento = new javax.swing.JButton();
         b_adjuntar_documento = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        filename = new javax.swing.JTextField();
         sangre = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
@@ -533,7 +542,7 @@ public class p_subirExamen extends javax.swing.JPanel {
                 b_limpiar_documentoActionPerformed(evt);
             }
         });
-        documento.add(b_limpiar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 100, 30));
+        documento.add(b_limpiar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 100, 30));
 
         b_volver_documento.setBackground(new java.awt.Color(103, 174, 202));
         b_volver_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -563,7 +572,13 @@ public class p_subirExamen extends javax.swing.JPanel {
                 b_adjuntar_documentoActionPerformed(evt);
             }
         });
-        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 100, 30));
+        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 100, 30));
+
+        jLabel23.setText("NOTA IMPORTANTE: Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
+        documento.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 580, -1));
+
+        filename.setEditable(false);
+        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 500, 30));
 
         base.add(documento, "card2");
 
@@ -836,31 +851,31 @@ public class p_subirExamen extends javax.swing.JPanel {
     }//GEN-LAST:event_b_siguienteSangreMouseReleased
 
     private void b_siguienteSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguienteSangreActionPerformed
-        
-        if(tipo==3){
+
+        if (tipo == 3) {
             sangre.setVisible(false);
             orina.setVisible(true);
             documento.setVisible(false);
-        }else{
+        } else {
             sangre.setVisible(false);
             orina.setVisible(false);
             documento.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_b_siguienteSangreActionPerformed
 
     private void b_limpiarSangreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarSangreMousePressed
 
-        b_limpiarSangre.setForeground(new Color(103,174,202));
-        b_limpiarSangre.setBorder(new LineBorder(new Color(103,174,202), 2));
+        b_limpiarSangre.setForeground(new Color(103, 174, 202));
+        b_limpiarSangre.setBorder(new LineBorder(new Color(103, 174, 202), 2));
         b_limpiarSangre.setBackground(Color.white);
     }//GEN-LAST:event_b_limpiarSangreMousePressed
 
     private void b_limpiarSangreMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarSangreMouseReleased
 
         b_limpiarSangre.setForeground(Color.white);
-        b_limpiarSangre.setBorder(new LineBorder(new Color(103,174,202), 2));
-        b_limpiarSangre.setBackground(new Color(103,174,202));
+        b_limpiarSangre.setBorder(new LineBorder(new Color(103, 174, 202), 2));
+        b_limpiarSangre.setBackground(new Color(103, 174, 202));
     }//GEN-LAST:event_b_limpiarSangreMouseReleased
 
     private void b_limpiarSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarSangreActionPerformed
@@ -886,11 +901,19 @@ public class p_subirExamen extends javax.swing.JPanel {
     }//GEN-LAST:event_b_limpiarOrinaActionPerformed
 
     private void b_registrar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrar_documentoActionPerformed
-        // TODO add your handling code here:
+        if (!filename.getText().equals("")) {
+            try {
+                byte[] pdf = new byte[(int) file.length()];
+                InputStream input = new FileInputStream(file);
+                input.read(pdf);
+            } catch (IOException ex) {
+                //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_b_registrar_documentoActionPerformed
 
     private void b_limpiar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_documentoActionPerformed
-        
+        limpiar_documento();
     }//GEN-LAST:event_b_limpiar_documentoActionPerformed
 
     private void b_siguienteOrinaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMouseReleased
@@ -902,35 +925,50 @@ public class p_subirExamen extends javax.swing.JPanel {
     }//GEN-LAST:event_b_siguienteOrinaMousePressed
 
     private void b_volver_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_documentoActionPerformed
-        
-        if(tipo == 1){
-            
+
+        if (tipo == 1) {
+
             mostrarSangre();
+        } else {
+            mostrarOrina();
         }
-        else{mostrarOrina();}
     }//GEN-LAST:event_b_volver_documentoActionPerformed
 
     private void b_adjuntar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_adjuntar_documentoActionPerformed
-        // TODO add your handling code here:
+        fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+
+        int seleccion = fileChooser.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            if (fileChooser.getSelectedFile().length() < (16 * (1024 * 1024))) {
+                file = fileChooser.getSelectedFile();
+                filename.setText(file.getName());
+            } else {
+
+                JOptionPane.showMessageDialog(null, "¡Archivo superior a 16MB! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
     }//GEN-LAST:event_b_adjuntar_documentoActionPerformed
 
     private void b_volver_sangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_sangreActionPerformed
-        
+
         p.abrir_panel_examenes();
-        
+
     }//GEN-LAST:event_b_volver_sangreActionPerformed
 
     private void b_volver_orinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_orinaActionPerformed
-        
-        if(tipo == 2){
+
+        if (tipo == 2) {
             p.abrir_panel_examenes();
+        } else {
+            mostrarSangre();
         }
-        else{mostrarSangre();}
     }//GEN-LAST:event_b_volver_orinaActionPerformed
 
     //metodos y variables
-    
-    public void limpiar_sangre(){
+    public void limpiar_sangre() {
         globulos_rojos.setText("");
         hemoglobina.setText("");
         hematocritos.setText("");
@@ -939,8 +977,8 @@ public class p_subirExamen extends javax.swing.JPanel {
         segmentados.setText("");
         linfocitos.setText("");
     }
-    
-    public void limpiar_orina(){
+
+    public void limpiar_orina() {
         aspecto.setSelectedItem("LIGERAMENTE TURBIO");
         color.setSelectedItem("AMARILLA");
         reaccion.setSelectedItem("ÁCIDA");
@@ -959,37 +997,46 @@ public class p_subirExamen extends javax.swing.JPanel {
         piocitos.setSelectedItem("NEGATIVO");
         bacterias.setSelectedItem("ESCASAS");
     }
-    
-    public void setTipo(int tipo){
+
+    private void limpiar_documento() {
+        filename.setText("");
+        fileChooser = null;
+        file = null;
+    }
+
+    public void setTipo(int tipo) {
         this.tipo = tipo; //1 sangre, 2 orina, 3 ambos
     }
 
-    public void mostrarSangre(){
+    public void mostrarSangre() {
         sangre.setVisible(true);
         orina.setVisible(false);
         documento.setVisible(false);
     }
-    
-    public void mostrarOrina(){
+
+    public void mostrarOrina() {
         sangre.setVisible(false);
         orina.setVisible(true);
         documento.setVisible(false);
     }
-    
-    public void mostrarDocumento(){
+
+    public void mostrarDocumento() {
         sangre.setVisible(false);
         orina.setVisible(false);
         documento.setVisible(true);
     }
-    
-    public void limpiar_campos(){
+
+    public void limpiar_campos() {
         limpiar_sangre();
         limpiar_orina();
+        limpiar_documento();
     }
-    
-    int tipo=0;
-    
-    principal_paciente p;
+
+    private int tipo = 0;
+    private principal_paciente p;
+    private JFileChooser fileChooser;
+    private File file;
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> aspecto;
     private javax.swing.JButton b_adjuntar_documento;
@@ -1011,6 +1058,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JTextField densidad;
     private javax.swing.JPanel documento;
     private javax.swing.JTextField eplano;
+    private javax.swing.JTextField filename;
     private javax.swing.JTextField globulos_rojos;
     private javax.swing.JComboBox<String> glucosa;
     private javax.swing.JTextField hematies;
@@ -1032,6 +1080,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -1087,7 +1136,6 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JTextField plaquetas;
     private javax.swing.JComboBox<String> proteinas;
     private javax.swing.JComboBox<String> reaccion;
-    private javax.swing.JButton registrar3;
     private javax.swing.JPanel sangre;
     private javax.swing.JTextField segmentados;
     private javax.swing.JComboBox<String> urobilinogen;

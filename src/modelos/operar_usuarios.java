@@ -7,17 +7,18 @@ import javax.swing.JOptionPane;
 
 public class operar_usuarios {
 
-    public int Ingresar(String usuario, String clave) {
+    public String Ingresar(String usuario, String clave) {
 
         ResultSet rs = null;
         BDConex bd = new BDConex();
-        int tipo = 0;
+        String tipo = "";
 
-        rs = bd.consultar("SELECT tipo_usu FROM usuario WHERE nombre_usu = '" + usuario + "' AND clave = '" + clave + "' AND borrado=0");
+        rs = bd.consultar("SELECT tipo_usu, nombres FROM usuario WHERE nombre_usu = '" + usuario + "' AND clave = '" + clave + "' AND borrado=0");
 
         try {
             if (rs.next()) {
-                tipo = rs.getInt("tipo_usu");
+                tipo = rs.getInt("tipo_usu") + "-";
+                tipo =tipo+rs.getString("nombres");
             }
         } catch (SQLException e) {
 
@@ -25,7 +26,6 @@ public class operar_usuarios {
         }
         bd.desconectar();
         return tipo;
-
     }
 
     public void Crear(String ci, String nombre, String apellido, String pregunta, String respuesta, String clave, int tipo_usu) {
