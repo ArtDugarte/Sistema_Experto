@@ -9,13 +9,15 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelos.operar_examenes;
 import vistas.principal_paciente;
 
 public class p_subirExamen extends javax.swing.JPanel {
 
-    public p_subirExamen(principal_paciente p) {
+    public p_subirExamen(principal_paciente p, int id_usuario) {
         initComponents();
         this.p = p;
+        this.id_usuario = id_usuario;
     }
 
     @SuppressWarnings("unchecked")
@@ -77,11 +79,10 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_volver_orina = new javax.swing.JButton();
         documento = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
-        b_registrar_documento = new javax.swing.JButton();
+        b_subir_documento = new javax.swing.JButton();
         b_limpiar_documento = new javax.swing.JButton();
         b_volver_documento = new javax.swing.JButton();
         b_adjuntar_documento = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
         filename = new javax.swing.JTextField();
         sangre = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -514,20 +515,20 @@ public class p_subirExamen extends javax.swing.JPanel {
         jLabel60.setText("EXÁMENES DIGITALIZADOS");
         documento.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 330, -1));
 
-        b_registrar_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_registrar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_registrar_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_registrar_documento.setText("Registrar");
-        b_registrar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_registrar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_registrar_documento.setFocusPainted(false);
-        b_registrar_documento.setRolloverEnabled(false);
-        b_registrar_documento.addActionListener(new java.awt.event.ActionListener() {
+        b_subir_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_subir_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_subir_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_subir_documento.setText("Registrar");
+        b_subir_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_subir_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_subir_documento.setFocusPainted(false);
+        b_subir_documento.setRolloverEnabled(false);
+        b_subir_documento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_registrar_documentoActionPerformed(evt);
+                b_subir_documentoActionPerformed(evt);
             }
         });
-        documento.add(b_registrar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
+        documento.add(b_subir_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
 
         b_limpiar_documento.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -572,13 +573,11 @@ public class p_subirExamen extends javax.swing.JPanel {
                 b_adjuntar_documentoActionPerformed(evt);
             }
         });
-        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 120, 100, 30));
-
-        jLabel23.setText("NOTA IMPORTANTE: Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
-        documento.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 580, -1));
+        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 90, 30));
 
         filename.setEditable(false);
-        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 500, 30));
+        filename.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 460, 30));
 
         base.add(documento, "card2");
 
@@ -900,17 +899,22 @@ public class p_subirExamen extends javax.swing.JPanel {
         limpiar_orina();
     }//GEN-LAST:event_b_limpiarOrinaActionPerformed
 
-    private void b_registrar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrar_documentoActionPerformed
-        if (!filename.getText().equals("")) {
+    private void b_subir_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_subir_documentoActionPerformed
+        
+        if (!filename.getText().equals(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)")) {
+            
             try {
                 byte[] blob = new byte[(int) file.length()];
                 InputStream input = new FileInputStream(file);
                 input.read(blob);
-            } catch (IOException ex) {
+                operar_examenes op = new operar_examenes();
+                op.Crear(id_usuario, blob);
+            } 
+            catch (IOException ex) {
                 //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
             }
         }
-    }//GEN-LAST:event_b_registrar_documentoActionPerformed
+    }//GEN-LAST:event_b_subir_documentoActionPerformed
 
     private void b_limpiar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_documentoActionPerformed
         limpiar_documento();
@@ -935,6 +939,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     }//GEN-LAST:event_b_volver_documentoActionPerformed
 
     private void b_adjuntar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_adjuntar_documentoActionPerformed
+        
         fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
 
@@ -943,7 +948,7 @@ public class p_subirExamen extends javax.swing.JPanel {
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             if (fileChooser.getSelectedFile().length() < (16 * (1024 * 1024))) {
                 file = fileChooser.getSelectedFile();
-                filename.setText(file.getName());
+                filename.setText(" " + file.getName());
             } else {
 
                 JOptionPane.showMessageDialog(null, "¡Archivo superior a 16MB! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
@@ -999,7 +1004,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     }
 
     private void limpiar_documento() {
-        filename.setText("");
+        filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
         fileChooser = null;
         file = null;
     }
@@ -1031,8 +1036,8 @@ public class p_subirExamen extends javax.swing.JPanel {
         limpiar_orina();
         limpiar_documento();
     }
-
-    private int tipo = 0;
+    
+    private int tipo = 0, id_usuario = 0;
     private principal_paciente p;
     private JFileChooser fileChooser;
     private File file;
@@ -1043,9 +1048,9 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JButton b_limpiarOrina;
     private javax.swing.JButton b_limpiarSangre;
     private javax.swing.JButton b_limpiar_documento;
-    private javax.swing.JButton b_registrar_documento;
     private javax.swing.JButton b_siguienteOrina;
     private javax.swing.JButton b_siguienteSangre;
+    private javax.swing.JButton b_subir_documento;
     private javax.swing.JButton b_volver_documento;
     private javax.swing.JButton b_volver_orina;
     private javax.swing.JButton b_volver_sangre;
@@ -1080,7 +1085,6 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;

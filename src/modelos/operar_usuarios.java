@@ -13,12 +13,14 @@ public class operar_usuarios {
         BDConex bd = new BDConex();
         String tipo = "";
 
-        rs = bd.consultar("SELECT tipo_usu, nombres FROM usuario WHERE nombre_usu = '" + usuario + "' AND clave = '" + clave + "' AND borrado=0");
+        rs = bd.consultar("SELECT tipo_usu, nombres, id FROM usuario WHERE nombre_usu = '" + usuario + "' AND clave = '" + clave + "' AND borrado=0");
 
         try {
             if (rs.next()) {
-                tipo = rs.getInt("tipo_usu") + "-";
-                tipo =tipo+rs.getString("nombres");
+                
+                tipo = rs.getInt("id") + "-";
+                tipo = tipo + rs.getInt("tipo_usu") + "-";
+                tipo = tipo+rs.getString("nombres");
             }
         } catch (SQLException e) {
 
@@ -96,7 +98,7 @@ public class operar_usuarios {
         bd.desconectar();
     }
     
-        public void Modificar(String usuario, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
+    public void Modificar(String usuario, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
         int op = 0;
         BDConex bd = new BDConex();
 

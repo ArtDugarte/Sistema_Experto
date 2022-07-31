@@ -12,14 +12,14 @@ import paneles.p_subirExamen;
 
 public class principal_paciente extends javax.swing.JFrame {
 
-    public principal_paciente(String usuario, String nombre) {
+    public principal_paciente(String usuario, String nombre, int id_usuario) {
         
         initComponents();
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
         
-        p_se = new p_subirExamen(this);
+        p_se = new p_subirExamen(this, id_usuario);
         p_e = new p_examenes(p_se);
         p_r = new p_resultados();
         p_h = new p_historial();

@@ -512,13 +512,24 @@ public class login extends javax.swing.JFrame {
 
         if (usuario.getText().equals("") || clave.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "¡Algún Campo Está Vacío! \n        "
-                        + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                    + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         } else {
 
             operar_usuarios op = new operar_usuarios();
             String resultado = op.Ingresar(usuario.getText(), encrip.encriptar(clave.getText()));
-            int tipo = Integer.parseInt(resultado.substring(0, 1));
-            String nombre = resultado.substring(2);
+            int tipo, id_usuario = 0;
+            String nombre = null;
+
+            if (!resultado.equals("")) {
+                
+                int aux = resultado.indexOf("-");
+                id_usuario = Integer.parseInt(resultado.substring(0, aux));
+                tipo = Integer.parseInt(resultado.substring(aux + 1, aux + 2));
+                nombre = resultado.substring(aux + 3);
+                            
+            } else {
+                tipo = 4;
+            }
             
             switch (tipo) {
                 case 1:
@@ -527,7 +538,7 @@ public class login extends javax.swing.JFrame {
                     this.dispose();
                     break;
                 case 3:
-                    principal_paciente p = new principal_paciente(usuario.getText(), nombre);
+                    principal_paciente p = new principal_paciente(usuario.getText(), nombre, id_usuario);
                     p.setVisible(true);
                     this.dispose();
                     break;
@@ -538,11 +549,10 @@ public class login extends javax.swing.JFrame {
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "   ¡Credenciales no válidas! \n        "
-                        + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                            + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
                     break;
             }
         }
-
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void claveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusLost
@@ -576,27 +586,29 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_nueva_claveFocusLost
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
-        if(usuario_olvido.getText().equals("")){
+        if (usuario_olvido.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Usuario vacío");
-        }else{
+        } else {
             modelo m = new operar_usuarios().Buscar(usuario_olvido.getText());
-            if(m!=null) pregunta_olvido.setText(m.getPregunta());
+            if (m != null) {
+                pregunta_olvido.setText(m.getPregunta());
+            }
         }
     }//GEN-LAST:event_lupaActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-       
-        if(respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")){
+
+        if (respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Algún campo está vacío");
-        }else if (nueva_clave.getText().length()<7 || nueva_clave.getText().length()>10){
+        } else if (nueva_clave.getText().length() < 7 || nueva_clave.getText().length() > 10) {
             JOptionPane.showMessageDialog(null, "La clave debe tener entre 7 y 10 carácteres");
-        }else{
+        } else {
             new operar_usuarios().Modificar(usuario_olvido.getText(), encrip.encriptar(respuesta_olvido.getText()), encrip.encriptar(nueva_clave.getText()));
             usuario_olvido.setText("Usuario");
             nueva_clave.setText("Contraseña");
             pregunta_olvido.setText("Pregunta de Seguridad");
             respuesta_olvido.setText("Respuesta");
-           
+
         }
     }//GEN-LAST:event_modificarActionPerformed
 
