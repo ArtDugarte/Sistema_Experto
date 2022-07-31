@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 import paneles.p_ajustes;
+import paneles.p_crudDiagnosticos;
 import paneles.p_diagnosticos;
 import paneles.p_examenes;
 import paneles.p_historial;
@@ -13,7 +14,7 @@ import paneles.p_resultados;
 
 public class principal_experto extends javax.swing.JFrame {
 
-    public principal_experto(String usuario) {
+    public principal_experto(String usuario, String nombre) {
         
         initComponents();
         setLocationRelativeTo(null);
@@ -23,12 +24,16 @@ public class principal_experto extends javax.swing.JFrame {
         p_d = new p_diagnosticos();
         p_r = new p_registrarUsuarios();
         p_a = new p_ajustes(usuario);
+        p_cd = new p_crudDiagnosticos();
         p_principal.add(p_d);
         p_principal.add(p_r);
         p_principal.add(p_a);
+        p_principal.add(p_cd);
         p_d.setVisible(true);
         p_r.setVisible(false);
         p_a.setVisible(false);
+        p_cd.setVisible(false);
+        l_nombreUsuario.setText(nombre.substring(0, 1)+nombre.substring(1).toLowerCase());
         
     }
 
@@ -39,7 +44,7 @@ public class principal_experto extends javax.swing.JFrame {
         base = new javax.swing.JPanel();
         p_usu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        l_nombreUsuario = new javax.swing.JLabel();
         p_barra = new javax.swing.JPanel();
         salir = new javax.swing.JButton();
         l_ico = new javax.swing.JLabel();
@@ -47,6 +52,7 @@ public class principal_experto extends javax.swing.JFrame {
         p_botones = new javax.swing.JPanel();
         b_diagnosticos = new javax.swing.JButton();
         b_registrarU = new javax.swing.JButton();
+        b_crud_diagnosticos = new javax.swing.JButton();
         b_ajustes = new javax.swing.JButton();
         p_principal = new javax.swing.JPanel();
 
@@ -67,10 +73,11 @@ public class principal_experto extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_perfil.png"))); // NOI18N
         p_usu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 150));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Arthuro Dugarte");
-        p_usu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        l_nombreUsuario.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        l_nombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        l_nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l_nombreUsuario.setText("Arthuro Dugarte");
+        p_usu.add(l_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, -1));
 
         base.add(p_usu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 190));
 
@@ -139,6 +146,22 @@ public class principal_experto extends javax.swing.JFrame {
         });
         p_botones.add(b_registrarU);
 
+        b_crud_diagnosticos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        b_crud_diagnosticos.setForeground(new java.awt.Color(255, 255, 255));
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png"))); // NOI18N
+        b_crud_diagnosticos.setText("Admin. Diagnósticos");
+        b_crud_diagnosticos.setBorderPainted(false);
+        b_crud_diagnosticos.setContentAreaFilled(false);
+        b_crud_diagnosticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_crud_diagnosticos.setFocusPainted(false);
+        b_crud_diagnosticos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        b_crud_diagnosticos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_crud_diagnosticosMouseClicked(evt);
+            }
+        });
+        p_botones.add(b_crud_diagnosticos);
+
         b_ajustes.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         b_ajustes.setForeground(new java.awt.Color(255, 255, 255));
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png"))); // NOI18N
@@ -184,12 +207,16 @@ public class principal_experto extends javax.swing.JFrame {
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
+        b_crud_diagnosticos.setForeground(Color.WHITE);
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        
         l_ico.setText(" Diagnósticos");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
         
         p_d.setVisible(true);
         p_r.setVisible(false);
         p_a.setVisible(false);
+        p_cd.setVisible(false);
     }//GEN-LAST:event_b_diagnosticosMouseClicked
 
     private void b_registrarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarUMouseClicked
@@ -203,12 +230,16 @@ public class principal_experto extends javax.swing.JFrame {
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
+        b_crud_diagnosticos.setForeground(Color.WHITE);
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        
         l_ico.setText(" Administrar Usuarios");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
         
         p_d.setVisible(false);
         p_r.setVisible(true);
         p_a.setVisible(false);
+        p_cd.setVisible(false);
         
     }//GEN-LAST:event_b_registrarUMouseClicked
 
@@ -222,15 +253,41 @@ public class principal_experto extends javax.swing.JFrame {
         
         b_registrarU.setForeground(Color.WHITE);
         b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
+        
+        b_crud_diagnosticos.setForeground(Color.WHITE);
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
           
         l_ico.setText(" Ajustes");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
         p_d.setVisible(false);
         p_r.setVisible(false);
+        p_cd.setVisible(false);
         p_a.info_usuario();
         p_a.setVisible(true);
     }//GEN-LAST:event_b_ajustesMouseClicked
+
+    private void b_crud_diagnosticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_crud_diagnosticosMouseClicked
+        b_crud_diagnosticos.setForeground(new Color(204, 204, 204));
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios2.png")));
+        
+        b_diagnosticos.setForeground(Color.WHITE);
+        b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
+
+        b_ajustes.setForeground(Color.WHITE);
+        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        
+        b_registrarU.setForeground(Color.WHITE);
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        
+        l_ico.setText(" Administrar Diagnósticos");
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+        
+        p_d.setVisible(false);
+        p_r.setVisible(false);
+        p_a.setVisible(false);
+        p_cd.setVisible(true);
+    }//GEN-LAST:event_b_crud_diagnosticosMouseClicked
     
     //Metodos y Variables
     public void salir(){
@@ -243,15 +300,17 @@ public class principal_experto extends javax.swing.JFrame {
     p_diagnosticos p_d;
     p_registrarUsuarios p_r;
     p_ajustes p_a;
+    p_crudDiagnosticos p_cd;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_ajustes;
+    private javax.swing.JButton b_crud_diagnosticos;
     private javax.swing.JButton b_diagnosticos;
     private javax.swing.JButton b_registrarU;
     private javax.swing.JPanel base;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel l_ico;
+    private javax.swing.JLabel l_nombreUsuario;
     private javax.swing.JPanel p_barra;
     private javax.swing.JPanel p_botones;
     private javax.swing.JPanel p_menu;

@@ -12,7 +12,7 @@ import paneles.p_subirExamen;
 
 public class principal_paciente extends javax.swing.JFrame {
 
-    public principal_paciente(String usuario) {
+    public principal_paciente(String usuario, String nombre) {
         
         initComponents();
         setLocationRelativeTo(null);
@@ -34,6 +34,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_r.setVisible(false);
         p_h.setVisible(false);
         p_a.setVisible(false);
+        l_nombreUsuario.setText(nombre.substring(0, 1)+nombre.substring(1).toLowerCase());
         
     }
 
@@ -44,7 +45,7 @@ public class principal_paciente extends javax.swing.JFrame {
         base = new javax.swing.JPanel();
         p_usu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        l_nombreUsuario = new javax.swing.JLabel();
         p_barra = new javax.swing.JPanel();
         salir = new javax.swing.JButton();
         l_ico = new javax.swing.JLabel();
@@ -73,10 +74,11 @@ public class principal_paciente extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_perfil.png"))); // NOI18N
         p_usu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 150));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Arthuro Dugarte");
-        p_usu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        l_nombreUsuario.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        l_nombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        l_nombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        l_nombreUsuario.setText("Arthuro Dugarte");
+        p_usu.add(l_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, -1));
 
         base.add(p_usu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 190));
 
@@ -321,8 +323,8 @@ public class principal_paciente extends javax.swing.JFrame {
     private javax.swing.JButton b_resultados;
     private javax.swing.JPanel base;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel l_ico;
+    private javax.swing.JLabel l_nombreUsuario;
     private javax.swing.JPanel p_barra;
     private javax.swing.JPanel p_botones;
     private javax.swing.JPanel p_menu;

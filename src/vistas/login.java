@@ -516,21 +516,23 @@ public class login extends javax.swing.JFrame {
         } else {
 
             operar_usuarios op = new operar_usuarios();
-            int tipo = op.Ingresar(usuario.getText(), encrip.encriptar(clave.getText()));
+            String resultado = op.Ingresar(usuario.getText(), encrip.encriptar(clave.getText()));
+            int tipo = Integer.parseInt(resultado.substring(0, 1));
+            String nombre = resultado.substring(2);
             
             switch (tipo) {
                 case 1:
-                    principal_experto pe = new principal_experto(usuario.getText());
+                    principal_experto pe = new principal_experto(usuario.getText(), nombre);
                     pe.setVisible(true);
                     this.dispose();
                     break;
                 case 3:
-                    principal_paciente p = new principal_paciente(usuario.getText());
+                    principal_paciente p = new principal_paciente(usuario.getText(), nombre);
                     p.setVisible(true);
                     this.dispose();
                     break;
                 case 2:
-                    principal_asistente pa = new principal_asistente(usuario.getText());
+                    principal_asistente pa = new principal_asistente(usuario.getText(), nombre);
                     pa.setVisible(true);
                     this.dispose();
                     break;
