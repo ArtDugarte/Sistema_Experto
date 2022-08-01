@@ -1,12 +1,35 @@
 package modelos;
 
-import java.sql.Date;
+import BD.BDConex;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class operar_examenes {
+
+    public int idUltimoExamen() {
+
+        ResultSet rs = null;
+        BDConex bd = new BDConex();
+        int id = 0;
+
+        rs = bd.consultar("SELECT MAX(id) AS id FROM examenes");
+
+        try {
+            if (rs.next()) {
+                id = rs.getInt("id");
+
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        bd.desconectar();
+        return id;
+
+    }
 
     public void Crear(int id_paciente, byte[] archivo_subido) {
 
@@ -25,7 +48,7 @@ public class operar_examenes {
             ps.setInt(3, 0);
             java.util.Date utilDate = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            
+
             ps.setDate(4, sqlDate);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "         ¡Subida Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
@@ -45,5 +68,25 @@ public class operar_examenes {
             } catch (Exception ex) {
             }
         }
+    }
+
+    public void SubirSangre(float hematies, float hemoglobina, float hematocritos, float plaquetas, float leucocitos, float segmentados, float linfocitos) {
+
+        int ultimo_id = idUltimoExamen();
+        BD.BDConex bd = new BD.BDConex();
+
+        int op = 0, id;
+        id = 0;
+
+        op = bd.ejecutar("hola");
+
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "     ¡Creación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        bd.desconectar();
     }
 }
