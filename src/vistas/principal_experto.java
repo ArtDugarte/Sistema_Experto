@@ -22,7 +22,7 @@ public class principal_experto extends javax.swing.JFrame {
         AWTUtilities.setWindowShape(this, forma);
         
         p_d = new p_diagnosticos();
-        p_r = new p_registrarUsuarios();
+        p_r = new p_registrarUsuarios(usuario);
         p_a = new p_ajustes(usuario);
         p_cd = new p_crudDiagnosticos();
         p_principal.add(p_d);

@@ -521,16 +521,16 @@ public class login extends javax.swing.JFrame {
             String nombre = null;
 
             if (!resultado.equals("")) {
-                
+
                 int aux = resultado.indexOf("-");
                 id_usuario = Integer.parseInt(resultado.substring(0, aux));
                 tipo = Integer.parseInt(resultado.substring(aux + 1, aux + 2));
                 nombre = resultado.substring(aux + 3);
-                            
+
             } else {
                 tipo = 4;
             }
-            
+
             switch (tipo) {
                 case 1:
                     principal_experto pe = new principal_experto(usuario.getText(), nombre);
@@ -592,6 +592,8 @@ public class login extends javax.swing.JFrame {
             modelo m = new operar_usuarios().Buscar(usuario_olvido.getText());
             if (m != null) {
                 pregunta_olvido.setText(m.getPregunta());
+            } else {
+                JOptionPane.showMessageDialog(null, "¡El usuario no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_lupaActionPerformed
