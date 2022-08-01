@@ -77,6 +77,7 @@ public class p_subirExamen extends javax.swing.JPanel {
         jSeparator25 = new javax.swing.JSeparator();
         jLabel26 = new javax.swing.JLabel();
         b_volver_orina = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
         documento = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         b_subir_documento = new javax.swing.JButton();
@@ -257,11 +258,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         densidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         densidad.setBorder(null);
         densidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        orina.add(densidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 200, 20));
+        orina.add(densidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 20));
 
         jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator22.setForeground(new java.awt.Color(0, 0, 0));
-        orina.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 200, 10));
+        orina.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 100, 10));
 
         jLabel45.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(102, 102, 102));
@@ -503,6 +504,11 @@ public class p_subirExamen extends javax.swing.JPanel {
             }
         });
         orina.add(b_volver_orina, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
+
+        jLabel27.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel27.setText("VN: 1.005-1.030");
+        orina.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 120, -1));
 
         base.add(orina, "card2");
 
@@ -1088,6 +1094,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
