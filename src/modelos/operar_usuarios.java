@@ -17,10 +17,10 @@ public class operar_usuarios {
 
         try {
             if (rs.next()) {
-                
+
                 tipo = rs.getInt("id") + "-";
                 tipo = tipo + rs.getInt("tipo_usu") + "-";
-                tipo = tipo+rs.getString("nombres");
+                tipo = tipo + rs.getString("nombres");
             }
         } catch (SQLException e) {
 
@@ -56,17 +56,17 @@ public class operar_usuarios {
 
         ResultSet rs = null;
         BDConex bd = new BDConex();
-        int tipo = 0;
         modelo m = new modelo();
 
         rs = bd.consultar("SELECT * FROM usuario WHERE nombre_usu = '" + usuario + "' AND borrado=0");
 
         try {
             if (rs.next()) {
-                
+
                 m.setNombre(rs.getString("nombres"));
                 m.setApellido(rs.getString("apellidos"));
                 m.setPregunta(rs.getString("pregunta_segu"));
+                m.setTipo_usuario(rs.getInt("tipo_usu"));
 
             } else {
                 m = null;
@@ -97,12 +97,12 @@ public class operar_usuarios {
 
         bd.desconectar();
     }
-    
+
     public void Modificar(String usuario, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
         int op = 0;
         BDConex bd = new BDConex();
 
-        op = bd.ejecutar("UPDATE usuario SET clave='" + clave_nueva + "', pregunta_segu = '"+ pregunta +"', respuesta_segu = '"+ respuesta +"' "
+        op = bd.ejecutar("UPDATE usuario SET clave='" + clave_nueva + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "' "
                 + "WHERE nombre_usu = '" + usuario + "' AND clave ='" + clave_vieja + "' AND borrado = 0");
 
         if (op > 0) {
@@ -112,6 +112,43 @@ public class operar_usuarios {
 
             JOptionPane.showMessageDialog(null, "¡Contraseña actual incorrecta! "
                     + "\n          Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        bd.desconectar();
+    }
+
+    public void Modificar(String usuario, String nombre, String apellido, String pregunta, String respuesta, String clave, int tipo_usu) {
+        int op = 0;
+        BDConex bd = new BDConex();
+
+        op = bd.ejecutar("UPDATE usuario SET clave='" + clave + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "', "
+             + "nombres='"+nombre+"', apellidos='"+apellido+"', tipo_usu="+tipo_usu+" "
+             + "WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Usuario modificado con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Usuario no encontrado! "
+                    + "\n          Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        bd.desconectar();
+    }
+
+    public void Borrar(String usuario) {
+        int op = 0;
+        BDConex bd = new BDConex();
+
+        op = bd.ejecutar("UPDATE usuario SET borrado=1 WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
+
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Usuario borrado con exito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡El usuario no existe o ya esta borrado! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         }
 
         bd.desconectar();

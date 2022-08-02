@@ -4,22 +4,22 @@ import globales.encriptacion;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import modelos.modelo;
 import modelos.operar_usuarios;
 
 public class p_registrarUsuarios extends javax.swing.JPanel {
 
-    public p_registrarUsuarios() {
-        initComponents();     
+    public p_registrarUsuarios(String usuario) {
+        initComponents();
+        this.usuario = usuario;
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         r_botones = new javax.swing.ButtonGroup();
-        clave_vieja = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
+        clave = new javax.swing.JTextField();
         apellidos = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
@@ -29,7 +29,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         cedula = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        clave_nueva = new javax.swing.JTextField();
         pregunta = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,7 +39,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         b_registrar = new javax.swing.JButton();
         b_borrar = new javax.swing.JButton();
         b_modificar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        lupa = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         rb_asistente = new javax.swing.JRadioButton();
         rb_paciente = new javax.swing.JRadioButton();
@@ -55,25 +54,25 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         setName("Panel Registrar Pacientes"); // NOI18N
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        clave_vieja.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        clave_vieja.setForeground(new java.awt.Color(102, 102, 102));
-        clave_vieja.setText("Contraseña Vieja:");
-        clave_vieja.setBorder(null);
-        clave_vieja.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        clave_vieja.setFocusable(false);
-        clave_vieja.addFocusListener(new java.awt.event.FocusAdapter() {
+        clave.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        clave.setForeground(new java.awt.Color(102, 102, 102));
+        clave.setText("Contraseña:");
+        clave.setBorder(null);
+        clave.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        clave.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                clave_viejaFocusGained(evt);
+                claveFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                clave_viejaFocusLost(evt);
+                claveFocusLost(evt);
             }
         });
-        add(clave_vieja, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 250, 30));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 250, 10));
+        clave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                claveActionPerformed(evt);
+            }
+        });
+        add(clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 540, 30));
 
         apellidos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         apellidos.setForeground(new java.awt.Color(102, 102, 102));
@@ -96,7 +95,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 250, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 540, 10));
 
         nombres.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         nombres.setForeground(new java.awt.Color(102, 102, 102));
@@ -154,22 +153,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
         add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 250, 10));
-
-        clave_nueva.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        clave_nueva.setForeground(new java.awt.Color(102, 102, 102));
-        clave_nueva.setText("Contraseña Nueva:");
-        clave_nueva.setBorder(null);
-        clave_nueva.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        clave_nueva.setFocusable(false);
-        clave_nueva.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                clave_nuevaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                clave_nuevaFocusLost(evt);
-            }
-        });
-        add(clave_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 250, 30));
 
         pregunta.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         pregunta.setForeground(new java.awt.Color(102, 102, 102));
@@ -257,6 +240,11 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 b_borrarMouseReleased(evt);
             }
         });
+        b_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_borrarActionPerformed(evt);
+            }
+        });
         add(b_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 500, 100, 30));
 
         b_modificar.setBackground(new java.awt.Color(103, 174, 202));
@@ -275,15 +263,25 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 b_modificarMouseReleased(evt);
             }
         });
+        b_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_modificarActionPerformed(evt);
+            }
+        });
         add(b_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 100, 30));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande2.png"))); // NOI18N
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
+        lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande.png"))); // NOI18N
+        lupa.setBorderPainted(false);
+        lupa.setContentAreaFilled(false);
+        lupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lupa.setFocusPainted(false);
+        lupa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande2.png"))); // NOI18N
+        lupa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lupaActionPerformed(evt);
+            }
+        });
+        add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/seguridad_m.png"))); // NOI18N
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
@@ -337,49 +335,28 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clave_viejaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_viejaFocusGained
-
-        clave_vieja.setText("");
-    }//GEN-LAST:event_clave_viejaFocusGained
-
-    private void clave_viejaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_viejaFocusLost
-        if(clave_vieja.getText().equals("")){
-            clave_vieja.setText("Contraseña Vieja:");
-        }
-    }//GEN-LAST:event_clave_viejaFocusLost
-
     private void respuestaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_respuestaFocusGained
         respuesta.setText("");
     }//GEN-LAST:event_respuestaFocusGained
 
     private void respuestaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_respuestaFocusLost
-        if(respuesta.getText().equals("")){
+        if (respuesta.getText().equals("")) {
             respuesta.setText("Respuesta de seguridad");
         }
     }//GEN-LAST:event_respuestaFocusLost
 
-    private void clave_nuevaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_nuevaFocusGained
-        clave_nueva.setText("");
-    }//GEN-LAST:event_clave_nuevaFocusGained
-
-    private void clave_nuevaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_nuevaFocusLost
-        if(clave_nueva.getText().equals("")){
-            clave_nueva.setText("Contraseña Nueva:");
-        }
-    }//GEN-LAST:event_clave_nuevaFocusLost
-
     private void b_limpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMousePressed
 
-        b_limpiar.setForeground(new Color(103,174,202));
-        b_limpiar.setBorder(new LineBorder(new Color(103,174,202), 2));
+        b_limpiar.setForeground(new Color(103, 174, 202));
+        b_limpiar.setBorder(new LineBorder(new Color(103, 174, 202), 2));
         b_limpiar.setBackground(Color.white);
     }//GEN-LAST:event_b_limpiarMousePressed
 
     private void b_limpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMouseReleased
 
         b_limpiar.setForeground(Color.white);
-        b_limpiar.setBorder(new LineBorder(new Color(103,174,202), 2));
-        b_limpiar.setBackground(new Color(103,174,202));
+        b_limpiar.setBorder(new LineBorder(new Color(103, 174, 202), 2));
+        b_limpiar.setBackground(new Color(103, 174, 202));
     }//GEN-LAST:event_b_limpiarMouseReleased
 
     private void b_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarActionPerformed
@@ -415,7 +392,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_cedulaFocusGained
 
     private void cedulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cedulaFocusLost
-        if(cedula.getText().equals("")){
+        if (cedula.getText().equals("")) {
             cedula.setText("Cédula:");
         }
     }//GEN-LAST:event_cedulaFocusLost
@@ -425,7 +402,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_nombresFocusGained
 
     private void nombresFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombresFocusLost
-        if(nombres.getText().equals("")){
+        if (nombres.getText().equals("")) {
             nombres.setText("Nombres:");
         }
     }//GEN-LAST:event_nombresFocusLost
@@ -435,48 +412,123 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_apellidosFocusGained
 
     private void apellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_apellidosFocusLost
-        if(apellidos.getText().equals("")){
+        if (apellidos.getText().equals("")) {
             apellidos.setText("Apellidos:");
         }
     }//GEN-LAST:event_apellidosFocusLost
 
     private void b_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrarActionPerformed
-       
-        int tipo_usuario;
-        
-        if(rb_paciente.isSelected()){
-            
-            tipo_usuario = 3;
-            
-        }else if(rb_asistente.isSelected()){
-            
-            tipo_usuario = 2;
-            
-        }else tipo_usuario = 1;
-        
-        
-        operar_usuarios op = new operar_usuarios();
-        op.Crear(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), pregunta.getSelectedItem()+ "", encrip.encriptar(respuesta.getText()), encrip.encriptar(cedula.getText()), tipo_usuario);
-        
+
+        if (cedula.getText().equals("")||nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int tipo_usuario;
+
+            if (rb_paciente.isSelected()) {
+
+                tipo_usuario = 3;
+
+            } else if (rb_asistente.isSelected()) {
+
+                tipo_usuario = 2;
+
+            } else {
+                tipo_usuario = 1;
+            }
+
+            operar_usuarios op = new operar_usuarios();
+            op.Crear(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), pregunta.getSelectedItem() + "", encrip.encriptar(respuesta.getText()), encrip.encriptar(cedula.getText()), tipo_usuario);
+        }
     }//GEN-LAST:event_b_registrarActionPerformed
-    
-    
+
+    private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
+        if (cedula.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "¡Campo Vacío! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            modelo m = new modelo();
+            m = new operar_usuarios().Buscar(cedula.getText());
+            if (m != null) {
+                nombres.setText(m.getNombre());
+                apellidos.setText(m.getApellido());
+                pregunta.setSelectedItem(m.getPregunta());
+                switch (m.getTipo_usuario()) {
+                    case 1:
+                        rb_medico.setSelected(true);
+                        break;
+                    case 2:
+                        rb_asistente.setSelected(true);
+                        break;
+                    case 3:
+                        rb_paciente.setSelected(true);
+                        break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "¡El usuario no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_lupaActionPerformed
+
+    private void b_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_borrarActionPerformed
+         if (cedula.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "¡Campo Vacío! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        } else if (cedula.getText().equals(usuario)){
+             JOptionPane.showMessageDialog(null, "¡No puede borrarse a si mismo! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }else{
+            new operar_usuarios().Borrar(cedula.getText());
+        }
+    }//GEN-LAST:event_b_borrarActionPerformed
+
+    private void b_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_modificarActionPerformed
+        if (nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("") || cedula.getText().equals("")||clave.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int tipo_usuario;
+
+            if (rb_paciente.isSelected()) {
+
+                tipo_usuario = 3;
+
+            } else if (rb_asistente.isSelected()) {
+
+                tipo_usuario = 2;
+
+            } else {
+                tipo_usuario = 1;
+            }
+
+            operar_usuarios op = new operar_usuarios();
+            op.Modificar(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), pregunta.getSelectedItem() + "", encrip.encriptar(respuesta.getText()), encrip.encriptar(clave.getText()), tipo_usuario);
+        }
+    }//GEN-LAST:event_b_modificarActionPerformed
+
+    private void claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_claveActionPerformed
+
+    private void claveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusLost
+        if (clave.getText().equals("")) {
+            clave.setText("Contraseña:");
+        }
+    }//GEN-LAST:event_claveFocusLost
+
+    private void claveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusGained
+
+        clave.setText("");
+    }//GEN-LAST:event_claveFocusGained
+
     //Metodos y Variables
-    
     encriptacion encrip = new encriptacion();
-    
-    
-    
-    public void limpiar_campos(){
-       
-        
+    String usuario = "";
+
+    public void limpiar_campos() {
+
         pregunta.setSelectedIndex(0); //Aqui se debe poner el codigo SQL para que se marque la pregunta de la persona
         respuesta.setText("Respuesta de seguridad"); //Aqui se debe poner la respuesta de la persona
-        clave_vieja.setText("Contraseña Vieja:");
+        clave.setText("Contraseña:");
         cedula.setText("Cédula:");
         nombres.setText("Nombres:");
         apellidos.setText("Apellidos:");
-        clave_nueva.setText("Contraseña Nueva:");
+        rb_paciente.setSelected(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
@@ -485,9 +537,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     private javax.swing.JButton b_modificar;
     private javax.swing.JButton b_registrar;
     private javax.swing.JTextField cedula;
-    private javax.swing.JTextField clave_nueva;
-    private javax.swing.JTextField clave_vieja;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField clave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -496,13 +546,13 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JButton lupa;
     private javax.swing.JTextField nombres;
     private javax.swing.JComboBox<String> pregunta;
     private javax.swing.ButtonGroup r_botones;
