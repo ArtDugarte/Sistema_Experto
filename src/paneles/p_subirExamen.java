@@ -65,6 +65,13 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_limpiarSangre = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         b_volver_sangre = new javax.swing.JButton();
+        documento = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
+        b_subir_documento = new javax.swing.JButton();
+        b_limpiar_documento = new javax.swing.JButton();
+        b_volver_documento = new javax.swing.JButton();
+        b_adjuntar_documento = new javax.swing.JButton();
+        filename = new javax.swing.JTextField();
         orina = new javax.swing.JPanel();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
@@ -118,13 +125,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         b_volver_orina = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        documento = new javax.swing.JPanel();
-        jLabel60 = new javax.swing.JLabel();
-        b_subir_documento = new javax.swing.JButton();
-        b_limpiar_documento = new javax.swing.JButton();
-        b_volver_documento = new javax.swing.JButton();
-        b_adjuntar_documento = new javax.swing.JButton();
-        filename = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -389,6 +389,81 @@ public class p_subirExamen extends javax.swing.JPanel {
         sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
 
         base.add(sangre, "card2");
+
+        documento.setOpaque(false);
+        documento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel60.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel60.setText("EXÁMENES DIGITALIZADOS");
+        documento.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 330, -1));
+
+        b_subir_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_subir_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_subir_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_subir_documento.setText("Registrar");
+        b_subir_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_subir_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_subir_documento.setFocusPainted(false);
+        b_subir_documento.setRolloverEnabled(false);
+        b_subir_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_subir_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_subir_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
+
+        b_limpiar_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_limpiar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_limpiar_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_limpiar_documento.setText("Limpiar");
+        b_limpiar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_limpiar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_limpiar_documento.setFocusPainted(false);
+        b_limpiar_documento.setRolloverEnabled(false);
+        b_limpiar_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_limpiar_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_limpiar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 100, 30));
+
+        b_volver_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_volver_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_volver_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_volver_documento.setText("Volver");
+        b_volver_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_volver_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_volver_documento.setFocusPainted(false);
+        b_volver_documento.setRolloverEnabled(false);
+        b_volver_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_volver_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_volver_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
+
+        b_adjuntar_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_adjuntar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_adjuntar_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_adjuntar_documento.setText("Adjuntar");
+        b_adjuntar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_adjuntar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_adjuntar_documento.setFocusPainted(false);
+        b_adjuntar_documento.setRolloverEnabled(false);
+        b_adjuntar_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_adjuntar_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 90, 30));
+
+        filename.setEditable(false);
+        filename.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 460, 30));
+
+        base.add(documento, "card2");
 
         orina.setOpaque(false);
         orina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -767,81 +842,6 @@ public class p_subirExamen extends javax.swing.JPanel {
 
         base.add(orina, "card2");
 
-        documento.setOpaque(false);
-        documento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel60.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel60.setText("EXÁMENES DIGITALIZADOS");
-        documento.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 330, -1));
-
-        b_subir_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_subir_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_subir_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_subir_documento.setText("Registrar");
-        b_subir_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_subir_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_subir_documento.setFocusPainted(false);
-        b_subir_documento.setRolloverEnabled(false);
-        b_subir_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_subir_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_subir_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
-
-        b_limpiar_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_limpiar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_limpiar_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_limpiar_documento.setText("Limpiar");
-        b_limpiar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_limpiar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_limpiar_documento.setFocusPainted(false);
-        b_limpiar_documento.setRolloverEnabled(false);
-        b_limpiar_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_limpiar_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_limpiar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 100, 30));
-
-        b_volver_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_volver_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_volver_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_volver_documento.setText("Volver");
-        b_volver_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_volver_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_volver_documento.setFocusPainted(false);
-        b_volver_documento.setRolloverEnabled(false);
-        b_volver_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_volver_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_volver_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
-
-        b_adjuntar_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_adjuntar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_adjuntar_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_adjuntar_documento.setText("Adjuntar");
-        b_adjuntar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_adjuntar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_adjuntar_documento.setFocusPainted(false);
-        b_adjuntar_documento.setRolloverEnabled(false);
-        b_adjuntar_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_adjuntar_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 90, 30));
-
-        filename.setEditable(false);
-        filename.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 460, 30));
-
-        base.add(documento, "card2");
-
         add(base, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 540));
 
         getAccessibleContext().setAccessibleName("");
@@ -921,6 +921,15 @@ public class p_subirExamen extends javax.swing.JPanel {
                     op.SubirSangre(Float.parseFloat(globulos_rojos.getText()), Float.parseFloat(hemoglobina.getText()), Float.parseFloat(hematocritos.getText()),
                             Float.parseFloat(plaquetas.getText()), Float.parseFloat(leucocitos.getText()), Float.parseFloat(segmentados.getText()), 
                             Float.parseFloat(linfocitos.getText()));
+                }
+                
+                if(tipo == 2 || tipo == 3){
+                    
+                    op.SubirOrina(aspecto.getSelectedItem().toString(), color.getSelectedItem().toString(), reaccion.getSelectedItem().toString(), Float.parseFloat(densidad.getText()),
+                            Float.parseFloat(leucocitosorina.getText()), Float.parseFloat(hematies.getText()), piocitos.getSelectedItem().toString(), bacterias.getSelectedItem().toString(), 
+                            Float.parseFloat(eplano.getText()), proteinas.getSelectedItem().toString(), glucosa.getSelectedItem().toString(), hemoglobina_orina.getSelectedItem().toString(),
+                            ccetonico.getSelectedItem().toString(), biliares.getSelectedItem().toString(), urobilinogen.getSelectedItem().toString(), bilirrubina.getSelectedItem().toString(),
+                            nitritos.getSelectedItem().toString());
                 }
             } 
             catch (IOException ex) {

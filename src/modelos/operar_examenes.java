@@ -80,35 +80,22 @@ public class operar_examenes {
         op = bd.ejecutar("INSERT INTO sangre (id_examen, hematies, hemoglobina, hematocritos, plaquetas, leucocitos, segmentados, linfocitos)\n"
                 + "VALUES("+ ultimo_id +", "+ hematies +", "+ hemoglobina +", "+ hematocritos +", "+ plaquetas +", "+ leucocitos +", "+ segmentados +", "+ linfocitos +")");
 
-        if (op > 0) {
-
-            JOptionPane.showMessageDialog(null, "     ¡Creación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        }
-
         bd.desconectar();
     }
     
     public void SubirOrina(String aspecto, String color, String reaccion, float densidad, float leucocitos, float hematies, String piocitos, String bacterias, float e_plano, 
-        String proteinas, String glucosa, String c_cetonico, String p_biliares, String urobilinogelen, String bilirrubina, String nitritos) {
+        String proteinas, String glucosa, String hemoglobina, String c_cetonico, String p_biliares, String urobilinogelen, String bilirrubina, String nitritos) {
 
         int ultimo_id = idUltimoExamen();
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0;
 
-        op = bd.ejecutar("INSERT INTO orina (aspecto, color, reaccion, densidad, leucocitos, hematies, piocitos, bacterias, e_plano, \n" +
-"        proteinas, glucosa, c_cetonico, p_biliares, urubilinogelen, bilirrubina, nutritos)\n"
-                + "VALUES("+ ultimo_id +", "+ aspecto +", "+ color +", "+ reaccion +", "+ densidad +", "+ leucocitos +", "+ hematies +", "+ piocitos +", "+ bacterias +")"
-                + ", "+ e_plano +", "+ proteinas +", "+ glucosa +", "+ c_cetonico +", "+ p_biliares +", "+ urobilinogelen +", "+ bilirrubina +", "+ nitritos +"");
-
-        if (op > 0) {
-
-            JOptionPane.showMessageDialog(null, "     ¡Creación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        }
+        op = bd.ejecutar("INSERT INTO orina (id_examen, aspecto, color, reaccion, densidad, leucocitos, hematies, piocitos, bacterias, e_plano, \n" +
+"        proteinas, glucosa, hemoglobina, c_cetonico, p_biliares, urobilinogelen, bilirrubina, nitritos)\n"
+                + "VALUES("+ ultimo_id +", '"+ aspecto +"', '"+ color +"', '"+ reaccion +"', "+ densidad +", "+ leucocitos +", "+ hematies +", '"+ piocitos +"', '"+ bacterias +"'"
+                + ", "+ e_plano +", '"+ proteinas +"', '"+ glucosa +"', '"+ hemoglobina +"', '"+ c_cetonico +"', '"+ p_biliares +"', '"+ urobilinogelen +"', '"+ bilirrubina +"', "
+                + "'"+ nitritos +"')");
 
         bd.desconectar();
     }
