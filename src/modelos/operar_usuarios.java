@@ -122,8 +122,8 @@ public class operar_usuarios {
         BDConex bd = new BDConex();
 
         op = bd.ejecutar("UPDATE usuario SET clave='" + clave + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "', "
-             + "nombres='"+nombre+"', apellidos='"+apellido+"', tipo_usu="+tipo_usu+" "
-             + "WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
+                + "nombres='" + nombre + "', apellidos='" + apellido + "', tipo_usu=" + tipo_usu + " "
+                + "WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
         if (op > 0) {
 
             JOptionPane.showMessageDialog(null, "¡Usuario modificado con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
@@ -153,4 +153,33 @@ public class operar_usuarios {
 
         bd.desconectar();
     }
+
+    public modelo BuscarUsuarioConExamenPendiente(String cedula) {
+        ResultSet rs = null;
+        BDConex bd = new BDConex();
+        modelo m = new modelo();
+
+        rs = bd.consultar("SELECT u.nombres, u.apellidos, e.id FROM usuario u, examenes e  WHERE e.estado=0 AND e.id_paciente=u.id AND u.cedula='" + cedula + "'");
+
+        try {
+            if (rs.next()) {
+
+                m.setNombre(rs.getString("nombres"));
+                m.setApellido(rs.getString("apellidos"));
+                m.setId_examen(rs.getInt("e.id")); 
+
+
+            } else {
+                m = null;
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        
+        bd.desconectar();
+        return m;
+    }
+
 }
