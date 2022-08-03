@@ -297,4 +297,54 @@ public class operar_examenes {
 
         return m;
     }
+    
+    public int ModificarSangre(int id_examen, float hematies, float hemoglobina, float hematocritos, float plaquetas, float leucocitos, float segmentados, float linfocitos) {
+
+        int ultimo_id = idUltimoExamen();
+        BD.BDConex bd = new BD.BDConex();
+
+        int op = 0;
+
+        op = bd.ejecutar("UPDATE sangre SET hematies = "+ hematies +", hemoglobina = "+ hemoglobina +", hematocritos = "+ hematocritos +", plaquetas = "+ plaquetas +", "
+                + "leucocitos = "+ leucocitos +", segmentados = "+ segmentados +", linfocitos = "+ linfocitos +"\n WHERE id_examen = "+ id_examen +"");
+               
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Modificación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Error al Modificar! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        bd.desconectar();
+        return op;
+    }
+    
+    public int ModificarOrina(int id_examen, String aspecto, String color, String reaccion, float densidad, float leucocitos, float hematies, String piocitos, String bacterias, float e_plano,
+            String proteinas, String glucosa, String hemoglobina, String c_cetonico, String p_biliares, String urobilinogelen, String bilirrubina, String nitritos) {
+
+        int ultimo_id = idUltimoExamen();
+        BD.BDConex bd = new BD.BDConex();
+
+        int op = 0;
+
+        op = bd.ejecutar("UPDATE orina SET aspecto = '"+ aspecto +"', color = '"+ color +"', reaccion = '"+ reaccion +"', densidad = "+ densidad +", leucocitos = "+ leucocitos +", "
+                + "hematies = "+ hematies +", piocitos = '"+ piocitos +"', bacterias = '"+ bacterias +"', e_plano = "+ e_plano +", proteinas = '"+ proteinas +"', "
+                + "glucosa = '"+ glucosa +"', hemoglobina = '"+ hemoglobina +"', c_cetonico = '"+ c_cetonico +"', p_biliares = '"+ p_biliares +"', "
+                + "urobilinogelen = '"+ urobilinogelen +"', bilirrubina = '"+ bilirrubina +"', nitritos = '"+ nitritos +"'\n");
+        
+        
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Modificación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Error al Modificar! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        bd.desconectar();
+        return op;
+    }
 }
