@@ -528,7 +528,7 @@ public class p_revision extends javax.swing.JPanel {
                 b_volver_sangreActionPerformed(evt);
             }
         });
-        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 100, 30));
+        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 100, 30));
 
         b_ModificarSangre.setBackground(new java.awt.Color(103, 174, 202));
         b_ModificarSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -561,20 +561,12 @@ public class p_revision extends javax.swing.JPanel {
         b_siguienteSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_siguienteSangre.setFocusPainted(false);
         b_siguienteSangre.setRolloverEnabled(false);
-        b_siguienteSangre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_siguienteSangreMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_siguienteSangreMouseReleased(evt);
-            }
-        });
         b_siguienteSangre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_siguienteSangreActionPerformed(evt);
             }
         });
-        sangre.add(b_siguienteSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 100, 30));
+        sangre.add(b_siguienteSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 100, 30));
 
         b_limpiarSangre.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiarSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -597,7 +589,7 @@ public class p_revision extends javax.swing.JPanel {
                 b_limpiarSangreActionPerformed(evt);
             }
         });
-        sangre.add(b_limpiarSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 100, 30));
+        sangre.add(b_limpiarSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, 100, 30));
 
         jLabel25.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
@@ -659,7 +651,7 @@ public class p_revision extends javax.swing.JPanel {
                 b_volver_orinaActionPerformed(evt);
             }
         });
-        orina.add(b_volver_orina, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 100, 30));
+        orina.add(b_volver_orina, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 100, 30));
 
         b_limpiarOrina.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiarOrina.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -682,7 +674,7 @@ public class p_revision extends javax.swing.JPanel {
                 b_limpiarOrinaActionPerformed(evt);
             }
         });
-        orina.add(b_limpiarOrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
+        orina.add(b_limpiarOrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 100, 30));
 
         jLabel44.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(102, 102, 102));
@@ -1060,36 +1052,30 @@ public class p_revision extends javax.swing.JPanel {
             sangre.setVisible(true);
             principal.setVisible(false);
             orina.setVisible(false);
-            b_ModificarSangre.setVisible(false);
             b_siguienteSangre.setVisible(true);
+            tipo = 1;
         }else if(m.isSangre()){
             sangre.setVisible(true);
             principal.setVisible(false);
             orina.setVisible(false);
-            b_ModificarSangre.setVisible(true);
             b_siguienteSangre.setVisible(false);
+            tipo = 2;
         }else{
             sangre.setVisible(false);
             principal.setVisible(false);
             orina.setVisible(true);
+            tipo = 3;
         }
         
         //Luego deben aparecer los examenes de orina, sangre o ambos depende el caso
         //Se acepta la revision
     }//GEN-LAST:event_b_revisarActionPerformed
 
-    private void b_siguienteSangreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteSangreMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_siguienteSangreMousePressed
-
-    private void b_siguienteSangreMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteSangreMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_siguienteSangreMouseReleased
-
     private void b_siguienteSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguienteSangreActionPerformed
 
-        
-        
+        principal.setVisible(false);
+        orina.setVisible(true);
+        sangre.setVisible(false);
     }//GEN-LAST:event_b_siguienteSangreActionPerformed
 
     private void b_limpiarSangreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarSangreMousePressed
@@ -1112,7 +1098,9 @@ public class p_revision extends javax.swing.JPanel {
 
     private void b_volver_sangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_sangreActionPerformed
 
-        
+        principal.setVisible(true);
+        orina.setVisible(false);
+        sangre.setVisible(false);
     }//GEN-LAST:event_b_volver_sangreActionPerformed
 
     private void b_ModificarOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ModificarOrinaMousePressed
@@ -1141,7 +1129,16 @@ public class p_revision extends javax.swing.JPanel {
 
     private void b_volver_orinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_orinaActionPerformed
 
-        
+        if(tipo == 1){
+            principal.setVisible(false);
+            orina.setVisible(false);
+            sangre.setVisible(true);
+        }
+        else{
+            principal.setVisible(true);
+            orina.setVisible(false);
+            sangre.setVisible(false);
+        }
     }//GEN-LAST:event_b_volver_orinaActionPerformed
 
     private void b_ModificarSangreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ModificarSangreMousePressed
@@ -1190,7 +1187,7 @@ public class p_revision extends javax.swing.JPanel {
         idExamen = 0;
     }
 
-    int idExamen = 0;
+    int idExamen = 0, tipo = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
     private javax.swing.JComboBox<String> aspecto;
