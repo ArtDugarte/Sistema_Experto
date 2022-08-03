@@ -229,4 +229,28 @@ public class operar_examenes {
         
         return examen;
     }
+    
+    public modelo BuscarExamen(int id_examen){
+    
+        modelo m = new modelo();
+        ResultSet rs = null;
+        BDConex bd = new BDConex();
+        int idsangre = existeExamen(id_examen, "sangre", bd);
+        int idorina = existeExamen(id_examen, "orina", bd);
+        
+        if(idsangre>0){
+            m.setSangre(true);
+            rs = bd.consultar("SELECT * FROM sangre WHERE id_examen = " + id_examen + "");
+        }else m.setSangre(false);
+        
+        rs = null;
+        
+        if(idorina>0){
+            m.setOrina(true);
+            rs = bd.consultar("SELECT * FROM orina WHERE id_examen = " + id_examen + "");
+        }else m.setOrina(false);
+        
+        
+        return m;
+    }
 }
