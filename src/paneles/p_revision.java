@@ -288,14 +288,6 @@ public class p_revision extends javax.swing.JPanel {
         b_revisar.setEnabled(false);
         b_revisar.setFocusPainted(false);
         b_revisar.setRolloverEnabled(false);
-        b_revisar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_revisarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_revisarMouseReleased(evt);
-            }
-        });
         b_revisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_revisarActionPerformed(evt);
@@ -623,14 +615,6 @@ public class p_revision extends javax.swing.JPanel {
         b_ModificarOrina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_ModificarOrina.setFocusPainted(false);
         b_ModificarOrina.setRolloverEnabled(false);
-        b_ModificarOrina.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_ModificarOrinaMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_ModificarOrinaMouseReleased(evt);
-            }
-        });
         b_ModificarOrina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_ModificarOrinaActionPerformed(evt);
@@ -978,14 +962,6 @@ public class p_revision extends javax.swing.JPanel {
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void b_revisarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_revisarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_revisarMousePressed
-
-    private void b_revisarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_revisarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_revisarMouseReleased
-
     private void b_limpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMousePressed
 
         b_limpiar.setForeground(new Color(103, 174, 202));
@@ -1038,33 +1014,87 @@ public class p_revision extends javax.swing.JPanel {
     }//GEN-LAST:event_lupaActionPerformed
 
     private void b_revisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_revisarActionPerformed
-        //Se debe descargar el examen
+        
+//Se debe descargar el examen
         operar_examenes op = new operar_examenes();
         String archivo = op.ejecutar_archivo(idExamen);
+        
         try {
             Desktop.getDesktop().open(new File("C:\\Resultados\\"+archivo+""));
-        } catch (Exception ex) {
-        }
+        } catch (Exception ex) {}
         
         modelo m = op.BuscarExamen(idExamen);
         
         if(m.isSangre() && m.isOrina()){
+            
             sangre.setVisible(true);
             principal.setVisible(false);
             orina.setVisible(false);
             b_siguienteSangre.setVisible(true);
             tipo = 1;
+            globulos_rojos.setText(m.getS_hematies()+"");
+            hemoglobina.setText(m.getS_hemoglobina()+"");
+            hematocritos.setText(m.getS_hematocritos()+"");
+            plaquetas.setText(m.getS_plaquetas()+"");
+            leucocitos.setText(m.getS_leucocitos()+"");
+            segmentados.setText(m.getS_segmentados()+"");
+            linfocitos.setText(m.getS_linfocitos()+"");
+            
+            aspecto.setSelectedItem(m.getO_aspecto());
+            color.setSelectedItem(m.getO_color());
+            reaccion.setSelectedItem(m.getO_reaccion());
+            densidad.setText(m.getO_densidad()+"");
+            leucocitosorina.setText(m.getO_leucocitos()+"");
+            hematies.setText(m.getO_hematies()+"");
+            piocitos.setSelectedItem(m.getO_piocitos());
+            bacterias.setSelectedItem(m.getO_bacterias());
+            eplano.setText(m.getO_eplano()+"");
+            proteinas.setSelectedItem(m.getO_proteinas());
+            glucosa.setSelectedItem(m.getO_glucosa());
+            ccetonico.setSelectedItem(m.getO_cetonico());
+            biliares.setSelectedItem(m.getO_pbiliares());
+            urobilinogen.setSelectedItem(m.getO_urobilinogelen());
+            bilirrubina.setSelectedItem(m.getO_bilirrubina());
+            nitritos.setSelectedItem(m.getO_nitritos());
+            
         }else if(m.isSangre()){
+            
             sangre.setVisible(true);
             principal.setVisible(false);
             orina.setVisible(false);
             b_siguienteSangre.setVisible(false);
             tipo = 2;
+            globulos_rojos.setText(m.getS_hematies()+"");
+            hemoglobina.setText(m.getS_hemoglobina()+"");
+            hematocritos.setText(m.getS_hematocritos()+"");
+            plaquetas.setText(m.getS_plaquetas()+"");
+            leucocitos.setText(m.getS_leucocitos()+"");
+            segmentados.setText(m.getS_segmentados()+"");
+            linfocitos.setText(m.getS_linfocitos()+"");
+            
+            
         }else{
+            
             sangre.setVisible(false);
             principal.setVisible(false);
             orina.setVisible(true);
             tipo = 3;
+            aspecto.setSelectedItem(m.getO_aspecto());
+            color.setSelectedItem(m.getO_color());
+            reaccion.setSelectedItem(m.getO_reaccion());
+            densidad.setText(m.getO_densidad()+"");
+            leucocitosorina.setText(m.getO_leucocitos()+"");
+            hematies.setText(m.getO_hematies()+"");
+            piocitos.setSelectedItem(m.getO_piocitos());
+            bacterias.setSelectedItem(m.getO_bacterias());
+            eplano.setText(m.getO_eplano()+"");
+            proteinas.setSelectedItem(m.getO_proteinas());
+            glucosa.setSelectedItem(m.getO_glucosa());
+            ccetonico.setSelectedItem(m.getO_cetonico());
+            biliares.setSelectedItem(m.getO_pbiliares());
+            urobilinogen.setSelectedItem(m.getO_urobilinogelen());
+            bilirrubina.setSelectedItem(m.getO_bilirrubina());
+            nitritos.setSelectedItem(m.getO_nitritos());
         }
         
         //Luego deben aparecer los examenes de orina, sangre o ambos depende el caso
@@ -1102,14 +1132,6 @@ public class p_revision extends javax.swing.JPanel {
         orina.setVisible(false);
         sangre.setVisible(false);
     }//GEN-LAST:event_b_volver_sangreActionPerformed
-
-    private void b_ModificarOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ModificarOrinaMousePressed
-
-    }//GEN-LAST:event_b_ModificarOrinaMousePressed
-
-    private void b_ModificarOrinaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ModificarOrinaMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_ModificarOrinaMouseReleased
 
     private void b_ModificarOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ModificarOrinaActionPerformed
        
