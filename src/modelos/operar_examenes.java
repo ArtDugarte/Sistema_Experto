@@ -208,13 +208,11 @@ public class operar_examenes {
             int tamanoInput = bos.available();
             byte[] datos = new byte[tamanoInput];
             bos.read(datos, 0, tamanoInput);
-            
-            //Detectar Extension del Blob
-            
 
-            OutputStream out = new FileOutputStream("C:\\Resultados\\examen."+tipo+"");
+            //Detectar Extension del Blob
+            OutputStream out = new FileOutputStream("C:\\Resultados\\examen." + tipo + "");
             out.write(datos);
-            examen="examen."+tipo;
+            examen = "examen." + tipo;
 
             //abrir archivo
             out.close();
@@ -226,31 +224,77 @@ public class operar_examenes {
         } catch (IOException | NumberFormatException | SQLException ex) {
             System.out.println("Error al abrir archivo PDF " + ex.getMessage());
         }
-        
+
         return examen;
     }
-    
-    public modelo BuscarExamen(int id_examen){
-    
+
+    public modelo BuscarExamen(int id_examen) {
+
         modelo m = new modelo();
         ResultSet rs = null;
         BDConex bd = new BDConex();
         int idsangre = existeExamen(id_examen, "sangre", bd);
         int idorina = existeExamen(id_examen, "orina", bd);
-        
-        if(idsangre>0){
+
+        if (idsangre > 0) {
             m.setSangre(true);
             rs = bd.consultar("SELECT * FROM sangre WHERE id_examen = " + id_examen + "");
-        }else m.setSangre(false);
-        
+            try {
+
+                if (rs.next()) {
+
+                    m.setS_hematies(rs.getFloat("hematies"));
+                    m.setS_hemoglobina(rs.getFloat("hemoglobina"));
+                    m.setS_hematocritos(rs.getFloat("hematocritos"));
+                    m.setS_plaquetas(rs.getFloat("plaquetas"));
+                    m.setS_leucocitos(rs.getFloat("leucocitos"));
+                    m.setS_segmentados(rs.getFloat("segmentados"));
+                    m.setS_linfocitos(rs.getFloat("linfocitos"));
+                }
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+
+        } else {
+            m.setSangre(false);
+        }
+
         rs = null;
-        
-        if(idorina>0){
+
+        if (idorina > 0) {
             m.setOrina(true);
             rs = bd.consultar("SELECT * FROM orina WHERE id_examen = " + id_examen + "");
-        }else m.setOrina(false);
-        
-        
+            try {
+
+                if (rs.next()) {
+
+                    m.setO_aspecto(rs.getString("aspecto"));
+                    m.setO_color(rs.getString("color"));
+                    m.setO_reaccion(rs.getString("reaccion"));
+                    m.setO_densidad(rs.getFloat("densidad"));
+                    m.setO_leucocitos(rs.getFloat("leucocitos"));
+                    m.setO_hematies(rs.getFloat("hematies"));
+                    m.setO_piocitos(rs.getString("piocitos"));
+                    m.setO_bacterias(rs.getString("bacterias"));
+                    m.setO_eplano(rs.getFloat("e_plano"));
+                    m.setO_proteinas(rs.getString("proteinas"));
+                    m.setO_glucosa(rs.getString("glucosa"));
+                    m.setO_hemoglobina(rs.getString("hemoglobina"));
+                    m.setO_cetonico(rs.getString("c_cetonico"));
+                    m.setO_pbiliares(rs.getString("p_biliares"));
+                    m.setO_urobilinogelen(rs.getString("urobilinogelen"));
+                    m.setO_bilirrubina(rs.getString("bilirrubina"));
+                    m.setO_nitritos(rs.getString("nitritos"));
+                }
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+        } else {
+            m.setOrina(false);
+        }
+
         return m;
     }
 }
