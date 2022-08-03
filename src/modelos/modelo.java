@@ -5,7 +5,15 @@ public class modelo {
     // Usuarios
     
     int tipo_usuario;
-    String usuario, pregunta, respuesta, clave, nombre, apellido;
+    String usuario, pregunta, respuesta, clave, nombre, apellido, cedula;
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
 
     public String getNombre() {
         return nombre;
@@ -68,6 +76,23 @@ public class modelo {
     int id_examen, estado;
     byte[] archivo_subido;
     String fecha;
+    boolean sangre, orina;
+
+    public boolean isSangre() {
+        return sangre;
+    }
+
+    public void setSangre(boolean sangre) {
+        this.sangre = sangre;
+    }
+
+    public boolean isOrina() {
+        return orina;
+    }
+
+    public void setOrina(boolean orina) {
+        this.orina = orina;
+    }
 
     public int getId_examen() {
         return id_examen;
