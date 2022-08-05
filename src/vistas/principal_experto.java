@@ -33,6 +33,7 @@ public class principal_experto extends javax.swing.JFrame {
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.setVisible(false);
+        p_cd.iniciar();
         l_nombreUsuario.setText(nombre.substring(0, 1)+nombre.substring(1).toLowerCase());
         
     }
@@ -148,7 +149,7 @@ public class principal_experto extends javax.swing.JFrame {
 
         b_crud_diagnosticos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         b_crud_diagnosticos.setForeground(new java.awt.Color(255, 255, 255));
-        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png"))); // NOI18N
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png"))); // NOI18N
         b_crud_diagnosticos.setText("Admin. Diagnósticos");
         b_crud_diagnosticos.setBorderPainted(false);
         b_crud_diagnosticos.setContentAreaFilled(false);
@@ -208,7 +209,7 @@ public class principal_experto extends javax.swing.JFrame {
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
         b_crud_diagnosticos.setForeground(Color.WHITE);
-        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
         
         l_ico.setText(" Diagnósticos");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
@@ -231,7 +232,7 @@ public class principal_experto extends javax.swing.JFrame {
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
         b_crud_diagnosticos.setForeground(Color.WHITE);
-        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
         
         l_ico.setText(" Administrar Usuarios");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
@@ -255,7 +256,7 @@ public class principal_experto extends javax.swing.JFrame {
         b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
         
         b_crud_diagnosticos.setForeground(Color.WHITE);
-        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
           
         l_ico.setText(" Ajustes");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
@@ -269,7 +270,7 @@ public class principal_experto extends javax.swing.JFrame {
 
     private void b_crud_diagnosticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_crud_diagnosticosMouseClicked
         b_crud_diagnosticos.setForeground(new Color(204, 204, 204));
-        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios2.png")));
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos2.png")));
         
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
@@ -278,14 +279,15 @@ public class principal_experto extends javax.swing.JFrame {
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
         
         b_registrarU.setForeground(Color.WHITE);
-        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
         
         l_ico.setText(" Administrar Diagnósticos");
-        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
         
         p_d.setVisible(false);
         p_r.setVisible(false);
         p_a.setVisible(false);
+        p_cd.iniciar();
         p_cd.setVisible(true);
     }//GEN-LAST:event_b_crud_diagnosticosMouseClicked
     
