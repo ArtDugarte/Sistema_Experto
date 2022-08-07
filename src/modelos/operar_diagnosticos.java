@@ -32,7 +32,7 @@ public class operar_diagnosticos {
 
     }
 
-    public void Crear(String nombre, String descripcion) {
+    public int Crear(String nombre, String descripcion) {
 
         BD.BDConex bd = new BD.BDConex();
 
@@ -51,31 +51,32 @@ public class operar_diagnosticos {
         }
 
         bd.desconectar();
+        return op;
     }
 
-    public void parametros_diagnostico_sangre(ArrayList<String> valores, ArrayList<Boolean> importancia) { //Cuando algunos valores no importan
+    public void parametros_diagnostico_sangre(ArrayList<String> valores, ArrayList<Boolean> resultado_seleccionado) { //Cuando algunos valores no importan
 
         int op = 0, id;
         id = idUltimoDiagnostico();
         BD.BDConex bd = new BD.BDConex();
         for (int i = 0; i < valores.size(); i++) {
 
-            op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, importancia) VALUES "
-                    + "(" + id + ",'s" + (i + 1) + "','" + valores.get(i) + "', " + importancia.get(i) + ")");
+            op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, resultado_seleccionado) VALUES "
+                    + "(" + id + ",'s" + (i + 1) + "','" + valores.get(i) + "', " + resultado_seleccionado.get(i) + ")");
         }
 
         bd.desconectar();
     }
 
-    public void parametros_diagnostico_orina(ArrayList<String> valores, ArrayList<Boolean> importancia) { //Cuando algunos valores no importan
+    public void parametros_diagnostico_orina(ArrayList<String> valores, ArrayList<Boolean> resultado_seleccionado) { //Cuando algunos valores no importan
 
         int op = 0, id;
         id = idUltimoDiagnostico();
         BD.BDConex bd = new BD.BDConex();
         for (int i = 0; i < valores.size(); i++) {
 
-            op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, importancia) VALUES "
-                    + "(" + id + ",'o" + (i + 1) + "','" + valores.get(i) + "', " + importancia.get(i) + ")");
+            op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, resultado_seleccionado) VALUES "
+                    + "(" + id + ",'o" + (i + 1) + "','" + valores.get(i) + "', " + resultado_seleccionado.get(i) + ")");
         }
 
         bd.desconectar();
@@ -101,12 +102,14 @@ public class operar_diagnosticos {
                 m.setD_descripcion("");
                 m.setIdDiagnostico(0);
                 lista.add(m);
-                
+
                 while (result.next()) {
                     m = new modelo();
                     m.setD_nombre(result.getString("nombre"));
                     m.setD_descripcion(result.getString("descripcion"));
                     m.setIdDiagnostico(result.getInt("id"));
+                    m.setD_seleccionados(obtener_arraylist("resultado_seleccionado", bd, result.getInt("id")));
+                    m.setD_valores(obtener_arraylist("valor", bd, result.getInt("id")));
                     lista.add(m);
                 }
             }
@@ -125,6 +128,28 @@ public class operar_diagnosticos {
 
                 e.printStackTrace();
             }
+        }
+        return lista;
+    }
+
+    public ArrayList<String> obtener_arraylist(String campo, BDConex bd, int id) {
+
+        ArrayList<String> lista = new ArrayList<String>();
+        ResultSet result = null;
+
+        try {
+
+            result = bd.consultar("SELECT "+ campo +" FROM parametros_diagnostico WHERE id_diagnostico="+id+"");
+
+            while (result.next()) {
+                
+               lista.add(result.getString(campo)); 
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
         }
         return lista;
     }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-08-2022 a las 20:45:02
--- Versión del servidor: 5.7.36
--- Versión de PHP: 7.4.26
+-- Tiempo de generación: 07-08-2022 a las 22:50:19
+-- Versión del servidor: 5.7.31
+-- Versión de PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `diagnostico` (
   `descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `diagnostico`
 --
 
 INSERT INTO `diagnostico` (`id`, `nombre`, `descripcion`, `borrado`) VALUES
-(1, 'ANEMIA', 'Bajos globulos rojos', 0);
+(3, 'PRUEBA', '123456', 0);
 
 -- --------------------------------------------------------
 
@@ -128,64 +128,40 @@ CREATE TABLE IF NOT EXISTS `parametros_diagnostico` (
   `id_diagnostico` int(11) NOT NULL,
   `parametro` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `valor` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `importancia` tinyint(4) NOT NULL,
+  `resultado_seleccionado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_diagnostico` (`id_diagnostico`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `parametros_diagnostico`
 --
 
-INSERT INTO `parametros_diagnostico` (`id`, `id_diagnostico`, `parametro`, `valor`, `importancia`) VALUES
-(1, 1, 's1', 'ALTERADOS', 0),
-(2, 1, 's2', 'BAJOS', 0),
-(3, 1, 's3', 'ALTOS', 1),
-(4, 1, 's4', 'ALTOS', 1),
-(5, 1, 's5', 'ALTOS', 1),
-(6, 1, 's6', 'ALTOS', 1),
-(7, 1, 's7', 'ALTOS', 1),
-(8, 1, 'o1', 'TRANSPARENTE', 1),
-(9, 1, 'o2', 'AMARILLA', 1),
-(10, 1, 'o3', 'ÁCIDA', 1),
-(11, 1, 'o4', 'ALTOS', 1),
-(12, 1, 'o5', 'ALTOS', 1),
-(13, 1, 'o6', 'ALTOS', 1),
-(14, 1, 'o7', 'NEGATIVO', 1),
-(15, 1, 'o8', 'ESCASAS', 1),
-(16, 1, 'o9', 'ALTOS', 1),
-(17, 1, 'o10', 'NEGATIVO', 1),
-(18, 1, 'o11', 'NEGATIVO', 1),
-(19, 1, 'o12', 'NEGATIVO', 1),
-(20, 1, 'o13', 'NEGATIVO', 1),
-(21, 1, 'o14', 'NEGATIVO', 1),
-(22, 1, 'o15', 'NEGATIVO', 1),
-(23, 1, 'o16', 'NEGATIVO', 1),
-(24, 1, 'o17', 'NEGATIVO', 1),
-(25, 1, 's1', 'ALTOS', 1),
-(26, 1, 's2', 'ALTOS', 1),
-(27, 1, 's3', 'ALTOS', 1),
-(28, 1, 's4', 'ALTOS', 1),
-(29, 1, 's5', 'ALTOS', 1),
-(30, 1, 's6', 'ALTOS', 1),
-(31, 1, 's7', 'ALTOS', 1),
-(32, 1, 'o1', 'TRANSPARENTE', 1),
-(33, 1, 'o2', 'AMARILLA', 1),
-(34, 1, 'o3', 'ÁCIDA', 1),
-(35, 1, 'o4', 'ALTOS', 1),
-(36, 1, 'o5', 'ALTOS', 1),
-(37, 1, 'o6', 'ALTOS', 1),
-(38, 1, 'o7', 'NEGATIVO', 1),
-(39, 1, 'o8', 'ESCASAS', 1),
-(40, 1, 'o9', 'ALTOS', 1),
-(41, 1, 'o10', 'NEGATIVO', 1),
-(42, 1, 'o11', 'NEGATIVO', 1),
-(43, 1, 'o12', 'NEGATIVO', 1),
-(44, 1, 'o13', 'NEGATIVO', 1),
-(45, 1, 'o14', 'NEGATIVO', 1),
-(46, 1, 'o15', 'NEGATIVO', 1),
-(47, 1, 'o16', 'NEGATIVO', 1),
-(48, 1, 'o17', 'NEGATIVO', 1);
+INSERT INTO `parametros_diagnostico` (`id`, `id_diagnostico`, `parametro`, `valor`, `resultado_seleccionado`) VALUES
+(73, 3, 's1', 'ALTOS', 1),
+(74, 3, 's2', 'ALTOS', 1),
+(75, 3, 's3', 'ALTOS', 1),
+(76, 3, 's4', 'ALTOS', 1),
+(77, 3, 's5', 'ALTOS', 0),
+(78, 3, 's6', 'ALTOS', 0),
+(79, 3, 's7', 'ALTOS', 0),
+(80, 3, 'o1', 'TRANSPARENTE', 0),
+(81, 3, 'o2', 'AMARILLA', 0),
+(82, 3, 'o3', 'ÁCIDA', 0),
+(83, 3, 'o4', 'ALTOS', 0),
+(84, 3, 'o5', 'ALTOS', 0),
+(85, 3, 'o6', 'ALTOS', 0),
+(86, 3, 'o7', 'NEGATIVO', 0),
+(87, 3, 'o8', 'ESCASAS', 0),
+(88, 3, 'o9', 'ALTOS', 0),
+(89, 3, 'o10', 'NEGATIVO', 0),
+(90, 3, 'o11', 'NEGATIVO', 0),
+(91, 3, 'o12', 'NEGATIVO', 0),
+(92, 3, 'o13', 'NEGATIVO', 0),
+(93, 3, 'o14', 'NEGATIVO', 0),
+(94, 3, 'o15', 'NEGATIVO', 0),
+(95, 3, 'o16', 'POSITIVO', 1),
+(96, 3, 'o17', 'POSITIVO', 1);
 
 -- --------------------------------------------------------
 

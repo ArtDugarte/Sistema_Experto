@@ -1,6 +1,7 @@
 package paneles;
 
 import java.awt.Color;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
@@ -155,14 +156,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         crear.setFocusPainted(false);
         crear.setRolloverEnabled(false);
-        crear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                crearMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                crearMouseReleased(evt);
-            }
-        });
         crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearActionPerformed(evt);
@@ -208,14 +201,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificar.setFocusPainted(false);
         modificar.setRolloverEnabled(false);
-        modificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                modificarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                modificarMouseReleased(evt);
-            }
-        });
         modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarActionPerformed(evt);
@@ -232,9 +217,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         borrar.setFocusPainted(false);
         borrar.setRolloverEnabled(false);
         borrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                borrarMousePressed(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 borrarMouseReleased(evt);
             }
@@ -271,6 +253,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         general.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 640, 10));
 
         descripcion.setColumns(20);
+        descripcion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         descripcion.setRows(5);
         jScrollPane1.setViewportView(descripcion);
 
@@ -289,6 +272,11 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         listado_diagnosticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listado_diagnosticos.setFocusable(false);
         listado_diagnosticos.setName("Desplegable"); // NOI18N
+        listado_diagnosticos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listado_diagnosticosItemStateChanged(evt);
+            }
+        });
         general.add(listado_diagnosticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 640, 20));
 
         jLabel65.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -963,88 +951,86 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_b_volver_orinaActionPerformed
 
-    private void crearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_crearMousePressed
-
-    private void crearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_crearMouseReleased
-
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
+
         if (nombre.getText().equals("Nombre del Diagnostico:") && descripcion.getText().equals("")) {
+
             JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
         } else {
+
             ArrayList<String> valores = new ArrayList<String>();
-            ArrayList<Boolean> importancia = new ArrayList<Boolean>();
+            ArrayList<Boolean> resultado_seleccionado = new ArrayList<Boolean>();
             operar_diagnosticos op = new operar_diagnosticos();
-            op.Crear(nombre.getText().toUpperCase() + "", descripcion.getText());
+            int aux = op.Crear(nombre.getText().toUpperCase() + "", descripcion.getText());
             //PARAMETROS A GUARDAR
 
-            //EXAMENES DE SANGRE 
-            valores.add(cb1.getSelectedItem() + "");
-            valores.add(cb2.getSelectedItem() + "");
-            valores.add(cb3.getSelectedItem() + "");
-            valores.add(cb4.getSelectedItem() + "");
-            valores.add(cb5.getSelectedItem() + "");
-            valores.add(cb6.getSelectedItem() + "");
-            valores.add(cb7.getSelectedItem() + "");
+            if (aux > 0) {
 
-            //IMPORTANCIA DE LOS PARAMETROS
-            //SI ES 1 LA IMPORTANCIA, ES IRRELEVANTE SU VALOR     
-            importancia.add(!ck1.isSelected());
-            importancia.add(!ck2.isSelected());
-            importancia.add(!ck3.isSelected());
-            importancia.add(!ck4.isSelected());
-            importancia.add(!ck5.isSelected());
-            importancia.add(!ck6.isSelected());
-            importancia.add(!ck7.isSelected());
-            op.parametros_diagnostico_sangre(valores, importancia);
+                //EXAMENES DE SANGRE 
+                valores.add(cb1.getSelectedItem() + "");
+                valores.add(cb2.getSelectedItem() + "");
+                valores.add(cb3.getSelectedItem() + "");
+                valores.add(cb4.getSelectedItem() + "");
+                valores.add(cb5.getSelectedItem() + "");
+                valores.add(cb6.getSelectedItem() + "");
+                valores.add(cb7.getSelectedItem() + "");
 
-            //EXAMENES DE ORINA 
-            valores = new ArrayList<String>();
-            importancia = new ArrayList<Boolean>();
-            valores.add(o1.getSelectedItem() + "");
-            valores.add(o2.getSelectedItem() + "");
-            valores.add(o3.getSelectedItem() + "");
-            valores.add(o4.getSelectedItem() + "");
-            valores.add(o5.getSelectedItem() + "");
-            valores.add(o6.getSelectedItem() + "");
-            valores.add(o7.getSelectedItem() + "");
-            valores.add(o8.getSelectedItem() + "");
-            valores.add(o9.getSelectedItem() + "");
-            valores.add(o10.getSelectedItem() + "");
-            valores.add(o11.getSelectedItem() + "");
-            valores.add(o12.getSelectedItem() + "");
-            valores.add(o13.getSelectedItem() + "");
-            valores.add(o14.getSelectedItem() + "");
-            valores.add(o15.getSelectedItem() + "");
-            valores.add(o16.getSelectedItem() + "");
-            valores.add(o17.getSelectedItem() + "");
+                //IMPORTANCIA DE LOS PARAMETROS
+                //SI ES 1 LA IMPORTANCIA, ES IRRELEVANTE SU VALOR     
+                resultado_seleccionado.add(ck1.isSelected());
+                resultado_seleccionado.add(ck2.isSelected());
+                resultado_seleccionado.add(ck3.isSelected());
+                resultado_seleccionado.add(ck4.isSelected());
+                resultado_seleccionado.add(ck5.isSelected());
+                resultado_seleccionado.add(ck6.isSelected());
+                resultado_seleccionado.add(ck7.isSelected());
+                op.parametros_diagnostico_sangre(valores, resultado_seleccionado);
 
-            //IMPORTANCIA DE LOS PARAMETROS
-            //SI ES 1 LA IMPORTANCIA, ES IRRELEVANTE SU VALOR     
-            importancia.add(!ck8.isSelected());
-            importancia.add(!ck9.isSelected());
-            importancia.add(!ck10.isSelected());
-            importancia.add(!ck11.isSelected());
-            importancia.add(!ck12.isSelected());
-            importancia.add(!ck13.isSelected());
-            importancia.add(!ck14.isSelected());
-            importancia.add(!ck15.isSelected());
-            importancia.add(!ck16.isSelected());
-            importancia.add(!ck17.isSelected());
-            importancia.add(!ck18.isSelected());
-            importancia.add(!ck19.isSelected());
-            importancia.add(!ck20.isSelected());
-            importancia.add(!ck21.isSelected());
-            importancia.add(!ck22.isSelected());
-            importancia.add(!ck23.isSelected());
-            importancia.add(!ck24.isSelected());
-            op.parametros_diagnostico_orina(valores, importancia);
+                //EXAMENES DE ORINA 
+                valores = new ArrayList<String>();
+                resultado_seleccionado = new ArrayList<Boolean>();
+                valores.add(o1.getSelectedItem() + "");
+                valores.add(o2.getSelectedItem() + "");
+                valores.add(o3.getSelectedItem() + "");
+                valores.add(o4.getSelectedItem() + "");
+                valores.add(o5.getSelectedItem() + "");
+                valores.add(o6.getSelectedItem() + "");
+                valores.add(o7.getSelectedItem() + "");
+                valores.add(o8.getSelectedItem() + "");
+                valores.add(o9.getSelectedItem() + "");
+                valores.add(o10.getSelectedItem() + "");
+                valores.add(o11.getSelectedItem() + "");
+                valores.add(o12.getSelectedItem() + "");
+                valores.add(o13.getSelectedItem() + "");
+                valores.add(o14.getSelectedItem() + "");
+                valores.add(o15.getSelectedItem() + "");
+                valores.add(o16.getSelectedItem() + "");
+                valores.add(o17.getSelectedItem() + "");
 
-            iniciar();
+                //IMPORTANCIA DE LOS PARAMETROS
+                //SI ES 1 LA IMPORTANCIA, ES IRRELEVANTE SU VALOR     
+                resultado_seleccionado.add(ck8.isSelected());
+                resultado_seleccionado.add(ck9.isSelected());
+                resultado_seleccionado.add(ck10.isSelected());
+                resultado_seleccionado.add(ck11.isSelected());
+                resultado_seleccionado.add(ck12.isSelected());
+                resultado_seleccionado.add(ck13.isSelected());
+                resultado_seleccionado.add(ck14.isSelected());
+                resultado_seleccionado.add(ck15.isSelected());
+                resultado_seleccionado.add(ck16.isSelected());
+                resultado_seleccionado.add(ck17.isSelected());
+                resultado_seleccionado.add(ck18.isSelected());
+                resultado_seleccionado.add(ck19.isSelected());
+                resultado_seleccionado.add(ck20.isSelected());
+                resultado_seleccionado.add(ck21.isSelected());
+                resultado_seleccionado.add(ck22.isSelected());
+                resultado_seleccionado.add(ck23.isSelected());
+                resultado_seleccionado.add(ck24.isSelected());
+                op.parametros_diagnostico_orina(valores, resultado_seleccionado);
 
+                iniciar();
+            }
         }
     }//GEN-LAST:event_crearActionPerformed
 
@@ -1059,21 +1045,9 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         general.setVisible(false);
     }//GEN-LAST:event_b_siguiente_generalActionPerformed
 
-    private void modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarMousePressed
-
-    private void modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarMouseReleased
-
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_modificarActionPerformed
-
-    private void borrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_borrarMousePressed
 
     private void borrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrarMouseReleased
         // TODO add your handling code here:
@@ -1116,6 +1090,74 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         orina.setVisible(false);
         general.setVisible(true);
     }//GEN-LAST:event_b_volver_sangreActionPerformed
+
+    private void listado_diagnosticosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listado_diagnosticosItemStateChanged
+
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+
+            if (listado_diagnosticos.getSelectedIndex() != 0 && listado_diagnosticos.getSelectedIndex() != -1) {
+
+                nombre.setText(li.get(listado_diagnosticos.getSelectedIndex()).getD_nombre());
+                descripcion.setText(li.get(listado_diagnosticos.getSelectedIndex()).getD_descripcion());
+                ArrayList aux = li.get(listado_diagnosticos.getSelectedIndex()).getD_seleccionados();
+                
+                
+                ck1.setSelected(string_a_boolean(aux.get(0).toString()));
+                ck2.setSelected(string_a_boolean(aux.get(1).toString()));
+                ck3.setSelected(string_a_boolean(aux.get(2).toString()));
+                ck4.setSelected(string_a_boolean(aux.get(3).toString()));
+                ck5.setSelected(string_a_boolean(aux.get(4).toString()));
+                ck6.setSelected(string_a_boolean(aux.get(5).toString()));
+                ck7.setSelected(string_a_boolean(aux.get(6).toString()));
+                ck8.setSelected(string_a_boolean(aux.get(7).toString()));
+                ck9.setSelected(string_a_boolean(aux.get(8).toString()));
+                ck10.setSelected(string_a_boolean(aux.get(9).toString()));
+                ck11.setSelected(string_a_boolean(aux.get(10).toString()));
+                ck12.setSelected(string_a_boolean(aux.get(11).toString()));
+                ck13.setSelected(string_a_boolean(aux.get(12).toString()));
+                ck14.setSelected(string_a_boolean(aux.get(13).toString()));
+                ck15.setSelected(string_a_boolean(aux.get(14).toString()));
+                ck16.setSelected(string_a_boolean(aux.get(15).toString()));
+                ck17.setSelected(string_a_boolean(aux.get(16).toString()));
+                ck18.setSelected(string_a_boolean(aux.get(17).toString()));
+                ck19.setSelected(string_a_boolean(aux.get(18).toString()));
+                ck20.setSelected(string_a_boolean(aux.get(19).toString()));
+                ck21.setSelected(string_a_boolean(aux.get(20).toString()));
+                ck22.setSelected(string_a_boolean(aux.get(21).toString()));
+                ck23.setSelected(string_a_boolean(aux.get(22).toString()));
+                ck24.setSelected(string_a_boolean(aux.get(23).toString()));
+                
+                aux = null;
+                aux = li.get(listado_diagnosticos.getSelectedIndex()).getD_valores();
+                
+                cb1.setSelectedItem(aux.get(0).toString());
+                cb2.setSelectedItem(aux.get(1).toString());
+                cb3.setSelectedItem(aux.get(2).toString());
+                cb4.setSelectedItem(aux.get(3).toString());
+                cb5.setSelectedItem(aux.get(4).toString());
+                cb6.setSelectedItem(aux.get(5).toString());
+                cb7.setSelectedItem(aux.get(6).toString());
+                o1.setSelectedItem(aux.get(7).toString());
+                o2.setSelectedItem(aux.get(8).toString());
+                o3.setSelectedItem(aux.get(9).toString());
+                o4.setSelectedItem(aux.get(10).toString());
+                o5.setSelectedItem(aux.get(11).toString());
+                o6.setSelectedItem(aux.get(12).toString());
+                o7.setSelectedItem(aux.get(13).toString());
+                o8.setSelectedItem(aux.get(14).toString());
+                o9.setSelectedItem(aux.get(15).toString());
+                o10.setSelectedItem(aux.get(16).toString());
+                o11.setSelectedItem(aux.get(17).toString());
+                o12.setSelectedItem(aux.get(18).toString());
+                o13.setSelectedItem(aux.get(19).toString());
+                o14.setSelectedItem(aux.get(20).toString());
+                o15.setSelectedItem(aux.get(21).toString());
+                o16.setSelectedItem(aux.get(22).toString());
+                o17.setSelectedItem(aux.get(23).toString());
+            }
+        }
+
+    }//GEN-LAST:event_listado_diagnosticosItemStateChanged
 
     public void iniciar() {
         limpiarGeneral();
@@ -1188,9 +1230,11 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }
 
     public void listado_diagnosticos() {
+
         li = new operar_diagnosticos().diagnosticosExistentes();
 
         listado_diagnosticos.removeAllItems();
+
         if (li != null) {
 
             for (int i = 0; i < li.size(); i++) {
@@ -1200,6 +1244,12 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }
 
     ArrayList<modelo> li;
+    
+    public boolean string_a_boolean(String s){
+        
+        if(s.equals("0"))return false;
+        else return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_limpiarOrina;
     private javax.swing.JButton b_limpiarSangre;

@@ -332,7 +332,7 @@ public class modelo {
     
     //Diagnosticos
     
-    ArrayList<String> d_valores, d_importancia;
+    ArrayList<String> d_valores, d_seleccionados;
     String d_nombre, d_descripcion;
     int idDiagnostico;
 
@@ -368,12 +368,14 @@ public class modelo {
         this.d_valores = d_valores;
     }
 
-    public ArrayList<String> getD_importancia() {
-        return d_importancia;
+    public ArrayList<String> getD_seleccionados() {
+        
+        return d_seleccionados;
     }
 
-    public void setD_importancia(ArrayList<String> d_importancia) {
-        this.d_importancia = d_importancia;
+    public void setD_seleccionados(ArrayList<String> d_seleccionados) {
+        
+        this.d_seleccionados = d_seleccionados;
     }
     
 }
