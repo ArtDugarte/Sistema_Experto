@@ -300,7 +300,7 @@ public class operar_examenes {
     
     public int ModificarSangre(int id_examen, float hematies, float hemoglobina, float hematocritos, float plaquetas, float leucocitos, float segmentados, float linfocitos) {
 
-        int ultimo_id = idUltimoExamen();
+       
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0;
@@ -324,7 +324,7 @@ public class operar_examenes {
     public int ModificarOrina(int id_examen, String aspecto, String color, String reaccion, float densidad, float leucocitos, float hematies, String piocitos, String bacterias, float e_plano,
             String proteinas, String glucosa, String hemoglobina, String c_cetonico, String p_biliares, String urobilinogelen, String bilirrubina, String nitritos) {
 
-        int ultimo_id = idUltimoExamen();
+        
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0;
@@ -346,5 +346,19 @@ public class operar_examenes {
         
         bd.desconectar();
         return op;
+    }
+
+    public int cambiarEstado(int id_examen, int estado){
+    
+        BD.BDConex bd = new BD.BDConex();
+
+        int op = 0;
+
+        op = bd.ejecutar("UPDATE examenes SET estado = "+ estado +" WHERE id = "+ id_examen +"");
+               
+        
+        bd.desconectar();
+        return op;
+        
     }
 }

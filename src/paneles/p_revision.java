@@ -1005,6 +1005,7 @@ public class p_revision extends javax.swing.JPanel {
                 cedula.setEditable(false);
                 cedula.setFocusable(false);
                 lupa.setEnabled(false);
+                Enviar.setEnabled(false);
                 idExamen = m.getId_examen();
             } else {
                 JOptionPane.showMessageDialog(null, "¡Este paciente no tiene examenes pendientes! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
@@ -1015,42 +1016,53 @@ public class p_revision extends javax.swing.JPanel {
     }//GEN-LAST:event_lupaActionPerformed
 
     private void b_revisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_revisarActionPerformed
-        
+
 //Se debe descargar el examen
         operar_examenes op = new operar_examenes();
-        String archivo = op.ejecutar_archivo(idExamen);
-        
+        File directorio = new File("C:\\Resultados\\");
+        String archivo = null;
+
+        if (!directorio.exists()) {
+            if (directorio.mkdirs()) {
+                archivo = op.ejecutar_archivo(idExamen);
+            }
+        } else {
+            archivo = op.ejecutar_archivo(idExamen);
+        }
+
         try {
-            Desktop.getDesktop().open(new File("C:\\Resultados\\"+archivo+""));
-        } catch (Exception ex) {}
-        
+            Desktop.getDesktop().open(new File("C:\\Resultados\\" + archivo + ""));
+        } catch (Exception ex) {
+        }
+
         modelo m = op.BuscarExamen(idExamen);
+        Enviar.setEnabled(true);
         aux = m;
-        
-        if(m.isSangre() && m.isOrina()){
-            
+
+        if (m.isSangre() && m.isOrina()) {
+
             sangre.setVisible(true);
             principal.setVisible(false);
             orina.setVisible(false);
             b_siguienteSangre.setVisible(true);
             tipo = 1;
-            globulos_rojos.setText(m.getS_hematies()+"");
-            hemoglobina.setText(m.getS_hemoglobina()+"");
-            hematocritos.setText(m.getS_hematocritos()+"");
-            plaquetas.setText(m.getS_plaquetas()+"");
-            leucocitos.setText(m.getS_leucocitos()+"");
-            segmentados.setText(m.getS_segmentados()+"");
-            linfocitos.setText(m.getS_linfocitos()+"");
-            
+            globulos_rojos.setText(m.getS_hematies() + "");
+            hemoglobina.setText(m.getS_hemoglobina() + "");
+            hematocritos.setText(m.getS_hematocritos() + "");
+            plaquetas.setText(m.getS_plaquetas() + "");
+            leucocitos.setText(m.getS_leucocitos() + "");
+            segmentados.setText(m.getS_segmentados() + "");
+            linfocitos.setText(m.getS_linfocitos() + "");
+
             aspecto.setSelectedItem(m.getO_aspecto());
             color.setSelectedItem(m.getO_color());
             reaccion.setSelectedItem(m.getO_reaccion());
-            densidad.setText(m.getO_densidad()+"");
-            leucocitosorina.setText(m.getO_leucocitos()+"");
-            hematies.setText(m.getO_hematies()+"");
+            densidad.setText(m.getO_densidad() + "");
+            leucocitosorina.setText(m.getO_leucocitos() + "");
+            hematies.setText(m.getO_hematies() + "");
             piocitos.setSelectedItem(m.getO_piocitos());
             bacterias.setSelectedItem(m.getO_bacterias());
-            eplano.setText(m.getO_eplano()+"");
+            eplano.setText(m.getO_eplano() + "");
             proteinas.setSelectedItem(m.getO_proteinas());
             glucosa.setSelectedItem(m.getO_glucosa());
             ccetonico.setSelectedItem(m.getO_cetonico());
@@ -1059,25 +1071,24 @@ public class p_revision extends javax.swing.JPanel {
             bilirrubina.setSelectedItem(m.getO_bilirrubina());
             nitritos.setSelectedItem(m.getO_nitritos());
             hemoglobina_orina.setSelectedItem(m.getO_hemoglobina());
-            
-        }else if(m.isSangre()){
-            
+
+        } else if (m.isSangre()) {
+
             sangre.setVisible(true);
             principal.setVisible(false);
             orina.setVisible(false);
             b_siguienteSangre.setVisible(false);
             tipo = 2;
-            globulos_rojos.setText(m.getS_hematies()+"");
-            hemoglobina.setText(m.getS_hemoglobina()+"");
-            hematocritos.setText(m.getS_hematocritos()+"");
-            plaquetas.setText(m.getS_plaquetas()+"");
-            leucocitos.setText(m.getS_leucocitos()+"");
-            segmentados.setText(m.getS_segmentados()+"");
-            linfocitos.setText(m.getS_linfocitos()+"");
-            
-            
-        }else{
-            
+            globulos_rojos.setText(m.getS_hematies() + "");
+            hemoglobina.setText(m.getS_hemoglobina() + "");
+            hematocritos.setText(m.getS_hematocritos() + "");
+            plaquetas.setText(m.getS_plaquetas() + "");
+            leucocitos.setText(m.getS_leucocitos() + "");
+            segmentados.setText(m.getS_segmentados() + "");
+            linfocitos.setText(m.getS_linfocitos() + "");
+
+        } else {
+
             sangre.setVisible(false);
             principal.setVisible(false);
             orina.setVisible(true);
@@ -1085,12 +1096,12 @@ public class p_revision extends javax.swing.JPanel {
             aspecto.setSelectedItem(m.getO_aspecto());
             color.setSelectedItem(m.getO_color());
             reaccion.setSelectedItem(m.getO_reaccion());
-            densidad.setText(m.getO_densidad()+"");
-            leucocitosorina.setText(m.getO_leucocitos()+"");
-            hematies.setText(m.getO_hematies()+"");
+            densidad.setText(m.getO_densidad() + "");
+            leucocitosorina.setText(m.getO_leucocitos() + "");
+            hematies.setText(m.getO_hematies() + "");
             piocitos.setSelectedItem(m.getO_piocitos());
             bacterias.setSelectedItem(m.getO_bacterias());
-            eplano.setText(m.getO_eplano()+"");
+            eplano.setText(m.getO_eplano() + "");
             proteinas.setSelectedItem(m.getO_proteinas());
             glucosa.setSelectedItem(m.getO_glucosa());
             ccetonico.setSelectedItem(m.getO_cetonico());
@@ -1124,16 +1135,16 @@ public class p_revision extends javax.swing.JPanel {
     }//GEN-LAST:event_b_limpiarSangreMouseReleased
 
     private void b_limpiarSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarSangreActionPerformed
-        
+
         modelo m = aux;
-        
-        globulos_rojos.setText(m.getS_hematies()+"");
-        hemoglobina.setText(m.getS_hemoglobina()+"");
-        hematocritos.setText(m.getS_hematocritos()+"");
-        plaquetas.setText(m.getS_plaquetas()+"");
-        leucocitos.setText(m.getS_leucocitos()+"");
-        segmentados.setText(m.getS_segmentados()+"");
-        linfocitos.setText(m.getS_linfocitos()+"");
+
+        globulos_rojos.setText(m.getS_hematies() + "");
+        hemoglobina.setText(m.getS_hemoglobina() + "");
+        hematocritos.setText(m.getS_hematocritos() + "");
+        plaquetas.setText(m.getS_plaquetas() + "");
+        leucocitos.setText(m.getS_leucocitos() + "");
+        segmentados.setText(m.getS_segmentados() + "");
+        linfocitos.setText(m.getS_linfocitos() + "");
     }//GEN-LAST:event_b_limpiarSangreActionPerformed
 
     private void b_volver_sangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_sangreActionPerformed
@@ -1144,63 +1155,62 @@ public class p_revision extends javax.swing.JPanel {
     }//GEN-LAST:event_b_volver_sangreActionPerformed
 
     private void b_ModificarOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ModificarOrinaActionPerformed
-       
+
         int op = new operar_examenes().ModificarOrina(
-            
-            idExamen, 
-            aspecto.getSelectedItem()+"", 
-            color.getSelectedItem()+"", 
-            reaccion.getSelectedItem()+"", 
-            Float.parseFloat(densidad.getText()), 
-            Float.parseFloat(leucocitosorina.getText()), 
-            Float.parseFloat(hematies.getText()), 
-            piocitos.getSelectedItem()+"",
-            bacterias.getSelectedItem()+"",
-            Float.parseFloat(eplano.getText()), 
-            proteinas.getSelectedItem()+"",
-            glucosa.getSelectedItem()+"",
-            hemoglobina_orina.getSelectedItem()+"",
-            ccetonico.getSelectedItem()+"",
-            biliares.getSelectedItem()+"",
-            urobilinogen.getSelectedItem()+"",
-            bilirrubina.getSelectedItem()+"",
-            nitritos.getSelectedItem()+""   
+                idExamen,
+                aspecto.getSelectedItem() + "",
+                color.getSelectedItem() + "",
+                reaccion.getSelectedItem() + "",
+                Float.parseFloat(densidad.getText()),
+                Float.parseFloat(leucocitosorina.getText()),
+                Float.parseFloat(hematies.getText()),
+                piocitos.getSelectedItem() + "",
+                bacterias.getSelectedItem() + "",
+                Float.parseFloat(eplano.getText()),
+                proteinas.getSelectedItem() + "",
+                glucosa.getSelectedItem() + "",
+                hemoglobina_orina.getSelectedItem() + "",
+                ccetonico.getSelectedItem() + "",
+                biliares.getSelectedItem() + "",
+                urobilinogen.getSelectedItem() + "",
+                bilirrubina.getSelectedItem() + "",
+                nitritos.getSelectedItem() + ""
         );
-        
-        if(op > 0){
-            
-            aux.setO_aspecto(aspecto.getSelectedItem()+"");
-            aux.setO_color(color.getSelectedItem()+"");
-            aux.setO_reaccion(reaccion.getSelectedItem()+"");
+
+        if (op > 0) {
+
+            aux.setO_aspecto(aspecto.getSelectedItem() + "");
+            aux.setO_color(color.getSelectedItem() + "");
+            aux.setO_reaccion(reaccion.getSelectedItem() + "");
             aux.setO_densidad(Float.parseFloat(densidad.getText()));
             aux.setO_leucocitos(Float.parseFloat(leucocitosorina.getText()));
             aux.setO_hematies(Float.parseFloat(hematies.getText()));
-            aux.setO_piocitos(piocitos.getSelectedItem()+"");
-            aux.setO_bacterias(bacterias.getSelectedItem()+"");
+            aux.setO_piocitos(piocitos.getSelectedItem() + "");
+            aux.setO_bacterias(bacterias.getSelectedItem() + "");
             aux.setO_eplano(Float.parseFloat(eplano.getText()));
-            aux.setO_proteinas(proteinas.getSelectedItem()+"");
-            aux.setO_glucosa(glucosa.getSelectedItem()+"");
-            aux.setO_hemoglobina(hemoglobina_orina.getSelectedItem()+"");
-            aux.setO_cetonico(ccetonico.getSelectedItem()+"");
-            aux.setO_pbiliares(biliares.getSelectedItem()+"");
-            aux.setO_urobilinogelen(urobilinogen.getSelectedItem()+"");
-            aux.setO_bilirrubina(bilirrubina.getSelectedItem()+"");
-            aux.setO_nitritos(nitritos.getSelectedItem()+"");
+            aux.setO_proteinas(proteinas.getSelectedItem() + "");
+            aux.setO_glucosa(glucosa.getSelectedItem() + "");
+            aux.setO_hemoglobina(hemoglobina_orina.getSelectedItem() + "");
+            aux.setO_cetonico(ccetonico.getSelectedItem() + "");
+            aux.setO_pbiliares(biliares.getSelectedItem() + "");
+            aux.setO_urobilinogelen(urobilinogen.getSelectedItem() + "");
+            aux.setO_bilirrubina(bilirrubina.getSelectedItem() + "");
+            aux.setO_nitritos(nitritos.getSelectedItem() + "");
         }
     }//GEN-LAST:event_b_ModificarOrinaActionPerformed
 
     private void b_limpiarOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarOrinaActionPerformed
-        
+
         modelo m = aux;
         aspecto.setSelectedItem(m.getO_aspecto());
         color.setSelectedItem(m.getO_color());
         reaccion.setSelectedItem(m.getO_reaccion());
-        densidad.setText(m.getO_densidad()+"");
-        leucocitosorina.setText(m.getO_leucocitos()+"");
-        hematies.setText(m.getO_hematies()+"");
+        densidad.setText(m.getO_densidad() + "");
+        leucocitosorina.setText(m.getO_leucocitos() + "");
+        hematies.setText(m.getO_hematies() + "");
         piocitos.setSelectedItem(m.getO_piocitos());
         bacterias.setSelectedItem(m.getO_bacterias());
-        eplano.setText(m.getO_eplano()+"");
+        eplano.setText(m.getO_eplano() + "");
         proteinas.setSelectedItem(m.getO_proteinas());
         glucosa.setSelectedItem(m.getO_glucosa());
         ccetonico.setSelectedItem(m.getO_cetonico());
@@ -1212,12 +1222,11 @@ public class p_revision extends javax.swing.JPanel {
 
     private void b_volver_orinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_orinaActionPerformed
 
-        if(tipo == 1){
+        if (tipo == 1) {
             principal.setVisible(false);
             orina.setVisible(false);
             sangre.setVisible(true);
-        }
-        else{
+        } else {
             principal.setVisible(true);
             orina.setVisible(false);
             sangre.setVisible(false);
@@ -1225,21 +1234,20 @@ public class p_revision extends javax.swing.JPanel {
     }//GEN-LAST:event_b_volver_orinaActionPerformed
 
     private void b_ModificarSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ModificarSangreActionPerformed
-        
+
         int op = new operar_examenes().ModificarSangre(
-                
-            idExamen, 
-            Float.parseFloat(globulos_rojos.getText()), 
-            Float.parseFloat(hemoglobina.getText()), 
-            Float.parseFloat(hematocritos.getText()), 
-            Float.parseFloat(plaquetas.getText()), 
-            Float.parseFloat(leucocitos.getText()), 
-            Float.parseFloat(segmentados.getText()), 
-            Float.parseFloat(linfocitos.getText())
+                idExamen,
+                Float.parseFloat(globulos_rojos.getText()),
+                Float.parseFloat(hemoglobina.getText()),
+                Float.parseFloat(hematocritos.getText()),
+                Float.parseFloat(plaquetas.getText()),
+                Float.parseFloat(leucocitos.getText()),
+                Float.parseFloat(segmentados.getText()),
+                Float.parseFloat(linfocitos.getText())
         );
-        
-        if(op > 0){
-            
+
+        if (op > 0) {
+
             aux.setS_hematies(Float.parseFloat(globulos_rojos.getText()));
             aux.setS_hemoglobina(Float.parseFloat(hemoglobina.getText()));
             aux.setS_hematocritos(Float.parseFloat(hematocritos.getText()));
@@ -1248,15 +1256,25 @@ public class p_revision extends javax.swing.JPanel {
             aux.setS_segmentados(Float.parseFloat(segmentados.getText()));
             aux.setS_linfocitos(Float.parseFloat(linfocitos.getText()));
         }
-        
-        if(tipo == 2){
-            
-            
+
+        if (tipo == 2) {
+
         }
     }//GEN-LAST:event_b_ModificarSangreActionPerformed
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
-        // TODO add your handling code here:
+        int op = new operar_examenes().cambiarEstado(idExamen, 1);
+         if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Envio Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Error al Enviar! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+         
+         limpiar_campos();
+         actualizar_lista();
     }//GEN-LAST:event_EnviarActionPerformed
 
     //Métodos y Variables
@@ -1290,13 +1308,15 @@ public class p_revision extends javax.swing.JPanel {
         cedula.setEditable(true);
         cedula.setFocusable(true);
         lupa.setEnabled(true);
+        Enviar.setEnabled(false);
         idExamen = 0;
+        aux=null;
     }
 
     int idExamen = 0, tipo = 0;
-    
+
     modelo aux = null;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Enviar;
     private javax.swing.JTextField apellidos;

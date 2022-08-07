@@ -1,5 +1,7 @@
 package modelos;
 
+import java.util.ArrayList;
+
 public class modelo {
      
     // Usuarios
@@ -328,5 +330,50 @@ public class modelo {
         this.o_eplano = o_eplano;
     }
     
+    //Diagnosticos
+    
+    ArrayList<String> d_valores, d_importancia;
+    String d_nombre, d_descripcion;
+    int idDiagnostico;
+
+    public int getIdDiagnostico() {
+        return idDiagnostico;
+    }
+
+    public void setIdDiagnostico(int idDiagnostico) {
+        this.idDiagnostico = idDiagnostico;
+    }
+
+    public String getD_nombre() {
+        return d_nombre;
+    }
+
+    public void setD_nombre(String d_nombre) {
+        this.d_nombre = d_nombre;
+    }
+
+    public String getD_descripcion() {
+        return d_descripcion;
+    }
+
+    public void setD_descripcion(String d_descripcion) {
+        this.d_descripcion = d_descripcion;
+    }
+
+    public ArrayList<String> getD_valores() {
+        return d_valores;
+    }
+
+    public void setD_valores(ArrayList<String> d_valores) {
+        this.d_valores = d_valores;
+    }
+
+    public ArrayList<String> getD_importancia() {
+        return d_importancia;
+    }
+
+    public void setD_importancia(ArrayList<String> d_importancia) {
+        this.d_importancia = d_importancia;
+    }
     
 }
