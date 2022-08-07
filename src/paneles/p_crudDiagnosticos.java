@@ -19,6 +19,20 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        general = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        crear = new javax.swing.JButton();
+        limpiar_general = new javax.swing.JButton();
+        b_siguiente_general = new javax.swing.JButton();
+        modificar = new javax.swing.JButton();
+        borrar = new javax.swing.JButton();
+        nombre = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcion = new javax.swing.JTextArea();
+        jLabel60 = new javax.swing.JLabel();
+        listado_diagnosticos = new javax.swing.JComboBox<>();
+        jLabel65 = new javax.swing.JLabel();
         sangre = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -51,6 +65,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         ck5 = new javax.swing.JCheckBox();
         ck6 = new javax.swing.JCheckBox();
         ck7 = new javax.swing.JCheckBox();
+        b_volver_sangre = new javax.swing.JButton();
         orina = new javax.swing.JPanel();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
@@ -117,27 +132,171 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         ck22 = new javax.swing.JCheckBox();
         ck23 = new javax.swing.JCheckBox();
         ck24 = new javax.swing.JCheckBox();
-        general = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        guardar = new javax.swing.JButton();
-        limpiar_general = new javax.swing.JButton();
-        b_volver_general = new javax.swing.JButton();
-        modificar = new javax.swing.JButton();
-        borrar = new javax.swing.JButton();
-        nombre = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        descripcion = new javax.swing.JTextArea();
-        jLabel60 = new javax.swing.JLabel();
-        inclusion = new javax.swing.JCheckBox();
-        listado_diagnosticos = new javax.swing.JComboBox<>();
-        jLabel65 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
         setMinimumSize(new java.awt.Dimension(680, 540));
         setName("Panel Resultados"); // NOI18N
         setLayout(new java.awt.CardLayout());
+
+        general.setOpaque(false);
+        general.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel43.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel43.setText("Detalles Generales del Diagnostico");
+        general.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
+        crear.setBackground(new java.awt.Color(103, 174, 202));
+        crear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        crear.setForeground(new java.awt.Color(255, 255, 255));
+        crear.setText("Crear");
+        crear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        crear.setFocusPainted(false);
+        crear.setRolloverEnabled(false);
+        crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                crearMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                crearMouseReleased(evt);
+            }
+        });
+        crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearActionPerformed(evt);
+            }
+        });
+        general.add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
+
+        limpiar_general.setBackground(new java.awt.Color(103, 174, 202));
+        limpiar_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        limpiar_general.setForeground(new java.awt.Color(255, 255, 255));
+        limpiar_general.setText("Limpiar");
+        limpiar_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        limpiar_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiar_general.setFocusPainted(false);
+        limpiar_general.setRolloverEnabled(false);
+        limpiar_general.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiar_generalActionPerformed(evt);
+            }
+        });
+        general.add(limpiar_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 100, 30));
+
+        b_siguiente_general.setBackground(new java.awt.Color(103, 174, 202));
+        b_siguiente_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_siguiente_general.setForeground(new java.awt.Color(255, 255, 255));
+        b_siguiente_general.setText("Siguiente");
+        b_siguiente_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_siguiente_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_siguiente_general.setFocusPainted(false);
+        b_siguiente_general.setRolloverEnabled(false);
+        b_siguiente_general.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_siguiente_generalActionPerformed(evt);
+            }
+        });
+        general.add(b_siguiente_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
+
+        modificar.setBackground(new java.awt.Color(103, 174, 202));
+        modificar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        modificar.setForeground(new java.awt.Color(255, 255, 255));
+        modificar.setText("Modificar");
+        modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificar.setFocusPainted(false);
+        modificar.setRolloverEnabled(false);
+        modificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                modificarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                modificarMouseReleased(evt);
+            }
+        });
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        general.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 100, 30));
+
+        borrar.setBackground(new java.awt.Color(103, 174, 202));
+        borrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        borrar.setForeground(new java.awt.Color(255, 255, 255));
+        borrar.setText("Borrar");
+        borrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        borrar.setFocusPainted(false);
+        borrar.setRolloverEnabled(false);
+        borrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                borrarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                borrarMouseReleased(evt);
+            }
+        });
+        borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarActionPerformed(evt);
+            }
+        });
+        general.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 100, 30));
+
+        nombre.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(102, 102, 102));
+        nombre.setText("Nombre del Diagnostico:");
+        nombre.setBorder(null);
+        nombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nombreFocusLost(evt);
+            }
+        });
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+        general.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 640, 30));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        general.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 640, 10));
+
+        descripcion.setColumns(20);
+        descripcion.setRows(5);
+        jScrollPane1.setViewportView(descripcion);
+
+        general.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 640, -1));
+
+        jLabel60.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel60.setText("Diagnosticos Registrados:");
+        general.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 20));
+
+        listado_diagnosticos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        listado_diagnosticos.setForeground(new java.awt.Color(102, 102, 102));
+        listado_diagnosticos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D1", "D2", "D3", "D4" }));
+        listado_diagnosticos.setSelectedItem("ÁCIDA");
+        listado_diagnosticos.setBorder(null);
+        listado_diagnosticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listado_diagnosticos.setFocusable(false);
+        listado_diagnosticos.setName("Desplegable"); // NOI18N
+        general.add(listado_diagnosticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 640, 20));
+
+        jLabel65.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel65.setText("Descripción del Diagnostico:");
+        general.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 20));
+
+        add(general, "card2");
 
         sangre.setOpaque(false);
         sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -342,6 +501,21 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         sangre.add(ck6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
         sangre.add(ck7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
 
+        b_volver_sangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_volver_sangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_volver_sangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_volver_sangre.setText("Volver");
+        b_volver_sangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_volver_sangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_volver_sangre.setFocusPainted(false);
+        b_volver_sangre.setRolloverEnabled(false);
+        b_volver_sangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_volver_sangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
+
         add(sangre, "card2");
 
         orina.setOpaque(false);
@@ -364,7 +538,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         b_siguienteOrina.setBackground(new java.awt.Color(103, 174, 202));
         b_siguienteOrina.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         b_siguienteOrina.setForeground(new java.awt.Color(255, 255, 255));
-        b_siguienteOrina.setText("Siguiente");
+        b_siguienteOrina.setText("Volver al Panel General");
         b_siguienteOrina.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
         b_siguienteOrina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_siguienteOrina.setFocusPainted(false);
@@ -382,7 +556,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
                 b_siguienteOrinaActionPerformed(evt);
             }
         });
-        orina.add(b_siguienteOrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
+        orina.add(b_siguienteOrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 230, 30));
 
         b_limpiarOrina.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiarOrina.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -405,7 +579,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
                 b_limpiarOrinaActionPerformed(evt);
             }
         });
-        orina.add(b_limpiarOrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 500, 100, 30));
+        orina.add(b_limpiarOrina, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 100, 30));
 
         jLabel44.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(102, 102, 102));
@@ -734,170 +908,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         add(orina, "card2");
 
-        general.setOpaque(false);
-        general.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel43.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel43.setText("Detalles Generales del Diagnostico");
-        general.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
-
-        guardar.setBackground(new java.awt.Color(103, 174, 202));
-        guardar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        guardar.setForeground(new java.awt.Color(255, 255, 255));
-        guardar.setText("Guardar");
-        guardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        guardar.setFocusPainted(false);
-        guardar.setRolloverEnabled(false);
-        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                guardarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                guardarMouseReleased(evt);
-            }
-        });
-        guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarActionPerformed(evt);
-            }
-        });
-        general.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, 100, 30));
-
-        limpiar_general.setBackground(new java.awt.Color(103, 174, 202));
-        limpiar_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        limpiar_general.setForeground(new java.awt.Color(255, 255, 255));
-        limpiar_general.setText("Limpiar");
-        limpiar_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        limpiar_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        limpiar_general.setFocusPainted(false);
-        limpiar_general.setRolloverEnabled(false);
-        limpiar_general.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiar_generalActionPerformed(evt);
-            }
-        });
-        general.add(limpiar_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 100, 30));
-
-        b_volver_general.setBackground(new java.awt.Color(103, 174, 202));
-        b_volver_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_volver_general.setForeground(new java.awt.Color(255, 255, 255));
-        b_volver_general.setText("Volver");
-        b_volver_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_volver_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_volver_general.setFocusPainted(false);
-        b_volver_general.setRolloverEnabled(false);
-        b_volver_general.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_volver_generalActionPerformed(evt);
-            }
-        });
-        general.add(b_volver_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
-
-        modificar.setBackground(new java.awt.Color(103, 174, 202));
-        modificar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        modificar.setForeground(new java.awt.Color(255, 255, 255));
-        modificar.setText("Modificar");
-        modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        modificar.setFocusPainted(false);
-        modificar.setRolloverEnabled(false);
-        modificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                modificarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                modificarMouseReleased(evt);
-            }
-        });
-        modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
-            }
-        });
-        general.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 100, 30));
-
-        borrar.setBackground(new java.awt.Color(103, 174, 202));
-        borrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        borrar.setForeground(new java.awt.Color(255, 255, 255));
-        borrar.setText("Borrar");
-        borrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        borrar.setFocusPainted(false);
-        borrar.setRolloverEnabled(false);
-        borrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                borrarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                borrarMouseReleased(evt);
-            }
-        });
-        borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrarActionPerformed(evt);
-            }
-        });
-        general.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 100, 30));
-
-        nombre.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        nombre.setForeground(new java.awt.Color(102, 102, 102));
-        nombre.setText("Nombre del Diagnostico:");
-        nombre.setBorder(null);
-        nombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        nombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                nombreFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                nombreFocusLost(evt);
-            }
-        });
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
-        general.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 640, 30));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        general.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 640, 10));
-
-        descripcion.setColumns(20);
-        descripcion.setRows(5);
-        jScrollPane1.setViewportView(descripcion);
-
-        general.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 640, -1));
-
-        jLabel60.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel60.setText("Diagnosticos Registrados:");
-        general.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 20));
-
-        inclusion.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        inclusion.setForeground(new java.awt.Color(102, 102, 102));
-        inclusion.setText("Incluir parametros no seleccionados al diagnostico");
-        general.add(inclusion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 640, -1));
-
-        listado_diagnosticos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        listado_diagnosticos.setForeground(new java.awt.Color(102, 102, 102));
-        listado_diagnosticos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D1", "D2", "D3", "D4" }));
-        listado_diagnosticos.setSelectedItem("ÁCIDA");
-        listado_diagnosticos.setBorder(null);
-        listado_diagnosticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        listado_diagnosticos.setFocusable(false);
-        listado_diagnosticos.setName("Desplegable"); // NOI18N
-        general.add(listado_diagnosticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 640, 20));
-
-        jLabel65.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel65.setText("Descripción del Diagnostico:");
-        general.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 20));
-
-        add(general, "card2");
-
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -934,20 +944,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         limpiarSangre();
     }//GEN-LAST:event_b_limpiarSangreActionPerformed
 
-    private void b_siguienteOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMousePressed
-
-    }//GEN-LAST:event_b_siguienteOrinaMousePressed
-
-    private void b_siguienteOrinaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_siguienteOrinaMouseReleased
-
-    private void b_siguienteOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguienteOrinaActionPerformed
-        sangre.setVisible(false);
-        orina.setVisible(false);
-        general.setVisible(true);
-    }//GEN-LAST:event_b_siguienteOrinaActionPerformed
-
     private void b_limpiarOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarOrinaMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_b_limpiarOrinaMousePressed
@@ -967,15 +963,15 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_b_volver_orinaActionPerformed
 
-    private void guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMousePressed
+    private void crearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_guardarMousePressed
+    }//GEN-LAST:event_crearMousePressed
 
-    private void guardarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseReleased
+    private void crearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_guardarMouseReleased
+    }//GEN-LAST:event_crearMouseReleased
 
-    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+    private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
         if (nombre.getText().equals("Nombre del Diagnostico:") && descripcion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -996,19 +992,14 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
             //IMPORTANCIA DE LOS PARAMETROS
             //SI ES 1 LA IMPORTANCIA, ES IRRELEVANTE SU VALOR     
-            if (inclusion.isSelected()) {
-
-                op.parametros_diagnostico_sangre(valores, 0);
-            } else {
-                importancia.add(!ck1.isSelected());
-                importancia.add(!ck2.isSelected());
-                importancia.add(!ck3.isSelected());
-                importancia.add(!ck4.isSelected());
-                importancia.add(!ck5.isSelected());
-                importancia.add(!ck6.isSelected());
-                importancia.add(!ck7.isSelected());
-                op.parametros_diagnostico_sangre(valores, importancia);
-            }
+            importancia.add(!ck1.isSelected());
+            importancia.add(!ck2.isSelected());
+            importancia.add(!ck3.isSelected());
+            importancia.add(!ck4.isSelected());
+            importancia.add(!ck5.isSelected());
+            importancia.add(!ck6.isSelected());
+            importancia.add(!ck7.isSelected());
+            op.parametros_diagnostico_sangre(valores, importancia);
 
             //EXAMENES DE ORINA 
             valores = new ArrayList<String>();
@@ -1033,45 +1024,40 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
             //IMPORTANCIA DE LOS PARAMETROS
             //SI ES 1 LA IMPORTANCIA, ES IRRELEVANTE SU VALOR     
-            if (inclusion.isSelected()) {
-
-                op.parametros_diagnostico_orina(valores, 0);
-            } else {
-                importancia.add(!ck8.isSelected());
-                importancia.add(!ck9.isSelected());
-                importancia.add(!ck10.isSelected());
-                importancia.add(!ck11.isSelected());
-                importancia.add(!ck12.isSelected());
-                importancia.add(!ck13.isSelected());
-                importancia.add(!ck14.isSelected());
-                importancia.add(!ck15.isSelected());
-                importancia.add(!ck16.isSelected());
-                importancia.add(!ck17.isSelected());
-                importancia.add(!ck18.isSelected());
-                importancia.add(!ck19.isSelected());
-                importancia.add(!ck20.isSelected());
-                importancia.add(!ck21.isSelected());
-                importancia.add(!ck22.isSelected());
-                importancia.add(!ck23.isSelected());
-                importancia.add(!ck24.isSelected());
-                op.parametros_diagnostico_orina(valores, importancia);
-            }
+            importancia.add(!ck8.isSelected());
+            importancia.add(!ck9.isSelected());
+            importancia.add(!ck10.isSelected());
+            importancia.add(!ck11.isSelected());
+            importancia.add(!ck12.isSelected());
+            importancia.add(!ck13.isSelected());
+            importancia.add(!ck14.isSelected());
+            importancia.add(!ck15.isSelected());
+            importancia.add(!ck16.isSelected());
+            importancia.add(!ck17.isSelected());
+            importancia.add(!ck18.isSelected());
+            importancia.add(!ck19.isSelected());
+            importancia.add(!ck20.isSelected());
+            importancia.add(!ck21.isSelected());
+            importancia.add(!ck22.isSelected());
+            importancia.add(!ck23.isSelected());
+            importancia.add(!ck24.isSelected());
+            op.parametros_diagnostico_orina(valores, importancia);
 
             iniciar();
 
         }
-    }//GEN-LAST:event_guardarActionPerformed
+    }//GEN-LAST:event_crearActionPerformed
 
     private void limpiar_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiar_generalActionPerformed
         limpiarGeneral();
 
     }//GEN-LAST:event_limpiar_generalActionPerformed
 
-    private void b_volver_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_generalActionPerformed
-        sangre.setVisible(false);
-        orina.setVisible(true);
+    private void b_siguiente_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguiente_generalActionPerformed
+        sangre.setVisible(true);
+        orina.setVisible(false);
         general.setVisible(false);
-    }//GEN-LAST:event_b_volver_generalActionPerformed
+    }//GEN-LAST:event_b_siguiente_generalActionPerformed
 
     private void modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarMousePressed
         // TODO add your handling code here:
@@ -1111,21 +1097,40 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
 
+    private void b_siguienteOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguienteOrinaActionPerformed
+        sangre.setVisible(false);
+        orina.setVisible(false);
+        general.setVisible(true);
+    }//GEN-LAST:event_b_siguienteOrinaActionPerformed
+
+    private void b_siguienteOrinaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_siguienteOrinaMouseReleased
+
+    private void b_siguienteOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMousePressed
+
+    }//GEN-LAST:event_b_siguienteOrinaMousePressed
+
+    private void b_volver_sangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_sangreActionPerformed
+        sangre.setVisible(false);
+        orina.setVisible(false);
+        general.setVisible(true);
+    }//GEN-LAST:event_b_volver_sangreActionPerformed
+
     public void iniciar() {
         limpiarGeneral();
         limpiarOrina();
         limpiarSangre();
         listado_diagnosticos();
-        sangre.setVisible(true);
+        sangre.setVisible(false);
         orina.setVisible(false);
-        general.setVisible(false);
+        general.setVisible(true);
     }
 
     public void limpiarGeneral() {
         listado_diagnosticos.setSelectedIndex(0);
         nombre.setText("Nombre del Diagnostico:");
         descripcion.setText("");
-        inclusion.setSelected(false);
     }
 
     public void limpiarSangre() {
@@ -1184,10 +1189,10 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     public void listado_diagnosticos() {
         li = new operar_diagnosticos().diagnosticosExistentes();
-   
+
         listado_diagnosticos.removeAllItems();
         if (li != null) {
-            
+
             for (int i = 0; i < li.size(); i++) {
                 listado_diagnosticos.addItem(li.get(i).getD_nombre());
             }
@@ -1200,8 +1205,9 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     private javax.swing.JButton b_limpiarSangre;
     private javax.swing.JButton b_siguienteOrina;
     private javax.swing.JButton b_siguienteSangre;
-    private javax.swing.JButton b_volver_general;
+    private javax.swing.JButton b_siguiente_general;
     private javax.swing.JButton b_volver_orina;
+    private javax.swing.JButton b_volver_sangre;
     private javax.swing.JButton borrar;
     private javax.swing.JComboBox<String> cb1;
     private javax.swing.JComboBox<String> cb2;
@@ -1234,10 +1240,9 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     private javax.swing.JCheckBox ck7;
     private javax.swing.JCheckBox ck8;
     private javax.swing.JCheckBox ck9;
+    private javax.swing.JButton crear;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JPanel general;
-    private javax.swing.JButton guardar;
-    private javax.swing.JCheckBox inclusion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

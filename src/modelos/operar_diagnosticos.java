@@ -53,20 +53,6 @@ public class operar_diagnosticos {
         bd.desconectar();
     }
 
-    public void parametros_diagnostico_sangre(ArrayList<String> valores, int importancia) { //Cuando todos los valores importan
-
-        int op = 0, id;
-        id = idUltimoDiagnostico();;
-        BD.BDConex bd = new BD.BDConex();
-        for (int i = 0; i < valores.size(); i++) {
-
-            op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, importancia) VALUES "
-                    + "(" + id + ",'s" + (i + 1) + "','" + valores.get(i) + "', 0)");
-        }
-
-        bd.desconectar();
-    }
-
     public void parametros_diagnostico_sangre(ArrayList<String> valores, ArrayList<Boolean> importancia) { //Cuando algunos valores no importan
 
         int op = 0, id;
@@ -76,20 +62,6 @@ public class operar_diagnosticos {
 
             op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, importancia) VALUES "
                     + "(" + id + ",'s" + (i + 1) + "','" + valores.get(i) + "', " + importancia.get(i) + ")");
-        }
-
-        bd.desconectar();
-    }
-
-    public void parametros_diagnostico_orina(ArrayList<String> valores, int importancia) { //Cuando todos los valores importan
-
-        int op = 0, id;
-        id = idUltimoDiagnostico();;
-        BD.BDConex bd = new BD.BDConex();
-        for (int i = 0; i < valores.size(); i++) {
-
-            op = bd.ejecutar("INSERT INTO parametros_diagnostico(id_diagnostico, parametro, valor, importancia) VALUES "
-                    + "(" + id + ",'o" + (i + 1) + "','" + valores.get(i) + "', 0)");
         }
 
         bd.desconectar();
@@ -125,7 +97,7 @@ public class operar_diagnosticos {
 
                 result = bd.consultar("SELECT * FROM diagnostico WHERE borrado=0");
                 m = new modelo();
-                m.setD_nombre("--DIAGNOSTICOS--");
+                m.setD_nombre("--DIAGNOSTICOS EXISTENTES--");
                 m.setD_descripcion("");
                 m.setIdDiagnostico(0);
                 lista.add(m);
