@@ -5,10 +5,8 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import modelos.modelo;
 import modelos.operar_diagnosticos;
-import modelos.operar_examenes;
 
 public class p_crudDiagnosticos extends javax.swing.JPanel {
 
@@ -1046,7 +1044,75 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_b_siguiente_generalActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        // TODO add your handling code here:
+        if (!listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
+            ArrayList<String> valores = new ArrayList<String>();
+            ArrayList<Boolean> resultado_seleccionado = new ArrayList<Boolean>();
+            operar_diagnosticos op = new operar_diagnosticos();
+
+            //EXAMENES DE SANGRE 
+            valores.add(cb1.getSelectedItem() + "");
+            valores.add(cb2.getSelectedItem() + "");
+            valores.add(cb3.getSelectedItem() + "");
+            valores.add(cb4.getSelectedItem() + "");
+            valores.add(cb5.getSelectedItem() + "");
+            valores.add(cb6.getSelectedItem() + "");
+            valores.add(cb7.getSelectedItem() + "");
+
+            //IMPORTANCIA DE LOS PARAMETROS   
+            resultado_seleccionado.add(ck1.isSelected());
+            resultado_seleccionado.add(ck2.isSelected());
+            resultado_seleccionado.add(ck3.isSelected());
+            resultado_seleccionado.add(ck4.isSelected());
+            resultado_seleccionado.add(ck5.isSelected());
+            resultado_seleccionado.add(ck6.isSelected());
+            resultado_seleccionado.add(ck7.isSelected());
+
+            //EXAMENES DE ORINA 
+            valores.add(o1.getSelectedItem() + "");
+            valores.add(o2.getSelectedItem() + "");
+            valores.add(o3.getSelectedItem() + "");
+            valores.add(o4.getSelectedItem() + "");
+            valores.add(o5.getSelectedItem() + "");
+            valores.add(o6.getSelectedItem() + "");
+            valores.add(o7.getSelectedItem() + "");
+            valores.add(o8.getSelectedItem() + "");
+            valores.add(o9.getSelectedItem() + "");
+            valores.add(o10.getSelectedItem() + "");
+            valores.add(o11.getSelectedItem() + "");
+            valores.add(o12.getSelectedItem() + "");
+            valores.add(o13.getSelectedItem() + "");
+            valores.add(o14.getSelectedItem() + "");
+            valores.add(o15.getSelectedItem() + "");
+            valores.add(o16.getSelectedItem() + "");
+            valores.add(o17.getSelectedItem() + "");
+
+            //IMPORTANCIA DE LOS PARAMETROS  
+            resultado_seleccionado.add(ck8.isSelected());
+            resultado_seleccionado.add(ck9.isSelected());
+            resultado_seleccionado.add(ck10.isSelected());
+            resultado_seleccionado.add(ck11.isSelected());
+            resultado_seleccionado.add(ck12.isSelected());
+            resultado_seleccionado.add(ck13.isSelected());
+            resultado_seleccionado.add(ck14.isSelected());
+            resultado_seleccionado.add(ck15.isSelected());
+            resultado_seleccionado.add(ck16.isSelected());
+            resultado_seleccionado.add(ck17.isSelected());
+            resultado_seleccionado.add(ck18.isSelected());
+            resultado_seleccionado.add(ck19.isSelected());
+            resultado_seleccionado.add(ck20.isSelected());
+            resultado_seleccionado.add(ck21.isSelected());
+            resultado_seleccionado.add(ck22.isSelected());
+            resultado_seleccionado.add(ck23.isSelected());
+            resultado_seleccionado.add(ck24.isSelected());
+            int aux = op.Modificar(li.get(listado_diagnosticos.getSelectedIndex()).getIdDiagnostico(), nombre.getText().toUpperCase() + "", descripcion.getText(), valores, resultado_seleccionado);
+
+            if (aux > 0) {
+                iniciar();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_modificarActionPerformed
 
     private void borrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_borrarMouseReleased
@@ -1054,7 +1120,13 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_borrarMouseReleased
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
-        // TODO add your handling code here:
+        if (!listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
+            new operar_diagnosticos().Borrar(li.get(listado_diagnosticos.getSelectedIndex()).getIdDiagnostico());
+            iniciar();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_borrarActionPerformed
 
     private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
@@ -1100,8 +1172,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
                 nombre.setText(li.get(listado_diagnosticos.getSelectedIndex()).getD_nombre());
                 descripcion.setText(li.get(listado_diagnosticos.getSelectedIndex()).getD_descripcion());
                 ArrayList aux = li.get(listado_diagnosticos.getSelectedIndex()).getD_seleccionados();
-                
-                
+
                 ck1.setSelected(string_a_boolean(aux.get(0).toString()));
                 ck2.setSelected(string_a_boolean(aux.get(1).toString()));
                 ck3.setSelected(string_a_boolean(aux.get(2).toString()));
@@ -1126,10 +1197,10 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
                 ck22.setSelected(string_a_boolean(aux.get(21).toString()));
                 ck23.setSelected(string_a_boolean(aux.get(22).toString()));
                 ck24.setSelected(string_a_boolean(aux.get(23).toString()));
-                
+
                 aux = null;
                 aux = li.get(listado_diagnosticos.getSelectedIndex()).getD_valores();
-                
+
                 cb1.setSelectedItem(aux.get(0).toString());
                 cb2.setSelectedItem(aux.get(1).toString());
                 cb3.setSelectedItem(aux.get(2).toString());
@@ -1244,11 +1315,14 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }
 
     ArrayList<modelo> li;
-    
-    public boolean string_a_boolean(String s){
-        
-        if(s.equals("0"))return false;
-        else return true;
+
+    public boolean string_a_boolean(String s) {
+
+        if (s.equals("0")) {
+            return false;
+        } else {
+            return true;
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_limpiarOrina;

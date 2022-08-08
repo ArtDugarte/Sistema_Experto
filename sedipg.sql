@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-08-2022 a las 22:50:19
--- Versión del servidor: 5.7.31
--- Versión de PHP: 7.3.21
+-- Tiempo de generación: 08-08-2022 a las 01:15:04
+-- Versión del servidor: 5.7.36
+-- Versión de PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,14 +34,14 @@ CREATE TABLE IF NOT EXISTS `diagnostico` (
   `descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `diagnostico`
 --
 
 INSERT INTO `diagnostico` (`id`, `nombre`, `descripcion`, `borrado`) VALUES
-(3, 'PRUEBA', '123456', 0);
+(1, 'ANEMIA', 'Bajo Nivel en la Hemoglobina', 1);
 
 -- --------------------------------------------------------
 
@@ -131,37 +131,37 @@ CREATE TABLE IF NOT EXISTS `parametros_diagnostico` (
   `resultado_seleccionado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_diagnostico` (`id_diagnostico`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `parametros_diagnostico`
 --
 
 INSERT INTO `parametros_diagnostico` (`id`, `id_diagnostico`, `parametro`, `valor`, `resultado_seleccionado`) VALUES
-(73, 3, 's1', 'ALTOS', 1),
-(74, 3, 's2', 'ALTOS', 1),
-(75, 3, 's3', 'ALTOS', 1),
-(76, 3, 's4', 'ALTOS', 1),
-(77, 3, 's5', 'ALTOS', 0),
-(78, 3, 's6', 'ALTOS', 0),
-(79, 3, 's7', 'ALTOS', 0),
-(80, 3, 'o1', 'TRANSPARENTE', 0),
-(81, 3, 'o2', 'AMARILLA', 0),
-(82, 3, 'o3', 'ÁCIDA', 0),
-(83, 3, 'o4', 'ALTOS', 0),
-(84, 3, 'o5', 'ALTOS', 0),
-(85, 3, 'o6', 'ALTOS', 0),
-(86, 3, 'o7', 'NEGATIVO', 0),
-(87, 3, 'o8', 'ESCASAS', 0),
-(88, 3, 'o9', 'ALTOS', 0),
-(89, 3, 'o10', 'NEGATIVO', 0),
-(90, 3, 'o11', 'NEGATIVO', 0),
-(91, 3, 'o12', 'NEGATIVO', 0),
-(92, 3, 'o13', 'NEGATIVO', 0),
-(93, 3, 'o14', 'NEGATIVO', 0),
-(94, 3, 'o15', 'NEGATIVO', 0),
-(95, 3, 'o16', 'POSITIVO', 1),
-(96, 3, 'o17', 'POSITIVO', 1);
+(1, 1, 's1', 'BAJOS', 1),
+(2, 1, 's2', 'BAJOS', 1),
+(3, 1, 's3', 'ALTOS', 0),
+(4, 1, 's4', 'ALTOS', 0),
+(5, 1, 's5', 'ALTOS', 0),
+(6, 1, 's6', 'ALTOS', 0),
+(7, 1, 's7', 'ALTOS', 0),
+(8, 1, 'o1', 'TURBIO', 1),
+(9, 1, 'o2', 'AMARILLA', 0),
+(10, 1, 'o3', 'ÁCIDA', 0),
+(11, 1, 'o4', 'ALTOS', 0),
+(12, 1, 'o5', 'ALTOS', 0),
+(13, 1, 'o6', 'ALTOS', 0),
+(14, 1, 'o7', 'NEGATIVO', 0),
+(15, 1, 'o8', 'ESCASAS', 0),
+(16, 1, 'o9', 'ALTOS', 0),
+(17, 1, 'o10', 'NEGATIVO', 0),
+(18, 1, 'o11', 'NEGATIVO', 0),
+(19, 1, 'o12', 'NEGATIVO', 0),
+(20, 1, 'o13', 'NEGATIVO', 0),
+(21, 1, 'o14', 'NEGATIVO', 0),
+(22, 1, 'o15', 'NEGATIVO', 0),
+(23, 1, 'o16', 'NEGATIVO', 0),
+(24, 1, 'o17', 'NEGATIVO', 0);
 
 -- --------------------------------------------------------
 

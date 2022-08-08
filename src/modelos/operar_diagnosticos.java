@@ -54,6 +54,62 @@ public class operar_diagnosticos {
         return op;
     }
 
+    public int Modificar(int id, String nombre, String descripcion, ArrayList<String> valores, ArrayList<Boolean> resultado_seleccionado) {
+        int op = 0;
+        BDConex bd = new BDConex();
+
+        op = bd.ejecutar("UPDATE diagnostico SET nombre='" + nombre + "', descripcion='" + descripcion + "' "
+                + "WHERE id = " + id + " AND borrado = 0");
+        if (op > 0) {
+            op = 0;
+            for (int i = 0; i < valores.size(); i++) {
+                int aux;
+                if(resultado_seleccionado.get(i)) aux = 1;
+                else aux = 0;
+                if (i < 7) {
+                    op = bd.ejecutar("UPDATE parametros_diagnostico SET valor='" + valores.get(i) + "', resultado_seleccionado=" + resultado_seleccionado.get(i) + " "
+                            + "WHERE id_diagnostico = " + id + " AND parametro='s"+(i+1)+"'");
+                } else {
+                    op = bd.ejecutar("UPDATE parametros_diagnostico SET valor='" + valores.get(i) + "', resultado_seleccionado=" + resultado_seleccionado.get(i) + " "
+                            + "WHERE id_diagnostico = " + id + " AND parametro='o"+(i-6)+"'");
+                }
+            }
+        }
+
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Modificacion Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Error en la Modificacion! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        bd.desconectar();
+        return op;
+    }
+
+    public int Borrar(int id) {
+        int op = 0;
+        BDConex bd = new BDConex();
+
+        op = bd.ejecutar("UPDATE diagnostico SET borrado=1 "
+                + "WHERE id = " + id + " AND borrado = 0");
+
+
+        if (op > 0) {
+
+            JOptionPane.showMessageDialog(null, "¡Borrado Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "¡Error en el Borrado! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        }
+
+        bd.desconectar();
+        return op;
+    }
+    
     public void parametros_diagnostico_sangre(ArrayList<String> valores, ArrayList<Boolean> resultado_seleccionado) { //Cuando algunos valores no importan
 
         int op = 0, id;
@@ -139,11 +195,11 @@ public class operar_diagnosticos {
 
         try {
 
-            result = bd.consultar("SELECT "+ campo +" FROM parametros_diagnostico WHERE id_diagnostico="+id+"");
+            result = bd.consultar("SELECT " + campo + " FROM parametros_diagnostico WHERE id_diagnostico=" + id + "");
 
             while (result.next()) {
-                
-               lista.add(result.getString(campo)); 
+
+                lista.add(result.getString(campo));
             }
 
         } catch (SQLException e) {
