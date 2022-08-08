@@ -169,8 +169,7 @@ public class principal_asistente extends javax.swing.JFrame {
         
         p_r.setVisible(true);
         p_a.setVisible(false);
-        p_r.actualizar_lista();
-        p_r.limpiar_campos();
+        p_r.iniciar();
         
     }//GEN-LAST:event_b_revisionMouseClicked
 
