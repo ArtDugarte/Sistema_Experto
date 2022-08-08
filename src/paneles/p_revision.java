@@ -17,10 +17,7 @@ public class p_revision extends javax.swing.JPanel {
 
     public p_revision() {
         initComponents();
-        actualizar_lista();
-        principal.setVisible(true);
-        orina.setVisible(false);
-        sangre.setVisible(false);
+        iniciar();
     }
 
     @SuppressWarnings("unchecked")
@@ -1311,6 +1308,14 @@ public class p_revision extends javax.swing.JPanel {
         Enviar.setEnabled(false);
         idExamen = 0;
         aux=null;
+    }
+    
+    public void iniciar(){
+        actualizar_lista();
+        limpiar_campos();
+        principal.setVisible(true);
+        orina.setVisible(false);
+        sangre.setVisible(false);
     }
 
     int idExamen = 0, tipo = 0;

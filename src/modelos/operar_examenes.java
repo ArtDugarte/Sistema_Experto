@@ -170,6 +170,68 @@ public class operar_examenes {
         return lista;
     }
 
+    public ArrayList ExamenesPendientesExperto() {
+
+        ArrayList lista = new ArrayList<>();
+        int op = 0, sangre = 0, orina = 0;
+        BDConex bd = new BDConex();
+        boolean correcto = false;
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        Connection connection;
+
+        modelo m;
+        connection = bd.getConexion();
+        int idExamen = 0;
+
+        try {
+
+            if (connection != null) {
+
+                result = bd.consultar("SELECT * FROM examenes e, usuario u WHERE e.estado=1 AND e.id_paciente=u.id");
+                if (result == null) {
+                    lista = null;
+                }
+                while (result.next()) {
+                    m = new modelo();
+                    m.setCedula(result.getString("u.cedula"));
+                    m.setFecha(result.getString("e.fecha"));
+                    idExamen = result.getInt("e.id");
+                    sangre = existeExamen(idExamen, "sangre", bd);
+                    orina = existeExamen(idExamen, "orina", bd);
+                    if (sangre > 0) {
+                        m.setSangre(true);
+                    } else {
+                        m.setSangre(false);
+                    }
+
+                    if (orina > 0) {
+                        m.setOrina(true);
+                    } else {
+                        m.setOrina(false);
+                    }
+                    lista.add(m);
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } finally {
+
+            try {
+
+                connection.close();
+                bd.desconectar();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return lista;
+    }
+
     public int existeExamen(int idExamen, String tabla, BDConex bd) {
 
         ResultSet rs = null;
@@ -197,6 +259,46 @@ public class operar_examenes {
 
         try {
             ps = bd.getConexion().prepareStatement("SELECT documento, tipo FROM examenes WHERE id = ? AND estado=0 ORDER BY id ASC;");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                b = rs.getBytes(1);
+                tipo = rs.getString("tipo");
+            }
+            InputStream bos = new ByteArrayInputStream(b);
+
+            int tamanoInput = bos.available();
+            byte[] datos = new byte[tamanoInput];
+            bos.read(datos, 0, tamanoInput);
+
+            //Detectar Extension del Blob
+            OutputStream out = new FileOutputStream("C:\\Resultados\\examen." + tipo + "");
+            out.write(datos);
+            examen = "examen." + tipo;
+
+            //abrir archivo
+            out.close();
+            bos.close();
+            ps.close();
+            rs.close();
+            bd.desconectar();
+
+        } catch (IOException | NumberFormatException | SQLException ex) {
+            System.out.println("Error al abrir archivo PDF " + ex.getMessage());
+        }
+
+        return examen;
+    }
+
+    public String ejecutar_archivo_experto(int id) {
+        BDConex bd = new BDConex();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        byte[] b = null;
+        String tipo = null, examen = "";
+
+        try {
+            ps = bd.getConexion().prepareStatement("SELECT documento, tipo FROM examenes WHERE id = ? and estado = 1 ORDER BY id ASC;");
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -297,17 +399,16 @@ public class operar_examenes {
 
         return m;
     }
-    
+
     public int ModificarSangre(int id_examen, float hematies, float hemoglobina, float hematocritos, float plaquetas, float leucocitos, float segmentados, float linfocitos) {
 
-       
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0;
 
-        op = bd.ejecutar("UPDATE sangre SET hematies = "+ hematies +", hemoglobina = "+ hemoglobina +", hematocritos = "+ hematocritos +", plaquetas = "+ plaquetas +", "
-                + "leucocitos = "+ leucocitos +", segmentados = "+ segmentados +", linfocitos = "+ linfocitos +"\n WHERE id_examen = "+ id_examen +"");
-               
+        op = bd.ejecutar("UPDATE sangre SET hematies = " + hematies + ", hemoglobina = " + hemoglobina + ", hematocritos = " + hematocritos + ", plaquetas = " + plaquetas + ", "
+                + "leucocitos = " + leucocitos + ", segmentados = " + segmentados + ", linfocitos = " + linfocitos + "\n WHERE id_examen = " + id_examen + "");
+
         if (op > 0) {
 
             JOptionPane.showMessageDialog(null, "¡Modificación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
@@ -316,25 +417,23 @@ public class operar_examenes {
             JOptionPane.showMessageDialog(null, "¡Error al Modificar! "
                     + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         bd.desconectar();
         return op;
     }
-    
+
     public int ModificarOrina(int id_examen, String aspecto, String color, String reaccion, float densidad, float leucocitos, float hematies, String piocitos, String bacterias, float e_plano,
             String proteinas, String glucosa, String hemoglobina, String c_cetonico, String p_biliares, String urobilinogelen, String bilirrubina, String nitritos) {
 
-        
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0;
 
-        op = bd.ejecutar("UPDATE orina SET aspecto = '"+ aspecto +"', color = '"+ color +"', reaccion = '"+ reaccion +"', densidad = "+ densidad +", leucocitos = "+ leucocitos +", "
-                + "hematies = "+ hematies +", piocitos = '"+ piocitos +"', bacterias = '"+ bacterias +"', e_plano = "+ e_plano +", proteinas = '"+ proteinas +"', "
-                + "glucosa = '"+ glucosa +"', hemoglobina = '"+ hemoglobina +"', c_cetonico = '"+ c_cetonico +"', p_biliares = '"+ p_biliares +"', "
-                + "urobilinogelen = '"+ urobilinogelen +"', bilirrubina = '"+ bilirrubina +"', nitritos = '"+ nitritos +"'\n");
-        
-        
+        op = bd.ejecutar("UPDATE orina SET aspecto = '" + aspecto + "', color = '" + color + "', reaccion = '" + reaccion + "', densidad = " + densidad + ", leucocitos = " + leucocitos + ", "
+                + "hematies = " + hematies + ", piocitos = '" + piocitos + "', bacterias = '" + bacterias + "', e_plano = " + e_plano + ", proteinas = '" + proteinas + "', "
+                + "glucosa = '" + glucosa + "', hemoglobina = '" + hemoglobina + "', c_cetonico = '" + c_cetonico + "', p_biliares = '" + p_biliares + "', "
+                + "urobilinogelen = '" + urobilinogelen + "', bilirrubina = '" + bilirrubina + "', nitritos = '" + nitritos + "'\n");
+
         if (op > 0) {
 
             JOptionPane.showMessageDialog(null, "¡Modificación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
@@ -343,22 +442,21 @@ public class operar_examenes {
             JOptionPane.showMessageDialog(null, "¡Error al Modificar! "
                     + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         bd.desconectar();
         return op;
     }
 
-    public int cambiarEstado(int id_examen, int estado){
-    
+    public int cambiarEstado(int id_examen, int estado) {
+
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0;
 
-        op = bd.ejecutar("UPDATE examenes SET estado = "+ estado +" WHERE id = "+ id_examen +"");
-               
-        
+        op = bd.ejecutar("UPDATE examenes SET estado = " + estado + " WHERE id = " + id_examen + "");
+
         bd.desconectar();
         return op;
-        
+
     }
 }

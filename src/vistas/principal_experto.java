@@ -215,6 +215,7 @@ public class principal_experto extends javax.swing.JFrame {
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
         
         p_d.setVisible(true);
+        p_d.inicio();
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.setVisible(false);
