@@ -6,8 +6,16 @@ public class modelo {
      
     // Usuarios
     
-    int tipo_usuario;
+    int tipo_usuario, id_usuario;
     String usuario, pregunta, respuesta, clave, nombre, apellido, cedula;
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
 
     public String getCedula() {
         return cedula;

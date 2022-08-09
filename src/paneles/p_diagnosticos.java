@@ -3,20 +3,27 @@ package paneles;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import modelos.modelo;
+import modelos.operar_diagnosticos;
 import modelos.operar_examenes;
+import modelos.operar_resultados;
 import modelos.operar_usuarios;
 
 public class p_diagnosticos extends javax.swing.JPanel {
 
-    public p_diagnosticos() {
+    public p_diagnosticos(String usuario) {
         initComponents();
         actualizar_lista();
+        this.idExperto = new operar_usuarios().BuscarID(usuario);
         principal.setVisible(true);
         orina.setVisible(false);
         sangre.setVisible(false);
@@ -1119,6 +1126,8 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 cedula.setFocusable(false);
                 lupa.setEnabled(false);
                 idExamen = m.getId_examen();
+                idPaciente = m.getId_usuario();
+                fechaVieja = m.getFecha();
             } else {
                 JOptionPane.showMessageDialog(null, "¡Este paciente no tiene examenes pendientes! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
 
@@ -1168,6 +1177,13 @@ public class p_diagnosticos extends javax.swing.JPanel {
             nitritos.setSelectedItem(m.getO_nitritos());
             hemoglobina_orina.setSelectedItem(m.getO_hemoglobina());
 
+            ArrayList<modelo> diagnosticos_ambos = new operar_diagnosticos().obtener_posibles_diagnosticos();
+            area_diagnostico_sugerido.setText("");
+            area_diagnostico_final.setText("");
+            if (!diagnosticos_ambos.isEmpty()) {
+                comparar_Ambos(diagnosticos_ambos);
+            }
+
         } else if (m.isSangre()) {
 
             sangre.setVisible(true);
@@ -1182,6 +1198,13 @@ public class p_diagnosticos extends javax.swing.JPanel {
             leucocitos.setText(m.getS_leucocitos() + "");
             segmentados.setText(m.getS_segmentados() + "");
             linfocitos.setText(m.getS_linfocitos() + "");
+
+            ArrayList<modelo> diagnosticos_sangre = new operar_diagnosticos().obtener_posibles_diagnosticos_sangre();
+            area_diagnostico_sugerido.setText("");
+            area_diagnostico_final.setText("");
+            if (!diagnosticos_sangre.isEmpty()) {
+                comparar_Sangre(diagnosticos_sangre);
+            }
 
         } else {
 
@@ -1207,6 +1230,13 @@ public class p_diagnosticos extends javax.swing.JPanel {
             bilirrubina.setSelectedItem(m.getO_bilirrubina());
             nitritos.setSelectedItem(m.getO_nitritos());
             hemoglobina_orina.setSelectedItem(m.getO_hemoglobina());
+
+            ArrayList<modelo> diagnosticos_orina = new operar_diagnosticos().obtener_posibles_diagnosticos_orina();
+            area_diagnostico_sugerido.setText("");
+            area_diagnostico_final.setText("");
+            if (!diagnosticos_orina.isEmpty()) {
+                comparar_Orina(diagnosticos_orina);
+            }
         }
     }//GEN-LAST:event_b_revisarActionPerformed
 
@@ -1292,7 +1322,30 @@ public class p_diagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_b_volver_resultadosActionPerformed
 
     private void b_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_guardarActionPerformed
-        // TODO add your handling code here:
+        if (!area_diagnostico_final.getText().equals("")) {
+
+            operar_resultados op = new operar_resultados();
+            op.Crear(idPaciente, idExperto, area_diagnostico_final.getText(), fechaVieja);
+
+            if (!filename.getText().equals("")) {
+                try {
+                    byte[] blob = new byte[(int) file.length()];
+                    InputStream input = new FileInputStream(file);
+                    input.read(blob);
+                    int largo = filename.getText().length();
+                    String ext = (filename.getText().substring(largo - 3, largo));
+                    op.subirDocumentoDelExamen(blob, ext);
+
+                } catch (IOException ex) {
+                    //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
+                }
+            }
+
+            
+            new operar_examenes().borrarExamen(idExamen, tipo);
+            inicio();
+        }
+
     }//GEN-LAST:event_b_guardarActionPerformed
 
     private void b_visualizarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_visualizarExamenActionPerformed
@@ -1329,21 +1382,21 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private void b_adjuntar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_adjuntar_documentoActionPerformed
 
-//        JFileChooser fileChooser = new JFileChooser();
-//        fileChooser.setFileFilter(filter);
-//
-//        int seleccion = fileChooser.showOpenDialog(this);
-//
-//        if (seleccion == JFileChooser.APPROVE_OPTION) {
-//            if (fileChooser.getSelectedFile().length() < (16 * (1024 * 1024))) {
-//                file = fileChooser.getSelectedFile();
-//                filename.setText(" " + file.getName());
-//            } else {
-//
-//                JOptionPane.showMessageDialog(null, "¡Archivo superior a 16MB! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-//            }
-//
-//        }
+        fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+
+        int seleccion = fileChooser.showOpenDialog(this);
+
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            if (fileChooser.getSelectedFile().length() < (16 * (1024 * 1024))) {
+                file = fileChooser.getSelectedFile();
+                filename.setText(" " + file.getName());
+            } else {
+
+                JOptionPane.showMessageDialog(null, "¡Archivo superior a 16MB! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
     }//GEN-LAST:event_b_adjuntar_documentoActionPerformed
 
     public void inicio() {
@@ -1368,9 +1421,14 @@ public class p_diagnosticos extends javax.swing.JPanel {
         aux = null;
     }
 
-    int idExamen = 0, tipo = 0;
+    int idExamen = 0, tipo = 0, idPaciente = 0, idExperto = 0;
+    String fechaVieja;
 
     modelo aux = null;
+
+    private JFileChooser fileChooser;
+    private File file;
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
 
     public void actualizar_lista() {
         ArrayList<modelo> li = new operar_examenes().ExamenesPendientesExperto();
@@ -1390,6 +1448,720 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
                 model.addRow(new Object[]{" {" + li.get(i).getFecha() + "}           " + li.get(i).getCedula() + "         " + aux});
             }
+        }
+    }
+
+    public void comparar_Sangre(ArrayList<modelo> diagnosticos) {
+        for (int i = 0; i < diagnosticos.size(); i++) {
+            ArrayList<String> valores = diagnosticos.get(i).getD_valores();
+            ArrayList<String> seleccionados = diagnosticos.get(i).getD_seleccionados();
+            boolean coincide = true;
+            int j = 0;
+
+            if (seleccionados.get(j).equals("1")) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(globulos_rojos.getText()) <= 5.40) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(globulos_rojos.getText()) >= 3.90) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(globulos_rojos.getText()) <= 5.40 && Float.parseFloat(globulos_rojos.getText()) >= 3.90) {
+                            coincide = false;
+                        }
+                        break;
+                }
+
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(hemoglobina.getText()) <= 16) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(hemoglobina.getText()) >= 12) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(hemoglobina.getText()) <= 16 && Float.parseFloat(hemoglobina.getText()) >= 12) {
+                            coincide = false;
+                        }
+                        break;
+                }
+
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(hematocritos.getText()) <= 47) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(hematocritos.getText()) >= 35) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(hematocritos.getText()) <= 47 && Float.parseFloat(hematocritos.getText()) >= 35) {
+                            coincide = false;
+                        }
+                        break;
+                }
+
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(plaquetas.getText()) <= 500) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(plaquetas.getText()) >= 140) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(plaquetas.getText()) <= 500 && Float.parseFloat(plaquetas.getText()) >= 140) {
+                            coincide = false;
+                        }
+                        break;
+                }
+
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(leucocitos.getText()) <= 11.20) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(leucocitos.getText()) >= 4.5) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(leucocitos.getText()) <= 11.20 && Float.parseFloat(leucocitos.getText()) >= 4.5) {
+                            coincide = false;
+                        }
+                        break;
+                }
+
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(segmentados.getText()) <= 75) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(segmentados.getText()) >= 39.9) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(segmentados.getText()) <= 75 && Float.parseFloat(segmentados.getText()) >= 39.9) {
+                            coincide = false;
+                        }
+                        break;
+                }
+
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(linfocitos.getText()) <= 50.8) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(linfocitos.getText()) >= 18.8) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(linfocitos.getText()) <= 50.8 && Float.parseFloat(linfocitos.getText()) >= 18.8) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+
+            if (coincide == true) {
+                String texto = area_diagnostico_sugerido.getText();
+                if (texto.equals("")) {
+                    area_diagnostico_sugerido.setText(diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion());
+                    area_diagnostico_final.setText(diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion());
+                } else {
+                    texto = texto + "\n\n" + diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion();
+                    area_diagnostico_sugerido.setText(texto);
+                    area_diagnostico_final.setText(texto);
+                }
+            }
+
+        }
+    }
+
+    public void comparar_Orina(ArrayList<modelo> diagnosticos) {
+        for (int i = 0; i < diagnosticos.size(); i++) {
+            ArrayList<String> valores = diagnosticos.get(i).getD_valores();
+            ArrayList<String> seleccionados = diagnosticos.get(i).getD_seleccionados();
+            boolean coincide = true;
+            int j = 0;
+
+            if (seleccionados.get(j).equals("1")) { //PARAMETRO
+                if (!aspecto.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!color.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!reaccion.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(densidad.getText()) <= 1.030) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(densidad.getText()) >= 1.005) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(densidad.getText()) <= 1.030 && Float.parseFloat(densidad.getText()) >= 1.005) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(leucocitosorina.getText()) <= 2) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(leucocitosorina.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(leucocitosorina.getText()) <= 2 && Float.parseFloat(leucocitosorina.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(hematies.getText()) <= 1) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(hematies.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(hematies.getText()) <= 1 && Float.parseFloat(hematies.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!piocitos.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!bacterias.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(eplano.getText()) <= 2) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(eplano.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(eplano.getText()) <= 2 && Float.parseFloat(eplano.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!proteinas.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!glucosa.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!hemoglobina_orina.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!ccetonico.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!biliares.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!urobilinogen.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!bilirrubina.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!nitritos.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (coincide == true) {
+                String texto = area_diagnostico_sugerido.getText();
+                if (texto.equals("")) {
+                    area_diagnostico_sugerido.setText(diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion());
+                    area_diagnostico_final.setText(diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion());
+                } else {
+                    texto = texto + "\n\n" + diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion();
+                    area_diagnostico_sugerido.setText(texto);
+                    area_diagnostico_final.setText(texto);
+                }
+            }
+
+        }
+    }
+
+    public void comparar_Ambos(ArrayList<modelo> diagnosticos) {
+        for (int i = 0; i < diagnosticos.size(); i++) {
+            ArrayList<String> valores = diagnosticos.get(i).getD_valores();
+            ArrayList<String> seleccionados = diagnosticos.get(i).getD_seleccionados();
+            boolean coincide = true;
+            int j = 0;
+
+            //COINCIDIR CON SANGRE
+            if (seleccionados.get(j).equals("1")) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(globulos_rojos.getText()) <= 5.40) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(globulos_rojos.getText()) >= 3.90) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(globulos_rojos.getText()) <= 5.40 && Float.parseFloat(globulos_rojos.getText()) >= 3.90) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(hemoglobina.getText()) <= 16) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(hemoglobina.getText()) >= 12) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(hemoglobina.getText()) <= 16 && Float.parseFloat(hemoglobina.getText()) >= 12) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(hematocritos.getText()) <= 47) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(hematocritos.getText()) >= 35) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(hematocritos.getText()) <= 47 && Float.parseFloat(hematocritos.getText()) >= 35) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(plaquetas.getText()) <= 500) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(plaquetas.getText()) >= 140) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(plaquetas.getText()) <= 500 && Float.parseFloat(plaquetas.getText()) >= 140) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(leucocitos.getText()) <= 11.20) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(leucocitos.getText()) >= 4.5) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(leucocitos.getText()) <= 11.20 && Float.parseFloat(leucocitos.getText()) >= 4.5) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(segmentados.getText()) <= 75) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(segmentados.getText()) >= 39.9) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(segmentados.getText()) <= 75 && Float.parseFloat(segmentados.getText()) >= 39.9) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(linfocitos.getText()) <= 50.8) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(linfocitos.getText()) >= 18.8) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(linfocitos.getText()) <= 50.8 && Float.parseFloat(linfocitos.getText()) >= 18.8) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            //*****************************************************************//
+
+            //COINCIDIR CON ORINA
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(linfocitos.getText()) <= 50.8) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(linfocitos.getText()) >= 18.8) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(linfocitos.getText()) <= 50.8 && Float.parseFloat(linfocitos.getText()) >= 18.8) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!aspecto.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!color.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!reaccion.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(densidad.getText()) <= 1.030) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(densidad.getText()) >= 1.005) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(densidad.getText()) <= 1.030 && Float.parseFloat(densidad.getText()) >= 1.005) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(leucocitosorina.getText()) <= 2) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(leucocitosorina.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(leucocitosorina.getText()) <= 2 && Float.parseFloat(leucocitosorina.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(hematies.getText()) <= 1) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(hematies.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(hematies.getText()) <= 1 && Float.parseFloat(hematies.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!piocitos.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!bacterias.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                switch (valores.get(j)) {
+                    case "ALTOS":
+                        if (Float.parseFloat(eplano.getText()) <= 2) {
+                            coincide = false;
+                        }
+                        break;
+                    case "BAJOS":
+                        if (Float.parseFloat(eplano.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                    default:
+                        if (Float.parseFloat(eplano.getText()) <= 2 && Float.parseFloat(eplano.getText()) >= 0) {
+                            coincide = false;
+                        }
+                        break;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!proteinas.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!glucosa.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!hemoglobina_orina.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!ccetonico.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!biliares.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!urobilinogen.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!bilirrubina.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+                if (!nitritos.getSelectedItem().equals(valores.get(j))) {
+                    coincide = false;
+                }
+            } // FIN PARAMETRO
+            j++;
+
+            if (coincide == true) {
+                String texto = area_diagnostico_sugerido.getText();
+                if (texto.equals("")) {
+                    area_diagnostico_sugerido.setText(diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion());
+                    area_diagnostico_final.setText(diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion());
+                } else {
+                    texto = texto + "\n\n" + diagnosticos.get(i).getD_nombre() + ": " + diagnosticos.get(i).getD_descripcion();
+                    area_diagnostico_sugerido.setText(texto);
+                    area_diagnostico_final.setText(texto);
+                }
+            }
+
         }
     }
 

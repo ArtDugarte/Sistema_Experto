@@ -459,4 +459,28 @@ public class operar_examenes {
         return op;
 
     }
+
+    public void borrarExamen(int id_examen, int tipo) {
+        BD.BDConex bd = new BD.BDConex();
+
+        int op = 0;
+
+        switch (tipo) {
+            case 1:
+                op = bd.ejecutar("DELETE FROM sangre WHERE id_examen = " + id_examen + "");
+                op = bd.ejecutar("DELETE FROM orina WHERE id_examen = " + id_examen + "");
+                break;
+            case 2:
+                op = bd.ejecutar("DELETE FROM sangre WHERE id_examen = " + id_examen + "");
+                break;
+            default:
+                op = bd.ejecutar("DELETE FROM orina WHERE id_examen = " + id_examen + "");
+                break;
+        }
+
+        op = bd.ejecutar("DELETE FROM examenes WHERE id = " + id_examen + "");
+
+        bd.desconectar();
+
+    }
 }

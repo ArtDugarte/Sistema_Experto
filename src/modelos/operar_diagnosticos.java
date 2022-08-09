@@ -64,14 +64,17 @@ public class operar_diagnosticos {
             op = 0;
             for (int i = 0; i < valores.size(); i++) {
                 int aux;
-                if(resultado_seleccionado.get(i)) aux = 1;
-                else aux = 0;
+                if (resultado_seleccionado.get(i)) {
+                    aux = 1;
+                } else {
+                    aux = 0;
+                }
                 if (i < 7) {
                     op = bd.ejecutar("UPDATE parametros_diagnostico SET valor='" + valores.get(i) + "', resultado_seleccionado=" + resultado_seleccionado.get(i) + " "
-                            + "WHERE id_diagnostico = " + id + " AND parametro='s"+(i+1)+"'");
+                            + "WHERE id_diagnostico = " + id + " AND parametro='s" + (i + 1) + "'");
                 } else {
                     op = bd.ejecutar("UPDATE parametros_diagnostico SET valor='" + valores.get(i) + "', resultado_seleccionado=" + resultado_seleccionado.get(i) + " "
-                            + "WHERE id_diagnostico = " + id + " AND parametro='o"+(i-6)+"'");
+                            + "WHERE id_diagnostico = " + id + " AND parametro='o" + (i - 6) + "'");
                 }
             }
         }
@@ -96,7 +99,6 @@ public class operar_diagnosticos {
         op = bd.ejecutar("UPDATE diagnostico SET borrado=1 "
                 + "WHERE id = " + id + " AND borrado = 0");
 
-
         if (op > 0) {
 
             JOptionPane.showMessageDialog(null, "¡Borrado Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
@@ -109,7 +111,7 @@ public class operar_diagnosticos {
         bd.desconectar();
         return op;
     }
-    
+
     public void parametros_diagnostico_sangre(ArrayList<String> valores, ArrayList<Boolean> resultado_seleccionado) { //Cuando algunos valores no importan
 
         int op = 0, id;
@@ -206,6 +208,193 @@ public class operar_diagnosticos {
 
             System.out.println(e);
 
+        }
+        return lista;
+    }
+
+    public ArrayList<String> obtener_arraylist(String campo, BDConex bd, int id, int inicio, int fin) {
+
+        ArrayList<String> aux = new ArrayList<String>();
+        ArrayList<String> lista = new ArrayList<String>();
+        ResultSet result = null;
+
+        try {
+
+            result = bd.consultar("SELECT " + campo + " FROM parametros_diagnostico WHERE id_diagnostico=" + id + "");
+
+            while (result.next()) {
+
+                aux.add(result.getString(campo));
+            }
+
+            for (int i = inicio; i < fin; i++) {
+                lista.add(aux.get(i));
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        }
+        return lista;
+    }
+
+    public ArrayList<modelo> obtener_posibles_diagnosticos_sangre() {
+
+        ArrayList<modelo> lista = new ArrayList<modelo>();
+        BDConex bd = new BDConex();
+        ResultSet result = null;
+        Connection connection;
+        ArrayList<String> aux = null;
+
+        modelo m;
+        connection = bd.getConexion();
+
+        try {
+
+            if (connection != null) {
+
+                result = bd.consultar("SELECT * FROM diagnostico WHERE borrado = 0");
+
+                while (result.next()) {
+                    m = new modelo();
+
+                    aux = obtener_arraylist("resultado_seleccionado", bd, result.getInt("id"));
+                    for (int i = 7; i < 24; i++) {
+                        if (Integer.parseInt(aux.get(i)) == 1) {
+                            m = null;
+                        }
+                    }
+                    if (m != null) {
+                        m.setD_nombre(result.getString("nombre"));
+                        m.setD_descripcion(result.getString("descripcion"));
+                        m.setIdDiagnostico(result.getInt("id"));
+                        m.setD_seleccionados(obtener_arraylist("resultado_seleccionado", bd, result.getInt("id"), 0, 7));
+                        m.setD_valores(obtener_arraylist("valor", bd, result.getInt("id"), 0, 7));
+                        lista.add(m);
+                    }
+
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } finally {
+
+            try {
+
+                connection.close();
+                bd.desconectar();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return lista;
+    }
+
+    public ArrayList<modelo> obtener_posibles_diagnosticos_orina() {
+
+        ArrayList<modelo> lista = new ArrayList<modelo>();
+        BDConex bd = new BDConex();
+        ResultSet result = null;
+        Connection connection;
+        ArrayList<String> aux = null;
+
+        modelo m;
+        connection = bd.getConexion();
+
+        try {
+
+            if (connection != null) {
+
+                result = bd.consultar("SELECT * FROM diagnostico WHERE borrado = 0");
+
+                while (result.next()) {
+                    m = new modelo();
+
+                    aux = obtener_arraylist("resultado_seleccionado", bd, result.getInt("id"));
+                    for (int i = 0; i < 7; i++) {
+                        if (Integer.parseInt(aux.get(i)) == 1) {
+                            m = null;
+                        }
+                    }
+                    if (m != null) {
+                        m.setD_nombre(result.getString("nombre"));
+                        m.setD_descripcion(result.getString("descripcion"));
+                        m.setIdDiagnostico(result.getInt("id"));
+                        m.setD_seleccionados(obtener_arraylist("resultado_seleccionado", bd, result.getInt("id"), 7, 24));
+                        m.setD_valores(obtener_arraylist("valor", bd, result.getInt("id"), 7, 24));
+                        lista.add(m);
+                    }
+
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } finally {
+
+            try {
+
+                connection.close();
+                bd.desconectar();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return lista;
+    }
+
+    public ArrayList<modelo> obtener_posibles_diagnosticos() {
+
+        ArrayList<modelo> lista = new ArrayList<modelo>();
+        BDConex bd = new BDConex();
+        ResultSet result = null;
+        Connection connection;
+        ArrayList<String> aux = null;
+
+        modelo m;
+        connection = bd.getConexion();
+
+        try {
+
+            if (connection != null) {
+
+                result = bd.consultar("SELECT * FROM diagnostico WHERE borrado = 0");
+
+                while (result.next()) {
+                    m = new modelo();
+
+                    m.setD_nombre(result.getString("nombre"));
+                    m.setD_descripcion(result.getString("descripcion"));
+                    m.setIdDiagnostico(result.getInt("id"));
+                    m.setD_seleccionados(obtener_arraylist("resultado_seleccionado", bd, result.getInt("id")));
+                    m.setD_valores(obtener_arraylist("valor", bd, result.getInt("id")));
+                    lista.add(m);
+
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } finally {
+
+            try {
+
+                connection.close();
+                bd.desconectar();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
         }
         return lista;
     }
