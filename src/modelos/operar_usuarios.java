@@ -7,6 +7,29 @@ import javax.swing.JOptionPane;
 
 public class operar_usuarios {
 
+    public int BuscarID(String usuario) {
+
+        ResultSet rs = null;
+        BDConex bd = new BDConex();
+        int id = 0;
+
+        rs = bd.consultar("SELECT * FROM usuario WHERE nombre_usu = '" + usuario + "' AND borrado=0");
+
+        try {
+            if (rs.next()) {
+
+                id = rs.getInt("id");
+
+            } 
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        bd.desconectar();
+        return id;
+
+    }
+    
     public String Ingresar(String usuario, String clave) {
 
         ResultSet rs = null;
@@ -187,14 +210,16 @@ public class operar_usuarios {
         BDConex bd = new BDConex();
         modelo m = new modelo();
 
-        rs = bd.consultar("SELECT u.nombres, u.apellidos, e.id FROM usuario u, examenes e  WHERE e.estado=1 AND e.id_paciente=u.id AND u.cedula='" + cedula + "'");
+        rs = bd.consultar("SELECT u.nombres, u.apellidos, e.id, u.id, e.fecha FROM usuario u, examenes e  WHERE e.estado=1 AND e.id_paciente=u.id AND u.cedula='" + cedula + "'");
 
         try {
             if (rs.next()) {
 
                 m.setNombre(rs.getString("nombres"));
                 m.setApellido(rs.getString("apellidos"));
-                m.setId_examen(rs.getInt("e.id")); 
+                m.setId_usuario(rs.getInt("u.id"));
+                m.setId_examen(rs.getInt("e.id"));
+                m.setFecha(rs.getString("e.fecha"));
 
 
             } else {

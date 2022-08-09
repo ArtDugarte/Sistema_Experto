@@ -21,7 +21,7 @@ public class principal_experto extends javax.swing.JFrame {
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
         
-        p_d = new p_diagnosticos();
+        p_d = new p_diagnosticos(usuario);
         p_r = new p_registrarUsuarios(usuario);
         p_a = new p_ajustes(usuario);
         p_cd = new p_crudDiagnosticos();
