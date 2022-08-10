@@ -22,7 +22,7 @@ public class principal_paciente extends javax.swing.JFrame {
         p_se = new p_subirExamen(this, id_usuario);
         p_e = new p_examenes(p_se);
         p_r = new p_resultados(usuario);
-        p_h = new p_historial();
+        p_h = new p_historial(id_usuario);
         p_a = new p_ajustes(usuario);
         p_principal.add(p_se);
         p_principal.add(p_e);
@@ -248,6 +248,7 @@ public class principal_paciente extends javax.swing.JFrame {
         
         p_e.setVisible(false);
         p_r.setVisible(false);
+        p_h.actualizar_historial();
         p_h.setVisible(true);
         p_a.setVisible(false);
         p_se.setVisible(false);

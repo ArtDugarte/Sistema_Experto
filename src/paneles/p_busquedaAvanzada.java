@@ -1,17 +1,10 @@
 package paneles;
 
-import java.awt.Color;
-import java.awt.Desktop;
-import java.io.File;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import modelos.modelo;
-import modelos.operar_examenes;
-import modelos.operar_usuarios;
+import modelos.operar_resultados;
 
 public class p_busquedaAvanzada extends javax.swing.JPanel {
 
@@ -93,6 +86,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
         cedula.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         cedula.setForeground(new java.awt.Color(102, 102, 102));
+        cedula.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cedula.setText("Introduzca la cédula del paciente a buscar:");
         cedula.setBorder(null);
         cedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -104,11 +98,11 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                 cedulaFocusLost(evt);
             }
         });
-        principal.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 580, 30));
+        principal.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 310, 30));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        principal.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 580, 10));
+        principal.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 310, 10));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
@@ -129,7 +123,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                 lupaActionPerformed(evt);
             }
         });
-        principal.add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
+        principal.add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, -1, -1));
 
         b_limpiar.setBackground(new java.awt.Color(103, 174, 202));
         b_limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -172,17 +166,48 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
         } else {
 
+            modelo m = new operar_resultados().Buscar(cedula.getText());
+            DefaultTableModel model = (DefaultTableModel) lista.getModel();
+            model.setRowCount(0);
+            nombres.setText("Nombres: ");
+            apellidos.setText("Apelidos: ");
+            
+            if (m != null) {
+                
+                nombres.setText("Nombres: " + m.getNombre());
+                apellidos.setText("Apelidos: " + m.getApellido());
+                
+                ArrayList<modelo> li = new operar_resultados().historial(m.getId_usuario());
+                
+
+                if (li != null) {
+
+                    for (int i = 0; i < li.size(); i++) {
+
+                        model.addRow(new Object[]{
+                            li.get(i).getNombre() + " " + li.get(i).getApellido(),
+                            li.get(i).getDiagnostico_final(),
+                            li.get(i).getFecha_envio(),
+                            li.get(i).getFecha_diagnostico()
+                        });
+                    }
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "¡El Paciente no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_lupaActionPerformed
 
     //Métodos y Variables
-
     public void limpiar_campos() {
 
         cedula.setText("Introduzca la cédula del paciente a buscar:");
         nombres.setText("Nombres:");
         apellidos.setText("Apellidos:");
         lupa.setEnabled(true);
+        DefaultTableModel model = (DefaultTableModel) lista.getModel();
+        model.setRowCount(0);
         idExamen = 0;
         aux = null;
     }

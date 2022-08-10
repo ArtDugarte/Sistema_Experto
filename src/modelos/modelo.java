@@ -388,7 +388,7 @@ public class modelo {
     
     
     //RESULTADOS
-    String fecha_envio, fecha_diagnostico, dignostico_final;
+    String fecha_envio, fecha_diagnostico, diagnostico_final;
     int id_resultado;
 
     public int getId_resultado() {
@@ -399,12 +399,12 @@ public class modelo {
         this.id_resultado = id_resultado;
     }
 
-    public String getDignostico_final() {
-        return dignostico_final;
+    public String getDiagnostico_final() {
+        return diagnostico_final;
     }
 
-    public void setDignostico_final(String dignostico_final) {
-        this.dignostico_final = dignostico_final;
+    public void setDiagnostico_final(String diagnostico_final) {
+        this.diagnostico_final = diagnostico_final;
     }
     
     public String getFecha_envio() {

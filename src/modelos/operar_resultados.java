@@ -6,9 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class operar_resultados {
@@ -105,7 +107,7 @@ public class operar_resultados {
                 m.setApellido(rs.getString("u.apellidos"));
                 m.setFecha_envio(rs.getString("r.fecha_envio"));
                 m.setFecha_diagnostico(rs.getString("r.fecha"));
-                m.setDignostico_final(rs.getString("r.diagnosticos"));
+                m.setDiagnostico_final(rs.getString("r.diagnosticos"));
                 m.setId_resultado(rs.getInt("r.id"));
 
             } else {
@@ -193,4 +195,83 @@ public class operar_resultados {
 
         return existe;
     }
+    
+    public ArrayList historial(int id) {
+
+        ArrayList lista = new ArrayList<>();
+        int op = 0, sangre = 0, orina = 0;
+        BDConex bd = new BDConex();
+        boolean correcto = false;
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        Connection connection;
+
+        modelo m;
+        connection = bd.getConexion();
+        int idExamen = 0;
+
+        try {
+
+            if (connection != null) {
+
+                result = bd.consultar("SELECT * FROM resultados r, usuario u WHERE r.id_paciente = "+ id +" AND r.id_experto = u.id");
+                if (result == null) {
+                    lista = null;
+                }
+                while (result.next()) {
+                    m = new modelo();
+                    m.setNombre(result.getString("u.nombres"));
+                    m.setApellido(result.getString("u.apellidos"));
+                    m.setDiagnostico_final(result.getString("r.diagnosticos"));
+                    m.setFecha_envio(result.getString("r.fecha_envio"));
+                    m.setFecha_diagnostico(result.getString("r.fecha"));
+                    lista.add(m);
+                }
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        } finally {
+
+            try {
+
+                connection.close();
+                bd.desconectar();
+
+            } catch (SQLException e) {
+
+                e.printStackTrace();
+            }
+        }
+        return lista;
+    }
+    
+    public modelo Buscar(String usuario) {
+
+        ResultSet rs = null;
+        BDConex bd = new BDConex();
+        modelo m = new modelo();
+
+        rs = bd.consultar("SELECT * FROM usuario WHERE nombre_usu = '" + usuario + "' and borrado = 0");
+
+        try {
+            if (rs.next()) {
+
+                m.setNombre(rs.getString("nombres"));
+                m.setApellido(rs.getString("apellidos"));
+                m.setId_usuario(rs.getInt("id"));
+
+            } else {
+                m = null;
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+        bd.desconectar();
+        return m;
+
+    }
+    
 }

@@ -384,6 +384,7 @@ public class principal_experto extends javax.swing.JFrame {
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.setVisible(false);
+        p_b.limpiar_campos();
         p_b.setVisible(true);
     }//GEN-LAST:event_b_busquedaAvenzadaMouseClicked
 

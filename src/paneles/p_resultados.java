@@ -2,8 +2,13 @@ package paneles;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.DAYS;
+import java.util.Calendar;
+import java.util.Date;
 import modelos.modelo;
-import modelos.operar_examenes;
 import modelos.operar_resultados;
 import modelos.operar_usuarios;
 
@@ -26,7 +31,7 @@ public class p_resultados extends javax.swing.JPanel {
         fecha_envio = new javax.swing.JTextField();
         jSeparator21 = new javax.swing.JSeparator();
         nombre_medico = new javax.swing.JTextField();
-        nombre_medico1 = new javax.swing.JTextField();
+        tiempo_descarga = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -96,14 +101,14 @@ public class p_resultados extends javax.swing.JPanel {
         nombre_medico.setFocusable(false);
         add(nombre_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 590, 30));
 
-        nombre_medico1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        nombre_medico1.setForeground(new java.awt.Color(103, 86, 130));
-        nombre_medico1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        nombre_medico1.setText("Tiene 00 días para descargar este documento");
-        nombre_medico1.setBorder(null);
-        nombre_medico1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        nombre_medico1.setFocusable(false);
-        add(nombre_medico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 590, 30));
+        tiempo_descarga.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        tiempo_descarga.setForeground(new java.awt.Color(103, 86, 130));
+        tiempo_descarga.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tiempo_descarga.setText("Tiene 00 días para descargar este documento");
+        tiempo_descarga.setBorder(null);
+        tiempo_descarga.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tiempo_descarga.setFocusable(false);
+        add(tiempo_descarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 590, 30));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -115,7 +120,7 @@ public class p_resultados extends javax.swing.JPanel {
         String archivo = null;
 
         if (!directorio.exists()) {
-            
+
             if (directorio.mkdirs()) {
                 archivo = op.ejecutar_archivo(id_resultado);
             }
@@ -125,7 +130,8 @@ public class p_resultados extends javax.swing.JPanel {
 
         try {
             Desktop.getDesktop().open(new File("C:\\Resultados\\" + archivo + ""));
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+        }
     }//GEN-LAST:event_descargarActionPerformed
 
     public void iniciar() {
@@ -139,21 +145,56 @@ public class p_resultados extends javax.swing.JPanel {
             fecha_envio.setText("Su diagnóstico para el exámen subido el dia dd/mm/yyyy es:");
             area_diagnostico.setText("");
             descargar.setEnabled(false);
+            tiempo_descarga.setVisible(false);
+
         } else {
 
             nombre_medico.setText("Aprobado por " + m.getNombre() + " " + m.getApellido() + " - Especialista Certificado/a");
             fecha_diagnostico.setText("Diagnósticado el día: " + m.getFecha_diagnostico() + " ");
             fecha_envio.setText("Su diagnóstico para el exámen subido el dia " + m.getFecha_envio() + " es:");
-            area_diagnostico.setText(m.getDignostico_final());
+            area_diagnostico.setText(m.getDiagnostico_final());
 
             if (new operar_resultados().existe_archivo(m.getId_resultado())) {
 
                 id_resultado = m.getId_resultado();
                 descargar.setEnabled(true);
+                tiempo_descarga.setVisible(true);
+
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+                try {
+
+                    Date date = format.parse(m.getFecha_diagnostico());
+                    Date fecha_borrado = sumarDiasAFecha(date, 15);
+                    String s_fecha_borrado = format.format(fecha_borrado);
+                    LocalDate myDate = LocalDate.parse(s_fecha_borrado);
+                    LocalDate currentDate = LocalDate.now();
+                    long dias = DAYS.between(currentDate, myDate);
+                    
+                    tiempo_descarga.setText("Tiene "+ dias +" días para descargar este documento");
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
             } else {
+
                 descargar.setEnabled(false);
+                tiempo_descarga.setVisible(false);
+
             }
         }
+    }
+
+    public static Date sumarDiasAFecha(Date fecha, int dias) {
+        
+        if (dias == 0) {return fecha;}
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(fecha);
+        calendar.add(Calendar.DAY_OF_YEAR, dias);
+        
+        return calendar.getTime();
     }
 
     private int id_usuario = 0, id_resultado = 0;
@@ -166,6 +207,6 @@ public class p_resultados extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
     private javax.swing.JTextField nombre_medico;
-    private javax.swing.JTextField nombre_medico1;
+    private javax.swing.JTextField tiempo_descarga;
     // End of variables declaration//GEN-END:variables
 }
