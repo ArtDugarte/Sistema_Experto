@@ -887,8 +887,9 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         jLabel43.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel43.setText("Panel General");
-        general.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 170, -1));
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setText("PANEL GENERAL");
+        general.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 630, -1));
 
         crear.setBackground(new java.awt.Color(103, 174, 202));
         crear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N

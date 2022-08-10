@@ -386,4 +386,42 @@ public class modelo {
         this.d_seleccionados = d_seleccionados;
     }
     
+    
+    //RESULTADOS
+    String fecha_envio, fecha_diagnostico, dignostico_final;
+    int id_resultado;
+
+    public int getId_resultado() {
+        return id_resultado;
+    }
+
+    public void setId_resultado(int id_resultado) {
+        this.id_resultado = id_resultado;
+    }
+
+    public String getDignostico_final() {
+        return dignostico_final;
+    }
+
+    public void setDignostico_final(String dignostico_final) {
+        this.dignostico_final = dignostico_final;
+    }
+    
+    public String getFecha_envio() {
+        return fecha_envio;
+    }
+
+    public void setFecha_envio(String fecha_envio) {
+        this.fecha_envio = fecha_envio;
+    }
+
+    public String getFecha_diagnostico() {
+        return fecha_diagnostico;
+    }
+
+    public void setFecha_diagnostico(String fecha_diagnostico) {
+        this.fecha_diagnostico = fecha_diagnostico;
+    }
+    
+    
 }

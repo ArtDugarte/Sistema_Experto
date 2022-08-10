@@ -21,7 +21,7 @@ public class principal_paciente extends javax.swing.JFrame {
         
         p_se = new p_subirExamen(this, id_usuario);
         p_e = new p_examenes(p_se);
-        p_r = new p_resultados();
+        p_r = new p_resultados(usuario);
         p_h = new p_historial();
         p_a = new p_ajustes(usuario);
         p_principal.add(p_se);
@@ -221,6 +221,7 @@ public class principal_paciente extends javax.swing.JFrame {
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/resultados.png")));
         
         p_e.setVisible(false);
+        p_r.iniciar();
         p_r.setVisible(true);
         p_h.setVisible(false);
         p_a.setVisible(false);
