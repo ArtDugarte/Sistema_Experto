@@ -1086,9 +1086,9 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
 
-        if (nombre.getText().equals("Nombre del Diagnostico:") && descripcion.getText().equals("")) {
+        if (nombre.getText().equals("Nombre del Diagnostico:") || descripcion.getText().equals("") || nombre.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "¡Campos Vacíos o por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
 
         } else {
 
@@ -1179,7 +1179,13 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_b_siguiente_generalActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        if (!listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
+        if (listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
+            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
+        } else if (nombre.getText().equals("") || descripcion.getText().equals("") || nombre.getText().equals("Nombre del Diagnostico:")) {
+            JOptionPane.showMessageDialog(null, "¡Campos en blanco o por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
+        } else {
             ArrayList<String> valores = new ArrayList<String>();
             ArrayList<Boolean> resultado_seleccionado = new ArrayList<Boolean>();
             operar_diagnosticos op = new operar_diagnosticos();
@@ -1245,8 +1251,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
                 iniciar();
             }
 
-        } else {
-            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_modificarActionPerformed
 
@@ -1255,13 +1259,17 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_borrarMouseReleased
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
-        if (!listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
+        if (listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
+            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
+        } else if (nombre.getText().equals("") || descripcion.getText().equals("") || nombre.getText().equals("Nombre del Diagnostico:")) {
+            JOptionPane.showMessageDialog(null, "¡Campos en blanco o por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
+        } else {
             new operar_diagnosticos().Borrar(li.get(listado_diagnosticos.getSelectedIndex()).getIdDiagnostico());
             iniciar();
         }
-        else{
-            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_borrarActionPerformed
 
     private void nombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nombreFocusGained
@@ -1459,6 +1467,8 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
             return true;
         }
     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_limpiarOrina;
     private javax.swing.JButton b_limpiarSangre;

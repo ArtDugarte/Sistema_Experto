@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.Validaciones;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -163,6 +164,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         jSeparator26 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
         area_diagnostico_final = new javax.swing.JTextArea();
+        jLabel31 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -856,6 +858,11 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 cedulaFocusLost(evt);
             }
         });
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
+            }
+        });
         principal.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 230, 30));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
@@ -1095,6 +1102,11 @@ public class p_diagnosticos extends javax.swing.JPanel {
         jScrollPane5.setViewportView(area_diagnostico_final);
 
         resultados.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 280, 200));
+
+        jLabel31.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel31.setText("NOTA: Si desea adjuntar varios documentos, debe unirlos todos es un mismo archivo PDF ");
+        resultados.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
 
         add(resultados, "card5");
 
@@ -1341,10 +1353,13 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 }
             }
 
-            
             new operar_examenes().borrarExamen(idExamen, tipo);
             inicio();
+        } else {
+            JOptionPane.showMessageDialog(null, "¡Debe ingresar algun diagnostico final! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
         }
+
 
     }//GEN-LAST:event_b_guardarActionPerformed
 
@@ -1377,7 +1392,9 @@ public class p_diagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_b_limpiar_resultadoMouseReleased
 
     private void b_limpiar_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_resultadoActionPerformed
-        // TODO add your handling code here:
+        area_diagnostico_final.setText(area_diagnostico_sugerido.getText());
+        filename.setText("");
+        file = null;
     }//GEN-LAST:event_b_limpiar_resultadoActionPerformed
 
     private void b_adjuntar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_adjuntar_documentoActionPerformed
@@ -1399,6 +1416,11 @@ public class p_diagnosticos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_b_adjuntar_documentoActionPerformed
 
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarNumeroEntero(c, evt);
+    }//GEN-LAST:event_cedulaKeyTyped
+
     public void inicio() {
         limpiar_campos();
         actualizar_lista();
@@ -1413,6 +1435,8 @@ public class p_diagnosticos extends javax.swing.JPanel {
         cedula.setText("Cédula:");
         nombres.setText("Nombres:");
         apellidos.setText("Apellidos:");
+        filename.setText("");
+        file=null;
         b_revisar.setEnabled(false);
         b_visualizarExamen.setEnabled(false);
         cedula.setFocusable(true);
@@ -1428,7 +1452,8 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private JFileChooser fileChooser;
     private File file;
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
+    private final FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
+    private final Validaciones validador = new Validaciones();
 
     public void actualizar_lista() {
         ArrayList<modelo> li = new operar_examenes().ExamenesPendientesExperto();
@@ -2001,14 +2026,14 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 }
             } // FIN PARAMETRO
             j++;
-            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+            if (seleccionados.get(j).equals("1") && coincide == true) {
                 if (!reaccion.getSelectedItem().equals(valores.get(j))) {
                     coincide = false;
                 }
-            } // FIN PARAMETRO
+            }
             j++;
 
-            if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
+            if (seleccionados.get(j).equals("1") && coincide == true) {
                 switch (valores.get(j)) {
                     case "ALTOS":
                         if (Float.parseFloat(densidad.getText()) <= 1.030) {
@@ -2026,7 +2051,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
                         }
                         break;
                 }
-            } // FIN PARAMETRO
+            }
             j++;
             if (seleccionados.get(j).equals("1") && coincide == true) { //PARAMETRO
                 switch (valores.get(j)) {
@@ -2165,6 +2190,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         }
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
     private javax.swing.JTextArea area_diagnostico_final;
@@ -2220,6 +2246,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel44;

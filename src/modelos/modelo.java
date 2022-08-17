@@ -6,8 +6,24 @@ public class modelo {
      
     // Usuarios
     
-    int tipo_usuario, id_usuario;
-    String usuario, pregunta, respuesta, clave, nombre, apellido, cedula;
+    int tipo_usuario, id_usuario, edad;
+    String usuario, pregunta, respuesta, clave, nombre, apellido, cedula, correo;
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
     public int getId_usuario() {
         return id_usuario;

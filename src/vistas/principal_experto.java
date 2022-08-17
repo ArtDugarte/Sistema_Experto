@@ -4,6 +4,7 @@ import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import paneles.p_acercaDelSistema;
 import paneles.p_ajustes;
 import paneles.p_busquedaAvanzada;
 import paneles.p_crudDiagnosticos;
@@ -11,35 +12,43 @@ import paneles.p_diagnosticos;
 import paneles.p_examenes;
 import paneles.p_historial;
 import paneles.p_registrarUsuarios;
+import paneles.p_reportes;
 import paneles.p_resultados;
 
 public class principal_experto extends javax.swing.JFrame {
 
-    public principal_experto(String usuario, String nombre) {
-        
+    public principal_experto(String usuario, String nombre, int tipo_usu) {
+
         initComponents();
+        this.tipo_usu = tipo_usu;
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
-        
+
         p_d = new p_diagnosticos(usuario);
         p_r = new p_registrarUsuarios(usuario);
         p_a = new p_ajustes(usuario);
         p_cd = new p_crudDiagnosticos();
         p_b = new p_busquedaAvanzada();
+        p_as = new p_acercaDelSistema(tipo_usu);
+        p_re = new p_reportes();
         p_principal.add(p_d);
         p_principal.add(p_r);
         p_principal.add(p_a);
         p_principal.add(p_cd);
         p_principal.add(p_b);
+        p_principal.add(p_as);
+        p_principal.add(p_re);
         p_d.setVisible(true);
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.setVisible(false);
         p_b.setVisible(false);
+        p_as.setVisible(false);
+        p_re.setVisible(false);
         p_cd.iniciar();
-        l_nombreUsuario.setText(nombre.substring(0, 1)+nombre.substring(1).toLowerCase());
-        
+        l_nombreUsuario.setText(nombre.substring(0, 1) + nombre.substring(1).toLowerCase());
+
     }
 
     @SuppressWarnings("unchecked")
@@ -61,6 +70,7 @@ public class principal_experto extends javax.swing.JFrame {
         b_busquedaAvenzada = new javax.swing.JButton();
         b_reportes = new javax.swing.JButton();
         b_ajustes = new javax.swing.JButton();
+        b_acercaDelSistema = new javax.swing.JButton();
         p_principal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,7 +129,7 @@ public class principal_experto extends javax.swing.JFrame {
 
         p_botones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         p_botones.setOpaque(false);
-        p_botones.setLayout(new java.awt.GridLayout(6, 0, 0, 5));
+        p_botones.setLayout(new java.awt.GridLayout(7, 0, 0, 5));
 
         b_diagnosticos.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         b_diagnosticos.setForeground(new java.awt.Color(204, 204, 204));
@@ -218,6 +228,22 @@ public class principal_experto extends javax.swing.JFrame {
         });
         p_botones.add(b_ajustes);
 
+        b_acercaDelSistema.setFont(new java.awt.Font("Arial", 3, 16)); // NOI18N
+        b_acercaDelSistema.setForeground(new java.awt.Color(255, 255, 255));
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png"))); // NOI18N
+        b_acercaDelSistema.setText("Acerca del Sistema");
+        b_acercaDelSistema.setBorderPainted(false);
+        b_acercaDelSistema.setContentAreaFilled(false);
+        b_acercaDelSistema.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_acercaDelSistema.setFocusPainted(false);
+        b_acercaDelSistema.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        b_acercaDelSistema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_acercaDelSistemaMouseClicked(evt);
+            }
+        });
+        p_botones.add(b_acercaDelSistema);
+
         p_menu.add(p_botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 400));
 
         base.add(p_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 410));
@@ -237,176 +263,272 @@ public class principal_experto extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMouseClicked
 
     private void b_diagnosticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_diagnosticosMouseClicked
-        
+
         b_diagnosticos.setForeground(new Color(204, 204, 204));
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico2.png")));
-        
+
         b_registrarU.setForeground(Color.WHITE);
         b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
-           
+
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
+
         b_crud_diagnosticos.setForeground(Color.WHITE);
         b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
-        
+
         b_busquedaAvenzada.setForeground(Color.WHITE);
         b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
-        
+
         b_reportes.setForeground(Color.WHITE);
         b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
-        
+
+        b_acercaDelSistema.setForeground(Color.WHITE);
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Diagnósticos");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
-        
+
         p_d.setVisible(true);
         p_d.inicio();
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.setVisible(false);
         p_b.setVisible(false);
+        p_re.setVisible(false);
+        p_as.setVisible(false);
     }//GEN-LAST:event_b_diagnosticosMouseClicked
 
     private void b_registrarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarUMouseClicked
-        
+
         b_registrarU.setForeground(new Color(204, 204, 204));
         b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios2.png")));
-        
+
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
 
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
+
         b_crud_diagnosticos.setForeground(Color.WHITE);
         b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
-        
+
         b_busquedaAvenzada.setForeground(Color.WHITE);
         b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
-        
+
         b_reportes.setForeground(Color.WHITE);
         b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
-        
+
+        b_acercaDelSistema.setForeground(Color.WHITE);
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Administrar Usuarios");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
-        
+
         p_d.setVisible(false);
         p_r.setVisible(true);
         p_a.setVisible(false);
         p_cd.setVisible(false);
         p_b.setVisible(false);
+        p_re.setVisible(false);
+        p_as.setVisible(false);
     }//GEN-LAST:event_b_registrarUMouseClicked
 
     private void b_ajustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ajustesMouseClicked
-        
+
         b_ajustes.setForeground(new Color(204, 204, 204));
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes2.png")));
-        
+
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
-        
+
         b_registrarU.setForeground(Color.WHITE);
-        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
-        
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+
         b_crud_diagnosticos.setForeground(Color.WHITE);
         b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
-        
+
         b_busquedaAvenzada.setForeground(Color.WHITE);
         b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
-        
+
         b_reportes.setForeground(Color.WHITE);
         b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
-          
+
+        b_acercaDelSistema.setForeground(Color.WHITE);
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Ajustes");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
+
         p_d.setVisible(false);
         p_r.setVisible(false);
         p_cd.setVisible(false);
         p_a.info_usuario();
         p_a.setVisible(true);
+        p_re.setVisible(false);
+        p_as.setVisible(false);
     }//GEN-LAST:event_b_ajustesMouseClicked
 
     private void b_crud_diagnosticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_crud_diagnosticosMouseClicked
         b_crud_diagnosticos.setForeground(new Color(204, 204, 204));
         b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos2.png")));
-        
+
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
 
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
+
         b_registrarU.setForeground(Color.WHITE);
-        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
-        
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+
         b_busquedaAvenzada.setForeground(Color.WHITE);
         b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
-        
+
         b_reportes.setForeground(Color.WHITE);
         b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
-        
+
+        b_acercaDelSistema.setForeground(Color.WHITE);
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Administrar Diagnósticos");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
-        
+
         p_d.setVisible(false);
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.iniciar();
         p_cd.setVisible(true);
         p_b.setVisible(false);
+        p_re.setVisible(false);
+        p_as.setVisible(false);
     }//GEN-LAST:event_b_crud_diagnosticosMouseClicked
 
     private void b_busquedaAvenzadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_busquedaAvenzadaMouseClicked
-        
+
         b_crud_diagnosticos.setForeground(Color.WHITE);
         b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
-        
+
         b_diagnosticos.setForeground(Color.WHITE);
         b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
 
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
+
         b_registrarU.setForeground(Color.WHITE);
-        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));   
-        
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+
         b_busquedaAvenzada.setForeground(new Color(204, 204, 204));
         b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada2.png")));
-        
+
         b_reportes.setForeground(Color.WHITE);
         b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
-        
+
+        b_acercaDelSistema.setForeground(Color.WHITE);
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Búsqueda Avanzada");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
-        
+
         p_d.setVisible(false);
         p_r.setVisible(false);
         p_a.setVisible(false);
         p_cd.setVisible(false);
+        p_re.setVisible(false);
+        p_as.setVisible(false);
         p_b.limpiar_campos();
         p_b.setVisible(true);
     }//GEN-LAST:event_b_busquedaAvenzadaMouseClicked
 
     private void b_reportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_reportesMouseClicked
-        // TODO add your handling code here:
+
+        b_reportes.setForeground(new Color(204, 204, 204));
+        b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes2.png")));
+
+        b_diagnosticos.setForeground(Color.WHITE);
+        b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
+
+        b_ajustes.setForeground(Color.WHITE);
+        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+
+        b_registrarU.setForeground(Color.WHITE);
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+
+        b_busquedaAvenzada.setForeground(Color.WHITE);
+        b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
+
+        b_crud_diagnosticos.setForeground(Color.WHITE);
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
+
+        b_acercaDelSistema.setForeground(Color.WHITE);
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
+        l_ico.setText(" Reportes");
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
+
+        p_d.setVisible(false);
+        p_r.setVisible(false);
+        p_a.setVisible(false);
+        p_cd.setVisible(false);
+        p_b.setVisible(false);
+        p_re.setVisible(true);
+        p_as.setVisible(false);
     }//GEN-LAST:event_b_reportesMouseClicked
-    
-    //Metodos y Variables
-    public void salir(){
+
+    private void b_acercaDelSistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_acercaDelSistemaMouseClicked
         
+        b_acercaDelSistema.setForeground(new Color(204, 204, 204));
+        b_acercaDelSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de2.png")));
+
+        b_diagnosticos.setForeground(Color.WHITE);
+        b_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diagnostico.png")));
+
+        b_ajustes.setForeground(Color.WHITE);
+        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+
+        b_registrarU.setForeground(Color.WHITE);
+        b_registrarU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png")));
+
+        b_busquedaAvenzada.setForeground(Color.WHITE);
+        b_busquedaAvenzada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda_avanzada.png")));
+
+        b_crud_diagnosticos.setForeground(Color.WHITE);
+        b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos.png")));
+
+        b_reportes.setForeground(Color.WHITE);
+        b_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png")));
+
+        l_ico.setText(" Acerca del Sistema");
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
+        p_d.setVisible(false);
+        p_r.setVisible(false);
+        p_a.setVisible(false);
+        p_cd.setVisible(false);
+        p_b.setVisible(false);
+        p_re.setVisible(false);
+        p_as.setVisible(true);
+    }//GEN-LAST:event_b_acercaDelSistemaMouseClicked
+
+    //Metodos y Variables
+    public void salir() {
+
         login l = new login();
         l.setVisible(true);
         this.dispose();
     }
-    
+
     p_diagnosticos p_d;
     p_busquedaAvanzada p_b;
     p_registrarUsuarios p_r;
     p_ajustes p_a;
     p_crudDiagnosticos p_cd;
-    
+    p_acercaDelSistema p_as;
+    p_reportes p_re;
+    int tipo_usu;
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton b_acercaDelSistema;
     private javax.swing.JButton b_ajustes;
     private javax.swing.JButton b_busquedaAvenzada;
     private javax.swing.JButton b_crud_diagnosticos;

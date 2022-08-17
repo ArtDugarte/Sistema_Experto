@@ -161,41 +161,41 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
 
-        if (cedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡La cedula no puede estar vacia! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-
-        } else {
-
-            modelo m = new operar_resultados().Buscar(cedula.getText());
-            DefaultTableModel model = (DefaultTableModel) lista.getModel();
-            model.setRowCount(0);
-            nombres.setText("Nombres: ");
-            apellidos.setText("Apelidos: ");
-            
-            if (m != null) {
-                
-                nombres.setText("Nombres: " + m.getNombre());
-                apellidos.setText("Apelidos: " + m.getApellido());
-                
-                ArrayList<modelo> li = new operar_resultados().historial(m.getId_usuario());
-                
-
-                if (li != null) {
-
-                    for (int i = 0; i < li.size(); i++) {
-
-                        model.addRow(new Object[]{
-                            li.get(i).getNombre() + " " + li.get(i).getApellido(),
-                            li.get(i).getDiagnostico_final(),
-                            li.get(i).getFecha_envio(),
-                            li.get(i).getFecha_diagnostico()
-                        });
+        switch (cedula.getText()) {
+            case "":
+                JOptionPane.showMessageDialog(null, "¡La cedula no puede estar vacia! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                break;
+            case "Introduzca la cédula del paciente a buscar:":
+                JOptionPane.showMessageDialog(null, "¡Valor por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                break;
+            default:
+                modelo m = new operar_resultados().Buscar(cedula.getText());
+                DefaultTableModel model = (DefaultTableModel) lista.getModel();
+                model.setRowCount(0);
+                nombres.setText("Nombres: ");
+                apellidos.setText("Apelidos: ");
+                if (m != null) {
+                    
+                    nombres.setText("Nombres: " + m.getNombre());
+                    apellidos.setText("Apelidos: " + m.getApellido());
+                    
+                    ArrayList<modelo> li = new operar_resultados().historial(m.getId_usuario());
+                    
+                    if (li != null) {
+                        
+                        for (int i = 0; i < li.size(); i++) {
+                            
+                            model.addRow(new Object[]{
+                                li.get(i).getNombre() + " " + li.get(i).getApellido(),
+                                li.get(i).getDiagnostico_final(),
+                                li.get(i).getFecha_envio(),
+                                li.get(i).getFecha_diagnostico()
+                            });
+                        }
                     }
-                }
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "¡El Paciente no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-            }
+                } else {
+                    JOptionPane.showMessageDialog(null, "¡El Paciente no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                }   break;
         }
     }//GEN-LAST:event_lupaActionPerformed
 

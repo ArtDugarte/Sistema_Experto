@@ -32,6 +32,7 @@ public class p_resultados extends javax.swing.JPanel {
         jSeparator21 = new javax.swing.JSeparator();
         nombre_medico = new javax.swing.JTextField();
         tiempo_descarga = new javax.swing.JTextField();
+        correo = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -110,6 +111,15 @@ public class p_resultados extends javax.swing.JPanel {
         tiempo_descarga.setFocusable(false);
         add(tiempo_descarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 590, 30));
 
+        correo.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        correo.setForeground(new java.awt.Color(102, 102, 102));
+        correo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        correo.setText("N/A");
+        correo.setBorder(null);
+        correo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        correo.setFocusable(false);
+        add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 385, 590, 30));
+
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -143,6 +153,7 @@ public class p_resultados extends javax.swing.JPanel {
             nombre_medico.setText("Aprobado por N/A - Especialista Certificado/a");
             fecha_diagnostico.setText("Diagnósticado el día: dd/mm/yyyy ");
             fecha_envio.setText("Su diagnóstico para el exámen subido el dia dd/mm/yyyy es:");
+            correo.setText("N/A");
             area_diagnostico.setText("");
             descargar.setEnabled(false);
             tiempo_descarga.setVisible(false);
@@ -152,6 +163,7 @@ public class p_resultados extends javax.swing.JPanel {
             nombre_medico.setText("Aprobado por " + m.getNombre() + " " + m.getApellido() + " - Especialista Certificado/a");
             fecha_diagnostico.setText("Diagnósticado el día: " + m.getFecha_diagnostico() + " ");
             fecha_envio.setText("Su diagnóstico para el exámen subido el dia " + m.getFecha_envio() + " es:");
+            correo.setText(m.getCorreo());
             area_diagnostico.setText(m.getDiagnostico_final());
 
             if (new operar_resultados().existe_archivo(m.getId_resultado())) {
@@ -200,6 +212,7 @@ public class p_resultados extends javax.swing.JPanel {
     private int id_usuario = 0, id_resultado = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea area_diagnostico;
+    private javax.swing.JTextField correo;
     private javax.swing.JButton descargar;
     private javax.swing.JTextField fecha_diagnostico;
     private javax.swing.JTextField fecha_envio;
