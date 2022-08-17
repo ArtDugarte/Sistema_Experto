@@ -155,7 +155,7 @@ public class principal_asistente extends javax.swing.JFrame {
         });
         p_botones.add(b_acercaDelsistema);
 
-        p_menu.add(p_botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 400));
+        p_menu.add(p_botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 190));
 
         base.add(p_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 410));
 

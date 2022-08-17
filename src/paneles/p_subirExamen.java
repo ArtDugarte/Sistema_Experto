@@ -212,8 +212,9 @@ public class p_subirExamen extends javax.swing.JPanel {
 
         jLabel23.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel23.setText("NOTA: Si desea adjuntar varias imagenes, debe unirlas todas es un mismo archivo PDF ");
-        documento.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("NOTA: Si desea adjuntar varias imagenes, debe unirlas en un mismo archivo PDF ");
+        documento.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 680, -1));
 
         base.add(documento, "card2");
 

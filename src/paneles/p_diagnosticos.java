@@ -1105,8 +1105,9 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
         jLabel31.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel31.setText("NOTA: Si desea adjuntar varios documentos, debe unirlos todos es un mismo archivo PDF ");
-        resultados.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("NOTA: Si desea adjuntar varios documentos, debe unirlos en un mismo archivo PDF ");
+        resultados.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 440, 670, -1));
 
         add(resultados, "card5");
 

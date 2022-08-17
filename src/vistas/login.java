@@ -20,6 +20,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
+        AWTUtilities.setWindowShape(this, forma);
         new operar_resultados().borrarDocumentosViejos();
         ingreso.setVisible(true);
         olvido_contra.setVisible(false);

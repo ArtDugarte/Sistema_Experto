@@ -244,11 +244,11 @@ public class p_ajustes extends javax.swing.JPanel {
         edad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edad.setFocusable(false);
         edad.setName("Desplegable"); // NOI18N
-        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 110, 40));
+        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 110, 40));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 420, 10));
+        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 540, 10));
 
         correo.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         correo.setForeground(new java.awt.Color(102, 102, 102));
@@ -268,7 +268,7 @@ public class p_ajustes extends javax.swing.JPanel {
                 correoActionPerformed(evt);
             }
         });
-        add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 420, 30));
+        add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 540, 30));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents

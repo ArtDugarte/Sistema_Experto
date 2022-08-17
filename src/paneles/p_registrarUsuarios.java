@@ -347,7 +347,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 420, 10));
+        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 540, 10));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/correo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
@@ -370,7 +370,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 correoActionPerformed(evt);
             }
         });
-        add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 420, 30));
+        add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 540, 30));
 
         edad.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         edad.setForeground(new java.awt.Color(102, 102, 102));
@@ -379,7 +379,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         edad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         edad.setFocusable(false);
         edad.setName("Desplegable"); // NOI18N
-        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 110, 40));
+        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 110, 40));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
