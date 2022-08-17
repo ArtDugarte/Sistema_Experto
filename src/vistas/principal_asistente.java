@@ -4,32 +4,32 @@ import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import paneles.p_acercaDelSistema;
 import paneles.p_ajustes;
-import paneles.p_diagnosticos;
-import paneles.p_examenes;
-import paneles.p_historial;
-import paneles.p_registrarUsuarios;
-import paneles.p_resultados;
 import paneles.p_revision;
 
 public class principal_asistente extends javax.swing.JFrame {
 
-    public principal_asistente(String usuario, String nombre) {
-        
+    public principal_asistente(String usuario, String nombre, int tipo_usu) {
+
         initComponents();
+        this.tipo_usu = tipo_usu;
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
-        
+
         p_a = new p_ajustes(usuario);
         p_r = new p_revision();
-        
+        p_as = new p_acercaDelSistema(tipo_usu);
+
         p_principal.add(p_r);
         p_principal.add(p_a);
-        
+        p_principal.add(p_as);
+
         p_r.setVisible(true);
         p_a.setVisible(false);
-        l_nombreUsuario.setText(nombre.substring(0, 1)+nombre.substring(1).toLowerCase());
+        p_as.setVisible(false);
+        l_nombreUsuario.setText(nombre.substring(0, 1) + nombre.substring(1).toLowerCase());
     }
 
     @SuppressWarnings("unchecked")
@@ -47,6 +47,7 @@ public class principal_asistente extends javax.swing.JFrame {
         p_botones = new javax.swing.JPanel();
         b_revision = new javax.swing.JButton();
         b_ajustes = new javax.swing.JButton();
+        b_acercaDelsistema = new javax.swing.JButton();
         p_principal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,7 +105,7 @@ public class principal_asistente extends javax.swing.JFrame {
         p_menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         p_botones.setOpaque(false);
-        p_botones.setLayout(new java.awt.GridLayout(4, 0, 0, 5));
+        p_botones.setLayout(new java.awt.GridLayout(3, 0, 0, 5));
 
         b_revision.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         b_revision.setForeground(new java.awt.Color(204, 204, 204));
@@ -138,7 +139,23 @@ public class principal_asistente extends javax.swing.JFrame {
         });
         p_botones.add(b_ajustes);
 
-        p_menu.add(p_botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 290));
+        b_acercaDelsistema.setFont(new java.awt.Font("Arial", 3, 16)); // NOI18N
+        b_acercaDelsistema.setForeground(new java.awt.Color(255, 255, 255));
+        b_acercaDelsistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png"))); // NOI18N
+        b_acercaDelsistema.setText("Acerca del Sistema");
+        b_acercaDelsistema.setBorderPainted(false);
+        b_acercaDelsistema.setContentAreaFilled(false);
+        b_acercaDelsistema.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_acercaDelsistema.setFocusPainted(false);
+        b_acercaDelsistema.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        b_acercaDelsistema.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                b_acercaDelsistemaMouseClicked(evt);
+            }
+        });
+        p_botones.add(b_acercaDelsistema);
+
+        p_menu.add(p_botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 220, 400));
 
         base.add(p_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 410));
 
@@ -157,50 +174,80 @@ public class principal_asistente extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMouseClicked
 
     private void b_revisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_revisionMouseClicked
-        
+
         b_revision.setForeground(new Color(204, 204, 204));
         b_revision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/revision2.png")));
-              
+
         b_ajustes.setForeground(Color.WHITE);
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-               
+
+        b_acercaDelsistema.setForeground(Color.WHITE);
+        b_acercaDelsistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Revisión de Exámenes");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/revision.png")));
-        
+
         p_r.setVisible(true);
         p_a.setVisible(false);
+        p_as.setVisible(false);
         p_r.iniciar();
-        
+
     }//GEN-LAST:event_b_revisionMouseClicked
 
     private void b_ajustesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_ajustesMouseClicked
-        
+
         b_ajustes.setForeground(new Color(204, 204, 204));
         b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes2.png")));
-        
+
         b_revision.setForeground(Color.WHITE);
         b_revision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/revision.png")));
-            
+
+        b_acercaDelsistema.setForeground(Color.WHITE);
+        b_acercaDelsistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
         l_ico.setText(" Ajustes");
         l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
-        
+
         p_r.setVisible(false);
+        p_as.setVisible(false);
         p_a.info_usuario();
         p_a.setVisible(true);
     }//GEN-LAST:event_b_ajustesMouseClicked
-    
+
+    private void b_acercaDelsistemaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_acercaDelsistemaMouseClicked
+
+        b_acercaDelsistema.setForeground(new Color(204, 204, 204));
+        b_acercaDelsistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de2.png")));
+
+        b_ajustes.setForeground(Color.WHITE);
+        b_ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ajustes.png")));
+
+        b_revision.setForeground(Color.WHITE);
+        b_revision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/revision.png")));
+
+        l_ico.setText(" Acerca del Sistema");
+        l_ico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acerca_de.png")));
+
+        p_r.setVisible(false);
+        p_a.setVisible(false);
+        p_as.setVisible(true);
+    }//GEN-LAST:event_b_acercaDelsistemaMouseClicked
+
     //Metodos y Variables
-    public void salir(){
-        
+    public void salir() {
+
         login l = new login();
         l.setVisible(true);
         this.dispose();
     }
-    
+
     p_revision p_r;
     p_ajustes p_a;
-    
+    p_acercaDelSistema p_as;
+    int tipo_usu;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton b_acercaDelsistema;
     private javax.swing.JButton b_ajustes;
     private javax.swing.JButton b_revision;
     private javax.swing.JPanel base;

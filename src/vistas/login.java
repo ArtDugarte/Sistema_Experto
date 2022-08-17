@@ -2,6 +2,7 @@ package vistas;
 
 import BD.BDConex;
 import com.sun.awt.AWTUtilities;
+import globales.Validaciones;
 import globales.encriptacion;
 import java.awt.Color;
 import java.awt.Shape;
@@ -9,6 +10,7 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import modelos.modelo;
+import modelos.operar_resultados;
 import modelos.operar_usuarios;
 
 public class login extends javax.swing.JFrame {
@@ -18,7 +20,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
-        AWTUtilities.setWindowShape(this, forma);
+        new operar_resultados().borrarDocumentosViejos();
         ingreso.setVisible(true);
         olvido_contra.setVisible(false);
 
@@ -115,6 +117,11 @@ public class login extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 usuarioFocusLost(evt);
+            }
+        });
+        usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usuarioKeyTyped(evt);
             }
         });
         ingreso.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 250, 30));
@@ -235,6 +242,11 @@ public class login extends javax.swing.JFrame {
                 usuario_olvidoFocusLost(evt);
             }
         });
+        usuario_olvido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usuario_olvidoKeyTyped(evt);
+            }
+        });
         olvido_contra.add(usuario_olvido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 250, 30));
 
         nueva_clave.setBackground(new java.awt.Color(103, 174, 202));
@@ -276,6 +288,7 @@ public class login extends javax.swing.JFrame {
         modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         modificar.setContentAreaFilled(false);
         modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificar.setEnabled(false);
         modificar.setFocusPainted(false);
         modificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -490,6 +503,9 @@ public class login extends javax.swing.JFrame {
         pregunta_olvido.setText("Pregunta de Seguridad");
         respuesta_olvido.setText("Respuesta");
         nueva_clave.setText("Contraseña");
+        lupa.setEnabled(true);
+        modificar.setEnabled(false);
+        usuario_olvido.setFocusable(true);
 
     }//GEN-LAST:event_olvido_claveActionPerformed
 
@@ -510,8 +526,8 @@ public class login extends javax.swing.JFrame {
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
 
-        if (usuario.getText().equals("") || clave.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡Algún Campo Está Vacío! \n        "
+        if (usuario.getText().equals("") || clave.getText().equals("") || usuario.getText().equals("Usuario")) {
+            JOptionPane.showMessageDialog(null, "¡Algún Campo Está Vacío o por Defecto! \n        "
                     + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
         } else {
 
@@ -533,17 +549,17 @@ public class login extends javax.swing.JFrame {
 
             switch (tipo) {
                 case 1:
-                    principal_experto pe = new principal_experto(usuario.getText(), nombre);
+                    principal_experto pe = new principal_experto(usuario.getText(), nombre, tipo);
                     pe.setVisible(true);
                     this.dispose();
                     break;
                 case 3:
-                    principal_paciente p = new principal_paciente(usuario.getText(), nombre, id_usuario);
+                    principal_paciente p = new principal_paciente(usuario.getText(), nombre, id_usuario, tipo);
                     p.setVisible(true);
                     this.dispose();
                     break;
                 case 2:
-                    principal_asistente pa = new principal_asistente(usuario.getText(), nombre);
+                    principal_asistente pa = new principal_asistente(usuario.getText(), nombre, tipo);
                     pa.setVisible(true);
                     this.dispose();
                     break;
@@ -586,12 +602,15 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_nueva_claveFocusLost
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
-        if (usuario_olvido.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Usuario vacío");
+        if (usuario_olvido.getText().equals("") || usuario_olvido.getText().equals("Usuario")) {
+            JOptionPane.showMessageDialog(null, "Usuario vacío o no valido");
         } else {
             modelo m = new operar_usuarios().Buscar(usuario_olvido.getText());
             if (m != null) {
                 pregunta_olvido.setText(m.getPregunta());
+                modificar.setEnabled(true);
+                lupa.setEnabled(false);
+                usuario_olvido.setFocusable(false);
             } else {
                 JOptionPane.showMessageDialog(null, "¡El usuario no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
             }
@@ -610,9 +629,22 @@ public class login extends javax.swing.JFrame {
             nueva_clave.setText("Contraseña");
             pregunta_olvido.setText("Pregunta de Seguridad");
             respuesta_olvido.setText("Respuesta");
+            lupa.setEnabled(true);
+            modificar.setEnabled(false);
+            usuario_olvido.setFocusable(true);
 
         }
     }//GEN-LAST:event_modificarActionPerformed
+
+    private void usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarNumeroEntero(c, evt);
+    }//GEN-LAST:event_usuarioKeyTyped
+
+    private void usuario_olvidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuario_olvidoKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarNumeroEntero(c, evt);
+    }//GEN-LAST:event_usuario_olvidoKeyTyped
 
     //METODOS Y VARIABLES
     public void salir() {
@@ -620,7 +652,8 @@ public class login extends javax.swing.JFrame {
         System.exit(0);
     }
 
-    encriptacion encrip = new encriptacion();
+    private final encriptacion encrip = new encriptacion();
+    private final Validaciones validador = new Validaciones();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel base;
     private javax.swing.JPasswordField clave;

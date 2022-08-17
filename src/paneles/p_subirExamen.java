@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.Validaciones;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +26,14 @@ public class p_subirExamen extends javax.swing.JPanel {
     private void initComponents() {
 
         base = new javax.swing.JPanel();
+        documento = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
+        b_subir_documento = new javax.swing.JButton();
+        b_limpiar_documento = new javax.swing.JButton();
+        b_volver_documento = new javax.swing.JButton();
+        b_adjuntar_documento = new javax.swing.JButton();
+        filename = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
         sangre = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
@@ -65,13 +74,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_limpiarSangre = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         b_volver_sangre = new javax.swing.JButton();
-        documento = new javax.swing.JPanel();
-        jLabel60 = new javax.swing.JLabel();
-        b_subir_documento = new javax.swing.JButton();
-        b_limpiar_documento = new javax.swing.JButton();
-        b_volver_documento = new javax.swing.JButton();
-        b_adjuntar_documento = new javax.swing.JButton();
-        filename = new javax.swing.JTextField();
         orina = new javax.swing.JPanel();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
@@ -135,6 +137,86 @@ public class p_subirExamen extends javax.swing.JPanel {
         base.setOpaque(false);
         base.setLayout(new java.awt.CardLayout());
 
+        documento.setOpaque(false);
+        documento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel60.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel60.setText("EXÁMENES DIGITALIZADOS");
+        documento.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 330, -1));
+
+        b_subir_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_subir_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_subir_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_subir_documento.setText("Registrar");
+        b_subir_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_subir_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_subir_documento.setFocusPainted(false);
+        b_subir_documento.setRolloverEnabled(false);
+        b_subir_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_subir_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_subir_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
+
+        b_limpiar_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_limpiar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_limpiar_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_limpiar_documento.setText("Limpiar");
+        b_limpiar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_limpiar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_limpiar_documento.setFocusPainted(false);
+        b_limpiar_documento.setRolloverEnabled(false);
+        b_limpiar_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_limpiar_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_limpiar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 100, 30));
+
+        b_volver_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_volver_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_volver_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_volver_documento.setText("Volver");
+        b_volver_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_volver_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_volver_documento.setFocusPainted(false);
+        b_volver_documento.setRolloverEnabled(false);
+        b_volver_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_volver_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_volver_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 100, 30));
+
+        b_adjuntar_documento.setBackground(new java.awt.Color(103, 174, 202));
+        b_adjuntar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_adjuntar_documento.setForeground(new java.awt.Color(255, 255, 255));
+        b_adjuntar_documento.setText("Adjuntar");
+        b_adjuntar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_adjuntar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_adjuntar_documento.setFocusPainted(false);
+        b_adjuntar_documento.setRolloverEnabled(false);
+        b_adjuntar_documento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_adjuntar_documentoActionPerformed(evt);
+            }
+        });
+        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 90, 30));
+
+        filename.setEditable(false);
+        filename.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 460, 30));
+
+        jLabel23.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setText("NOTA: Si desea adjuntar varias imagenes, debe unirlas todas es un mismo archivo PDF ");
+        documento.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        base.add(documento, "card2");
+
         sangre.setOpaque(false);
         sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -152,6 +234,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         globulos_rojos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         globulos_rojos.setBorder(null);
         globulos_rojos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        globulos_rojos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                globulos_rojosKeyTyped(evt);
+            }
+        });
         sangre.add(globulos_rojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 130, 20));
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -169,6 +256,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         hemoglobina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hemoglobina.setBorder(null);
         hemoglobina.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hemoglobina.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hemoglobinaKeyTyped(evt);
+            }
+        });
         sangre.add(hemoglobina, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 130, 20));
 
         jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
@@ -194,6 +286,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         hematocritos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hematocritos.setBorder(null);
         hematocritos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hematocritos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hematocritosKeyTyped(evt);
+            }
+        });
         sangre.add(hematocritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 130, 20));
 
         jLabel6.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -211,6 +308,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         plaquetas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         plaquetas.setBorder(null);
         plaquetas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        plaquetas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                plaquetasKeyTyped(evt);
+            }
+        });
         sangre.add(plaquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 130, 20));
 
         jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
@@ -236,6 +338,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         leucocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         leucocitos.setBorder(null);
         leucocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        leucocitos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                leucocitosKeyTyped(evt);
+            }
+        });
         sangre.add(leucocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 130, 20));
 
         jLabel10.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -253,6 +360,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         segmentados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         segmentados.setBorder(null);
         segmentados.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        segmentados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                segmentadosKeyTyped(evt);
+            }
+        });
         sangre.add(segmentados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 130, 20));
 
         jSeparator12.setBackground(new java.awt.Color(255, 255, 255));
@@ -283,6 +395,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         linfocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         linfocitos.setBorder(null);
         linfocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        linfocitos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                linfocitosKeyTyped(evt);
+            }
+        });
         sangre.add(linfocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 130, 20));
 
         jLabel15.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -389,81 +506,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 100, 30));
 
         base.add(sangre, "card2");
-
-        documento.setOpaque(false);
-        documento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel60.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel60.setText("EXÁMENES DIGITALIZADOS");
-        documento.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 330, -1));
-
-        b_subir_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_subir_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_subir_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_subir_documento.setText("Registrar");
-        b_subir_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_subir_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_subir_documento.setFocusPainted(false);
-        b_subir_documento.setRolloverEnabled(false);
-        b_subir_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_subir_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_subir_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
-
-        b_limpiar_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_limpiar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_limpiar_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_limpiar_documento.setText("Limpiar");
-        b_limpiar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_limpiar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_limpiar_documento.setFocusPainted(false);
-        b_limpiar_documento.setRolloverEnabled(false);
-        b_limpiar_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_limpiar_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_limpiar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 100, 30));
-
-        b_volver_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_volver_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_volver_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_volver_documento.setText("Volver");
-        b_volver_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_volver_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_volver_documento.setFocusPainted(false);
-        b_volver_documento.setRolloverEnabled(false);
-        b_volver_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_volver_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_volver_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 100, 30));
-
-        b_adjuntar_documento.setBackground(new java.awt.Color(103, 174, 202));
-        b_adjuntar_documento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_adjuntar_documento.setForeground(new java.awt.Color(255, 255, 255));
-        b_adjuntar_documento.setText("Adjuntar");
-        b_adjuntar_documento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_adjuntar_documento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_adjuntar_documento.setFocusPainted(false);
-        b_adjuntar_documento.setRolloverEnabled(false);
-        b_adjuntar_documento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_adjuntar_documentoActionPerformed(evt);
-            }
-        });
-        documento.add(b_adjuntar_documento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 90, 30));
-
-        filename.setEditable(false);
-        filename.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        documento.add(filename, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 460, 30));
-
-        base.add(documento, "card2");
 
         orina.setOpaque(false);
         orina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -588,6 +630,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         densidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         densidad.setBorder(null);
         densidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        densidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                densidadKeyTyped(evt);
+            }
+        });
         orina.add(densidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 20));
 
         jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
@@ -742,6 +789,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         leucocitosorina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         leucocitosorina.setBorder(null);
         leucocitosorina.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        leucocitosorina.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                leucocitosorinaKeyTyped(evt);
+            }
+        });
         orina.add(leucocitosorina, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 140, 20));
 
         jSeparator23.setBackground(new java.awt.Color(255, 255, 255));
@@ -753,6 +805,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         hematies.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hematies.setBorder(null);
         hematies.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hematies.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hematiesKeyTyped(evt);
+            }
+        });
         orina.add(hematies, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 140, 20));
 
         jSeparator24.setBackground(new java.awt.Color(255, 255, 255));
@@ -809,6 +866,11 @@ public class p_subirExamen extends javax.swing.JPanel {
         eplano.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         eplano.setBorder(null);
         eplano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        eplano.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                eplanoKeyTyped(evt);
+            }
+        });
         orina.add(eplano, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 140, 20));
 
         jSeparator25.setBackground(new java.awt.Color(255, 255, 255));
@@ -906,37 +968,44 @@ public class p_subirExamen extends javax.swing.JPanel {
     }//GEN-LAST:event_b_limpiarOrinaActionPerformed
 
     private void b_subir_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_subir_documentoActionPerformed
-        
+
         if (!filename.getText().equals(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)")) {
-            
+
             try {
                 byte[] blob = new byte[(int) file.length()];
                 InputStream input = new FileInputStream(file);
                 input.read(blob);
                 operar_examenes op = new operar_examenes();
                 int largo = filename.getText().length();
-                String ext = (filename.getText().substring(largo-3,largo));
+                String ext = (filename.getText().substring(largo - 3, largo));
                 op.Crear(id_usuario, blob, ext);
-                
-                if(tipo == 1 || tipo == 3){
-                    
+
+                if (tipo == 1 || tipo == 3) {
+
                     op.SubirSangre(Float.parseFloat(globulos_rojos.getText()), Float.parseFloat(hemoglobina.getText()), Float.parseFloat(hematocritos.getText()),
-                            Float.parseFloat(plaquetas.getText()), Float.parseFloat(leucocitos.getText()), Float.parseFloat(segmentados.getText()), 
+                            Float.parseFloat(plaquetas.getText()), Float.parseFloat(leucocitos.getText()), Float.parseFloat(segmentados.getText()),
                             Float.parseFloat(linfocitos.getText()));
                 }
-                
-                if(tipo == 2 || tipo == 3){
-                    
+
+                if (tipo == 2 || tipo == 3) {
+
                     op.SubirOrina(aspecto.getSelectedItem().toString(), color.getSelectedItem().toString(), reaccion.getSelectedItem().toString(), Float.parseFloat(densidad.getText()),
-                            Float.parseFloat(leucocitosorina.getText()), Float.parseFloat(hematies.getText()), piocitos.getSelectedItem().toString(), bacterias.getSelectedItem().toString(), 
+                            Float.parseFloat(leucocitosorina.getText()), Float.parseFloat(hematies.getText()), piocitos.getSelectedItem().toString(), bacterias.getSelectedItem().toString(),
                             Float.parseFloat(eplano.getText()), proteinas.getSelectedItem().toString(), glucosa.getSelectedItem().toString(), hemoglobina_orina.getSelectedItem().toString(),
                             ccetonico.getSelectedItem().toString(), biliares.getSelectedItem().toString(), urobilinogen.getSelectedItem().toString(), bilirrubina.getSelectedItem().toString(),
                             nitritos.getSelectedItem().toString());
+                    
                 }
-            } 
-            catch (IOException ex) {
+                
+                limpiar_campos();
+                p.abrir_panel_examenes();
+            } catch (IOException ex) {
                 //System.out.println("Error al agregar archivo pdf "+ex.getMessage());
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "¡Es obligatorio adjuntar un archivo! "
+                    + "\n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+
         }
     }//GEN-LAST:event_b_subir_documentoActionPerformed
 
@@ -963,7 +1032,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     }//GEN-LAST:event_b_volver_documentoActionPerformed
 
     private void b_adjuntar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_adjuntar_documentoActionPerformed
-        
+
         fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
 
@@ -995,6 +1064,61 @@ public class p_subirExamen extends javax.swing.JPanel {
             mostrarSangre();
         }
     }//GEN-LAST:event_b_volver_orinaActionPerformed
+
+    private void globulos_rojosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_globulos_rojosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(globulos_rojos, c, evt);
+    }//GEN-LAST:event_globulos_rojosKeyTyped
+
+    private void hemoglobinaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hemoglobinaKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(hemoglobina, c, evt);
+    }//GEN-LAST:event_hemoglobinaKeyTyped
+
+    private void hematocritosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hematocritosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(hematocritos, c, evt);
+    }//GEN-LAST:event_hematocritosKeyTyped
+
+    private void plaquetasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_plaquetasKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(plaquetas, c, evt);
+    }//GEN-LAST:event_plaquetasKeyTyped
+
+    private void leucocitosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_leucocitosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(leucocitos, c, evt);
+    }//GEN-LAST:event_leucocitosKeyTyped
+
+    private void segmentadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_segmentadosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(segmentados, c, evt);
+    }//GEN-LAST:event_segmentadosKeyTyped
+
+    private void linfocitosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_linfocitosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(linfocitos, c, evt);
+    }//GEN-LAST:event_linfocitosKeyTyped
+
+    private void densidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_densidadKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(densidad, c, evt);
+    }//GEN-LAST:event_densidadKeyTyped
+
+    private void leucocitosorinaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_leucocitosorinaKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(leucocitosorina, c, evt);
+    }//GEN-LAST:event_leucocitosorinaKeyTyped
+
+    private void hematiesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hematiesKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(hematies, c, evt);
+    }//GEN-LAST:event_hematiesKeyTyped
+
+    private void eplanoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eplanoKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(eplano, c, evt);
+    }//GEN-LAST:event_eplanoKeyTyped
 
     //metodos y variables
     public void limpiar_sangre() {
@@ -1060,12 +1184,13 @@ public class p_subirExamen extends javax.swing.JPanel {
         limpiar_orina();
         limpiar_documento();
     }
-    
+
     private int tipo = 0, id_usuario = 0;
-    private principal_paciente p;
+    private final principal_paciente p;
     private JFileChooser fileChooser;
     private File file;
-    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
+    private final FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
+    private final Validaciones validador = new Validaciones();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> aspecto;
     private javax.swing.JButton b_adjuntar_documento;
@@ -1109,6 +1234,7 @@ public class p_subirExamen extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;

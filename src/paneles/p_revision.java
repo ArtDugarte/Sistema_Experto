@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.Validaciones;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -349,6 +350,11 @@ public class p_revision extends javax.swing.JPanel {
         globulos_rojos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         globulos_rojos.setBorder(null);
         globulos_rojos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        globulos_rojos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                globulos_rojosKeyTyped(evt);
+            }
+        });
         sangre.add(globulos_rojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 130, 20));
 
         jLabel2.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -366,6 +372,11 @@ public class p_revision extends javax.swing.JPanel {
         hemoglobina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hemoglobina.setBorder(null);
         hemoglobina.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hemoglobina.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hemoglobinaKeyTyped(evt);
+            }
+        });
         sangre.add(hemoglobina, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 130, 20));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
@@ -391,6 +402,11 @@ public class p_revision extends javax.swing.JPanel {
         hematocritos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hematocritos.setBorder(null);
         hematocritos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hematocritos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hematocritosKeyTyped(evt);
+            }
+        });
         sangre.add(hematocritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 130, 20));
 
         jLabel9.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -408,6 +424,11 @@ public class p_revision extends javax.swing.JPanel {
         plaquetas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         plaquetas.setBorder(null);
         plaquetas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        plaquetas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                plaquetasKeyTyped(evt);
+            }
+        });
         sangre.add(plaquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 130, 20));
 
         jSeparator11.setBackground(new java.awt.Color(255, 255, 255));
@@ -433,6 +454,11 @@ public class p_revision extends javax.swing.JPanel {
         leucocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         leucocitos.setBorder(null);
         leucocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        leucocitos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                leucocitosKeyTyped(evt);
+            }
+        });
         sangre.add(leucocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 130, 20));
 
         jLabel13.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -450,6 +476,11 @@ public class p_revision extends javax.swing.JPanel {
         segmentados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         segmentados.setBorder(null);
         segmentados.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        segmentados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                segmentadosKeyTyped(evt);
+            }
+        });
         sangre.add(segmentados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 130, 20));
 
         jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
@@ -480,6 +511,11 @@ public class p_revision extends javax.swing.JPanel {
         linfocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         linfocitos.setBorder(null);
         linfocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        linfocitos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                linfocitosKeyTyped(evt);
+            }
+        });
         sangre.add(linfocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 130, 20));
 
         jLabel18.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
@@ -708,6 +744,11 @@ public class p_revision extends javax.swing.JPanel {
         densidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         densidad.setBorder(null);
         densidad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        densidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                densidadKeyTyped(evt);
+            }
+        });
         orina.add(densidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 100, 20));
 
         jSeparator22.setBackground(new java.awt.Color(255, 255, 255));
@@ -862,6 +903,11 @@ public class p_revision extends javax.swing.JPanel {
         leucocitosorina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         leucocitosorina.setBorder(null);
         leucocitosorina.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        leucocitosorina.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                leucocitosorinaKeyTyped(evt);
+            }
+        });
         orina.add(leucocitosorina, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 140, 20));
 
         jSeparator23.setBackground(new java.awt.Color(255, 255, 255));
@@ -873,6 +919,11 @@ public class p_revision extends javax.swing.JPanel {
         hematies.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         hematies.setBorder(null);
         hematies.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hematies.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hematiesKeyTyped(evt);
+            }
+        });
         orina.add(hematies, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 140, 20));
 
         jSeparator24.setBackground(new java.awt.Color(255, 255, 255));
@@ -929,6 +980,11 @@ public class p_revision extends javax.swing.JPanel {
         eplano.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         eplano.setBorder(null);
         eplano.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        eplano.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                eplanoKeyTyped(evt);
+            }
+        });
         orina.add(eplano, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 140, 20));
 
         jSeparator25.setBackground(new java.awt.Color(255, 255, 255));
@@ -1239,19 +1295,89 @@ public class p_revision extends javax.swing.JPanel {
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
 
-        int op = new operar_examenes().cambiarEstado(idExamen, 1);
-        if (op > 0) {
-
-            JOptionPane.showMessageDialog(null, "¡Envio Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-
-            JOptionPane.showMessageDialog(null, "¡Error al Enviar! "
+        if (tipo == 2 && (globulos_rojos.getText().equals("") || hemoglobina.getText().equals("") || hematocritos.getText().equals("")
+                || plaquetas.getText().equals("") || leucocitos.getText().equals("") || segmentados.getText().equals("")
+                || linfocitos.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "¡Campos Vacios! "
                     + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        }
+        } else if (tipo == 3 && (densidad.getText().equals("") || leucocitosorina.getText().equals("")
+                || hematies.getText().equals("") || eplano.getText().equals(""))) {
+            JOptionPane.showMessageDialog(null, "¡Campos Vacios! "
+                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        } else if (tipo==1 &&(globulos_rojos.getText().equals("") || hemoglobina.getText().equals("") || hematocritos.getText().equals("")
+                || plaquetas.getText().equals("") || leucocitos.getText().equals("") || segmentados.getText().equals("")
+                || linfocitos.getText().equals("") || densidad.getText().equals("") || leucocitosorina.getText().equals("")
+                || hematies.getText().equals("") || eplano.getText().equals(""))){
+        }else {
+            int op = new operar_examenes().cambiarEstado(idExamen, 1);
+            if (op > 0) {
 
-        limpiar_campos();
-        actualizar_lista();
+                JOptionPane.showMessageDialog(null, "¡Envio Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
+                JOptionPane.showMessageDialog(null, "¡Error al Enviar! "
+                        + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            }
+
+            limpiar_campos();
+            actualizar_lista();
+        }
     }//GEN-LAST:event_EnviarActionPerformed
+
+    private void globulos_rojosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_globulos_rojosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(globulos_rojos, c, evt);
+    }//GEN-LAST:event_globulos_rojosKeyTyped
+
+    private void hemoglobinaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hemoglobinaKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(hemoglobina, c, evt);
+    }//GEN-LAST:event_hemoglobinaKeyTyped
+
+    private void hematocritosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hematocritosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(hematocritos, c, evt);
+    }//GEN-LAST:event_hematocritosKeyTyped
+
+    private void plaquetasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_plaquetasKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(plaquetas, c, evt);
+    }//GEN-LAST:event_plaquetasKeyTyped
+
+    private void leucocitosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_leucocitosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(leucocitos, c, evt);
+    }//GEN-LAST:event_leucocitosKeyTyped
+
+    private void segmentadosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_segmentadosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(segmentados, c, evt);
+    }//GEN-LAST:event_segmentadosKeyTyped
+
+    private void linfocitosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_linfocitosKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(linfocitos, c, evt);
+    }//GEN-LAST:event_linfocitosKeyTyped
+
+    private void densidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_densidadKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(densidad, c, evt);
+    }//GEN-LAST:event_densidadKeyTyped
+
+    private void leucocitosorinaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_leucocitosorinaKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(leucocitosorina, c, evt);
+    }//GEN-LAST:event_leucocitosorinaKeyTyped
+
+    private void hematiesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hematiesKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(hematies, c, evt);
+    }//GEN-LAST:event_hematiesKeyTyped
+
+    private void eplanoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_eplanoKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarFloatPositivo(eplano, c, evt);
+    }//GEN-LAST:event_eplanoKeyTyped
 
     //Métodos y Variables
     public void actualizar_lista() {
@@ -1299,6 +1425,8 @@ public class p_revision extends javax.swing.JPanel {
     int idExamen = 0, tipo = 0;
 
     modelo aux = null;
+
+    Validaciones validador = new Validaciones();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Enviar;

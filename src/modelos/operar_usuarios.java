@@ -20,7 +20,7 @@ public class operar_usuarios {
 
                 id = rs.getInt("id");
 
-            } 
+            }
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class operar_usuarios {
         return id;
 
     }
-    
+
     public String Ingresar(String usuario, String clave) {
 
         ResultSet rs = null;
@@ -53,17 +53,17 @@ public class operar_usuarios {
         return tipo;
     }
 
-    public void Crear(String ci, String nombre, String apellido, String pregunta, String respuesta, String clave, int tipo_usu) {
+    public void Crear(String ci, String nombre, String apellido, String correo, int edad, String pregunta, String respuesta, String clave, int tipo_usu) {
 
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0, id;
         id = 0;
 
-        op = bd.ejecutar("INSERT INTO usuario (nombre_usu, nombres, apellidos, cedula, clave, pregunta_segu, respuesta_segu, tipo_usu, borrado)\n"
-                + "SELECT * FROM (SELECT '" + ci + "' as nombre_usu, '" + nombre + "' as nombres, '" + apellido + "' as apellidos, '" + ci + "' as cedula,"
-                + "'" + clave + "' as clave, '" + pregunta + "' as pregunta_segu, '" + respuesta + "' as respuesta_segu, " + tipo_usu + " as tipo, 0 as borrado)"
-                + "AS tmp WHERE NOT EXISTS (SELECT cedula FROM usuario WHERE cedula = '" + ci + "') LIMIT 1;");
+        op = bd.ejecutar("INSERT INTO usuario (nombre_usu, nombres, apellidos, correo, edad, cedula, clave, pregunta_segu, respuesta_segu, tipo_usu, borrado)\n"
+                + "SELECT * FROM (SELECT '" + ci + "' as nombre_usu, '" + nombre + "' as nombres, '" + apellido + "' as apellidos, '" + correo + "' as correo, "
+                + edad + " as edad, '" + ci + "' as cedula,'" + clave + "' as clave, '" + pregunta + "' as pregunta_segu, '" + respuesta + "' as respuesta_segu, "
+                + tipo_usu + " as tipo, 0 as borrado) AS tmp WHERE NOT EXISTS (SELECT cedula FROM usuario WHERE cedula = '" + ci + "') LIMIT 1;");
 
         if (op > 0) {
 
@@ -90,6 +90,8 @@ public class operar_usuarios {
                 m.setApellido(rs.getString("apellidos"));
                 m.setPregunta(rs.getString("pregunta_segu"));
                 m.setTipo_usuario(rs.getInt("tipo_usu"));
+                m.setEdad(rs.getInt("edad"));
+                m.setCorreo(rs.getString("correo"));
 
             } else {
                 m = null;
@@ -121,11 +123,12 @@ public class operar_usuarios {
         bd.desconectar();
     }
 
-    public void Modificar(String usuario, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
+    public void Modificar(String usuario, String correo, int edad, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
         int op = 0;
         BDConex bd = new BDConex();
 
-        op = bd.ejecutar("UPDATE usuario SET clave='" + clave_nueva + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "' "
+        op = bd.ejecutar("UPDATE usuario SET clave='" + clave_nueva + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "',"
+                + "correo = '" + correo + "', edad=" + edad + " "
                 + "WHERE nombre_usu = '" + usuario + "' AND clave ='" + clave_vieja + "' AND borrado = 0");
 
         if (op > 0) {
@@ -140,12 +143,12 @@ public class operar_usuarios {
         bd.desconectar();
     }
 
-    public void Modificar(String usuario, String nombre, String apellido, String pregunta, String respuesta, String clave, int tipo_usu) {
+    public void Modificar(String usuario, String nombre, String apellido, String correo, int edad, String pregunta, String respuesta, String clave, int tipo_usu) {
         int op = 0;
         BDConex bd = new BDConex();
 
         op = bd.ejecutar("UPDATE usuario SET clave='" + clave + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "', "
-                + "nombres='" + nombre + "', apellidos='" + apellido + "', tipo_usu=" + tipo_usu + " "
+                + "nombres='" + nombre + "', apellidos='" + apellido + "', tipo_usu=" + tipo_usu + ", correo='" + correo + "', edad=" + edad + " "
                 + "WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
         if (op > 0) {
 
@@ -189,8 +192,7 @@ public class operar_usuarios {
 
                 m.setNombre(rs.getString("nombres"));
                 m.setApellido(rs.getString("apellidos"));
-                m.setId_examen(rs.getInt("e.id")); 
-
+                m.setId_examen(rs.getInt("e.id"));
 
             } else {
                 m = null;
@@ -200,11 +202,11 @@ public class operar_usuarios {
 
             e.printStackTrace();
         }
-        
+
         bd.desconectar();
         return m;
     }
-    
+
     public modelo BuscarUsuarioConExamenPendienteExperto(String cedula) {
         ResultSet rs = null;
         BDConex bd = new BDConex();
@@ -221,7 +223,6 @@ public class operar_usuarios {
                 m.setId_examen(rs.getInt("e.id"));
                 m.setFecha(rs.getString("e.fecha"));
 
-
             } else {
                 m = null;
             }
@@ -230,7 +231,7 @@ public class operar_usuarios {
 
             e.printStackTrace();
         }
-        
+
         bd.desconectar();
         return m;
     }

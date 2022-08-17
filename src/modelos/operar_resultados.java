@@ -105,6 +105,7 @@ public class operar_resultados {
 
                 m.setNombre(rs.getString("u.nombres"));
                 m.setApellido(rs.getString("u.apellidos"));
+                m.setCorreo(rs.getString("u.correo"));
                 m.setFecha_envio(rs.getString("r.fecha_envio"));
                 m.setFecha_diagnostico(rs.getString("r.fecha"));
                 m.setDiagnostico_final(rs.getString("r.diagnosticos"));
@@ -150,11 +151,11 @@ public class operar_resultados {
                 OutputStream out = new FileOutputStream("C:\\Resultados\\examen." + tipo + "");
                 out.write(datos);
                 examen = "examen." + tipo;
-                
+
                 out.close();
                 bos.close();
             }
-            
+
             //abrir archivo
             ps.close();
             rs.close();
@@ -166,7 +167,7 @@ public class operar_resultados {
 
         return examen;
     }
-    
+
     public boolean existe_archivo(int id) {
 
         BDConex bd = new BDConex();
@@ -175,7 +176,7 @@ public class operar_resultados {
         byte[] b = null;
         String tipo = null, examen = "";
         boolean existe = false;
-        
+
         try {
             ps = bd.getConexion().prepareStatement("SELECT documento, tipo FROM documento_resultado WHERE id_resultado = ?;");
             ps.setInt(1, id);
@@ -190,12 +191,12 @@ public class operar_resultados {
             bd.desconectar();
 
         } catch (NumberFormatException | SQLException ex) {
-            
+
         }
 
         return existe;
     }
-    
+
     public ArrayList historial(int id) {
 
         ArrayList lista = new ArrayList<>();
@@ -214,7 +215,7 @@ public class operar_resultados {
 
             if (connection != null) {
 
-                result = bd.consultar("SELECT * FROM resultados r, usuario u WHERE r.id_paciente = "+ id +" AND r.id_experto = u.id");
+                result = bd.consultar("SELECT * FROM resultados r, usuario u WHERE r.id_paciente = " + id + " AND r.id_experto = u.id");
                 if (result == null) {
                     lista = null;
                 }
@@ -246,7 +247,7 @@ public class operar_resultados {
         }
         return lista;
     }
-    
+
     public modelo Buscar(String usuario) {
 
         ResultSet rs = null;
@@ -273,5 +274,48 @@ public class operar_resultados {
         return m;
 
     }
-    
+
+    public void borrarDocumentosViejos() {
+        BD.BDConex bd = new BD.BDConex();
+
+        ArrayList<Integer> lista  = idDocumentosViejos(bd);
+
+        if(lista!=null){
+            for (int i = 0; i < lista.size(); i++) {
+                bd.ejecutar("DELETE FROM documento_resultado WHERE id_resultado ="+lista.get(i)+"");
+            }
+        }
+        
+        
+
+        bd.desconectar();
+
+    }
+
+    public ArrayList<Integer> idDocumentosViejos(BDConex bd) {
+
+       ArrayList<Integer> lista = null;
+       ResultSet result = null;
+
+        try {
+
+            result = bd.consultar("SELECT * FROM resultados WHERE DATEDIFF( CURDATE( ) , `fecha` ) > 15");
+            if (result == null) {
+                lista = null;
+            }else{
+                lista = new ArrayList<Integer>();
+            }
+            while (result.next()) {
+                lista.add(result.getInt("id"));
+            }
+            
+
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        }
+        return lista;
+    }
+
 }
