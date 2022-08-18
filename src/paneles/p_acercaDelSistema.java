@@ -22,6 +22,7 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
         fecha_envio3 = new javax.swing.JTextField();
         fecha_envio4 = new javax.swing.JTextField();
         descargar = new javax.swing.JButton();
+        fecha_envio5 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -29,14 +30,14 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
         setName("Panel Historial"); // NOI18N
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fecha_envio.setFont(new java.awt.Font("Arial", 3, 16)); // NOI18N
+        fecha_envio.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         fecha_envio.setForeground(new java.awt.Color(102, 102, 102));
         fecha_envio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fecha_envio.setText("Desarrollado por: Arthuro Dugarte");
+        fecha_envio.setText("Contacto: arthuro.dugarte@gmail.com");
         fecha_envio.setBorder(null);
         fecha_envio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fecha_envio.setFocusable(false);
-        add(fecha_envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 590, 30));
+        add(fecha_envio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 680, 30));
 
         fecha_envio1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         fecha_envio1.setForeground(new java.awt.Color(102, 102, 102));
@@ -99,6 +100,15 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
         });
         add(descargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 460, 30));
 
+        fecha_envio5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        fecha_envio5.setForeground(new java.awt.Color(102, 102, 102));
+        fecha_envio5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fecha_envio5.setText("Desarrollado por: Arthuro Dugarte");
+        fecha_envio5.setBorder(null);
+        fecha_envio5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        fecha_envio5.setFocusable(false);
+        add(fecha_envio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 680, 30));
+
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,5 +170,6 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
     private javax.swing.JTextField fecha_envio2;
     private javax.swing.JTextField fecha_envio3;
     private javax.swing.JTextField fecha_envio4;
+    private javax.swing.JTextField fecha_envio5;
     // End of variables declaration//GEN-END:variables
 }

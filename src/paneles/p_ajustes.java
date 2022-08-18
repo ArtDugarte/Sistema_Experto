@@ -43,9 +43,11 @@ public class p_ajustes extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        edad = new javax.swing.JComboBox<>();
         jSeparator9 = new javax.swing.JSeparator();
         correo = new javax.swing.JTextField();
+        edad = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -175,14 +177,6 @@ public class p_ajustes extends javax.swing.JPanel {
         b_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_limpiar.setFocusPainted(false);
         b_limpiar.setRolloverEnabled(false);
-        b_limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_limpiarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_limpiarMouseReleased(evt);
-            }
-        });
         b_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_limpiarActionPerformed(evt);
@@ -213,8 +207,8 @@ public class p_ajustes extends javax.swing.JPanel {
         });
         add(b_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 100, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario_m.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cumple.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave_m.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
@@ -236,15 +230,6 @@ public class p_ajustes extends javax.swing.JPanel {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/correo.png"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
-
-        edad.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        edad.setForeground(new java.awt.Color(102, 102, 102));
-        edad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--EDAD--", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100" }));
-        edad.setBorder(null);
-        edad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        edad.setFocusable(false);
-        edad.setName("Desplegable"); // NOI18N
-        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 110, 40));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
@@ -270,6 +255,21 @@ public class p_ajustes extends javax.swing.JPanel {
         });
         add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 540, 30));
 
+        edad.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        edad.setForeground(new java.awt.Color(102, 102, 102));
+        edad.setText("Edad:");
+        edad.setBorder(null);
+        edad.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edad.setFocusable(false);
+        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 150, 30));
+
+        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 150, 10));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario_m.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -285,20 +285,6 @@ public class p_ajustes extends javax.swing.JPanel {
     private void clave_nuevaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_nuevaFocusGained
         clave_nueva.setText("");
     }//GEN-LAST:event_clave_nuevaFocusGained
-
-    private void b_limpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMousePressed
-
-        b_limpiar.setForeground(new Color(103, 174, 202));
-        b_limpiar.setBorder(new LineBorder(new Color(103, 174, 202), 2));
-        b_limpiar.setBackground(Color.white);
-    }//GEN-LAST:event_b_limpiarMousePressed
-
-    private void b_limpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMouseReleased
-
-        b_limpiar.setForeground(Color.white);
-        b_limpiar.setBorder(new LineBorder(new Color(103, 174, 202), 2));
-        b_limpiar.setBackground(new Color(103, 174, 202));
-    }//GEN-LAST:event_b_limpiarMouseReleased
 
     private void b_modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modificarMousePressed
         // TODO add your handling code here:
@@ -351,12 +337,12 @@ public class p_ajustes extends javax.swing.JPanel {
             if (respuesta.getText().equals("") || clave_nueva.getText().equals("") || clave_vieja.getText().equals("")||correo.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "¡Campos Vacios! "
                         + "\n                             Intente nuevamente...", "¡ALERTA!", JOptionPane.WARNING_MESSAGE);
-            }else if(correo.getText().equals("Correo:") || edad.getSelectedIndex()==0){
+            }else if(correo.getText().equals("Correo:") || edad.getText().equals("Edad:")){
                 JOptionPane.showMessageDialog(null, "¡Campos por Defecto! "
                         + "\n                             Intente nuevamente...", "¡ALERTA!", JOptionPane.WARNING_MESSAGE);
             } 
             else {
-                new operar_usuarios().Modificar(user, correo.getText().toUpperCase(), Integer.parseInt(edad.getSelectedItem().toString()), 
+                new operar_usuarios().Modificar(user, correo.getText().toUpperCase(), vedad, 
                         encrip.encriptar(respuesta.getText()), encrip.encriptar(clave_vieja.getText()), encrip.encriptar(clave), pregunta.getSelectedItem() + "");
                 info_usuario();
             }
@@ -369,7 +355,7 @@ public class p_ajustes extends javax.swing.JPanel {
 
     private void correoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoFocusLost
         if (correo.getText().equals("")) {
-            correo.setText("Correo:");
+            correo.setText(vcorreo);
         }
     }//GEN-LAST:event_correoFocusLost
 
@@ -395,7 +381,7 @@ public class p_ajustes extends javax.swing.JPanel {
     public void limpiar_campos() {
 
         pregunta.setSelectedItem(p);
-        edad.setSelectedItem(vedad+"");
+        edad.setText("Edad: " + vedad);
         correo.setText(vcorreo);
         respuesta.setText("Respuesta de seguridad"); //Aqui se debe poner la respuesta de la persona
         clave_vieja.setText("Contraseña Actual:");
@@ -414,7 +400,7 @@ public class p_ajustes extends javax.swing.JPanel {
     private javax.swing.JTextField clave_nueva;
     private javax.swing.JTextField clave_vieja;
     private javax.swing.JTextField correo;
-    private javax.swing.JComboBox<String> edad;
+    private javax.swing.JTextField edad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -422,6 +408,7 @@ public class p_ajustes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -430,6 +417,7 @@ public class p_ajustes extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField nombres;
     private javax.swing.JComboBox<String> pregunta;

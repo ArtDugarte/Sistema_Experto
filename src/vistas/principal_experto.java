@@ -366,9 +366,11 @@ public class principal_experto extends javax.swing.JFrame {
         p_a.setVisible(true);
         p_re.setVisible(false);
         p_as.setVisible(false);
+        p_b.setVisible(false);
     }//GEN-LAST:event_b_ajustesMouseClicked
 
     private void b_crud_diagnosticosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_crud_diagnosticosMouseClicked
+        
         b_crud_diagnosticos.setForeground(new Color(204, 204, 204));
         b_crud_diagnosticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crud_diagnosticos2.png")));
 
