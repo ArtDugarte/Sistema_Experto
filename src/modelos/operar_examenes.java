@@ -1,6 +1,7 @@
 package modelos;
 
 import BD.BDConex;
+import globales.mensajes;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,9 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class operar_examenes {
+
+    mensajes msg = new mensajes();
 
     public int idUltimoExamen() {
 
@@ -59,16 +61,16 @@ public class operar_examenes {
 
             ps.setDate(4, sqlDate);
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "         ¡Subida Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje("¡Subida Exitosa!", "exito");
 
         } catch (SQLException ex) {
 
             System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Ocurrio un error en la operación!", "error");
         } catch (Exception ex) {
 
             System.out.println(ex.getMessage());
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Ocurrio un error en la operación!", "error");
         } finally {
             try {
                 ps.close();
@@ -411,11 +413,10 @@ public class operar_examenes {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Modificación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje("¡Modificación exitosa!", "exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡Error al Modificar! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Error al modificar!", "error");
         }
 
         bd.desconectar();
@@ -436,11 +437,10 @@ public class operar_examenes {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Modificación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje("¡Modificación exitosa!", "exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡Error al Modificar! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Error al modificar!", "error");
         }
 
         bd.desconectar();

@@ -37,9 +37,9 @@ public class operar_manuales {
                 bos.read(datos, 0, tamanoInput);
 
                 //CAMBIAR JPG POR PDF
-                OutputStream out = new FileOutputStream("C:\\Resultados\\MANUAL.jpg"); 
+                OutputStream out = new FileOutputStream("C:\\Resultados\\MANUAL.pdf"); 
                 out.write(datos);
-                MANUAL = "MANUAL.jpg";
+                MANUAL = "MANUAL.pdf";
 
                 out.close();
                 bos.close();

@@ -1168,8 +1168,12 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_crearActionPerformed
 
     private void limpiar_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiar_generalActionPerformed
+        if(listado_diagnosticos.getSelectedIndex()!=0){
+            limpiarOrina();
+            limpiarSangre();                    
+        }
         limpiarGeneral();
-
+        
     }//GEN-LAST:event_limpiar_generalActionPerformed
 
     private void b_siguiente_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguiente_generalActionPerformed

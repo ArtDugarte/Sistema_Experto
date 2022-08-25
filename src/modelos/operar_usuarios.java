@@ -1,11 +1,21 @@
 package modelos;
 
 import BD.BDConex;
+import globales.mensajes;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.YEARS;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class operar_usuarios {
+    
+    private mensajes m = new mensajes();
 
     public int BuscarID(String usuario) {
 
@@ -53,23 +63,23 @@ public class operar_usuarios {
         return tipo;
     }
 
-    public void Crear(String ci, String nombre, String apellido, String correo, int edad, String pregunta, String respuesta, String clave, int tipo_usu) {
+    public void Crear(String ci, String nombre, String apellido, String correo, String fecha, String pregunta, String respuesta, String clave, int tipo_usu) {
 
         BD.BDConex bd = new BD.BDConex();
 
         int op = 0, id;
         id = 0;
 
-        op = bd.ejecutar("INSERT INTO usuario (nombre_usu, nombres, apellidos, correo, edad, cedula, clave, pregunta_segu, respuesta_segu, tipo_usu, borrado)\n"
-                + "SELECT * FROM (SELECT '" + ci + "' as nombre_usu, '" + nombre + "' as nombres, '" + apellido + "' as apellidos, '" + correo + "' as correo, "
-                + edad + " as edad, '" + ci + "' as cedula,'" + clave + "' as clave, '" + pregunta + "' as pregunta_segu, '" + respuesta + "' as respuesta_segu, "
+        op = bd.ejecutar("INSERT INTO usuario (nombre_usu, nombres, apellidos, correo, fecha_nacimiento, cedula, clave, pregunta_segu, respuesta_segu, tipo_usu, borrado)\n"
+                + "SELECT * FROM (SELECT '" + ci + "' as nombre_usu, '" + nombre + "' as nombres, '" + apellido + "' as apellidos, '" + correo + "' as correo, '"
+                + fecha + "' as fecha_nacimiento, '" + ci + "' as cedula,'" + clave + "' as clave, '" + pregunta + "' as pregunta_segu, '" + respuesta + "' as respuesta_segu, "
                 + tipo_usu + " as tipo, 0 as borrado) AS tmp WHERE NOT EXISTS (SELECT cedula FROM usuario WHERE cedula = '" + ci + "') LIMIT 1;");
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "     ¡Creación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            m.mensaje("¡Creación exitosa!", "exito");
         } else {
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            m.mensaje("¡Ocurrio un error en la operación!", "error");
         }
 
         bd.desconectar();
@@ -80,17 +90,30 @@ public class operar_usuarios {
         ResultSet rs = null;
         BDConex bd = new BDConex();
         modelo m = new modelo();
+        int edad = 0;
 
         rs = bd.consultar("SELECT * FROM usuario WHERE nombre_usu = '" + usuario + "' AND borrado=0");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
             if (rs.next()) {
-
+                
                 m.setNombre(rs.getString("nombres"));
                 m.setApellido(rs.getString("apellidos"));
                 m.setPregunta(rs.getString("pregunta_segu"));
                 m.setTipo_usuario(rs.getInt("tipo_usu"));
-                m.setEdad(rs.getInt("edad"));
+                Date date = null;
+                try {
+                    date = format.parse(rs.getString("fecha_nacimiento"));
+                } catch (ParseException ex) {
+                    Logger.getLogger(operar_usuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String date2 = format.format(date);
+                LocalDate currentDate = LocalDate.now();
+                LocalDate myDate = LocalDate.parse(date2);
+                edad = (int) YEARS.between(myDate, currentDate);
+                m.setEdad(edad);
+                m.setFecha_nacimiento(rs.getString("fecha_nacimiento"));
                 m.setCorreo(rs.getString("correo"));
 
             } else {
@@ -113,50 +136,47 @@ public class operar_usuarios {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Contraseña modificada con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            m.mensaje("¡Contraseña modificada con éxito!", "exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡La respuesta de seguridad no es correcta! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            m.mensaje("¡La respuesta de seguridad no es correcta!", "error");
         }
 
         bd.desconectar();
     }
 
-    public void Modificar(String usuario, String correo, int edad, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
+    public void Modificar(String usuario, String correo, String respuesta, String clave_vieja, String clave_nueva, String pregunta) {
         int op = 0;
         BDConex bd = new BDConex();
 
         op = bd.ejecutar("UPDATE usuario SET clave='" + clave_nueva + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "',"
-                + "correo = '" + correo + "', edad=" + edad + " "
+                + "correo = '" + correo + "' "
                 + "WHERE nombre_usu = '" + usuario + "' AND clave ='" + clave_vieja + "' AND borrado = 0");
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Usuario modificado con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            m.mensaje("¡Usuario modificado con Éxito!", "exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡Contraseña actual incorrecta! "
-                    + "\n          Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            m.mensaje("¡Contraseña actual incorrecta!", "error");
         }
 
         bd.desconectar();
     }
 
-    public void Modificar(String usuario, String nombre, String apellido, String correo, int edad, String pregunta, String respuesta, String clave, int tipo_usu) {
+    public void Modificar(String usuario, String nombre, String apellido, String correo, String fecha, String pregunta, String respuesta, String clave, int tipo_usu) {
         int op = 0;
         BDConex bd = new BDConex();
 
         op = bd.ejecutar("UPDATE usuario SET clave='" + clave + "', pregunta_segu = '" + pregunta + "', respuesta_segu = '" + respuesta + "', "
-                + "nombres='" + nombre + "', apellidos='" + apellido + "', tipo_usu=" + tipo_usu + ", correo='" + correo + "', edad=" + edad + " "
+                + "nombres='" + nombre + "', apellidos='" + apellido + "', tipo_usu=" + tipo_usu + ", correo='" + correo + "', fecha_nacimiento='" + fecha + "' "
                 + "WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Usuario modificado con Éxito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            m.mensaje("¡Usuario modificado con Éxito!", "exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡Usuario no encontrado! "
-                    + "\n          Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            m.mensaje("¡Usuario no encontrado! ", "error");
         }
 
         bd.desconectar();
@@ -170,11 +190,10 @@ public class operar_usuarios {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Usuario borrado con exito!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            m.mensaje("¡Usuario borrado con exito!", "exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡El usuario no existe o ya esta borrado! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            m.mensaje("¡El usuario no existe o ya esta borrado! ", "error");
         }
 
         bd.desconectar();

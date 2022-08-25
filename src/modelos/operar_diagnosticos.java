@@ -1,6 +1,7 @@
 package modelos;
 
 import BD.BDConex;
+import globales.mensajes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class operar_diagnosticos {
+    
+    mensajes msg = new mensajes();
 
     public int idUltimoDiagnostico() {
 
@@ -45,9 +48,9 @@ public class operar_diagnosticos {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "     ¡Creación Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje( "     ¡Creación Exitosa!","exito");
         } else {
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡Ocurrio un error en la operación!", "error");
         }
 
         bd.desconectar();
@@ -81,11 +84,10 @@ public class operar_diagnosticos {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Modificacion Exitosa!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje( "¡Modificacion Exitosa!","exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡Error en la Modificacion! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡Error en la Modificacion!", "error");
         }
 
         bd.desconectar();
@@ -101,11 +103,10 @@ public class operar_diagnosticos {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Borrado Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje( "¡Borrado Exitoso!","exito");
         } else {
 
-            JOptionPane.showMessageDialog(null, "¡Error en el Borrado! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡Error en el Borrado!", "error");
         }
 
         bd.desconectar();

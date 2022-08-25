@@ -3,11 +3,18 @@ package modelos;
 import java.util.ArrayList;
 
 public class modelo {
-     
+
     // Usuarios
-    
     int tipo_usuario, id_usuario, edad;
-    String usuario, pregunta, respuesta, clave, nombre, apellido, cedula, correo;
+    String usuario, pregunta, respuesta, clave, nombre, apellido, cedula, correo, fecha_nacimiento;
+
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
 
     public int getEdad() {
         return edad;
@@ -96,9 +103,8 @@ public class modelo {
     public void setTipo_usuario(int tipo_usuario) {
         this.tipo_usuario = tipo_usuario;
     }
-    
+
     // Exámenes
-    
     int id_examen, estado;
     byte[] archivo_subido;
     String fecha;
@@ -151,9 +157,8 @@ public class modelo {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-    
+
     //Examenes de Sangre
-    
     float s_hematies, s_hemoglobina, s_hematocritos, s_plaquetas, s_leucocitos, s_segmentados, s_linfocitos;
 
     public float getS_hematies() {
@@ -211,9 +216,8 @@ public class modelo {
     public void setS_linfocitos(float s_linfocitos) {
         this.s_linfocitos = s_linfocitos;
     }
-    
+
     //Examenes de Orina
-    
     String o_aspecto, o_color, o_reaccion, o_piocitos, o_bacterias, o_proteinas, o_glucosa, o_hemoglobina, o_cetonico, o_pbiliares,
             o_urobilinogelen, o_bilirrubina, o_nitritos;
     float o_densidad, o_leucocitos, o_hematies, o_eplano;
@@ -353,9 +357,8 @@ public class modelo {
     public void setO_eplano(float o_eplano) {
         this.o_eplano = o_eplano;
     }
-    
+
     //Diagnosticos
-    
     ArrayList<String> d_valores, d_seleccionados;
     String d_nombre, d_descripcion;
     int idDiagnostico;
@@ -393,16 +396,15 @@ public class modelo {
     }
 
     public ArrayList<String> getD_seleccionados() {
-        
+
         return d_seleccionados;
     }
 
     public void setD_seleccionados(ArrayList<String> d_seleccionados) {
-        
+
         this.d_seleccionados = d_seleccionados;
     }
-    
-    
+
     //RESULTADOS
     String fecha_envio, fecha_diagnostico, diagnostico_final;
     int id_resultado;
@@ -422,7 +424,7 @@ public class modelo {
     public void setDiagnostico_final(String diagnostico_final) {
         this.diagnostico_final = diagnostico_final;
     }
-    
+
     public String getFecha_envio() {
         return fecha_envio;
     }
@@ -438,6 +440,5 @@ public class modelo {
     public void setFecha_diagnostico(String fecha_diagnostico) {
         this.fecha_diagnostico = fecha_diagnostico;
     }
-    
-    
+
 }

@@ -105,17 +105,17 @@ public class p_reportes extends javax.swing.JPanel {
         e.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         e.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombres", "Apellidos", "Cedula", "Edad", "Correo"
+                "Nombres", "Apellidos", "Cedula", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -131,17 +131,17 @@ public class p_reportes extends javax.swing.JPanel {
         a.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         a.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nombres", "Apellidos", "Cédula", "Clave", "Edad", "Correo"
+                "Nombres", "Apellidos", "Cédula", "Clave", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -216,7 +216,6 @@ public class p_reportes extends javax.swing.JPanel {
                     li.get(i).getNombre(),
                     li.get(i).getApellido(),
                     li.get(i).getCedula(),
-                    li.get(i).getEdad(),
                     li.get(i).getCorreo()
                 });
             }
@@ -243,7 +242,7 @@ public class p_reportes extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void llenarAsistentes() {
 
         ArrayList<modelos.modelo> li = new operar_reportes().reporteAsistentes();
@@ -259,13 +258,12 @@ public class p_reportes extends javax.swing.JPanel {
                     li.get(i).getApellido(),
                     li.get(i).getCedula(),
                     encrip.desencriptar(li.get(i).getClave()),
-                    li.get(i).getEdad(),
                     li.get(i).getCorreo()
                 });
             }
         }
     }
-    
+
     public void llenarDiagnosticos() {
 
         ArrayList<modelos.modelo> li = new operar_reportes().reporteDiagnosticos();
@@ -283,7 +281,7 @@ public class p_reportes extends javax.swing.JPanel {
             }
         }
     }
-    
+
     encriptacion encrip = new encriptacion();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -297,6 +295,5 @@ public class p_reportes extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable p;
     private javax.swing.JScrollPane pacientes;
-    private javax.swing.JComboBox pregunta;
     // End of variables declaration//GEN-END:variables
 }

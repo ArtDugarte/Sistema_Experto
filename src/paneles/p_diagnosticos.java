@@ -1,6 +1,7 @@
 package paneles;
 
-import globales.Validaciones;
+import globales.mensajes;
+import globales.validaciones;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -981,7 +982,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         b_guardar.setBackground(new java.awt.Color(103, 174, 202));
         b_guardar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         b_guardar.setForeground(new java.awt.Color(255, 255, 255));
-        b_guardar.setText("Guardar");
+        b_guardar.setText("Enviar");
         b_guardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
         b_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_guardar.setFocusPainted(false);
@@ -1126,7 +1127,10 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
         if (cedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡La cedula no puede estar vacia! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡La cedula no puede estar vacía!", "alerta");
+
+        } else if (cedula.getText().equals("Cédula:")) {
+            msg.mensaje("¡Campo vacío!", "alerta");
         } else {
 
             modelo m = null;
@@ -1141,8 +1145,10 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 idExamen = m.getId_examen();
                 idPaciente = m.getId_usuario();
                 fechaVieja = m.getFecha();
+                filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
             } else {
-                JOptionPane.showMessageDialog(null, "¡Este paciente no tiene examenes pendientes! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje("¡Este paciente no tiene exámenes pendientes!", 
+                        "error");
 
             }
 
@@ -1357,7 +1363,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
             new operar_examenes().borrarExamen(idExamen, tipo);
             inicio();
         } else {
-            JOptionPane.showMessageDialog(null, "¡Debe ingresar algun diagnostico final! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Debe ingresar un diagnóstico final!", "alerta");
 
         }
 
@@ -1394,7 +1400,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private void b_limpiar_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_resultadoActionPerformed
         area_diagnostico_final.setText(area_diagnostico_sugerido.getText());
-        filename.setText("");
+        filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
         file = null;
     }//GEN-LAST:event_b_limpiar_resultadoActionPerformed
 
@@ -1411,7 +1417,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 filename.setText(" " + file.getName());
             } else {
 
-                JOptionPane.showMessageDialog(null, "¡Archivo superior a 16MB! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje("¡Archivo superior a 16MB!", "error");
             }
 
         }
@@ -1429,6 +1435,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         sangre.setVisible(false);
         orina.setVisible(false);
         resultados.setVisible(false);
+        filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
     }
 
     public void limpiar_campos() {
@@ -1437,7 +1444,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         nombres.setText("Nombres:");
         apellidos.setText("Apellidos:");
         filename.setText("");
-        file=null;
+        file = null;
         b_revisar.setEnabled(false);
         b_visualizarExamen.setEnabled(false);
         cedula.setFocusable(true);
@@ -1454,7 +1461,8 @@ public class p_diagnosticos extends javax.swing.JPanel {
     private JFileChooser fileChooser;
     private File file;
     private final FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF, PNG y JPG", "pdf", "png", "jpg", "jpeg");
-    private final Validaciones validador = new Validaciones();
+    private final validaciones validador = new validaciones();
+    private final mensajes msg = new mensajes();
 
     public void actualizar_lista() {
         ArrayList<modelo> li = new operar_examenes().ExamenesPendientesExperto();

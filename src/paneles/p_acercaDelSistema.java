@@ -46,11 +46,6 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
         fecha_envio1.setBorder(null);
         fecha_envio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fecha_envio1.setFocusable(false);
-        fecha_envio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecha_envio1ActionPerformed(evt);
-            }
-        });
         add(fecha_envio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 590, 30));
 
         fecha_envio2.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -60,11 +55,6 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
         fecha_envio2.setBorder(null);
         fecha_envio2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fecha_envio2.setFocusable(false);
-        fecha_envio2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fecha_envio2ActionPerformed(evt);
-            }
-        });
         add(fecha_envio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 590, 30));
 
         fecha_envio3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
@@ -111,14 +101,6 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fecha_envio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha_envio1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fecha_envio1ActionPerformed
-
-    private void fecha_envio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha_envio2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fecha_envio2ActionPerformed
 
     private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
 

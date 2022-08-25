@@ -1,8 +1,14 @@
 package paneles;
 
-import globales.Validaciones;
+import globales.validaciones;
 import globales.encriptacion;
+import globales.mensajes;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import modelos.modelo;
@@ -12,6 +18,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
 
     public p_registrarUsuarios(String usuario) {
         initComponents();
+        limpiar_campos();
         this.usuario = usuario;
     }
 
@@ -51,7 +58,8 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         jSeparator9 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         correo = new javax.swing.JTextField();
-        edad = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        calendario = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -73,9 +81,9 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 claveFocusLost(evt);
             }
         });
-        clave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                claveActionPerformed(evt);
+        clave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                claveKeyTyped(evt);
             }
         });
         add(clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 540, 30));
@@ -326,12 +334,12 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         r_botones.add(rb_medico);
         rb_medico.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         rb_medico.setForeground(new java.awt.Color(102, 102, 102));
-        rb_medico.setText("Médico");
+        rb_medico.setText("Médico/Administrador");
         rb_medico.setBorder(null);
         rb_medico.setContentAreaFilled(false);
         rb_medico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rb_medico.setFocusPainted(false);
-        add(rb_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 80, -1));
+        add(rb_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 170, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -372,14 +380,12 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         });
         add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 540, 30));
 
-        edad.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        edad.setForeground(new java.awt.Color(102, 102, 102));
-        edad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--EDAD--", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100" }));
-        edad.setBorder(null);
-        edad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        edad.setFocusable(false);
-        edad.setName("Desplegable"); // NOI18N
-        add(edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 110, 40));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cumple.png"))); // NOI18N
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
+
+        calendario.setForeground(new java.awt.Color(102, 102, 102));
+        calendario.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        add(calendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 150, -1));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -469,12 +475,14 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     private void b_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrarActionPerformed
 
         if (cedula.getText().equals("") || nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("") || correo.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            
+            msg.mensaje( "¡Campos vacíos!", "error");
+            
         } else if (cedula.getText().equals("Cédula:") || nombres.getText().equals("Nombres:") || correo.getText().equals("Correo:")
                 || apellidos.getText().equals("Apellidos:") || respuesta.getText().equals("Respuesta de seguridad")) {
-            JOptionPane.showMessageDialog(null, "¡Campos por Defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        } else if (edad.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "¡Debe seleccionar una edad! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            
+            msg.mensaje( "¡No ha ingresado valores válidos!", "error");
+            
         } else {
             int tipo_usuario;
 
@@ -491,7 +499,9 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
             }
 
             operar_usuarios op = new operar_usuarios();
-            op.Crear(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), correo.getText().toUpperCase(), Integer.parseInt(edad.getSelectedItem().toString()),
+            Date datec = calendario.getDate();
+            LocalDate date = datec.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            op.Crear(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), correo.getText().toUpperCase(), date + "",
                     pregunta.getSelectedItem() + "", encrip.encriptar(respuesta.getText()), encrip.encriptar(cedula.getText()), tipo_usuario);
             limpiar_campos();
         }
@@ -499,9 +509,14 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
         if (cedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡Campo Vacío! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡Campo vacío!", "alerta");
+        } else if (cedula.getText().equals("Cédula:")) {
+            msg.mensaje( "¡No ha ingresado una cédula!", "alerta");
         } else if (cedula.getText().equals(usuario)) {
-            JOptionPane.showMessageDialog(null, "¡Para editar sus datos, ingrese a la seccion de Ajustes! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡Para editar sus datos ingrese a la sección de ajustes!", "alerta");
+        } else if (cedula.getText().equals("00000000")) {
+            msg.mensaje( "¡No puede modificar los datos del administrador!", "alerta");
+
         } else {
             modelo m;
             m = new operar_usuarios().Buscar(cedula.getText());
@@ -525,8 +540,13 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 nombres.setText(m.getNombre());
                 apellidos.setText(m.getApellido());
                 pregunta.setSelectedItem(m.getPregunta());
-                edad.setSelectedItem(m.getEdad() + "");
+
+                LocalDate date = LocalDate.parse(m.getFecha_nacimiento());
+                Date d_date = java.util.Date.from(date.atStartOfDay(ZoneId.of("America/Caracas")).toInstant());
+                calendario.setDate(d_date);
+
                 correo.setText(m.getCorreo());
+
                 b_borrar.setEnabled(true);
                 b_modificar.setEnabled(true);
                 b_registrar.setEnabled(false);
@@ -539,16 +559,16 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 correo.setFocusable(true); //Auxiliares
 
             } else {
-                JOptionPane.showMessageDialog(null, "¡El usuario no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje( "¡El usuario no existe!", "error");
             }
         }
     }//GEN-LAST:event_lupaActionPerformed
 
     private void b_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_borrarActionPerformed
         if (cedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡Campo Vacío! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡Campo Vacío!", "error");
         } else if (cedula.getText().equals(usuario)) {
-            JOptionPane.showMessageDialog(null, "¡No puede borrarse a si mismo! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡No puede borrarse a si mismo!", "error");
         } else {
             new operar_usuarios().Borrar(cedula.getText());
             limpiar_campos();
@@ -556,12 +576,11 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_b_borrarActionPerformed
 
     private void b_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_modificarActionPerformed
-        if (nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("") || cedula.getText().equals("") || clave.getText().equals("")
-                || correo.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡Campos Vacíos! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        if (nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("") || cedula.getText().equals("") || clave.getText().equals("")) {
+            msg.mensaje( "¡Campos Vacíos!", "error");
         } else if (cedula.getText().equals("Cédula:") || nombres.getText().equals("Nombres:") || correo.getText().equals("Correo:")
-                || apellidos.getText().equals("Apellidos:") || respuesta.getText().equals("Respuesta de seguridad") || edad.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "¡Valores por defecto presentes! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                || apellidos.getText().equals("Apellidos:") || respuesta.getText().equals("Respuesta de seguridad")) {
+            msg.mensaje( "¡Valores por defecto presentes!", "error");
         } else {
             int tipo_usuario;
 
@@ -578,15 +597,13 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
             }
 
             operar_usuarios op = new operar_usuarios();
-            op.Modificar(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), correo.getText().toUpperCase(), Integer.parseInt(edad.getSelectedItem().toString()), 
+            Date datec = calendario.getDate();
+            LocalDate date = datec.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            op.Modificar(cedula.getText(), nombres.getText().toUpperCase(), apellidos.getText().toUpperCase(), correo.getText().toUpperCase(), date + "",
                     pregunta.getSelectedItem() + "", encrip.encriptar(respuesta.getText()), encrip.encriptar(clave.getText()), tipo_usuario);
             limpiar_campos();
         }
     }//GEN-LAST:event_b_modificarActionPerformed
-
-    private void claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_claveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_claveActionPerformed
 
     private void claveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_claveFocusLost
         if (clave.getText().equals("")) {
@@ -602,6 +619,7 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
         char c = evt.getKeyChar();
         validador.validarNumeroEntero(c, evt);
+        validador.limitarCaracteres(cedula, evt, 9);
     }//GEN-LAST:event_cedulaKeyTyped
 
     private void correoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_correoFocusGained
@@ -618,15 +636,20 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_correoActionPerformed
 
+    private void claveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_claveKeyTyped
+        validador.limitarCaracteres(clave, evt, 10);
+    }//GEN-LAST:event_claveKeyTyped
+
     //Metodos y Variables
     encriptacion encrip = new encriptacion();
     String usuario = "";
-    private Validaciones validador = new Validaciones();
+    private validaciones validador = new validaciones();
+    private mensajes msg = new mensajes();
 
     public void limpiar_campos() {
 
-        pregunta.setSelectedIndex(0); //Aqui se debe poner el codigo SQL para que se marque la pregunta de la persona
-        respuesta.setText("Respuesta de seguridad"); //Aqui se debe poner la respuesta de la persona
+        pregunta.setSelectedIndex(0);
+        respuesta.setText("Respuesta de seguridad");
         clave.setText("Contraseña:");
         cedula.setText("Cédula:");
         nombres.setText("Nombres:");
@@ -639,19 +662,27 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         b_registrar.setEnabled(true);
         cedula.setFocusable(true);
         correo.setText("Correo:");
-        edad.setSelectedIndex(0);
+
+        LocalDate date = LocalDate.now();
+        date = LocalDate.of(date.getYear() - 12, date.getMonth(), date.getDayOfMonth());
+        ddate = java.util.Date.from(date.atStartOfDay(ZoneId.of("America/Caracas")).toInstant());
+        calendario.setDate(ddate);
+        calendario.setMaxSelectableDate(ddate);
     }
+
+    Date ddate;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
     private javax.swing.JButton b_borrar;
     private javax.swing.JButton b_limpiar;
     private javax.swing.JButton b_modificar;
     private javax.swing.JButton b_registrar;
+    private com.toedter.calendar.JDateChooser calendario;
     private javax.swing.JTextField cedula;
     private javax.swing.JTextField clave;
     private javax.swing.JTextField correo;
-    private javax.swing.JComboBox<String> edad;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
