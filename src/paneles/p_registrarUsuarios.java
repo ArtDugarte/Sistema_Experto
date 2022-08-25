@@ -205,14 +205,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         b_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_limpiar.setFocusPainted(false);
         b_limpiar.setRolloverEnabled(false);
-        b_limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_limpiarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_limpiarMouseReleased(evt);
-            }
-        });
         b_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_limpiarActionPerformed(evt);
@@ -228,14 +220,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         b_registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_registrar.setFocusPainted(false);
         b_registrar.setRolloverEnabled(false);
-        b_registrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_registrarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_registrarMouseReleased(evt);
-            }
-        });
         b_registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_registrarActionPerformed(evt);
@@ -252,14 +236,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         b_borrar.setEnabled(false);
         b_borrar.setFocusPainted(false);
         b_borrar.setRolloverEnabled(false);
-        b_borrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_borrarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_borrarMouseReleased(evt);
-            }
-        });
         b_borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_borrarActionPerformed(evt);
@@ -276,14 +252,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         b_modificar.setEnabled(false);
         b_modificar.setFocusPainted(false);
         b_modificar.setRolloverEnabled(false);
-        b_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_modificarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_modificarMouseReleased(evt);
-            }
-        });
         b_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_modificarActionPerformed(evt);
@@ -373,11 +341,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 correoFocusLost(evt);
             }
         });
-        correo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoActionPerformed(evt);
-            }
-        });
         add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 540, 30));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cumple.png"))); // NOI18N
@@ -400,47 +363,9 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_respuestaFocusLost
 
-    private void b_limpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMousePressed
-
-        b_limpiar.setForeground(new Color(103, 174, 202));
-        b_limpiar.setBorder(new LineBorder(new Color(103, 174, 202), 2));
-        b_limpiar.setBackground(Color.white);
-    }//GEN-LAST:event_b_limpiarMousePressed
-
-    private void b_limpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMouseReleased
-
-        b_limpiar.setForeground(Color.white);
-        b_limpiar.setBorder(new LineBorder(new Color(103, 174, 202), 2));
-        b_limpiar.setBackground(new Color(103, 174, 202));
-    }//GEN-LAST:event_b_limpiarMouseReleased
-
     private void b_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarActionPerformed
         limpiar_campos();
     }//GEN-LAST:event_b_limpiarActionPerformed
-
-    private void b_registrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_registrarMousePressed
-
-    private void b_registrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_registrarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_registrarMouseReleased
-
-    private void b_borrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_borrarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_borrarMousePressed
-
-    private void b_borrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_borrarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_borrarMouseReleased
-
-    private void b_modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modificarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_modificarMousePressed
-
-    private void b_modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modificarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_modificarMouseReleased
 
     private void cedulaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cedulaFocusGained
         cedula.setText("");
@@ -631,10 +556,6 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
             correo.setText("Correo:");
         }
     }//GEN-LAST:event_correoFocusLost
-
-    private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_correoActionPerformed
 
     private void claveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_claveKeyTyped
         validador.limitarCaracteres(clave, evt, 10);

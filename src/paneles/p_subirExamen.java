@@ -36,6 +36,46 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_adjuntar_documento = new javax.swing.JButton();
         filename = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        sangre = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        globulos_rojos = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        hemoglobina = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        hematocritos = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        plaquetas = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        leucocitos = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        segmentados = new javax.swing.JTextField();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        linfocitos = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        b_siguienteSangre = new javax.swing.JButton();
+        b_limpiarSangre = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        b_volver_sangre = new javax.swing.JButton();
         orina = new javax.swing.JPanel();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
@@ -89,46 +129,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         b_volver_orina = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
-        sangre = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
-        globulos_rojos = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        hemoglobina = new javax.swing.JTextField();
-        jSeparator8 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator9 = new javax.swing.JSeparator();
-        hematocritos = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        plaquetas = new javax.swing.JTextField();
-        jSeparator10 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
-        leucocitos = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        segmentados = new javax.swing.JTextField();
-        jSeparator12 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
-        jSeparator13 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        linfocitos = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        b_siguienteSangre = new javax.swing.JButton();
-        b_limpiarSangre = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        b_volver_sangre = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -220,6 +220,288 @@ public class p_subirExamen extends javax.swing.JPanel {
 
         base.add(documento, "card2");
 
+        sangre.setOpaque(false);
+        sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("LINFOCITOS:");
+        sangre.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 450, 100, -1));
+
+        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 130, 10));
+
+        globulos_rojos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        globulos_rojos.setForeground(new java.awt.Color(102, 102, 102));
+        globulos_rojos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        globulos_rojos.setBorder(null);
+        globulos_rojos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        globulos_rojos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                globulos_rojosKeyTyped(evt);
+            }
+        });
+        sangre.add(globulos_rojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 130, 20));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setText("VN: 3,90 - 5,40");
+        sangre.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("VN: 12,0 - 16,0");
+        sangre.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+
+        hemoglobina.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        hemoglobina.setForeground(new java.awt.Color(102, 102, 102));
+        hemoglobina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        hemoglobina.setBorder(null);
+        hemoglobina.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hemoglobina.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hemoglobinaKeyTyped(evt);
+            }
+        });
+        sangre.add(hemoglobina, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 130, 20));
+
+        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 130, 10));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel4.setText("g/dL");
+        sangre.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel5.setText("%");
+        sangre.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, -1));
+
+        jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 130, 10));
+
+        hematocritos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        hematocritos.setForeground(new java.awt.Color(102, 102, 102));
+        hematocritos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        hematocritos.setBorder(null);
+        hematocritos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        hematocritos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hematocritosKeyTyped(evt);
+            }
+        });
+        sangre.add(hematocritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 130, 20));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("VN: 35,0 - 47,0");
+        sangre.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("VN: 140,0 - 500,0");
+        sangre.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+
+        plaquetas.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        plaquetas.setForeground(new java.awt.Color(102, 102, 102));
+        plaquetas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        plaquetas.setBorder(null);
+        plaquetas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        plaquetas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                plaquetasKeyTyped(evt);
+            }
+        });
+        sangre.add(plaquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 130, 20));
+
+        jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 130, 10));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel8.setText("10^3/uL");
+        sangre.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel9.setText("10^3/uL");
+        sangre.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
+
+        jSeparator11.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 130, 10));
+
+        leucocitos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        leucocitos.setForeground(new java.awt.Color(102, 102, 102));
+        leucocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        leucocitos.setBorder(null);
+        leucocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        leucocitos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                leucocitosKeyTyped(evt);
+            }
+        });
+        sangre.add(leucocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 130, 20));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText("VN: 4,50 - 11,20");
+        sangre.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setText("VN: 39,9 - 75,0");
+        sangre.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+
+        segmentados.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        segmentados.setForeground(new java.awt.Color(102, 102, 102));
+        segmentados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        segmentados.setBorder(null);
+        segmentados.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        segmentados.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                segmentadosKeyTyped(evt);
+            }
+        });
+        sangre.add(segmentados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 130, 20));
+
+        jSeparator12.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 130, 10));
+
+        jLabel12.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel12.setText("%");
+        sangre.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
+
+        jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
+        sangre.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 130, 10));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel13.setText("%");
+        sangre.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setText("VN: 18,8 - 50,8");
+        sangre.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
+
+        linfocitos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        linfocitos.setForeground(new java.awt.Color(102, 102, 102));
+        linfocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        linfocitos.setBorder(null);
+        linfocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        linfocitos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                linfocitosKeyTyped(evt);
+            }
+        });
+        sangre.add(linfocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 130, 20));
+
+        jLabel15.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel15.setText("10^6/uL");
+        sangre.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel16.setText("EXÁMENES SANGUÍNEOS");
+        sangre.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setText("HEMOGLOBINA O HB:");
+        sangre.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 170, -1));
+
+        jLabel18.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("HEMATOCRITOS O HTC:");
+        sangre.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 180, -1));
+
+        jLabel19.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel19.setText("PLAQUETAS:");
+        sangre.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 100, -1));
+
+        jLabel20.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setText("LEUCOCITOS O GLÓBULOS BLANCOS:");
+        sangre.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel21.setText("SEGMENTADOS O NEUTROFILOS:");
+        sangre.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 390, -1, -1));
+
+        b_siguienteSangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_siguienteSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_siguienteSangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_siguienteSangre.setText("Siguiente");
+        b_siguienteSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_siguienteSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_siguienteSangre.setFocusPainted(false);
+        b_siguienteSangre.setRolloverEnabled(false);
+        b_siguienteSangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_siguienteSangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_siguienteSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
+
+        b_limpiarSangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_limpiarSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_limpiarSangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_limpiarSangre.setText("Limpiar");
+        b_limpiarSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_limpiarSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_limpiarSangre.setFocusPainted(false);
+        b_limpiarSangre.setRolloverEnabled(false);
+        b_limpiarSangre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                b_limpiarSangreMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                b_limpiarSangreMouseReleased(evt);
+            }
+        });
+        b_limpiarSangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_limpiarSangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_limpiarSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 100, 30));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("HEMATIES O GLÓBULOS ROJOS: ");
+        sangre.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 250, -1));
+
+        b_volver_sangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_volver_sangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_volver_sangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_volver_sangre.setText("Volver");
+        b_volver_sangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_volver_sangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_volver_sangre.setFocusPainted(false);
+        b_volver_sangre.setRolloverEnabled(false);
+        b_volver_sangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_volver_sangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 100, 30));
+
+        base.add(sangre, "card2");
+
         orina.setOpaque(false);
         orina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -245,14 +527,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_siguienteOrina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_siguienteOrina.setFocusPainted(false);
         b_siguienteOrina.setRolloverEnabled(false);
-        b_siguienteOrina.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_siguienteOrinaMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_siguienteOrinaMouseReleased(evt);
-            }
-        });
         b_siguienteOrina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_siguienteOrinaActionPerformed(evt);
@@ -268,14 +542,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         b_limpiarOrina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_limpiarOrina.setFocusPainted(false);
         b_limpiarOrina.setRolloverEnabled(false);
-        b_limpiarOrina.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_limpiarOrinaMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_limpiarOrinaMouseReleased(evt);
-            }
-        });
         b_limpiarOrina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_limpiarOrinaActionPerformed(evt);
@@ -617,288 +883,6 @@ public class p_subirExamen extends javax.swing.JPanel {
 
         base.add(orina, "card2");
 
-        sangre.setOpaque(false);
-        sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("LINFOCITOS:");
-        sangre.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 450, 100, -1));
-
-        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 130, 10));
-
-        globulos_rojos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        globulos_rojos.setForeground(new java.awt.Color(102, 102, 102));
-        globulos_rojos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        globulos_rojos.setBorder(null);
-        globulos_rojos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        globulos_rojos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                globulos_rojosKeyTyped(evt);
-            }
-        });
-        sangre.add(globulos_rojos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 130, 20));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("VN: 3,90 - 5,40");
-        sangre.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("VN: 12,0 - 16,0");
-        sangre.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
-
-        hemoglobina.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        hemoglobina.setForeground(new java.awt.Color(102, 102, 102));
-        hemoglobina.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        hemoglobina.setBorder(null);
-        hemoglobina.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        hemoglobina.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                hemoglobinaKeyTyped(evt);
-            }
-        });
-        sangre.add(hemoglobina, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 130, 20));
-
-        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 130, 10));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("g/dL");
-        sangre.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("%");
-        sangre.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, -1));
-
-        jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 130, 10));
-
-        hematocritos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        hematocritos.setForeground(new java.awt.Color(102, 102, 102));
-        hematocritos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        hematocritos.setBorder(null);
-        hematocritos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        hematocritos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                hematocritosKeyTyped(evt);
-            }
-        });
-        sangre.add(hematocritos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 130, 20));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("VN: 35,0 - 47,0");
-        sangre.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("VN: 140,0 - 500,0");
-        sangre.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
-
-        plaquetas.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        plaquetas.setForeground(new java.awt.Color(102, 102, 102));
-        plaquetas.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        plaquetas.setBorder(null);
-        plaquetas.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        plaquetas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                plaquetasKeyTyped(evt);
-            }
-        });
-        sangre.add(plaquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 130, 20));
-
-        jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator10.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 130, 10));
-
-        jLabel8.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("10^3/uL");
-        sangre.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("10^3/uL");
-        sangre.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
-
-        jSeparator11.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator11.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 130, 10));
-
-        leucocitos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        leucocitos.setForeground(new java.awt.Color(102, 102, 102));
-        leucocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        leucocitos.setBorder(null);
-        leucocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        leucocitos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                leucocitosKeyTyped(evt);
-            }
-        });
-        sangre.add(leucocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 130, 20));
-
-        jLabel10.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("VN: 4,50 - 11,20");
-        sangre.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("VN: 39,9 - 75,0");
-        sangre.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
-
-        segmentados.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        segmentados.setForeground(new java.awt.Color(102, 102, 102));
-        segmentados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        segmentados.setBorder(null);
-        segmentados.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        segmentados.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                segmentadosKeyTyped(evt);
-            }
-        });
-        sangre.add(segmentados, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 130, 20));
-
-        jSeparator12.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator12.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 130, 10));
-
-        jLabel12.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("%");
-        sangre.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
-
-        jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator13.setForeground(new java.awt.Color(0, 0, 0));
-        sangre.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 130, 10));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("%");
-        sangre.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("VN: 18,8 - 50,8");
-        sangre.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
-
-        linfocitos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        linfocitos.setForeground(new java.awt.Color(102, 102, 102));
-        linfocitos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        linfocitos.setBorder(null);
-        linfocitos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        linfocitos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                linfocitosKeyTyped(evt);
-            }
-        });
-        sangre.add(linfocitos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 130, 20));
-
-        jLabel15.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setText("10^6/uL");
-        sangre.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
-
-        jLabel16.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel16.setText("EXÁMENES SANGUÍNEOS");
-        sangre.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
-
-        jLabel17.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel17.setText("HEMOGLOBINA O HB:");
-        sangre.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 170, -1));
-
-        jLabel18.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("HEMATOCRITOS O HTC:");
-        sangre.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 180, -1));
-
-        jLabel19.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel19.setText("PLAQUETAS:");
-        sangre.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 100, -1));
-
-        jLabel20.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("LEUCOCITOS O GLÓBULOS BLANCOS:");
-        sangre.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setText("SEGMENTADOS O NEUTROFILOS:");
-        sangre.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 390, -1, -1));
-
-        b_siguienteSangre.setBackground(new java.awt.Color(103, 174, 202));
-        b_siguienteSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_siguienteSangre.setForeground(new java.awt.Color(255, 255, 255));
-        b_siguienteSangre.setText("Siguiente");
-        b_siguienteSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_siguienteSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_siguienteSangre.setFocusPainted(false);
-        b_siguienteSangre.setRolloverEnabled(false);
-        b_siguienteSangre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_siguienteSangreActionPerformed(evt);
-            }
-        });
-        sangre.add(b_siguienteSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
-
-        b_limpiarSangre.setBackground(new java.awt.Color(103, 174, 202));
-        b_limpiarSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_limpiarSangre.setForeground(new java.awt.Color(255, 255, 255));
-        b_limpiarSangre.setText("Limpiar");
-        b_limpiarSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_limpiarSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_limpiarSangre.setFocusPainted(false);
-        b_limpiarSangre.setRolloverEnabled(false);
-        b_limpiarSangre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_limpiarSangreMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_limpiarSangreMouseReleased(evt);
-            }
-        });
-        b_limpiarSangre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_limpiarSangreActionPerformed(evt);
-            }
-        });
-        sangre.add(b_limpiarSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 100, 30));
-
-        jLabel22.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel22.setText("HEMATIES O GLÓBULOS ROJOS: ");
-        sangre.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 250, -1));
-
-        b_volver_sangre.setBackground(new java.awt.Color(103, 174, 202));
-        b_volver_sangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_volver_sangre.setForeground(new java.awt.Color(255, 255, 255));
-        b_volver_sangre.setText("Volver");
-        b_volver_sangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_volver_sangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_volver_sangre.setFocusPainted(false);
-        b_volver_sangre.setRolloverEnabled(false);
-        b_volver_sangre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_volver_sangreActionPerformed(evt);
-            }
-        });
-        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 100, 30));
-
-        base.add(sangre, "card2");
-
         add(base, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 540));
 
         getAccessibleContext().setAccessibleName("");
@@ -941,14 +925,6 @@ public class p_subirExamen extends javax.swing.JPanel {
         orina.setVisible(false);
         documento.setVisible(true);
     }//GEN-LAST:event_b_siguienteOrinaActionPerformed
-
-    private void b_limpiarOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarOrinaMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_limpiarOrinaMousePressed
-
-    private void b_limpiarOrinaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarOrinaMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_limpiarOrinaMouseReleased
 
     private void b_limpiarOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiarOrinaActionPerformed
         limpiar_orina();
@@ -997,14 +973,6 @@ public class p_subirExamen extends javax.swing.JPanel {
     private void b_limpiar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_documentoActionPerformed
         limpiar_documento();
     }//GEN-LAST:event_b_limpiar_documentoActionPerformed
-
-    private void b_siguienteOrinaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_siguienteOrinaMouseReleased
-
-    private void b_siguienteOrinaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_siguienteOrinaMousePressed
-
-    }//GEN-LAST:event_b_siguienteOrinaMousePressed
 
     private void b_volver_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_volver_documentoActionPerformed
 

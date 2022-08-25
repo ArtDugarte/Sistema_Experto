@@ -1002,14 +1002,6 @@ public class p_diagnosticos extends javax.swing.JPanel {
         b_limpiar_resultado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_limpiar_resultado.setFocusPainted(false);
         b_limpiar_resultado.setRolloverEnabled(false);
-        b_limpiar_resultado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_limpiar_resultadoMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_limpiar_resultadoMouseReleased(evt);
-            }
-        });
         b_limpiar_resultado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_limpiar_resultadoActionPerformed(evt);
@@ -1389,14 +1381,6 @@ public class p_diagnosticos extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_b_visualizarExamenActionPerformed
-
-    private void b_limpiar_resultadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiar_resultadoMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_limpiar_resultadoMousePressed
-
-    private void b_limpiar_resultadoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiar_resultadoMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_limpiar_resultadoMouseReleased
 
     private void b_limpiar_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_resultadoActionPerformed
         area_diagnostico_final.setText(area_diagnostico_sugerido.getText());

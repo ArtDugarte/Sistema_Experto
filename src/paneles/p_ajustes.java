@@ -203,14 +203,6 @@ public class p_ajustes extends javax.swing.JPanel {
         b_modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         b_modificar.setFocusPainted(false);
         b_modificar.setRolloverEnabled(false);
-        b_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_modificarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_modificarMouseReleased(evt);
-            }
-        });
         b_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_modificarActionPerformed(evt);
@@ -291,14 +283,6 @@ public class p_ajustes extends javax.swing.JPanel {
     private void clave_nuevaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clave_nuevaFocusGained
         clave_nueva.setText("");
     }//GEN-LAST:event_clave_nuevaFocusGained
-
-    private void b_modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modificarMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_modificarMousePressed
-
-    private void b_modificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_modificarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_modificarMouseReleased
 
     private void respuestaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_respuestaFocusLost
         if (respuesta.getText().equals("")) {
