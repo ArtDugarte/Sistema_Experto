@@ -1,6 +1,7 @@
 package modelos;
 
 import BD.BDConex;
+import globales.mensajes;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class operar_resultados {
+    
+    mensajes msg = new mensajes();
 
     public int idUltimoResultado() {
 
@@ -49,9 +52,9 @@ public class operar_resultados {
 
         if (op > 0) {
 
-            JOptionPane.showMessageDialog(null, "¡Diagnostico Procesado y Enviado al Paciente!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
+            msg.mensaje("¡Diagnóstico procesado y enviado al paciente!","exito");
         } else {
-            JOptionPane.showMessageDialog(null, "¡Ocurrio un error en la operación! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Ocurrio un error en la operación!", "error");
         }
 
         bd.desconectar();

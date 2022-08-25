@@ -1,6 +1,7 @@
 package paneles;
 
-import globales.Validaciones;
+import globales.mensajes;
+import globales.validaciones;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
@@ -25,27 +26,6 @@ public class p_revision extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        principal = new javax.swing.JPanel();
-        jSeparator2 = new javax.swing.JSeparator();
-        usuario = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lista = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        nombres = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        apellidos = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        cedula = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        lupa = new javax.swing.JButton();
-        usuario1 = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        b_revisar = new javax.swing.JButton();
-        b_limpiar = new javax.swing.JButton();
-        Enviar = new javax.swing.JButton();
         sangre = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -140,198 +120,33 @@ public class p_revision extends javax.swing.JPanel {
         jSeparator25 = new javax.swing.JSeparator();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        principal = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
+        usuario = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lista = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        nombres = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        apellidos = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        cedula = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        lupa = new javax.swing.JButton();
+        usuario1 = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        b_revisar = new javax.swing.JButton();
+        b_limpiar = new javax.swing.JButton();
+        Enviar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
         setMinimumSize(new java.awt.Dimension(680, 540));
         setName("Panel Revisión"); // NOI18N
         setLayout(new java.awt.CardLayout());
-
-        principal.setBackground(new java.awt.Color(255, 255, 255));
-        principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        principal.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 270, 10));
-
-        usuario.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        usuario.setForeground(new java.awt.Color(102, 102, 102));
-        usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usuario.setText("Exámenes por Revisar");
-        usuario.setBorder(null);
-        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usuario.setFocusable(false);
-        principal.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 30));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
-
-        jScrollPane2.setEnabled(false);
-        jScrollPane2.setFocusable(false);
-
-        lista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "       Fecha                   Cedula                       Tipo             "
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        lista.setFocusable(false);
-        lista.getTableHeader().setResizingAllowed(false);
-        lista.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(lista);
-
-        jPanel2.add(jScrollPane2);
-
-        principal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 290, 470));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_m.png"))); // NOI18N
-        principal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
-
-        nombres.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        nombres.setForeground(new java.awt.Color(102, 102, 102));
-        nombres.setText("Nombres:");
-        nombres.setBorder(null);
-        nombres.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        nombres.setFocusable(false);
-        principal.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 290, 30));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apellido_m.png"))); // NOI18N
-        principal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
-
-        apellidos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        apellidos.setForeground(new java.awt.Color(102, 102, 102));
-        apellidos.setText("Apellidos:");
-        apellidos.setBorder(null);
-        apellidos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        apellidos.setFocusable(false);
-        principal.add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 290, 30));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cedula_m.png"))); // NOI18N
-        principal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, -1));
-
-        cedula.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cedula.setForeground(new java.awt.Color(102, 102, 102));
-        cedula.setText("Cédula:");
-        cedula.setBorder(null);
-        cedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        cedula.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                cedulaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                cedulaFocusLost(evt);
-            }
-        });
-        principal.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 230, 30));
-
-        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        principal.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 230, 10));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        principal.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 290, 10));
-
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        principal.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 290, 10));
-
-        lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande.png"))); // NOI18N
-        lupa.setBorderPainted(false);
-        lupa.setContentAreaFilled(false);
-        lupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lupa.setFocusPainted(false);
-        lupa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande2.png"))); // NOI18N
-        lupa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lupaActionPerformed(evt);
-            }
-        });
-        principal.add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, -1));
-
-        usuario1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        usuario1.setForeground(new java.awt.Color(102, 102, 102));
-        usuario1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usuario1.setText("Busqueda");
-        usuario1.setBorder(null);
-        usuario1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usuario1.setFocusable(false);
-        principal.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 270, 30));
-
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        principal.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 270, 10));
-
-        b_revisar.setBackground(new java.awt.Color(103, 174, 202));
-        b_revisar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_revisar.setForeground(new java.awt.Color(255, 255, 255));
-        b_revisar.setText("Revisar");
-        b_revisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_revisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_revisar.setEnabled(false);
-        b_revisar.setFocusPainted(false);
-        b_revisar.setRolloverEnabled(false);
-        b_revisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_revisarActionPerformed(evt);
-            }
-        });
-        principal.add(b_revisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 100, 30));
-
-        b_limpiar.setBackground(new java.awt.Color(103, 174, 202));
-        b_limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_limpiar.setForeground(new java.awt.Color(255, 255, 255));
-        b_limpiar.setText("Limpiar");
-        b_limpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_limpiar.setFocusPainted(false);
-        b_limpiar.setRolloverEnabled(false);
-        b_limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                b_limpiarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                b_limpiarMouseReleased(evt);
-            }
-        });
-        b_limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_limpiarActionPerformed(evt);
-            }
-        });
-        principal.add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 100, 30));
-
-        Enviar.setBackground(new java.awt.Color(103, 174, 202));
-        Enviar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        Enviar.setForeground(new java.awt.Color(255, 255, 255));
-        Enviar.setText("Enviar");
-        Enviar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        Enviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Enviar.setEnabled(false);
-        Enviar.setFocusPainted(false);
-        Enviar.setRolloverEnabled(false);
-        Enviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnviarActionPerformed(evt);
-            }
-        });
-        principal.add(Enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 100, 30));
-
-        add(principal, "card2");
 
         sangre.setOpaque(false);
         sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1003,6 +818,197 @@ public class p_revision extends javax.swing.JPanel {
 
         add(orina, "card2");
 
+        principal.setBackground(new java.awt.Color(255, 255, 255));
+        principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        principal.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 270, 10));
+
+        usuario.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usuario.setText("Exámenes por Revisar");
+        usuario.setBorder(null);
+        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        usuario.setFocusable(false);
+        principal.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 270, 30));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+
+        jScrollPane2.setEnabled(false);
+        jScrollPane2.setFocusable(false);
+
+        lista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "       Fecha                   Cedula                       Tipo             "
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        lista.setFocusable(false);
+        lista.getTableHeader().setResizingAllowed(false);
+        lista.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(lista);
+
+        jPanel2.add(jScrollPane2);
+
+        principal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 290, 470));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_m.png"))); // NOI18N
+        principal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
+
+        nombres.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        nombres.setForeground(new java.awt.Color(102, 102, 102));
+        nombres.setText("Nombres:");
+        nombres.setBorder(null);
+        nombres.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombres.setFocusable(false);
+        principal.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 290, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apellido_m.png"))); // NOI18N
+        principal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+
+        apellidos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        apellidos.setForeground(new java.awt.Color(102, 102, 102));
+        apellidos.setText("Apellidos:");
+        apellidos.setBorder(null);
+        apellidos.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        apellidos.setFocusable(false);
+        principal.add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 290, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cedula_m.png"))); // NOI18N
+        principal.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, -1));
+
+        cedula.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cedula.setForeground(new java.awt.Color(102, 102, 102));
+        cedula.setText("Cédula:");
+        cedula.setBorder(null);
+        cedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        cedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cedulaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cedulaFocusLost(evt);
+            }
+        });
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
+            }
+        });
+        principal.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 230, 30));
+
+        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        principal.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 230, 10));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        principal.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 290, 10));
+
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        principal.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 290, 10));
+
+        lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande.png"))); // NOI18N
+        lupa.setBorderPainted(false);
+        lupa.setContentAreaFilled(false);
+        lupa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lupa.setFocusPainted(false);
+        lupa.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa_grande2.png"))); // NOI18N
+        lupa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lupaActionPerformed(evt);
+            }
+        });
+        principal.add(lupa, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, -1, -1));
+
+        usuario1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        usuario1.setForeground(new java.awt.Color(102, 102, 102));
+        usuario1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usuario1.setText("Busqueda");
+        usuario1.setBorder(null);
+        usuario1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        usuario1.setFocusable(false);
+        principal.add(usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 270, 30));
+
+        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        principal.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 270, 10));
+
+        b_revisar.setBackground(new java.awt.Color(103, 174, 202));
+        b_revisar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_revisar.setForeground(new java.awt.Color(255, 255, 255));
+        b_revisar.setText("Revisar");
+        b_revisar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_revisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_revisar.setEnabled(false);
+        b_revisar.setFocusPainted(false);
+        b_revisar.setRolloverEnabled(false);
+        b_revisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_revisarActionPerformed(evt);
+            }
+        });
+        principal.add(b_revisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 100, 30));
+
+        b_limpiar.setBackground(new java.awt.Color(103, 174, 202));
+        b_limpiar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_limpiar.setForeground(new java.awt.Color(255, 255, 255));
+        b_limpiar.setText("Limpiar");
+        b_limpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_limpiar.setFocusPainted(false);
+        b_limpiar.setRolloverEnabled(false);
+        b_limpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                b_limpiarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                b_limpiarMouseReleased(evt);
+            }
+        });
+        b_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_limpiarActionPerformed(evt);
+            }
+        });
+        principal.add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 100, 30));
+
+        Enviar.setBackground(new java.awt.Color(103, 174, 202));
+        Enviar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        Enviar.setForeground(new java.awt.Color(255, 255, 255));
+        Enviar.setText("Enviar");
+        Enviar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        Enviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Enviar.setEnabled(false);
+        Enviar.setFocusPainted(false);
+        Enviar.setRolloverEnabled(false);
+        Enviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnviarActionPerformed(evt);
+            }
+        });
+        principal.add(Enviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 100, 30));
+
+        add(principal, "card2");
+
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1037,8 +1043,10 @@ public class p_revision extends javax.swing.JPanel {
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
 
         if (cedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "¡La cedula no puede estar vacia! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje( "¡La cedula no puede estar vacía!", "alerta");
 
+        } else if (cedula.getText().equals("Cédula:")) {
+            msg.mensaje( "¡Campo vacío!", "alerta");
         } else {
 
             modelo m = null;
@@ -1053,7 +1061,7 @@ public class p_revision extends javax.swing.JPanel {
                 Enviar.setEnabled(false);
                 idExamen = m.getId_examen();
             } else {
-                JOptionPane.showMessageDialog(null, "¡Este paciente no tiene examenes pendientes! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje( "¡Este paciente no tiene exámenes pendientes!","error");
                 limpiar_campos();
             }
 
@@ -1187,46 +1195,50 @@ public class p_revision extends javax.swing.JPanel {
 
     private void b_ModificarOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ModificarOrinaActionPerformed
 
-        int op = new operar_examenes().ModificarOrina(
-                idExamen,
-                aspecto.getSelectedItem() + "",
-                color.getSelectedItem() + "",
-                reaccion.getSelectedItem() + "",
-                Float.parseFloat(densidad.getText()),
-                Float.parseFloat(leucocitosorina.getText()),
-                Float.parseFloat(hematies.getText()),
-                piocitos.getSelectedItem() + "",
-                bacterias.getSelectedItem() + "",
-                Float.parseFloat(eplano.getText()),
-                proteinas.getSelectedItem() + "",
-                glucosa.getSelectedItem() + "",
-                hemoglobina_orina.getSelectedItem() + "",
-                ccetonico.getSelectedItem() + "",
-                biliares.getSelectedItem() + "",
-                urobilinogen.getSelectedItem() + "",
-                bilirrubina.getSelectedItem() + "",
-                nitritos.getSelectedItem() + ""
-        );
+        if (densidad.getText().equals("") || leucocitosorina.getText().equals("") || hematies.getText().equals("") || eplano.getText().equals("")) {
+            msg.mensaje( "¡Campos vacíos!", "alerta");
+        } else {
+            int op = new operar_examenes().ModificarOrina(
+                    idExamen,
+                    aspecto.getSelectedItem() + "",
+                    color.getSelectedItem() + "",
+                    reaccion.getSelectedItem() + "",
+                    Float.parseFloat(densidad.getText()),
+                    Float.parseFloat(leucocitosorina.getText()),
+                    Float.parseFloat(hematies.getText()),
+                    piocitos.getSelectedItem() + "",
+                    bacterias.getSelectedItem() + "",
+                    Float.parseFloat(eplano.getText()),
+                    proteinas.getSelectedItem() + "",
+                    glucosa.getSelectedItem() + "",
+                    hemoglobina_orina.getSelectedItem() + "",
+                    ccetonico.getSelectedItem() + "",
+                    biliares.getSelectedItem() + "",
+                    urobilinogen.getSelectedItem() + "",
+                    bilirrubina.getSelectedItem() + "",
+                    nitritos.getSelectedItem() + ""
+            );
 
-        if (op > 0) {
+            if (op > 0) {
 
-            aux.setO_aspecto(aspecto.getSelectedItem() + "");
-            aux.setO_color(color.getSelectedItem() + "");
-            aux.setO_reaccion(reaccion.getSelectedItem() + "");
-            aux.setO_densidad(Float.parseFloat(densidad.getText()));
-            aux.setO_leucocitos(Float.parseFloat(leucocitosorina.getText()));
-            aux.setO_hematies(Float.parseFloat(hematies.getText()));
-            aux.setO_piocitos(piocitos.getSelectedItem() + "");
-            aux.setO_bacterias(bacterias.getSelectedItem() + "");
-            aux.setO_eplano(Float.parseFloat(eplano.getText()));
-            aux.setO_proteinas(proteinas.getSelectedItem() + "");
-            aux.setO_glucosa(glucosa.getSelectedItem() + "");
-            aux.setO_hemoglobina(hemoglobina_orina.getSelectedItem() + "");
-            aux.setO_cetonico(ccetonico.getSelectedItem() + "");
-            aux.setO_pbiliares(biliares.getSelectedItem() + "");
-            aux.setO_urobilinogelen(urobilinogen.getSelectedItem() + "");
-            aux.setO_bilirrubina(bilirrubina.getSelectedItem() + "");
-            aux.setO_nitritos(nitritos.getSelectedItem() + "");
+                aux.setO_aspecto(aspecto.getSelectedItem() + "");
+                aux.setO_color(color.getSelectedItem() + "");
+                aux.setO_reaccion(reaccion.getSelectedItem() + "");
+                aux.setO_densidad(Float.parseFloat(densidad.getText()));
+                aux.setO_leucocitos(Float.parseFloat(leucocitosorina.getText()));
+                aux.setO_hematies(Float.parseFloat(hematies.getText()));
+                aux.setO_piocitos(piocitos.getSelectedItem() + "");
+                aux.setO_bacterias(bacterias.getSelectedItem() + "");
+                aux.setO_eplano(Float.parseFloat(eplano.getText()));
+                aux.setO_proteinas(proteinas.getSelectedItem() + "");
+                aux.setO_glucosa(glucosa.getSelectedItem() + "");
+                aux.setO_hemoglobina(hemoglobina_orina.getSelectedItem() + "");
+                aux.setO_cetonico(ccetonico.getSelectedItem() + "");
+                aux.setO_pbiliares(biliares.getSelectedItem() + "");
+                aux.setO_urobilinogelen(urobilinogen.getSelectedItem() + "");
+                aux.setO_bilirrubina(bilirrubina.getSelectedItem() + "");
+                aux.setO_nitritos(nitritos.getSelectedItem() + "");
+            }
         }
     }//GEN-LAST:event_b_ModificarOrinaActionPerformed
 
@@ -1266,62 +1278,53 @@ public class p_revision extends javax.swing.JPanel {
 
     private void b_ModificarSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ModificarSangreActionPerformed
 
-        int op = new operar_examenes().ModificarSangre(
-                idExamen,
-                Float.parseFloat(globulos_rojos.getText()),
-                Float.parseFloat(hemoglobina.getText()),
-                Float.parseFloat(hematocritos.getText()),
-                Float.parseFloat(plaquetas.getText()),
-                Float.parseFloat(leucocitos.getText()),
-                Float.parseFloat(segmentados.getText()),
-                Float.parseFloat(linfocitos.getText())
-        );
+        if (globulos_rojos.getText().equals("") || hemoglobina.getText().equals("") || plaquetas.getText().equals("")
+                || hematocritos.getText().equals("") || leucocitos.getText().equals("") || segmentados.getText().equals("") || linfocitos.getText().equals("")) {
 
-        if (op > 0) {
+            msg.mensaje( "¡Campos vacíos!", "alerta");
 
-            aux.setS_hematies(Float.parseFloat(globulos_rojos.getText()));
-            aux.setS_hemoglobina(Float.parseFloat(hemoglobina.getText()));
-            aux.setS_hematocritos(Float.parseFloat(hematocritos.getText()));
-            aux.setS_plaquetas(Float.parseFloat(plaquetas.getText()));
-            aux.setS_leucocitos(Float.parseFloat(leucocitos.getText()));
-            aux.setS_segmentados(Float.parseFloat(segmentados.getText()));
-            aux.setS_linfocitos(Float.parseFloat(linfocitos.getText()));
+        } else {
+
+            int op = new operar_examenes().ModificarSangre(
+                    idExamen,
+                    Float.parseFloat(globulos_rojos.getText()),
+                    Float.parseFloat(hemoglobina.getText()),
+                    Float.parseFloat(hematocritos.getText()),
+                    Float.parseFloat(plaquetas.getText()),
+                    Float.parseFloat(leucocitos.getText()),
+                    Float.parseFloat(segmentados.getText()),
+                    Float.parseFloat(linfocitos.getText())
+            );
+
+            if (op > 0) {
+
+                aux.setS_hematies(Float.parseFloat(globulos_rojos.getText()));
+                aux.setS_hemoglobina(Float.parseFloat(hemoglobina.getText()));
+                aux.setS_hematocritos(Float.parseFloat(hematocritos.getText()));
+                aux.setS_plaquetas(Float.parseFloat(plaquetas.getText()));
+                aux.setS_leucocitos(Float.parseFloat(leucocitos.getText()));
+                aux.setS_segmentados(Float.parseFloat(segmentados.getText()));
+                aux.setS_linfocitos(Float.parseFloat(linfocitos.getText()));
+            }
         }
 
-        if (tipo == 2) {
 
-        }
     }//GEN-LAST:event_b_ModificarSangreActionPerformed
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
 
-        if (tipo == 2 && (globulos_rojos.getText().equals("") || hemoglobina.getText().equals("") || hematocritos.getText().equals("")
-                || plaquetas.getText().equals("") || leucocitos.getText().equals("") || segmentados.getText().equals("")
-                || linfocitos.getText().equals(""))) {
-            JOptionPane.showMessageDialog(null, "¡Campos Vacios! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        } else if (tipo == 3 && (densidad.getText().equals("") || leucocitosorina.getText().equals("")
-                || hematies.getText().equals("") || eplano.getText().equals(""))) {
-            JOptionPane.showMessageDialog(null, "¡Campos Vacios! "
-                    + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-        } else if (tipo==1 &&(globulos_rojos.getText().equals("") || hemoglobina.getText().equals("") || hematocritos.getText().equals("")
-                || plaquetas.getText().equals("") || leucocitos.getText().equals("") || segmentados.getText().equals("")
-                || linfocitos.getText().equals("") || densidad.getText().equals("") || leucocitosorina.getText().equals("")
-                || hematies.getText().equals("") || eplano.getText().equals(""))){
-        }else {
-            int op = new operar_examenes().cambiarEstado(idExamen, 1);
-            if (op > 0) {
+        int op = new operar_examenes().cambiarEstado(idExamen, 1);
+        if (op > 0) {
 
-                JOptionPane.showMessageDialog(null, "¡Envio Exitoso!", "¡OPERACIÓN EXITOSA!", JOptionPane.INFORMATION_MESSAGE);
-            } else {
+            msg.mensaje( "¡Envío exitoso!", "exito");
+        } else {
 
-                JOptionPane.showMessageDialog(null, "¡Error al Enviar! "
-                        + "\n              Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-            }
-
-            limpiar_campos();
-            actualizar_lista();
+            msg.mensaje( "¡Error al enviar!", "error");
         }
+
+        limpiar_campos();
+        actualizar_lista();
+
     }//GEN-LAST:event_EnviarActionPerformed
 
     private void globulos_rojosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_globulos_rojosKeyTyped
@@ -1379,6 +1382,10 @@ public class p_revision extends javax.swing.JPanel {
         validador.validarFloatPositivo(eplano, c, evt);
     }//GEN-LAST:event_eplanoKeyTyped
 
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+        validador.limitarCaracteres(cedula, evt, 10);
+    }//GEN-LAST:event_cedulaKeyTyped
+
     //Métodos y Variables
     public void actualizar_lista() {
         ArrayList<modelo> li = new operar_examenes().ExamenesPendientes();
@@ -1426,7 +1433,8 @@ public class p_revision extends javax.swing.JPanel {
 
     modelo aux = null;
 
-    Validaciones validador = new Validaciones();
+    validaciones validador = new validaciones();
+    mensajes msg = new mensajes();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Enviar;

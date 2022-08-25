@@ -1,9 +1,9 @@
 package paneles;
 
+import globales.validaciones;
 import globales.encriptacion;
-import java.awt.Color;
+import globales.mensajes;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
 import modelos.modelo;
 import modelos.operar_usuarios;
 
@@ -12,6 +12,7 @@ public class p_ajustes extends javax.swing.JPanel {
     public p_ajustes(String user) {
         initComponents();
         this.user = user;
+        if(user.equals("00000000")) b_modificar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -66,6 +67,11 @@ public class p_ajustes extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 clave_viejaFocusLost(evt);
+            }
+        });
+        clave_vieja.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                clave_viejaKeyTyped(evt);
             }
         });
         add(clave_vieja, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 250, 30));
@@ -148,6 +154,11 @@ public class p_ajustes extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 clave_nuevaFocusLost(evt);
+            }
+        });
+        clave_nueva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                clave_nuevaKeyTyped(evt);
             }
         });
         add(clave_nueva, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 250, 30));
@@ -248,11 +259,6 @@ public class p_ajustes extends javax.swing.JPanel {
                 correoFocusLost(evt);
             }
         });
-        correo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                correoActionPerformed(evt);
-            }
-        });
         add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 540, 30));
 
         edad.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
@@ -330,19 +336,16 @@ public class p_ajustes extends javax.swing.JPanel {
 
         if (clave_vieja.getText().equals("Contraseña Actual:")) {
 
-            JOptionPane.showMessageDialog(null, "¡Debe ingresar su contraseña actual en el campo indicado! "
-                    + "\n                             Intente nuevamente...", "¡ALERTA!", JOptionPane.WARNING_MESSAGE);
+            msg.mensaje("¡Debe ingresar su contraseña actual en el campo indicado!", "alerta");
 
         } else {
             if (respuesta.getText().equals("") || clave_nueva.getText().equals("") || clave_vieja.getText().equals("")||correo.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "¡Campos Vacios! "
-                        + "\n                             Intente nuevamente...", "¡ALERTA!", JOptionPane.WARNING_MESSAGE);
-            }else if(correo.getText().equals("Correo:") || edad.getText().equals("Edad:")){
-                JOptionPane.showMessageDialog(null, "¡Campos por Defecto! "
-                        + "\n                             Intente nuevamente...", "¡ALERTA!", JOptionPane.WARNING_MESSAGE);
+                msg.mensaje("¡Campos vacíos!", "alerta");
+            }else if(correo.getText().equals("Correo:")){
+                msg.mensaje("¡Campos por defecto!", "alerta");
             } 
             else {
-                new operar_usuarios().Modificar(user, correo.getText().toUpperCase(), vedad, 
+                new operar_usuarios().Modificar(user, correo.getText().toUpperCase(), 
                         encrip.encriptar(respuesta.getText()), encrip.encriptar(clave_vieja.getText()), encrip.encriptar(clave), pregunta.getSelectedItem() + "");
                 info_usuario();
             }
@@ -359,9 +362,13 @@ public class p_ajustes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_correoFocusLost
 
-    private void correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_correoActionPerformed
+    private void clave_viejaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clave_viejaKeyTyped
+        validar.limitarCaracteres(clave_vieja, evt, 10);
+    }//GEN-LAST:event_clave_viejaKeyTyped
+
+    private void clave_nuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clave_nuevaKeyTyped
+        validar.limitarCaracteres(clave_nueva, evt, 10);
+    }//GEN-LAST:event_clave_nuevaKeyTyped
 
     //METODOS Y VARIABLES
     public void info_usuario() {
@@ -391,6 +398,8 @@ public class p_ajustes extends javax.swing.JPanel {
     String user, p, vcorreo;
     int vedad;
     encriptacion encrip = new encriptacion();
+    validaciones validar = new validaciones();
+    mensajes msg = new mensajes();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;

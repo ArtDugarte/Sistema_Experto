@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.mensajes;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -163,10 +164,10 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
         switch (cedula.getText()) {
             case "":
-                JOptionPane.showMessageDialog(null, "¡La cedula no puede estar vacia! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje("¡La cedula no puede estar vacia!", "error");
                 break;
             case "Introduzca la cédula del paciente a buscar:":
-                JOptionPane.showMessageDialog(null, "¡Valor por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje("¡Valor por defecto!", "error");
                 break;
             default:
                 modelo m = new operar_resultados().Buscar(cedula.getText());
@@ -194,7 +195,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                         }
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "¡El Paciente no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                    msg.mensaje("¡El Paciente no existe!", "error");
                 }   break;
         }
     }//GEN-LAST:event_lupaActionPerformed
@@ -219,6 +220,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
     int idExamen = 0, tipo = 0;
 
     modelo aux = null;
+    mensajes msg = new mensajes();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;

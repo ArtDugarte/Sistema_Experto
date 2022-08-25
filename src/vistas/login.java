@@ -2,8 +2,9 @@ package vistas;
 
 import BD.BDConex;
 import com.sun.awt.AWTUtilities;
-import globales.Validaciones;
+import globales.validaciones;
 import globales.encriptacion;
+import globales.mensajes;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -35,17 +36,6 @@ public class login extends javax.swing.JFrame {
         izq = new javax.swing.JPanel();
         jEImagePanel1 = new LIB.JEImagePanel();
         der = new javax.swing.JPanel();
-        ingreso = new javax.swing.JPanel();
-        usuario = new javax.swing.JTextField();
-        clave = new javax.swing.JPasswordField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        ico_clave = new javax.swing.JLabel();
-        ico_usu = new javax.swing.JLabel();
-        ingresar = new javax.swing.JButton();
-        salir = new javax.swing.JButton();
-        olvido_clave = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         olvido_contra = new javax.swing.JPanel();
         usuario_olvido = new javax.swing.JTextField();
         nueva_clave = new javax.swing.JPasswordField();
@@ -64,6 +54,17 @@ public class login extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         ico_usu3 = new javax.swing.JLabel();
         respuesta_olvido = new javax.swing.JTextField();
+        ingreso = new javax.swing.JPanel();
+        usuario = new javax.swing.JTextField();
+        clave = new javax.swing.JPasswordField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        ico_clave = new javax.swing.JLabel();
+        ico_usu = new javax.swing.JLabel();
+        ingresar = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        olvido_clave = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 255));
@@ -103,129 +104,6 @@ public class login extends javax.swing.JFrame {
         der.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 1, 0, 0, new java.awt.Color(255, 255, 255)));
         der.setLayout(new java.awt.CardLayout());
 
-        ingreso.setBackground(new java.awt.Color(103, 174, 202));
-        ingreso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        usuario.setBackground(new java.awt.Color(103, 174, 202));
-        usuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        usuario.setForeground(new java.awt.Color(255, 255, 255));
-        usuario.setText("Usuario");
-        usuario.setBorder(null);
-        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        usuario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                usuarioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                usuarioFocusLost(evt);
-            }
-        });
-        usuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                usuarioKeyTyped(evt);
-            }
-        });
-        ingreso.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 250, 30));
-
-        clave.setBackground(new java.awt.Color(103, 174, 202));
-        clave.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        clave.setForeground(new java.awt.Color(255, 255, 255));
-        clave.setText("contraseña");
-        clave.setBorder(null);
-        clave.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        clave.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                claveFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                claveFocusLost(evt);
-            }
-        });
-        ingreso.add(clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 250, 30));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        ingreso.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 250, 10));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        ingreso.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 250, 10));
-
-        ico_clave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave.png"))); // NOI18N
-        ico_clave.setFocusable(false);
-        ingreso.add(ico_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 30, 30));
-
-        ico_usu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
-        ico_usu.setFocusable(false);
-        ingreso.add(ico_usu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 20, 30));
-
-        ingresar.setBackground(new java.awt.Color(103, 174, 202));
-        ingresar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        ingresar.setForeground(new java.awt.Color(255, 255, 255));
-        ingresar.setText("Ingresar");
-        ingresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
-        ingresar.setContentAreaFilled(false);
-        ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ingresar.setFocusPainted(false);
-        ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ingresarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                ingresarMouseReleased(evt);
-            }
-        });
-        ingresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresarActionPerformed(evt);
-            }
-        });
-        ingreso.add(ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 100, 30));
-
-        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
-        salir.setBorderPainted(false);
-        salir.setContentAreaFilled(false);
-        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        salir.setFocusPainted(false);
-        salir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir2.png"))); // NOI18N
-        salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                salirMouseClicked(evt);
-            }
-        });
-        ingreso.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
-
-        olvido_clave.setBackground(new java.awt.Color(103, 174, 202));
-        olvido_clave.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        olvido_clave.setForeground(new java.awt.Color(255, 255, 255));
-        olvido_clave.setText("¿Olvidó su contraseña?");
-        olvido_clave.setBorder(null);
-        olvido_clave.setBorderPainted(false);
-        olvido_clave.setContentAreaFilled(false);
-        olvido_clave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        olvido_clave.setFocusPainted(false);
-        olvido_clave.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                olvido_claveMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                olvido_claveMouseReleased(evt);
-            }
-        });
-        olvido_clave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                olvido_claveActionPerformed(evt);
-            }
-        });
-        ingreso.add(olvido_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 210, 30));
-
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 2, 50)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Bienvenido");
-        ingreso.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 260, -1));
-
-        der.add(ingreso, "card2");
-
         olvido_contra.setBackground(new java.awt.Color(103, 174, 202));
         olvido_contra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -262,6 +140,11 @@ public class login extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 nueva_claveFocusLost(evt);
+            }
+        });
+        nueva_clave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nueva_claveKeyTyped(evt);
             }
         });
         olvido_contra.add(nueva_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 250, 30));
@@ -405,6 +288,134 @@ public class login extends javax.swing.JFrame {
 
         der.add(olvido_contra, "card2");
 
+        ingreso.setBackground(new java.awt.Color(103, 174, 202));
+        ingreso.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        usuario.setBackground(new java.awt.Color(103, 174, 202));
+        usuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        usuario.setForeground(new java.awt.Color(255, 255, 255));
+        usuario.setText("Usuario");
+        usuario.setBorder(null);
+        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        usuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                usuarioFocusLost(evt);
+            }
+        });
+        usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usuarioKeyTyped(evt);
+            }
+        });
+        ingreso.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 250, 30));
+
+        clave.setBackground(new java.awt.Color(103, 174, 202));
+        clave.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        clave.setForeground(new java.awt.Color(255, 255, 255));
+        clave.setText("contraseña");
+        clave.setBorder(null);
+        clave.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        clave.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                claveFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                claveFocusLost(evt);
+            }
+        });
+        clave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                claveKeyTyped(evt);
+            }
+        });
+        ingreso.add(clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 250, 30));
+
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        ingreso.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 250, 10));
+
+        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        ingreso.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 250, 10));
+
+        ico_clave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clave.png"))); // NOI18N
+        ico_clave.setFocusable(false);
+        ingreso.add(ico_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 30, 30));
+
+        ico_usu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        ico_usu.setFocusable(false);
+        ingreso.add(ico_usu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 20, 30));
+
+        ingresar.setBackground(new java.awt.Color(103, 174, 202));
+        ingresar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        ingresar.setText("Ingresar");
+        ingresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        ingresar.setContentAreaFilled(false);
+        ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ingresar.setFocusPainted(false);
+        ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ingresarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ingresarMouseReleased(evt);
+            }
+        });
+        ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarActionPerformed(evt);
+            }
+        });
+        ingreso.add(ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 100, 30));
+
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
+        salir.setBorderPainted(false);
+        salir.setContentAreaFilled(false);
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.setFocusPainted(false);
+        salir.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir2.png"))); // NOI18N
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirMouseClicked(evt);
+            }
+        });
+        ingreso.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
+
+        olvido_clave.setBackground(new java.awt.Color(103, 174, 202));
+        olvido_clave.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        olvido_clave.setForeground(new java.awt.Color(255, 255, 255));
+        olvido_clave.setText("¿Olvidó su contraseña?");
+        olvido_clave.setBorder(null);
+        olvido_clave.setBorderPainted(false);
+        olvido_clave.setContentAreaFilled(false);
+        olvido_clave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        olvido_clave.setFocusPainted(false);
+        olvido_clave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                olvido_claveMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                olvido_claveMouseReleased(evt);
+            }
+        });
+        olvido_clave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                olvido_claveActionPerformed(evt);
+            }
+        });
+        ingreso.add(olvido_clave, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 210, 30));
+
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 2, 50)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Bienvenido");
+        ingreso.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 260, -1));
+
+        der.add(ingreso, "card2");
+
         base.add(der);
 
         getContentPane().add(base);
@@ -528,8 +539,7 @@ public class login extends javax.swing.JFrame {
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
 
         if (usuario.getText().equals("") || clave.getText().equals("") || usuario.getText().equals("Usuario")) {
-            JOptionPane.showMessageDialog(null, "¡Algún Campo Está Vacío o por Defecto! \n        "
-                    + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Algún campo está vacío o por defecto!", "alerta");
         } else {
 
             operar_usuarios op = new operar_usuarios();
@@ -565,8 +575,7 @@ public class login extends javax.swing.JFrame {
                     this.dispose();
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "   ¡Credenciales no válidas! \n        "
-                            + "Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                    msg.mensaje("¡Credenciales no válidas!", "error");
                     break;
             }
         }
@@ -604,7 +613,10 @@ public class login extends javax.swing.JFrame {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
         if (usuario_olvido.getText().equals("") || usuario_olvido.getText().equals("Usuario")) {
-            JOptionPane.showMessageDialog(null, "Usuario vacío o no valido");
+            msg.mensaje("¡Usuario vacío o no válido!", "alerta");
+        } else if (usuario_olvido.getText().equals("00000000")) {
+            msg.mensaje("¡No puedes recuperar los datos del administrador!", "alerta");
+            usuario_olvido.setText("Usuario");
         } else {
             modelo m = new operar_usuarios().Buscar(usuario_olvido.getText());
             if (m != null) {
@@ -613,7 +625,7 @@ public class login extends javax.swing.JFrame {
                 lupa.setEnabled(false);
                 usuario_olvido.setFocusable(false);
             } else {
-                JOptionPane.showMessageDialog(null, "¡El usuario no existe! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                msg.mensaje("¡El usuario no existe!", "error");
             }
         }
     }//GEN-LAST:event_lupaActionPerformed
@@ -621,9 +633,9 @@ public class login extends javax.swing.JFrame {
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
 
         if (respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Algún campo está vacío");
+            msg.mensaje("¡Algún campo está vacío!", "alerta");
         } else if (nueva_clave.getText().length() < 7 || nueva_clave.getText().length() > 10) {
-            JOptionPane.showMessageDialog(null, "La clave debe tener entre 7 y 10 carácteres");
+            msg.mensaje("¡La contraseña debe tener entre 7 y 10 carácteres!", "alerta");
         } else {
             new operar_usuarios().Modificar(usuario_olvido.getText(), encrip.encriptar(respuesta_olvido.getText()), encrip.encriptar(nueva_clave.getText()));
             usuario_olvido.setText("Usuario");
@@ -640,12 +652,22 @@ public class login extends javax.swing.JFrame {
     private void usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyTyped
         char c = evt.getKeyChar();
         validador.validarNumeroEntero(c, evt);
+        validador.limitarCaracteres(usuario, evt, 9);
     }//GEN-LAST:event_usuarioKeyTyped
 
     private void usuario_olvidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuario_olvidoKeyTyped
         char c = evt.getKeyChar();
         validador.validarNumeroEntero(c, evt);
+        validador.limitarCaracteres(usuario_olvido, evt, 9);
     }//GEN-LAST:event_usuario_olvidoKeyTyped
+
+    private void claveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_claveKeyTyped
+        validador.limitarCaracteres(clave, evt, 10);
+    }//GEN-LAST:event_claveKeyTyped
+
+    private void nueva_claveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nueva_claveKeyTyped
+        validador.limitarCaracteres(nueva_clave, evt, 10);
+    }//GEN-LAST:event_nueva_claveKeyTyped
 
     //METODOS Y VARIABLES
     public void salir() {
@@ -654,7 +676,8 @@ public class login extends javax.swing.JFrame {
     }
 
     private final encriptacion encrip = new encriptacion();
-    private final Validaciones validador = new Validaciones();
+    private final validaciones validador = new validaciones();
+    private final mensajes msg = new mensajes();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel base;
     private javax.swing.JPasswordField clave;
