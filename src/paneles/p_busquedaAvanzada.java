@@ -1,6 +1,7 @@
 package paneles;
 
 import globales.mensajes;
+import globales.validaciones;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -99,6 +100,11 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                 cedulaFocusLost(evt);
             }
         });
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
+            }
+        });
         principal.add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 310, 30));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,10 +170,10 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
         switch (cedula.getText()) {
             case "":
-                msg.mensaje("¡La cedula no puede estar vacia!", "error");
+                msg.mensaje("¡La cedula no puede estar vacía!", "alerta");
                 break;
             case "Introduzca la cédula del paciente a buscar:":
-                msg.mensaje("¡Valor por defecto!", "error");
+                msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
                 break;
             default:
                 modelo m = new operar_resultados().Buscar(cedula.getText());
@@ -195,10 +201,16 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                         }
                     }
                 } else {
-                    msg.mensaje("¡El Paciente no existe!", "error");
+                    msg.mensaje("¡El paciente no existe!", "error");
                 }   break;
         }
     }//GEN-LAST:event_lupaActionPerformed
+
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+        char c = evt.getKeyChar();
+        validador.validarNumeroEntero(c, evt);
+        validador.limitarCaracteres(cedula, evt, 9);
+    }//GEN-LAST:event_cedulaKeyTyped
 
     //Métodos y Variables
     public void limpiar_campos() {
@@ -221,6 +233,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
     modelo aux = null;
     mensajes msg = new mensajes();
+    validaciones validador = new validaciones();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;

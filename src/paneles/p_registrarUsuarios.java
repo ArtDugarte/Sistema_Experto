@@ -400,14 +400,14 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
     private void b_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_registrarActionPerformed
 
         if (cedula.getText().equals("") || nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("") || correo.getText().equals("")) {
-            
-            msg.mensaje( "¡Campos vacíos!", "error");
-            
+
+            msg.mensaje("¡Campos vacíos!", "alerta");
+
         } else if (cedula.getText().equals("Cédula:") || nombres.getText().equals("Nombres:") || correo.getText().equals("Correo:")
                 || apellidos.getText().equals("Apellidos:") || respuesta.getText().equals("Respuesta de seguridad")) {
-            
-            msg.mensaje( "¡No ha ingresado valores válidos!", "error");
-            
+
+            msg.mensaje("¡No ha ingresado valores válidos!", "alerta");
+
         } else {
             int tipo_usuario;
 
@@ -434,13 +434,13 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
         if (cedula.getText().equals("")) {
-            msg.mensaje( "¡Campo vacío!", "alerta");
+            msg.mensaje("¡Campo vacío!", "alerta");
         } else if (cedula.getText().equals("Cédula:")) {
-            msg.mensaje( "¡No ha ingresado una cédula!", "alerta");
+            msg.mensaje("¡No ha ingresado una cédula!", "alerta");
         } else if (cedula.getText().equals(usuario)) {
-            msg.mensaje( "¡Para editar sus datos ingrese a la sección de ajustes!", "alerta");
+            msg.mensaje("¡Para editar sus datos ingrese a la sección de ajustes!", "alerta");
         } else if (cedula.getText().equals("00000000")) {
-            msg.mensaje( "¡No puede modificar los datos del administrador!", "alerta");
+            msg.mensaje("¡No puede modificar los datos del administrador!", "alerta");
 
         } else {
             modelo m;
@@ -484,16 +484,16 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
                 correo.setFocusable(true); //Auxiliares
 
             } else {
-                msg.mensaje( "¡El usuario no existe!", "error");
+                msg.mensaje("¡El usuario no existe!", "error");
             }
         }
     }//GEN-LAST:event_lupaActionPerformed
 
     private void b_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_borrarActionPerformed
         if (cedula.getText().equals("")) {
-            msg.mensaje( "¡Campo Vacío!", "error");
+            msg.mensaje("¡Campo Vacío!", "error");
         } else if (cedula.getText().equals(usuario)) {
-            msg.mensaje( "¡No puede borrarse a si mismo!", "error");
+            msg.mensaje("¡No puede borrarse a si mismo!", "error");
         } else {
             new operar_usuarios().Borrar(cedula.getText());
             limpiar_campos();
@@ -502,10 +502,12 @@ public class p_registrarUsuarios extends javax.swing.JPanel {
 
     private void b_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_modificarActionPerformed
         if (nombres.getText().equals("") || apellidos.getText().equals("") || respuesta.getText().equals("") || cedula.getText().equals("") || clave.getText().equals("")) {
-            msg.mensaje( "¡Campos Vacíos!", "error");
+            msg.mensaje("¡Campos Vacíos!", "error");
         } else if (cedula.getText().equals("Cédula:") || nombres.getText().equals("Nombres:") || correo.getText().equals("Correo:")
                 || apellidos.getText().equals("Apellidos:") || respuesta.getText().equals("Respuesta de seguridad")) {
-            msg.mensaje( "¡Valores por defecto presentes!", "error");
+            msg.mensaje("¡Valores por defecto presentes!", "error");
+        } else if (clave.getText().length() < 7 || clave.getText().length() > 10) {
+            msg.mensaje("¡La contraseña debe tener entre 7 y 10 carácteres!", "alerta");
         } else {
             int tipo_usuario;
 
