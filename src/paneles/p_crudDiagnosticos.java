@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.mensajes;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
@@ -18,53 +19,6 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sangre = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jlabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        b_siguienteSangre = new javax.swing.JButton();
-        b_limpiarSangre = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
-        cb7 = new javax.swing.JComboBox<>();
-        cb1 = new javax.swing.JComboBox<>();
-        cb2 = new javax.swing.JComboBox<>();
-        cb3 = new javax.swing.JComboBox<>();
-        cb4 = new javax.swing.JComboBox<>();
-        cb5 = new javax.swing.JComboBox<>();
-        cb6 = new javax.swing.JComboBox<>();
-        ck1 = new javax.swing.JCheckBox();
-        ck2 = new javax.swing.JCheckBox();
-        ck3 = new javax.swing.JCheckBox();
-        ck4 = new javax.swing.JCheckBox();
-        ck5 = new javax.swing.JCheckBox();
-        ck6 = new javax.swing.JCheckBox();
-        ck7 = new javax.swing.JCheckBox();
-        b_volver_sangre = new javax.swing.JButton();
-        general = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        crear = new javax.swing.JButton();
-        limpiar_general = new javax.swing.JButton();
-        b_siguiente_general = new javax.swing.JButton();
-        modificar = new javax.swing.JButton();
-        borrar = new javax.swing.JButton();
-        nombre = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        descripcion = new javax.swing.JTextArea();
-        jLabel60 = new javax.swing.JLabel();
-        listado_diagnosticos = new javax.swing.JComboBox<>();
-        jLabel65 = new javax.swing.JLabel();
         orina = new javax.swing.JPanel();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel24 = new javax.swing.JLabel();
@@ -131,402 +85,59 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         ck22 = new javax.swing.JCheckBox();
         ck23 = new javax.swing.JCheckBox();
         ck24 = new javax.swing.JCheckBox();
+        sangre = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jlabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        b_siguienteSangre = new javax.swing.JButton();
+        b_limpiarSangre = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
+        cb7 = new javax.swing.JComboBox<>();
+        cb1 = new javax.swing.JComboBox<>();
+        cb2 = new javax.swing.JComboBox<>();
+        cb3 = new javax.swing.JComboBox<>();
+        cb4 = new javax.swing.JComboBox<>();
+        cb5 = new javax.swing.JComboBox<>();
+        cb6 = new javax.swing.JComboBox<>();
+        ck1 = new javax.swing.JCheckBox();
+        ck2 = new javax.swing.JCheckBox();
+        ck3 = new javax.swing.JCheckBox();
+        ck4 = new javax.swing.JCheckBox();
+        ck5 = new javax.swing.JCheckBox();
+        ck6 = new javax.swing.JCheckBox();
+        ck7 = new javax.swing.JCheckBox();
+        b_volver_sangre = new javax.swing.JButton();
+        general = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        crear = new javax.swing.JButton();
+        limpiar_general = new javax.swing.JButton();
+        b_siguiente_general = new javax.swing.JButton();
+        modificar = new javax.swing.JButton();
+        borrar = new javax.swing.JButton();
+        nombre = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcion = new javax.swing.JTextArea();
+        jLabel60 = new javax.swing.JLabel();
+        listado_diagnosticos = new javax.swing.JComboBox<>();
+        jLabel65 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
         setMinimumSize(new java.awt.Dimension(680, 540));
         setName("Panel Resultados"); // NOI18N
         setLayout(new java.awt.CardLayout());
-
-        sangre.setOpaque(false);
-        sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("LINFOCITOS:");
-        sangre.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 450, 100, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("VN: 3,90 - 5,40");
-        sangre.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("VN: 12,0 - 16,0");
-        sangre.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("VN: 35,0 - 47,0");
-        sangre.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("VN: 140,0 - 500,0");
-        sangre.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("VN: 4,50 - 11,20");
-        sangre.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("VN: 39,9 - 75,0");
-        sangre.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("VN: 18,8 - 50,8");
-        sangre.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
-
-        jLabel16.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel16.setText("EXÁMENES SANGUÍNEOS");
-        sangre.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
-
-        jlabel17.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jlabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jlabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jlabel17.setText("HEMOGLOBINA O HB:");
-        sangre.add(jlabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 170, -1));
-
-        jLabel18.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("HEMATOCRITOS O HTC:");
-        sangre.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 180, -1));
-
-        jLabel19.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel19.setText("PLAQUETAS:");
-        sangre.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 100, -1));
-
-        jLabel20.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("LEUCOCITOS O GLÓBULOS BLANCOS:");
-        sangre.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setText("SEGMENTADOS O NEUTROFILOS:");
-        sangre.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 390, -1, -1));
-
-        b_siguienteSangre.setBackground(new java.awt.Color(103, 174, 202));
-        b_siguienteSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_siguienteSangre.setForeground(new java.awt.Color(255, 255, 255));
-        b_siguienteSangre.setText("Siguiente");
-        b_siguienteSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_siguienteSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_siguienteSangre.setFocusPainted(false);
-        b_siguienteSangre.setRolloverEnabled(false);
-        b_siguienteSangre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_siguienteSangreActionPerformed(evt);
-            }
-        });
-        sangre.add(b_siguienteSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
-
-        b_limpiarSangre.setBackground(new java.awt.Color(103, 174, 202));
-        b_limpiarSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_limpiarSangre.setForeground(new java.awt.Color(255, 255, 255));
-        b_limpiarSangre.setText("Limpiar");
-        b_limpiarSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_limpiarSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_limpiarSangre.setFocusPainted(false);
-        b_limpiarSangre.setRolloverEnabled(false);
-        b_limpiarSangre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_limpiarSangreActionPerformed(evt);
-            }
-        });
-        sangre.add(b_limpiarSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 100, 30));
-
-        jLabel22.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel22.setText("HEMATIES O GLÓBULOS ROJOS: ");
-        sangre.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 250, -1));
-
-        cb7.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb7.setForeground(new java.awt.Color(102, 102, 102));
-        cb7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb7.setSelectedItem("LIGERAMENTE TURBIO");
-        cb7.setBorder(null);
-        cb7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb7.setFocusable(false);
-        cb7.setName("Desplegable"); // NOI18N
-        sangre.add(cb7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 200, 20));
-
-        cb1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb1.setForeground(new java.awt.Color(102, 102, 102));
-        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb1.setSelectedItem("LIGERAMENTE TURBIO");
-        cb1.setBorder(null);
-        cb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb1.setFocusable(false);
-        cb1.setName("Desplegable"); // NOI18N
-        sangre.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 200, 20));
-
-        cb2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb2.setForeground(new java.awt.Color(102, 102, 102));
-        cb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb2.setSelectedItem("LIGERAMENTE TURBIO");
-        cb2.setBorder(null);
-        cb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb2.setFocusable(false);
-        cb2.setName("Desplegable"); // NOI18N
-        sangre.add(cb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 200, 20));
-
-        cb3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb3.setForeground(new java.awt.Color(102, 102, 102));
-        cb3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb3.setSelectedItem("LIGERAMENTE TURBIO");
-        cb3.setBorder(null);
-        cb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb3.setFocusable(false);
-        cb3.setName("Desplegable"); // NOI18N
-        sangre.add(cb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 200, 20));
-
-        cb4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb4.setForeground(new java.awt.Color(102, 102, 102));
-        cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb4.setSelectedItem("LIGERAMENTE TURBIO");
-        cb4.setBorder(null);
-        cb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb4.setFocusable(false);
-        cb4.setName("Desplegable"); // NOI18N
-        sangre.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 200, 20));
-
-        cb5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb5.setForeground(new java.awt.Color(102, 102, 102));
-        cb5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb5.setSelectedItem("LIGERAMENTE TURBIO");
-        cb5.setBorder(null);
-        cb5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb5.setFocusable(false);
-        cb5.setName("Desplegable"); // NOI18N
-        sangre.add(cb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 190, 20));
-
-        cb6.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        cb6.setForeground(new java.awt.Color(102, 102, 102));
-        cb6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
-        cb6.setSelectedItem("LIGERAMENTE TURBIO");
-        cb6.setBorder(null);
-        cb6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cb6.setFocusable(false);
-        cb6.setName("Desplegable"); // NOI18N
-        sangre.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 200, 20));
-
-        ck1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck1.setContentAreaFilled(false);
-        ck1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck1.setFocusPainted(false);
-        ck1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 78, 20, 20));
-
-        ck2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck2.setContentAreaFilled(false);
-        ck2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck2.setFocusPainted(false);
-        ck2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 138, 20, 20));
-
-        ck3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck3.setContentAreaFilled(false);
-        ck3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck3.setFocusPainted(false);
-        ck3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
-
-        ck4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck4.setContentAreaFilled(false);
-        ck4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck4.setFocusPainted(false);
-        ck4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
-
-        ck5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck5.setContentAreaFilled(false);
-        ck5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck5.setFocusPainted(false);
-        ck5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
-
-        ck6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck6.setContentAreaFilled(false);
-        ck6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck6.setFocusPainted(false);
-        ck6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
-
-        ck7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ck7.setContentAreaFilled(false);
-        ck7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ck7.setFocusPainted(false);
-        ck7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ck7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        sangre.add(ck7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
-
-        b_volver_sangre.setBackground(new java.awt.Color(103, 174, 202));
-        b_volver_sangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_volver_sangre.setForeground(new java.awt.Color(255, 255, 255));
-        b_volver_sangre.setText("Volver");
-        b_volver_sangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_volver_sangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_volver_sangre.setFocusPainted(false);
-        b_volver_sangre.setRolloverEnabled(false);
-        b_volver_sangre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_volver_sangreActionPerformed(evt);
-            }
-        });
-        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
-
-        add(sangre, "card2");
-
-        general.setOpaque(false);
-        general.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel43.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel43.setText("PANEL GENERAL");
-        general.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 630, -1));
-
-        crear.setBackground(new java.awt.Color(103, 174, 202));
-        crear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        crear.setForeground(new java.awt.Color(255, 255, 255));
-        crear.setText("Crear");
-        crear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        crear.setFocusPainted(false);
-        crear.setRolloverEnabled(false);
-        crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearActionPerformed(evt);
-            }
-        });
-        general.add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 100, 30));
-
-        limpiar_general.setBackground(new java.awt.Color(103, 174, 202));
-        limpiar_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        limpiar_general.setForeground(new java.awt.Color(255, 255, 255));
-        limpiar_general.setText("Limpiar");
-        limpiar_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        limpiar_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        limpiar_general.setFocusPainted(false);
-        limpiar_general.setRolloverEnabled(false);
-        limpiar_general.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiar_generalActionPerformed(evt);
-            }
-        });
-        general.add(limpiar_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 100, 30));
-
-        b_siguiente_general.setBackground(new java.awt.Color(103, 174, 202));
-        b_siguiente_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        b_siguiente_general.setForeground(new java.awt.Color(255, 255, 255));
-        b_siguiente_general.setText("Siguiente");
-        b_siguiente_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        b_siguiente_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        b_siguiente_general.setFocusPainted(false);
-        b_siguiente_general.setRolloverEnabled(false);
-        b_siguiente_general.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_siguiente_generalActionPerformed(evt);
-            }
-        });
-        general.add(b_siguiente_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, 100, 30));
-
-        modificar.setBackground(new java.awt.Color(103, 174, 202));
-        modificar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        modificar.setForeground(new java.awt.Color(255, 255, 255));
-        modificar.setText("Modificar");
-        modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        modificar.setFocusPainted(false);
-        modificar.setRolloverEnabled(false);
-        modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarActionPerformed(evt);
-            }
-        });
-        general.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 100, 30));
-
-        borrar.setBackground(new java.awt.Color(103, 174, 202));
-        borrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        borrar.setForeground(new java.awt.Color(255, 255, 255));
-        borrar.setText("Borrar");
-        borrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
-        borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        borrar.setFocusPainted(false);
-        borrar.setRolloverEnabled(false);
-        borrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrarActionPerformed(evt);
-            }
-        });
-        general.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 100, 30));
-
-        nombre.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        nombre.setForeground(new java.awt.Color(102, 102, 102));
-        nombre.setText("Nombre del Diagnostico:");
-        nombre.setBorder(null);
-        nombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        nombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                nombreFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                nombreFocusLost(evt);
-            }
-        });
-        general.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 630, 30));
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        general.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 630, 10));
-
-        descripcion.setColumns(20);
-        descripcion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        descripcion.setRows(5);
-        jScrollPane1.setViewportView(descripcion);
-
-        general.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 630, -1));
-
-        jLabel60.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel60.setText("Diagnosticos Registrados:");
-        general.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 20));
-
-        listado_diagnosticos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        listado_diagnosticos.setForeground(new java.awt.Color(102, 102, 102));
-        listado_diagnosticos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D1", "D2", "D3", "D4" }));
-        listado_diagnosticos.setSelectedItem("ÁCIDA");
-        listado_diagnosticos.setBorder(null);
-        listado_diagnosticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        listado_diagnosticos.setFocusable(false);
-        listado_diagnosticos.setName("Desplegable"); // NOI18N
-        listado_diagnosticos.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                listado_diagnosticosItemStateChanged(evt);
-            }
-        });
-        general.add(listado_diagnosticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 630, 20));
-
-        jLabel65.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel65.setText("Descripción del Diagnostico:");
-        general.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 20));
-
-        add(general, "card2");
 
         orina.setOpaque(false);
         orina.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -987,6 +598,396 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         add(orina, "card2");
 
+        sangre.setOpaque(false);
+        sangre.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("LINFOCITOS:");
+        sangre.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 450, 100, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setText("VN: 3,90 - 5,40");
+        sangre.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("VN: 12,0 - 16,0");
+        sangre.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("VN: 35,0 - 47,0");
+        sangre.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("VN: 140,0 - 500,0");
+        sangre.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText("VN: 4,50 - 11,20");
+        sangre.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setText("VN: 39,9 - 75,0");
+        sangre.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setText("VN: 18,8 - 50,8");
+        sangre.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel16.setText("EXÁMENES SANGUÍNEOS");
+        sangre.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        jlabel17.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jlabel17.setForeground(new java.awt.Color(102, 102, 102));
+        jlabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlabel17.setText("HEMOGLOBINA O HB:");
+        sangre.add(jlabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 170, -1));
+
+        jLabel18.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("HEMATOCRITOS O HTC:");
+        sangre.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 180, -1));
+
+        jLabel19.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel19.setText("PLAQUETAS:");
+        sangre.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 100, -1));
+
+        jLabel20.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setText("LEUCOCITOS O GLÓBULOS BLANCOS:");
+        sangre.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel21.setText("SEGMENTADOS O NEUTROFILOS:");
+        sangre.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 390, -1, -1));
+
+        b_siguienteSangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_siguienteSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_siguienteSangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_siguienteSangre.setText("Siguiente");
+        b_siguienteSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_siguienteSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_siguienteSangre.setFocusPainted(false);
+        b_siguienteSangre.setRolloverEnabled(false);
+        b_siguienteSangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_siguienteSangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_siguienteSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 100, 30));
+
+        b_limpiarSangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_limpiarSangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_limpiarSangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_limpiarSangre.setText("Limpiar");
+        b_limpiarSangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_limpiarSangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_limpiarSangre.setFocusPainted(false);
+        b_limpiarSangre.setRolloverEnabled(false);
+        b_limpiarSangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_limpiarSangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_limpiarSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 100, 30));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("HEMATIES O GLÓBULOS ROJOS: ");
+        sangre.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 250, -1));
+
+        cb7.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb7.setForeground(new java.awt.Color(102, 102, 102));
+        cb7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb7.setSelectedItem("LIGERAMENTE TURBIO");
+        cb7.setBorder(null);
+        cb7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb7.setFocusable(false);
+        cb7.setName("Desplegable"); // NOI18N
+        sangre.add(cb7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 200, 20));
+
+        cb1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb1.setForeground(new java.awt.Color(102, 102, 102));
+        cb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb1.setSelectedItem("LIGERAMENTE TURBIO");
+        cb1.setBorder(null);
+        cb1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb1.setFocusable(false);
+        cb1.setName("Desplegable"); // NOI18N
+        sangre.add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 200, 20));
+
+        cb2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb2.setForeground(new java.awt.Color(102, 102, 102));
+        cb2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb2.setSelectedItem("LIGERAMENTE TURBIO");
+        cb2.setBorder(null);
+        cb2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb2.setFocusable(false);
+        cb2.setName("Desplegable"); // NOI18N
+        sangre.add(cb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 200, 20));
+
+        cb3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb3.setForeground(new java.awt.Color(102, 102, 102));
+        cb3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb3.setSelectedItem("LIGERAMENTE TURBIO");
+        cb3.setBorder(null);
+        cb3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb3.setFocusable(false);
+        cb3.setName("Desplegable"); // NOI18N
+        sangre.add(cb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 200, 20));
+
+        cb4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb4.setForeground(new java.awt.Color(102, 102, 102));
+        cb4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb4.setSelectedItem("LIGERAMENTE TURBIO");
+        cb4.setBorder(null);
+        cb4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb4.setFocusable(false);
+        cb4.setName("Desplegable"); // NOI18N
+        sangre.add(cb4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 200, 20));
+
+        cb5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb5.setForeground(new java.awt.Color(102, 102, 102));
+        cb5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb5.setSelectedItem("LIGERAMENTE TURBIO");
+        cb5.setBorder(null);
+        cb5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb5.setFocusable(false);
+        cb5.setName("Desplegable"); // NOI18N
+        sangre.add(cb5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 190, 20));
+
+        cb6.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        cb6.setForeground(new java.awt.Color(102, 102, 102));
+        cb6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALTOS", "BAJOS", "ALTERADOS" }));
+        cb6.setSelectedItem("LIGERAMENTE TURBIO");
+        cb6.setBorder(null);
+        cb6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cb6.setFocusable(false);
+        cb6.setName("Desplegable"); // NOI18N
+        sangre.add(cb6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 200, 20));
+
+        ck1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck1.setContentAreaFilled(false);
+        ck1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck1.setFocusPainted(false);
+        ck1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 78, 20, 20));
+
+        ck2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck2.setContentAreaFilled(false);
+        ck2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck2.setFocusPainted(false);
+        ck2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 138, 20, 20));
+
+        ck3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck3.setContentAreaFilled(false);
+        ck3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck3.setFocusPainted(false);
+        ck3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+
+        ck4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck4.setContentAreaFilled(false);
+        ck4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck4.setFocusPainted(false);
+        ck4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+
+        ck5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck5.setContentAreaFilled(false);
+        ck5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck5.setFocusPainted(false);
+        ck5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+
+        ck6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck6.setContentAreaFilled(false);
+        ck6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck6.setFocusPainted(false);
+        ck6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+
+        ck7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ck7.setContentAreaFilled(false);
+        ck7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ck7.setFocusPainted(false);
+        ck7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ck7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        sangre.add(ck7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 450, -1, -1));
+
+        b_volver_sangre.setBackground(new java.awt.Color(103, 174, 202));
+        b_volver_sangre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_volver_sangre.setForeground(new java.awt.Color(255, 255, 255));
+        b_volver_sangre.setText("Volver");
+        b_volver_sangre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_volver_sangre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_volver_sangre.setFocusPainted(false);
+        b_volver_sangre.setRolloverEnabled(false);
+        b_volver_sangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_volver_sangreActionPerformed(evt);
+            }
+        });
+        sangre.add(b_volver_sangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 100, 30));
+
+        add(sangre, "card2");
+
+        general.setOpaque(false);
+        general.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel43.setFont(new java.awt.Font("Arial", 3, 24)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel43.setText("PANEL GENERAL");
+        general.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 630, -1));
+
+        crear.setBackground(new java.awt.Color(103, 174, 202));
+        crear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        crear.setForeground(new java.awt.Color(255, 255, 255));
+        crear.setText("Crear");
+        crear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        crear.setFocusPainted(false);
+        crear.setRolloverEnabled(false);
+        crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearActionPerformed(evt);
+            }
+        });
+        general.add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 100, 30));
+
+        limpiar_general.setBackground(new java.awt.Color(103, 174, 202));
+        limpiar_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        limpiar_general.setForeground(new java.awt.Color(255, 255, 255));
+        limpiar_general.setText("Limpiar");
+        limpiar_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        limpiar_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        limpiar_general.setFocusPainted(false);
+        limpiar_general.setRolloverEnabled(false);
+        limpiar_general.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiar_generalActionPerformed(evt);
+            }
+        });
+        general.add(limpiar_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 100, 30));
+
+        b_siguiente_general.setBackground(new java.awt.Color(103, 174, 202));
+        b_siguiente_general.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        b_siguiente_general.setForeground(new java.awt.Color(255, 255, 255));
+        b_siguiente_general.setText("Siguiente");
+        b_siguiente_general.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        b_siguiente_general.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b_siguiente_general.setFocusPainted(false);
+        b_siguiente_general.setRolloverEnabled(false);
+        b_siguiente_general.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_siguiente_generalActionPerformed(evt);
+            }
+        });
+        general.add(b_siguiente_general, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, 100, 30));
+
+        modificar.setBackground(new java.awt.Color(103, 174, 202));
+        modificar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        modificar.setForeground(new java.awt.Color(255, 255, 255));
+        modificar.setText("Modificar");
+        modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        modificar.setFocusPainted(false);
+        modificar.setRolloverEnabled(false);
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
+        general.add(modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 100, 30));
+
+        borrar.setBackground(new java.awt.Color(103, 174, 202));
+        borrar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        borrar.setForeground(new java.awt.Color(255, 255, 255));
+        borrar.setText("Borrar");
+        borrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(103, 174, 202), 2));
+        borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        borrar.setFocusPainted(false);
+        borrar.setRolloverEnabled(false);
+        borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrarActionPerformed(evt);
+            }
+        });
+        general.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, 100, 30));
+
+        nombre.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(102, 102, 102));
+        nombre.setText("Nombre del Diagnostico:");
+        nombre.setBorder(null);
+        nombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nombreFocusLost(evt);
+            }
+        });
+        general.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 630, 30));
+
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        general.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 630, 10));
+
+        descripcion.setColumns(20);
+        descripcion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        descripcion.setRows(5);
+        jScrollPane1.setViewportView(descripcion);
+
+        general.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 630, -1));
+
+        jLabel60.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel60.setText("Diagnosticos Registrados:");
+        general.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 20));
+
+        listado_diagnosticos.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        listado_diagnosticos.setForeground(new java.awt.Color(102, 102, 102));
+        listado_diagnosticos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "D1", "D2", "D3", "D4" }));
+        listado_diagnosticos.setSelectedItem("ÁCIDA");
+        listado_diagnosticos.setBorder(null);
+        listado_diagnosticos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listado_diagnosticos.setFocusable(false);
+        listado_diagnosticos.setName("Desplegable"); // NOI18N
+        listado_diagnosticos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                listado_diagnosticosItemStateChanged(evt);
+            }
+        });
+        general.add(listado_diagnosticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 630, 20));
+
+        jLabel65.setFont(new java.awt.Font("Arial", 3, 15)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel65.setText("Descripción del Diagnostico:");
+        general.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 210, 20));
+
+        add(general, "card2");
+
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1014,10 +1015,12 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
 
-        if (nombre.getText().equals("Nombre del Diagnostico:") || descripcion.getText().equals("") || nombre.getText().equals("")) {
+        if (descripcion.getText().equals("") || nombre.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(null, "¡Campos Vacíos o por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Campos vacíos!", "alerta");
 
+        } else if (nombre.getText().equals("Nombre del Diagnostico:")) {
+            msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
         } else {
 
             ArrayList<String> valores = new ArrayList<String>();
@@ -1096,12 +1099,12 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_crearActionPerformed
 
     private void limpiar_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiar_generalActionPerformed
-        if(listado_diagnosticos.getSelectedIndex()!=0){
+        if (listado_diagnosticos.getSelectedIndex() != 0) {
             limpiarOrina();
-            limpiarSangre();                    
+            limpiarSangre();
         }
         limpiarGeneral();
-        
+
     }//GEN-LAST:event_limpiar_generalActionPerformed
 
     private void b_siguiente_generalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_siguiente_generalActionPerformed
@@ -1112,11 +1115,14 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         if (listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
-            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Debe seleccionar un diagnóstico!", "alerta");
 
-        } else if (nombre.getText().equals("") || descripcion.getText().equals("") || nombre.getText().equals("Nombre del Diagnostico:")) {
-            JOptionPane.showMessageDialog(null, "¡Campos en blanco o por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+        } else if (descripcion.getText().equals("") || nombre.getText().equals("")) {
 
+            msg.mensaje("¡Campos vacíos!", "alerta");
+
+        } else if (nombre.getText().equals("Nombre del Diagnostico:")) {
+            msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
         } else {
             ArrayList<String> valores = new ArrayList<String>();
             ArrayList<Boolean> resultado_seleccionado = new ArrayList<Boolean>();
@@ -1188,10 +1194,7 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
     private void borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarActionPerformed
         if (listado_diagnosticos.getSelectedItem().equals("--DIAGNOSTICOS EXISTENTES--")) {
-            JOptionPane.showMessageDialog(null, "¡Debe seleccionar un diagnostico! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
-
-        } else if (nombre.getText().equals("") || descripcion.getText().equals("") || nombre.getText().equals("Nombre del Diagnostico:")) {
-            JOptionPane.showMessageDialog(null, "¡Campos en blanco o por defecto! \n        Intente Nuevamente...", "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+            msg.mensaje("¡Debe seleccionar un diagnóstico!", "alerta");
 
         } else {
             new operar_diagnosticos().Borrar(li.get(listado_diagnosticos.getSelectedIndex()).getIdDiagnostico());
@@ -1383,6 +1386,8 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
             return true;
         }
     }
+
+    mensajes msg = new mensajes();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
