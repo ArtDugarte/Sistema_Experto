@@ -18,7 +18,7 @@ public class p_historial extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        listado = new javax.swing.JScrollPane();
         historial = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -36,7 +36,7 @@ public class p_historial extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Médico", "Diagnósticos", "Fecha de Envío", "Fecha de Diagnóstico"
+                "Médico", "Diagnóstico", "Fecha de Envío", "Fecha de Diagnóstico"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -49,9 +49,9 @@ public class p_historial extends javax.swing.JPanel {
         });
         historial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         historial.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(historial);
+        listado.setViewportView(historial);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 600, 470));
+        add(listado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 620, 450));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -72,10 +72,10 @@ public class p_historial extends javax.swing.JPanel {
             for (int i = 0; i < li.size(); i++) {
 
                 model.addRow(new Object[]{
-                    li.get(i).getNombre() + " " + li.get(i).getApellido(),
-                    li.get(i).getDiagnostico_final(),
-                    li.get(i).getFecha_envio(),
-                    li.get(i).getFecha_diagnostico()
+                    li.get(i).getNombre() + " " + li.get(i).getApellido() + "\n",
+                    li.get(i).getDiagnostico_final()+ "\n",
+                    li.get(i).getFecha_envio()+ "\n",
+                    li.get(i).getFecha_diagnostico()+ "\n"
                 });
             }
         }
@@ -84,6 +84,6 @@ public class p_historial extends javax.swing.JPanel {
     int id;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable historial;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane listado;
     // End of variables declaration//GEN-END:variables
 }
