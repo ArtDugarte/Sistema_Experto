@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.WordWrapRenderer;
 import globales.encriptacion;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -207,7 +208,11 @@ public class p_reportes extends javax.swing.JPanel {
         ArrayList<modelos.modelo> li = new operar_reportes().reporteExpertos();
         DefaultTableModel model = (DefaultTableModel) e.getModel();
         model.setRowCount(0);
-
+        e.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
+        e.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
+        e.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
+        e.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
+        
         if (li != null) {
 
             for (int i = 0; i < li.size(); i++) {
@@ -227,7 +232,13 @@ public class p_reportes extends javax.swing.JPanel {
         ArrayList<modelos.modelo> li = new operar_reportes().reportePacientes();
         DefaultTableModel model = (DefaultTableModel) p.getModel();
         model.setRowCount(0);
-
+        
+        p.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
+        p.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
+        p.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
+        p.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
+        p.getColumnModel().getColumn(4).setCellRenderer(new WordWrapRenderer());
+        
         if (li != null) {
 
             for (int i = 0; i < li.size(); i++) {
@@ -248,6 +259,12 @@ public class p_reportes extends javax.swing.JPanel {
         ArrayList<modelos.modelo> li = new operar_reportes().reporteAsistentes();
         DefaultTableModel model = (DefaultTableModel) a.getModel();
         model.setRowCount(0);
+        
+        a.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
+        a.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
+        a.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
+        a.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
+        a.getColumnModel().getColumn(4).setCellRenderer(new WordWrapRenderer());
 
         if (li != null) {
 
@@ -269,6 +286,9 @@ public class p_reportes extends javax.swing.JPanel {
         ArrayList<modelos.modelo> li = new operar_reportes().reporteDiagnosticos();
         DefaultTableModel model = (DefaultTableModel) d.getModel();
         model.setRowCount(0);
+        
+        d.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
+        d.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
 
         if (li != null) {
 

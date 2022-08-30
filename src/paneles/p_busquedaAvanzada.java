@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.WordWrapRenderer;
 import globales.mensajes;
 import globales.validaciones;
 import java.util.ArrayList;
@@ -179,19 +180,25 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                 modelo m = new operar_resultados().Buscar(cedula.getText());
                 DefaultTableModel model = (DefaultTableModel) lista.getModel();
                 model.setRowCount(0);
+
+                lista.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
+                lista.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
+                lista.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
+                lista.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
+
                 nombres.setText("Nombres: ");
                 apellidos.setText("Apelidos: ");
                 if (m != null) {
-                    
+
                     nombres.setText("Nombres: " + m.getNombre());
                     apellidos.setText("Apelidos: " + m.getApellido());
-                    
+
                     ArrayList<modelo> li = new operar_resultados().historial(m.getId_usuario());
-                    
+
                     if (li != null) {
-                        
+
                         for (int i = 0; i < li.size(); i++) {
-                            
+
                             model.addRow(new Object[]{
                                 li.get(i).getNombre() + " " + li.get(i).getApellido(),
                                 li.get(i).getDiagnostico_final(),
@@ -202,7 +209,8 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                     }
                 } else {
                     msg.mensaje("¡El paciente no existe!", "error");
-                }   break;
+                }
+                break;
         }
     }//GEN-LAST:event_lupaActionPerformed
 

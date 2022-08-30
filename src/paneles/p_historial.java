@@ -1,6 +1,6 @@
-
 package paneles;
 
+import globales.WordWrapRenderer;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelos.modelo;
@@ -13,7 +13,6 @@ public class p_historial extends javax.swing.JPanel {
         initComponents();
         this.id = id;
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -56,17 +55,22 @@ public class p_historial extends javax.swing.JPanel {
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
-    
+
     public void actualizar_historial() {
-        
+
         ArrayList<modelo> li = new operar_resultados().historial(id);
         DefaultTableModel model = (DefaultTableModel) historial.getModel();
         model.setRowCount(0);
-        
+
+        historial.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
+        historial.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
+        historial.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
+        historial.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
+
         if (li != null) {
 
             for (int i = 0; i < li.size(); i++) {
-                
+
                 model.addRow(new Object[]{
                     li.get(i).getNombre() + " " + li.get(i).getApellido(),
                     li.get(i).getDiagnostico_final(),
@@ -76,6 +80,7 @@ public class p_historial extends javax.swing.JPanel {
             }
         }
     }
+
     int id;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable historial;
