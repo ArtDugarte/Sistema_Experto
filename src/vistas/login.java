@@ -8,6 +8,7 @@ import globales.mensajes;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
 import modelos.modelo;
@@ -22,6 +23,8 @@ public class login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/fondo2.png")).getImage());
+        setTitle("SEDIPG");
         new operar_resultados().borrarDocumentosViejos();
         ingreso.setVisible(true);
         olvido_contra.setVisible(false);

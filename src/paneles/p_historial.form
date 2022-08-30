@@ -33,13 +33,13 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="listado">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="30" width="600" height="470"/>
+          <AbsoluteConstraints x="30" y="60" width="620" height="450"/>
         </Constraint>
       </Constraints>
 
@@ -53,7 +53,7 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="M&#xe9;dico" type="java.lang.Object"/>
-                <Column editable="false" title="Diagn&#xf3;sticos" type="java.lang.Object"/>
+                <Column editable="false" title="Diagn&#xf3;stico" type="java.lang.Object"/>
                 <Column editable="false" title="Fecha de Env&#xed;o" type="java.lang.Object"/>
                 <Column editable="false" title="Fecha de Diagn&#xf3;stico" type="java.lang.Object"/>
               </Table>

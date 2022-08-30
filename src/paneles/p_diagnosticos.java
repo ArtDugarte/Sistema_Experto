@@ -1338,7 +1338,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
             operar_resultados op = new operar_resultados();
             op.Crear(idPaciente, idExperto, area_diagnostico_final.getText(), fechaVieja);
 
-            if (!filename.getText().equals("")) {
+            if (!filename.getText().equals("") && !filename.getText().equals(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)")) {
                 try {
                     byte[] blob = new byte[(int) file.length()];
                     InputStream input = new FileInputStream(file);

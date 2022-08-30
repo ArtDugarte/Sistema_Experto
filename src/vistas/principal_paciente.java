@@ -4,6 +4,7 @@ import com.sun.awt.AWTUtilities;
 import java.awt.Color;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.ImageIcon;
 import paneles.p_acercaDelSistema;
 import paneles.p_ajustes;
 import paneles.p_examenes;
@@ -20,6 +21,8 @@ public class principal_paciente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0, 0, getBounds().width, getBounds().height, 20, 20);
         AWTUtilities.setWindowShape(this, forma);
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/fondo2.png")).getImage());
+        setTitle("SEDIPG");
 
         p_se = new p_subirExamen(this, id_usuario);
         p_e = new p_examenes(p_se);
