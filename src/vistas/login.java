@@ -578,7 +578,7 @@ public class login extends javax.swing.JFrame {
                     this.dispose();
                     break;
                 default:
-                    msg.mensaje("¡Credenciales no válidas!", "error");
+                    msg.mensaje("     ¡Credenciales no válidas!", "error");
                     break;
             }
         }
@@ -616,7 +616,7 @@ public class login extends javax.swing.JFrame {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
         if (usuario_olvido.getText().equals("") || usuario_olvido.getText().equals("Usuario")) {
-            msg.mensaje("¡Usuario vacío o no válido!", "alerta");
+            msg.mensaje("   ¡Usuario vacío o no válido!", "alerta");
         } else if (usuario_olvido.getText().equals("00000000")) {
             msg.mensaje("¡No puedes recuperar los datos del administrador!", "alerta");
             usuario_olvido.setText("Usuario");
@@ -628,7 +628,7 @@ public class login extends javax.swing.JFrame {
                 lupa.setEnabled(false);
                 usuario_olvido.setFocusable(false);
             } else {
-                msg.mensaje("¡El usuario no existe!", "error");
+                msg.mensaje("       ¡El usuario no existe!", "error");
             }
         }
     }//GEN-LAST:event_lupaActionPerformed
@@ -636,7 +636,7 @@ public class login extends javax.swing.JFrame {
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
 
         if (respuesta_olvido.getText().equals("") || nueva_clave.getText().equals("")) {
-            msg.mensaje("¡Algún campo está vacío!", "alerta");
+            msg.mensaje("   ¡Algún campo está vacío!", "alerta");
         } else if (nueva_clave.getText().length() < 7 || nueva_clave.getText().length() > 10) {
             msg.mensaje("¡La contraseña debe tener entre 7 y 10 carácteres!", "alerta");
         } else {

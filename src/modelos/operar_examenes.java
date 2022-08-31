@@ -61,7 +61,7 @@ public class operar_examenes {
 
             ps.setDate(4, sqlDate);
             ps.executeUpdate();
-            msg.mensaje("¡Subida Exitosa!", "exito");
+            msg.mensaje("         ¡Subida exitosa!", "exito");
 
         } catch (SQLException ex) {
 
@@ -413,10 +413,10 @@ public class operar_examenes {
 
         if (op > 0) {
 
-            msg.mensaje("¡Modificación exitosa!", "exito");
+            msg.mensaje("      ¡Modificación exitosa!", "exito");
         } else {
 
-            msg.mensaje("¡Error al modificar!", "error");
+            msg.mensaje("     ¡Error en la modificación!", "error");
         }
 
         bd.desconectar();
@@ -437,10 +437,10 @@ public class operar_examenes {
 
         if (op > 0) {
 
-            msg.mensaje("¡Modificación exitosa!", "exito");
+            msg.mensaje("      ¡Modificación exitosa!", "exito");
         } else {
 
-            msg.mensaje("¡Error al modificar!", "error");
+            msg.mensaje("     ¡Error en la modificación!", "error");
         }
 
         bd.desconectar();

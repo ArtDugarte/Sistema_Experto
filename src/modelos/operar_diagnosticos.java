@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class operar_diagnosticos {
-    
+
     mensajes msg = new mensajes();
 
     public int idUltimoDiagnostico() {
@@ -48,9 +48,9 @@ public class operar_diagnosticos {
 
         if (op > 0) {
 
-            msg.mensaje( "     ¡Creación Exitosa!","exito");
+            msg.mensaje("        ¡Creación exitosa!", "exito");
         } else {
-            msg.mensaje( "¡Ocurrio un error en la operación!", "error");
+            msg.mensaje("¡Ocurrió un error en la operación!", "error");
         }
 
         bd.desconectar();
@@ -84,10 +84,10 @@ public class operar_diagnosticos {
 
         if (op > 0) {
 
-            msg.mensaje( "¡Modificacion Exitosa!","exito");
+            msg.mensaje("      ¡Modificación exitosa!", "exito");
         } else {
 
-            msg.mensaje( "¡Error en la Modificacion!", "error");
+            msg.mensaje("     ¡Error en la modificación!", "error");
         }
 
         bd.desconectar();
@@ -103,10 +103,10 @@ public class operar_diagnosticos {
 
         if (op > 0) {
 
-            msg.mensaje( "¡Borrado Exitoso!","exito");
+            msg.mensaje("         ¡Borrado exitoso!", "exito");
         } else {
 
-            msg.mensaje( "¡Error en el Borrado!", "error");
+            msg.mensaje("      ¡Error en el borrado!", "error");
         }
 
         bd.desconectar();

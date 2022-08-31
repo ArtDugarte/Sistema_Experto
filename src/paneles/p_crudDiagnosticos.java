@@ -1021,6 +1021,8 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         } else if (nombre.getText().equals("Nombre del Diagnostico:")) {
             msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
+        } else if (todo_vacio()){
+            msg.mensaje("¡Debe seleccionar al menos un parametro!", "alerta");
         } else {
 
             ArrayList<String> valores = new ArrayList<String>();
@@ -1123,6 +1125,8 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         } else if (nombre.getText().equals("Nombre del Diagnostico:")) {
             msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
+        } else if (todo_vacio()){
+            msg.mensaje("¡Debe seleccionar al menos un parametro!", "alerta");
         } else {
             ArrayList<String> valores = new ArrayList<String>();
             ArrayList<Boolean> resultado_seleccionado = new ArrayList<Boolean>();
@@ -1390,6 +1394,19 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
         } else {
             return true;
         }
+    }
+    
+    public boolean todo_vacio(){
+        
+        boolean bandera =  true;
+        
+        if(ck1.isSelected()||ck2.isSelected()||ck3.isSelected()||ck4.isSelected()||ck5.isSelected()||ck6.isSelected()||ck7.isSelected()||
+                ck8.isSelected()||ck9.isSelected()||ck10.isSelected()||ck11.isSelected()||ck12.isSelected()||ck13.isSelected()||ck14.isSelected()||
+                ck15.isSelected()||ck16.isSelected()||ck17.isSelected()||ck18.isSelected()||ck19.isSelected()||ck20.isSelected()||ck21.isSelected()||
+                ck22.isSelected()||ck23.isSelected()||ck24.isSelected()) bandera = false;
+        
+        return bandera;
+    
     }
 
     mensajes msg = new mensajes();
