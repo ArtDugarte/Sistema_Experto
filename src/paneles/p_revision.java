@@ -1072,7 +1072,7 @@ public class p_revision extends javax.swing.JPanel {
 
         //Se debe descargar el examen
         operar_examenes op = new operar_examenes();
-        File directorio = new File("C:\\Resultados\\");
+        File directorio = new File("C:\\SEDIPG\\");
         String archivo = null;
 
         if (!directorio.exists()) {
@@ -1084,7 +1084,7 @@ public class p_revision extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("C:\\Resultados\\" + archivo + ""));
+            Desktop.getDesktop().open(new File("C:\\SEDIPG\\" + archivo + ""));
         } catch (Exception ex) {
         }
 

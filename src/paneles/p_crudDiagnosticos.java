@@ -1287,6 +1287,11 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
                 o15.setSelectedItem(aux.get(21).toString());
                 o16.setSelectedItem(aux.get(22).toString());
                 o17.setSelectedItem(aux.get(23).toString());
+            } else {
+                nombre.setText("Nombre del Diagnostico:");
+                descripcion.setText("");
+                limpiarSangre();
+                limpiarOrina();
             }
         }
 

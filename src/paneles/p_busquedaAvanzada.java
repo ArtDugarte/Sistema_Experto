@@ -200,10 +200,10 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                         for (int i = 0; i < li.size(); i++) {
 
                             model.addRow(new Object[]{
-                                li.get(i).getNombre() + " " + li.get(i).getApellido(),
-                                li.get(i).getDiagnostico_final(),
-                                li.get(i).getFecha_envio(),
-                                li.get(i).getFecha_diagnostico()
+                                li.get(i).getNombre() + " " + li.get(i).getApellido() + "\n",
+                                li.get(i).getDiagnostico_final()+ "\n",
+                                li.get(i).getFecha_envio()+ "\n",
+                                li.get(i).getFecha_diagnostico()+ "\n"
                             });
                         }
                     }

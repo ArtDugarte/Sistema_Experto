@@ -1364,7 +1364,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private void b_visualizarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_visualizarExamenActionPerformed
         operar_examenes op = new operar_examenes();
-        File directorio = new File("C:\\Resultados\\");
+        File directorio = new File("C:\\SEDIPG\\");
         String archivo = null;
 
         if (!directorio.exists()) {
@@ -1376,7 +1376,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("C:\\Resultados\\" + archivo + ""));
+            Desktop.getDesktop().open(new File("C:\\SEDIPG\\" + archivo + ""));
         } catch (Exception ex) {
         }
 
