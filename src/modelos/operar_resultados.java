@@ -151,9 +151,9 @@ public class operar_resultados {
                 bos.read(datos, 0, tamanoInput);
 
                 //Detectar Extension del Blob
-                OutputStream out = new FileOutputStream("C:\\Resultados\\examen." + tipo + "");
+                OutputStream out = new FileOutputStream("C:\\SEDIPG\\SEDIPG." + tipo + "");
                 out.write(datos);
-                examen = "examen." + tipo;
+                examen = "SEDIPG." + tipo;
 
                 out.close();
                 bos.close();

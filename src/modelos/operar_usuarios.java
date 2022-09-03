@@ -77,7 +77,7 @@ public class operar_usuarios {
 
         if (op > 0) {
 
-            m.mensaje("¡Creación exitosa!", "exito");
+            m.mensaje("        ¡Creación exitosa!", "exito");
         } else {
             m.mensaje("¡Ocurrio un error en la operación!", "error");
         }
@@ -136,7 +136,7 @@ public class operar_usuarios {
 
         if (op > 0) {
 
-            m.mensaje("¡Contraseña modificada con éxito!", "exito");
+            m.mensaje("      ¡Modificación exitosa!", "exito");
         } else {
 
             m.mensaje("¡La respuesta de seguridad no es correcta!", "error");
@@ -155,7 +155,7 @@ public class operar_usuarios {
 
         if (op > 0) {
 
-            m.mensaje("¡Usuario modificado con Éxito!", "exito");
+            m.mensaje("      ¡Modificacion exitosa!", "exito");
         } else {
 
             m.mensaje("¡Contraseña actual incorrecta!", "error");
@@ -173,10 +173,10 @@ public class operar_usuarios {
                 + "WHERE nombre_usu = '" + usuario + "' AND borrado = 0");
         if (op > 0) {
 
-            m.mensaje("¡Usuario modificado con Éxito!", "exito");
+            m.mensaje("      ¡Modificacion exitosa!", "exito");
         } else {
 
-            m.mensaje("¡Usuario no encontrado! ", "error");
+            m.mensaje("     ¡Usuario no encontrado! ", "error");
         }
 
         bd.desconectar();
@@ -190,10 +190,10 @@ public class operar_usuarios {
 
         if (op > 0) {
 
-            m.mensaje("¡Usuario borrado con exito!", "exito");
+            m.mensaje("         ¡Borrado exitoso!", "exito");
         } else {
 
-            m.mensaje("¡El usuario no existe o ya esta borrado! ", "error");
+            m.mensaje("      ¡Error en el borrado!", "error");
         }
 
         bd.desconectar();

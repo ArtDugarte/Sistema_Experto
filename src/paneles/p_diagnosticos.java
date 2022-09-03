@@ -1119,10 +1119,10 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
         if (cedula.getText().equals("")) {
-            msg.mensaje("¡La cedula no puede estar vacía!", "alerta");
+            msg.mensaje("¡La cédula no puede estar vacía!", "alerta");
 
         } else if (cedula.getText().equals("Cédula:")) {
-            msg.mensaje("¡Campo vacío!", "alerta");
+            msg.mensaje("            ¡Campo vacío!", "alerta");
         } else {
 
             modelo m = null;
@@ -1139,8 +1139,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 fechaVieja = m.getFecha();
                 filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
             } else {
-                msg.mensaje("¡Este paciente no tiene exámenes pendientes!", 
-                        "error");
+                msg.mensaje("¡Este paciente no tiene exámenes pendientes!", "error");
 
             }
 
@@ -1364,7 +1363,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
     private void b_visualizarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_visualizarExamenActionPerformed
         operar_examenes op = new operar_examenes();
-        File directorio = new File("C:\\Resultados\\");
+        File directorio = new File("C:\\SEDIPG\\");
         String archivo = null;
 
         if (!directorio.exists()) {
@@ -1376,7 +1375,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("C:\\Resultados\\" + archivo + ""));
+            Desktop.getDesktop().open(new File("C:\\SEDIPG\\" + archivo + ""));
         } catch (Exception ex) {
         }
 
