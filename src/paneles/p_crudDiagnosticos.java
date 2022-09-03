@@ -1017,12 +1017,12 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         if (descripcion.getText().equals("") || nombre.getText().equals("")) {
 
-            msg.mensaje("¡Campos vacíos!", "alerta");
+            msg.mensaje("   ¡Algún campo está vacío!", "alerta");
 
         } else if (nombre.getText().equals("Nombre del Diagnostico:")) {
             msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
         } else if (todo_vacio()){
-            msg.mensaje("¡Debe seleccionar al menos un parametro!", "alerta");
+            msg.mensaje("¡Debe seleccionar al menos un parámetro!", "alerta");
         } else {
 
             ArrayList<String> valores = new ArrayList<String>();
@@ -1121,12 +1121,12 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         } else if (descripcion.getText().equals("") || nombre.getText().equals("")) {
 
-            msg.mensaje("¡Campos vacíos!", "alerta");
+            msg.mensaje("   ¡Algún campo está vacío!", "alerta");
 
         } else if (nombre.getText().equals("Nombre del Diagnostico:")) {
             msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
         } else if (todo_vacio()){
-            msg.mensaje("¡Debe seleccionar al menos un parametro!", "alerta");
+            msg.mensaje("¡Debe seleccionar al menos un parámetro!", "alerta");
         } else {
             ArrayList<String> valores = new ArrayList<String>();
             ArrayList<Boolean> resultado_seleccionado = new ArrayList<Boolean>();

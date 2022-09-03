@@ -1043,10 +1043,10 @@ public class p_revision extends javax.swing.JPanel {
     private void lupaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lupaActionPerformed
 
         if (cedula.getText().equals("")) {
-            msg.mensaje( "¡La cedula no puede estar vacía!", "alerta");
+            msg.mensaje("¡La cédula no puede estar vacía!", "alerta");
 
         } else if (cedula.getText().equals("Cédula:")) {
-            msg.mensaje( "¡Campo vacío!", "alerta");
+            msg.mensaje("            ¡Campo vacío!", "alerta");
         } else {
 
             modelo m = null;
@@ -1061,7 +1061,7 @@ public class p_revision extends javax.swing.JPanel {
                 Enviar.setEnabled(false);
                 idExamen = m.getId_examen();
             } else {
-                msg.mensaje( "¡Este paciente no tiene exámenes pendientes!","error");
+                msg.mensaje("¡Este paciente no tiene exámenes pendientes!", "error");
                 limpiar_campos();
             }
 
@@ -1196,7 +1196,7 @@ public class p_revision extends javax.swing.JPanel {
     private void b_ModificarOrinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ModificarOrinaActionPerformed
 
         if (densidad.getText().equals("") || leucocitosorina.getText().equals("") || hematies.getText().equals("") || eplano.getText().equals("")) {
-            msg.mensaje( "¡Campos vacíos!", "alerta");
+            msg.mensaje("   ¡Algún campo está vacío!", "alerta");
         } else {
             int op = new operar_examenes().ModificarOrina(
                     idExamen,
@@ -1281,7 +1281,7 @@ public class p_revision extends javax.swing.JPanel {
         if (globulos_rojos.getText().equals("") || hemoglobina.getText().equals("") || plaquetas.getText().equals("")
                 || hematocritos.getText().equals("") || leucocitos.getText().equals("") || segmentados.getText().equals("") || linfocitos.getText().equals("")) {
 
-            msg.mensaje( "¡Campos vacíos!", "alerta");
+            msg.mensaje("   ¡Algún campo está vacío!", "alerta");
 
         } else {
 
@@ -1316,10 +1316,10 @@ public class p_revision extends javax.swing.JPanel {
         int op = new operar_examenes().cambiarEstado(idExamen, 1);
         if (op > 0) {
 
-            msg.mensaje( "¡Envío exitoso!", "exito");
+            msg.mensaje("          ¡Envío exitoso!", "exito");
         } else {
 
-            msg.mensaje( "¡Error al enviar!", "error");
+            msg.mensaje("          ¡Error al enviar!", "error");
         }
 
         limpiar_campos();

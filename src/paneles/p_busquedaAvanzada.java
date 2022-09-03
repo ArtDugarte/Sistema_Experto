@@ -171,7 +171,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
         switch (cedula.getText()) {
             case "":
-                msg.mensaje("¡La cedula no puede estar vacía!", "alerta");
+                msg.mensaje("¡La cédula no puede estar vacía!", "alerta");
                 break;
             case "Introduzca la cédula del paciente a buscar:":
                 msg.mensaje("¡No ha ingresado un valor válido!", "alerta");
@@ -208,7 +208,7 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                         }
                     }
                 } else {
-                    msg.mensaje("¡El paciente no existe!", "error");
+                    msg.mensaje("     ¡Paciente no encontrado! ", "error");
                 }
                 break;
         }

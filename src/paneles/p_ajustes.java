@@ -324,9 +324,9 @@ public class p_ajustes extends javax.swing.JPanel {
 
         } else {
             if (respuesta.getText().equals("") || clave_nueva.getText().equals("") || clave_vieja.getText().equals("")||correo.getText().equals("")) {
-                msg.mensaje("¡Campos vacíos!", "alerta");
+                msg.mensaje("   ¡Algún campo está vacío!", "alerta");
             }else if(correo.getText().equals("Correo:")){
-                msg.mensaje("¡Campos por defecto!", "alerta");
+                msg.mensaje("      ¡Campos por defecto!", "alerta");
             } 
             else {
                 new operar_usuarios().Modificar(user, correo.getText().toUpperCase(), 

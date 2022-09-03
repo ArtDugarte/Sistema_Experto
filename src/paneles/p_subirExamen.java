@@ -996,7 +996,7 @@ public class p_subirExamen extends javax.swing.JPanel {
                 filename.setText(" " + file.getName());
             } else {
 
-                msg.mensaje("¡Archivo superior a 16MB!", "error");
+                msg.mensaje("    ¡Archivo superior a 16MB!", "error");
             }
 
         }
