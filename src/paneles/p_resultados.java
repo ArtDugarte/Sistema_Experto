@@ -58,7 +58,9 @@ public class p_resultados extends javax.swing.JPanel {
         area_diagnostico.setEditable(false);
         area_diagnostico.setColumns(20);
         area_diagnostico.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        area_diagnostico.setLineWrap(true);
         area_diagnostico.setRows(5);
+        area_diagnostico.setWrapStyleWord(true);
         area_diagnostico.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         area_diagnostico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane4.setViewportView(area_diagnostico);

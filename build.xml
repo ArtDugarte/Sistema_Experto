@@ -74,7 +74,7 @@
     <target name="-post-jar">
     <property name="store.jar.name" value="SEDIPG"/>
 
-    <property name="store.dir" value="Sistema"/>
+    <property name="store.dir" value="Ejecutable"/>
     <property name="store.jar" value="${store.dir}/${store.jar.name}.jar"/>
 
     <echo message="Packaging ${application.title} into a single JAR at ${store.jar}"/>

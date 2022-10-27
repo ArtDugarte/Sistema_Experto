@@ -1,6 +1,6 @@
 package paneles;
 
-import globales.WordWrapRenderer;
+import globales.MultiLineCellRenderer;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelos.modelo;
@@ -27,6 +27,9 @@ public class p_historial extends javax.swing.JPanel {
         setName("Panel Historial"); // NOI18N
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        listado.setBorder(null);
+        listado.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
         historial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         historial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -48,10 +51,14 @@ public class p_historial extends javax.swing.JPanel {
             }
         });
         historial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        historial.setEnabled(false);
+        historial.setFocusable(false);
+        historial.setRequestFocusEnabled(false);
+        historial.setRowHeight(50);
         historial.getTableHeader().setReorderingAllowed(false);
         listado.setViewportView(historial);
 
-        add(listado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 620, 450));
+        add(listado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 540));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -62,21 +69,21 @@ public class p_historial extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) historial.getModel();
         model.setRowCount(0);
 
-        historial.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
-        historial.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
-        historial.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
-        historial.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
-
         if (li != null) {
 
             for (int i = 0; i < li.size(); i++) {
 
                 model.addRow(new Object[]{
                     li.get(i).getNombre() + " " + li.get(i).getApellido() + "\n",
-                    li.get(i).getDiagnostico_final()+ "\n",
-                    li.get(i).getFecha_envio()+ "\n",
-                    li.get(i).getFecha_diagnostico()+ "\n"
+                    li.get(i).getDiagnostico_final() + "\n",
+                    li.get(i).getFecha_envio() + "\n",
+                    li.get(i).getFecha_diagnostico() + "\n"
                 });
+
+                historial.getColumnModel().getColumn(0).setCellRenderer(new MultiLineCellRenderer());
+                historial.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+                historial.getColumnModel().getColumn(2).setCellRenderer(new MultiLineCellRenderer());
+                historial.getColumnModel().getColumn(3).setCellRenderer(new MultiLineCellRenderer());
             }
         }
     }

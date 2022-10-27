@@ -1,5 +1,6 @@
 package paneles;
 
+
 import globales.WordWrapRenderer;
 import globales.encriptacion;
 import java.util.ArrayList;

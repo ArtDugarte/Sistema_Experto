@@ -1,6 +1,6 @@
 package paneles;
 
-import globales.WordWrapRenderer;
+import globales.MultiLineCellRenderer;
 import globales.mensajes;
 import globales.validaciones;
 import java.util.ArrayList;
@@ -21,8 +21,6 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
     private void initComponents() {
 
         principal = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lista = new javax.swing.JTable();
         nombres = new javax.swing.JTextField();
         apellidos = new javax.swing.JTextField();
         cedula = new javax.swing.JTextField();
@@ -31,6 +29,8 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         lupa = new javax.swing.JButton();
         b_limpiar = new javax.swing.JButton();
+        listado = new javax.swing.JScrollPane();
+        lista = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(680, 540));
@@ -40,36 +40,6 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
         principal.setBackground(new java.awt.Color(255, 255, 255));
         principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane2.setEnabled(false);
-        jScrollPane2.setFocusable(false);
-
-        lista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        lista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Médico", "Diagnósticos", "Fecha de Envio", "Fecha de Diagnóstico"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        lista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lista.setFocusable(false);
-        lista.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(lista);
-
-        principal.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 640, 360));
 
         nombres.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         nombres.setForeground(new java.awt.Color(102, 102, 102));
@@ -148,6 +118,39 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
         });
         principal.add(b_limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 500, 30));
 
+        listado.setBorder(null);
+        listado.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        lista.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Médico", "Diagnóstico", "Fecha de Envío", "Fecha de Diagnóstico"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        lista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lista.setEnabled(false);
+        lista.setFocusable(false);
+        lista.setRequestFocusEnabled(false);
+        lista.setRowHeight(50);
+        lista.getTableHeader().setReorderingAllowed(false);
+        listado.setViewportView(lista);
+
+        principal.add(listado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 660, 370));
+
         add(principal, java.awt.BorderLayout.CENTER);
 
         getAccessibleContext().setAccessibleName("");
@@ -181,11 +184,6 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
                 DefaultTableModel model = (DefaultTableModel) lista.getModel();
                 model.setRowCount(0);
 
-                lista.getColumnModel().getColumn(0).setCellRenderer(new WordWrapRenderer());
-                lista.getColumnModel().getColumn(1).setCellRenderer(new WordWrapRenderer());
-                lista.getColumnModel().getColumn(2).setCellRenderer(new WordWrapRenderer());
-                lista.getColumnModel().getColumn(3).setCellRenderer(new WordWrapRenderer());
-
                 nombres.setText("Nombres: ");
                 apellidos.setText("Apelidos: ");
                 if (m != null) {
@@ -201,10 +199,15 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
 
                             model.addRow(new Object[]{
                                 li.get(i).getNombre() + " " + li.get(i).getApellido() + "\n",
-                                li.get(i).getDiagnostico_final()+ "\n",
-                                li.get(i).getFecha_envio()+ "\n",
-                                li.get(i).getFecha_diagnostico()+ "\n"
+                                li.get(i).getDiagnostico_final() + "\n",
+                                li.get(i).getFecha_envio() + "\n",
+                                li.get(i).getFecha_diagnostico() + "\n"
                             });
+
+                            lista.getColumnModel().getColumn(0).setCellRenderer(new MultiLineCellRenderer());
+                            lista.getColumnModel().getColumn(1).setCellRenderer(new MultiLineCellRenderer());
+                            lista.getColumnModel().getColumn(2).setCellRenderer(new MultiLineCellRenderer());
+                            lista.getColumnModel().getColumn(3).setCellRenderer(new MultiLineCellRenderer());
                         }
                     }
                 } else {
@@ -247,11 +250,11 @@ public class p_busquedaAvanzada extends javax.swing.JPanel {
     private javax.swing.JTextField apellidos;
     private javax.swing.JButton b_limpiar;
     private javax.swing.JTextField cedula;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTable lista;
+    private javax.swing.JScrollPane listado;
     private javax.swing.JButton lupa;
     private javax.swing.JTextField nombres;
     private javax.swing.JPanel principal;

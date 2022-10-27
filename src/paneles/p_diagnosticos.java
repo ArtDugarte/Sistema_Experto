@@ -1029,7 +1029,9 @@ public class p_diagnosticos extends javax.swing.JPanel {
         area_diagnostico_sugerido.setEditable(false);
         area_diagnostico_sugerido.setColumns(20);
         area_diagnostico_sugerido.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        area_diagnostico_sugerido.setLineWrap(true);
         area_diagnostico_sugerido.setRows(5);
+        area_diagnostico_sugerido.setWrapStyleWord(true);
         area_diagnostico_sugerido.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         area_diagnostico_sugerido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane4.setViewportView(area_diagnostico_sugerido);
@@ -1089,7 +1091,9 @@ public class p_diagnosticos extends javax.swing.JPanel {
 
         area_diagnostico_final.setColumns(20);
         area_diagnostico_final.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        area_diagnostico_final.setLineWrap(true);
         area_diagnostico_final.setRows(5);
+        area_diagnostico_final.setWrapStyleWord(true);
         area_diagnostico_final.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         area_diagnostico_final.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane5.setViewportView(area_diagnostico_final);
@@ -1248,6 +1252,9 @@ public class p_diagnosticos extends javax.swing.JPanel {
                 comparar_Orina(diagnosticos_orina);
             }
         }
+        if (area_diagnostico_sugerido.getText().equals("")) {
+            area_diagnostico_sugerido.setText("El paciente está saludable o no hay un diagnóstico asignado a sus resultados.\n\nPor favor revisar antes de enviar un diagnóstico final");
+        }
     }//GEN-LAST:event_b_revisarActionPerformed
 
     private void b_limpiarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b_limpiarMousePressed
@@ -1382,9 +1389,17 @@ public class p_diagnosticos extends javax.swing.JPanel {
     }//GEN-LAST:event_b_visualizarExamenActionPerformed
 
     private void b_limpiar_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_limpiar_resultadoActionPerformed
-        area_diagnostico_final.setText(area_diagnostico_sugerido.getText());
-        filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
-        file = null;
+
+        if (!area_diagnostico_sugerido.getText().equals("El paciente está saludable o no hay un diagnóstico asignado a sus resultados.\n\nPor favor revisar antes de enviar un diagnóstico final")) {
+            area_diagnostico_final.setText(area_diagnostico_sugerido.getText());
+            filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
+            file = null;
+        }
+        else{
+            area_diagnostico_final.setText("");
+            filename.setText(" Adjunte el exámen en formato PDF, PNG o JPG (Max. 16MB)");
+            file = null;
+        }
     }//GEN-LAST:event_b_limpiar_resultadoActionPerformed
 
     private void b_adjuntar_documentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_adjuntar_documentoActionPerformed
@@ -1832,6 +1847,7 @@ public class p_diagnosticos extends javax.swing.JPanel {
     }
 
     public void comparar_Ambos(ArrayList<modelo> diagnosticos) {
+        
         for (int i = 0; i < diagnosticos.size(); i++) {
             ArrayList<String> valores = diagnosticos.get(i).getD_valores();
             ArrayList<String> seleccionados = diagnosticos.get(i).getD_seleccionados();

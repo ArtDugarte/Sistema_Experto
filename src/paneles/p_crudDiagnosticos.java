@@ -956,7 +956,9 @@ public class p_crudDiagnosticos extends javax.swing.JPanel {
 
         descripcion.setColumns(20);
         descripcion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        descripcion.setLineWrap(true);
         descripcion.setRows(5);
+        descripcion.setWrapStyleWord(true);
         jScrollPane1.setViewportView(descripcion);
 
         general.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 630, -1));

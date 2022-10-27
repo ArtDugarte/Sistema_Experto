@@ -1,5 +1,6 @@
 package paneles;
 
+import globales.mensajes;
 import java.awt.Desktop;
 import java.io.File;
 import modelos.operar_manuales;
@@ -105,7 +106,7 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
     private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
 
         operar_manuales op = new operar_manuales();
-        File directorio = new File("C:\\Resultados\\");
+        File directorio = new File("C:\\SEDIPG\\");
         String archivo = null;
 
         if (!directorio.exists()) {
@@ -139,11 +140,13 @@ public class p_acercaDelSistema extends javax.swing.JPanel {
         }
 
         try {
-            Desktop.getDesktop().open(new File("C:\\Resultados\\" + archivo + ""));
+            Desktop.getDesktop().open(new File("C:\\SEDIPG\\" + archivo + ""));
+            msg.mensaje("El manual se descargó en la siguiente dirección: C:\\SEDIPG\\MANUAL.pdf", "exito");
         } catch (Exception ex) {
         }
     }//GEN-LAST:event_descargarActionPerformed
 
+    private mensajes msg = new mensajes();
     int tipo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton descargar;
